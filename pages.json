@@ -1,0 +1,109 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/login/login/login",
+			"style": {
+				"app-plus": {
+					"titleNView": false,
+					"bounce": "vertical",
+					"scrollIndicator": "none"
+				}
+			}
+		},
+		{
+			"path": "pages/login/register/register",
+			"style": {
+				"app-plus": {
+					"bounce": "vertical",
+					"titleNView": {
+						"titleText": "手机注册"
+					},
+					"scrollIndicator": "none"
+				}
+			}
+		},
+		{
+			"path": "pages/login/register/agreement",
+			"style": {
+				"app-plus": {
+					"bounce": "vertical",
+					"titleNView": {
+						"titleText": "服务协议"
+					},
+					"scrollIndicator": "none"
+				}
+			}
+		},
+		{
+			"path": "pages/tabBar/home/home",
+			"style": {
+				"navigationBarTitleText": "集米宝",
+				"app-plus": {
+					"bounce": "vertical",
+					"titleNView": {
+						"buttons": [{
+							"text": "\ue439",
+							"fontSrc": "/static/uni.ttf",
+							"fontSize": "22px",
+							"color": "#eee"
+						}]
+					}
+				}
+			}
+		},{
+			"path": "pages/tabBar/business/business",
+			"style": {
+				"app-plus": {
+					"titleNView": false
+				},
+				"enablePullDownRefresh": true
+			}
+		},{
+			"path": "pages/tabBar/exchange/exchange"
+		},{
+			"path": "pages/tabBar/messageList/messageList"
+		},{
+			"path": "pages/tabBar/profile/profile"
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "white",
+		"navigationBarTitleText": "集米宝",
+		"navigationBarBackgroundColor": "#282a34",
+		"backgroundColor": "#23232b",
+		"backgroundTextStyle": "light",
+		"enablePullDownRefresh": false
+	},
+	"tabBar": {
+        "color": "#999",
+        "selectedColor": "#F8E3AA",
+        "borderStyle": "black",
+        "backgroundColor": "#1a1b22",
+        "list": [{
+            "pagePath": "pages/tabBar/home/home",
+            "iconPath": "static/image/btn_home_normal@2x.png",
+            "selectedIconPath": "static/image/btn_home_pressed@2x.png",
+            "text": "首页"
+        }, {
+            "pagePath": "pages/tabBar/business/business",
+            "iconPath": "static/image/btn_busniss_normal@2x.png",
+            "selectedIconPath": "static/image/btn_busniss_pressed@2x.png",
+            "text": "商圈"
+        }, {
+            "pagePath": "pages/tabBar/exchange/exchange",
+            "iconPath": "static/image/btn_exchange_normal@2x.png",
+            "selectedIconPath": "static/image/btn_exchange_pressed@2x.png",
+            "text": "交换"
+        }, {
+            "pagePath": "pages/tabBar/messageList/messageList",
+            "iconPath": "static/image/btn_com_normal@2x.png",
+            "selectedIconPath": "static/image/btn_com_pressed@2x.png",
+            "text": "通讯"
+        }, {
+            "pagePath": "pages/tabBar/profile/profile",
+            "iconPath": "static/image/btn_mine_normal@2x.png",
+            "selectedIconPath": "static/image/btn_mine_pressed@2x.png",
+            "text": "我的"
+        }]
+    }
+}

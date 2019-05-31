@@ -1,0 +1,66 @@
+{
+  "pages": [
+    "pages/login/login/login",
+    "pages/login/register/register",
+    "pages/login/register/agreement",
+    "pages/tabBar/home/home",
+    "pages/tabBar/business/business",
+    "pages/tabBar/exchange/exchange",
+    "pages/tabBar/messageList/messageList",
+    "pages/tabBar/profile/profile"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "集米宝",
+    "navigationBarBackgroundColor": "#282a34",
+    "backgroundColor": "#23232b",
+    "backgroundTextStyle": "light",
+    "enablePullDownRefresh": false
+  },
+  "tabBar": {
+    "color": "#999",
+    "selectedColor": "#F8E3AA",
+    "borderStyle": "black",
+    "backgroundColor": "#1a1b22",
+    "list": [
+      {
+        "pagePath": "pages/tabBar/home/home",
+        "iconPath": "static/image/btn_home_normal@2x.png",
+        "selectedIconPath": "static/image/btn_home_pressed@2x.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/tabBar/business/business",
+        "iconPath": "static/image/btn_busniss_normal@2x.png",
+        "selectedIconPath": "static/image/btn_busniss_pressed@2x.png",
+        "text": "商圈"
+      },
+      {
+        "pagePath": "pages/tabBar/exchange/exchange",
+        "iconPath": "static/image/btn_exchange_normal@2x.png",
+        "selectedIconPath": "static/image/btn_exchange_pressed@2x.png",
+        "text": "交换"
+      },
+      {
+        "pagePath": "pages/tabBar/messageList/messageList",
+        "iconPath": "static/image/btn_com_normal@2x.png",
+        "selectedIconPath": "static/image/btn_com_pressed@2x.png",
+        "text": "通讯"
+      },
+      {
+        "pagePath": "pages/tabBar/profile/profile",
+        "iconPath": "static/image/btn_mine_normal@2x.png",
+        "selectedIconPath": "static/image/btn_mine_pressed@2x.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "splashscreen": {
+    "alwaysShowBeforeRender": true,
+    "autoclose": false
+  },
+  "appname": "uni-app-jimibao",
+  "compilerVersion": "1.9.9",
+  "usingComponents": {}
+}
