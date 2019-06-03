@@ -107,4 +107,8 @@ view.data-v-5f22e8b0 {
   width: 100%;
   height: 100%;
 }
+.uni-swiper-msg.data-v-5f22e8b0 {
+  padding: 10rpx 20rpx;
+  background: #2c2e37;
+}
 

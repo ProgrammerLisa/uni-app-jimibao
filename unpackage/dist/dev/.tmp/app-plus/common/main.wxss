@@ -1687,16 +1687,19 @@ page {
   line-height: 1.8;
 }
 .y-content-db {
+  width: 100%;
   min-height: calc(100vh - 94px);
   background: #21232c;
   color: #fff;
 }
 .y-content-hasNav {
+  width: 100%;
   min-height: calc(100vh - 44px);
   background: #21232c;
   color: #fff;
 }
 .y-content-hasTab {
+  width: 100%;
   min-height: calc(100vh - 50px);
   background: #21232c;
   color: #fff;

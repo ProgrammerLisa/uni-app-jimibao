@@ -116,14 +116,25 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/tabBar/index.js */ "../../../../../y/uni-app-jimibao/utils/api/tabBar/index.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var uniSwiperDot = function uniSwiperDot() {return __webpack_require__.e(/*! import() | components/uni-swiper-dot/uni-swiper-dot */ "components/uni-swiper-dot/uni-swiper-dot").then(__webpack_require__.bind(null, /*! @/components/uni-swiper-dot/uni-swiper-dot.vue */ "../../../../../y/uni-app-jimibao/components/uni-swiper-dot/uni-swiper-dot.vue"));};var _default =
+
+
+
+
+
+
+
+
+
+
+var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/tabBar/index.js */ "../../../../../y/uni-app-jimibao/utils/api/tabBar/index.js"));
+var _img_announ = _interopRequireDefault(__webpack_require__(/*! @/static/image/img_announ.png */ "../../../../../y/uni-app-jimibao/static/image/img_announ.png"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var uniSwiperDot = function uniSwiperDot() {return __webpack_require__.e(/*! import() | components/uni-swiper-dot/uni-swiper-dot */ "components/uni-swiper-dot/uni-swiper-dot").then(__webpack_require__.bind(null, /*! @/components/uni-swiper-dot/uni-swiper-dot.vue */ "../../../../../y/uni-app-jimibao/components/uni-swiper-dot/uni-swiper-dot.vue"));};var _default =
 {
   components: {
     uniSwiperDot: uniSwiperDot },
 
   data: function data() {
     return {
-      title: 'Hello',
+      icon: _img_announ.default,
       carousel: [],
       current: 0,
       mode: 'long',
@@ -132,8 +143,9 @@ var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/tabBar/i
         border: '1px rgba(255, 255, 255, .3) solid',
         color: '#fff',
         selectedBackgroundColor: 'rgba(255, 255, 255, .9)',
-        selectedBorder: '1px rgba(255, 255, 255, .9) solid' } };
+        selectedBorder: '1px rgba(255, 255, 255, .9) solid' },
 
+      msg: [] };
 
   },
   onNavigationBarButtonTap: function onNavigationBarButtonTap(e) {
@@ -144,17 +156,47 @@ var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/tabBar/i
   onLoad: function onLoad() {
 
   },
+  onReady: function onReady() {
+    this.setStyle(0, true);
+    this.setStyle(1, true, '9');
+
+  },
   created: function created() {
     this.getData();
   },
   methods: {
-    switchActive: function switchActive() {
+    /**
+              * 修改导航栏buttons
+              * index[number] 修改的buttons 下标索引，最右边索引为0
+              * show[boolean] 显示还是隐藏角标或者红点
+              * text[string] 需要修改的角标的text 内容 ，如果定义redDot 此参数无效 ，如果定义badgeText请设置具体，如果不用输入
+              */
+    setStyle: function setStyle(index, show, text) {
+      var pages = getCurrentPages();
+      var page = pages[pages.length - 1];
+
+      var currentWebview = page.$getAppWebview();
+      if (show) {
+        if (index === 0) {
+          currentWebview.showTitleNViewButtonRedDot({ index: index, text: text });
+        } else {
+          currentWebview.setTitleNViewButtonBadge({ index: index, text: text });
+        }
+      } else {
+        if (index === 0) {
+          currentWebview.hideTitleNViewButtonRedDot({ index: index });
+        } else {
+          currentWebview.removeTitleNViewButtonBadge({ index: index });
+        }
+      }
+
 
     },
     getData: function () {var _getData = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
                   _index.default.home({ description: 'banner' }));case 2:res = _context.sent;
                 if (res.success) {
                   this.carousel = res.data.AppUrl;
+                  this.msg = res.data.NoticePO;
                 }case 4:case "end":return _context.stop();}}}, _callee, this);}));function getData() {return _getData.apply(this, arguments);}return getData;}(),
 
     change: function change(e) {

@@ -17,8 +17,7 @@
 					"bounce": "vertical",
 					"titleNView": {
 						"titleText": "手机注册"
-					},
-					"scrollIndicator": "none"
+					}
 				}
 			}
 		},
@@ -45,7 +44,8 @@
 							"text": "\ue439",
 							"fontSrc": "/static/uni.ttf",
 							"fontSize": "22px",
-							"color": "#eee"
+							"color": "#eee",
+							"redDot": true
 						}]
 					}
 				}
@@ -63,7 +63,41 @@
 		},{
 			"path": "pages/tabBar/messageList/messageList"
 		},{
-			"path": "pages/tabBar/profile/profile"
+			"path": "pages/tabBar/profile/profile",
+			"style": {
+				"app-plus": {
+					"titleNView": false,
+					"scrollIndicator": "none"
+				}
+			}
+		}
+	],
+	"subPackages": [
+		{
+			"root": "pages/template",
+			"pages": [
+				{
+					"path": "/personal_info/personal_info",
+					"style": {
+						"navigationBarTitleText": "我的账号"
+					}
+				},
+				{
+					"path": "/personal_info/set_info",
+					"style": {
+						"navigationBarTitleText": "修改资料",
+						"app-plus": {
+							"titleNView": {
+								"buttons": [{
+										"text": "完成",
+										"fontSize": "15"
+									}
+								]
+							}
+						}
+					}
+				}
+			]
 		}
 	],
 	"globalStyle": {

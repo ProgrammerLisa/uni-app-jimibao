@@ -7,7 +7,8 @@
         "text": "",
         "fontSrc": "/static/uni.ttf",
         "fontSize": "22px",
-        "color": "#eee"
+        "color": "#eee",
+        "redDot": true
       }
     ]
   },

@@ -56,12 +56,40 @@
 		onLoad() {
 			
 		},
+		onReady() {
+			this.setStyle(0,true)
+			this.setStyle(1,true,'9')
+		},
 		created () {
 			this.getData()
 		},
 		methods: {
-			switchActive () {
+			/**
+			 * 修改导航栏buttons
+			 * index[number] 修改的buttons 下标索引，最右边索引为0
+			 * show[boolean] 显示还是隐藏角标或者红点
+			 * text[string] 需要修改的角标的text 内容 ，如果定义redDot 此参数无效 ，如果定义badgeText请设置具体，如果不用输入
+			 */
+			setStyle(index, show,text) {
+				let pages = getCurrentPages()
+				let page = pages[pages.length - 1]
+				// #ifdef APP-PLUS
+				let currentWebview = page.$getAppWebview()
+				if(show){
+					if(index === 0){
+						currentWebview.showTitleNViewButtonRedDot({index:index,text:text})
+					}else{
+						currentWebview.setTitleNViewButtonBadge({index:index,text:text})
+					}
+				}else{
+					if(index === 0){
+						currentWebview.hideTitleNViewButtonRedDot({index:index})
+					}else{
+						currentWebview.removeTitleNViewButtonBadge({index:index})
+					}
+				}
 				
+				// #endif
 			},
 			async getData () {
 				const res = await api.home({ description: 'banner' })

@@ -7,7 +7,8 @@
     "pages/tabBar/business/business",
     "pages/tabBar/exchange/exchange",
     "pages/tabBar/messageList/messageList",
-    "pages/tabBar/profile/profile"
+    "pages/tabBar/profile/profile",
+    "pages/template/personal_info/personal_info"
   ],
   "subPackages": [],
   "window": {
