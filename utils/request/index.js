@@ -30,7 +30,15 @@ function checkCode (res) {
 		store.commit('clearBusinessAddress')
 		store.commit('clearMineScrollTop')
 		store.commit('clearSocketObj')
-		uni.clearStorage()
+		uni.removeStorage({
+			key: 'user',
+			success: function (res) {
+				console.log('success')
+				uni.reLaunch({
+					url: '/pages/login/login/login'
+				})
+			}
+		})
 	}
 	if (!res.success) {
 		uni.showToast({
@@ -47,9 +55,9 @@ export default {
 	post (url, data, header =  null) {
 		var Authorization
 		uni.getStorage({
-			key: 'Authorization',
+			key: 'user',
 			success: function(res){
-				Authorization = res.data
+				Authorization = res.data.token
 			}
 		})
 		return uni.request({
@@ -75,9 +83,9 @@ export default {
 			}
 		}
 		uni.getStorage({
-			key: 'Authorization',
+			key: 'user',
 			success: function(res){
-				Authorization = res.data
+				Authorization = res.data.token
 			}
 		})
 		return uni.request({

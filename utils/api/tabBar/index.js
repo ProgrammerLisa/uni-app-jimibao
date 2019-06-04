@@ -10,7 +10,12 @@ export default {
 	sendCode (obj, header) {
 		return request.post('/firm/sendCode', obj, header)
 	},
-	logout (obj, header) {
-		return request.post('/firm/logout', obj, header)
+	// 官方信息
+	phoneVersion (obj) {
+		return request.get('/common/PhoneVersion', obj)
+	},
+	// 修改个人信息
+	updateInfo (obj) {
+		return request.post('/firm/addfirminfo', obj)
 	}
 }

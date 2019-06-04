@@ -8,7 +8,22 @@
     "pages/tabBar/exchange/exchange",
     "pages/tabBar/messageList/messageList",
     "pages/tabBar/profile/profile",
-    "pages/template/personal_info/personal_info"
+    "components/zhiwen-share/zhiwen-share",
+    "pages/template/profile/info/info",
+    "pages/template/profile/info/set-info",
+    "pages/template/profile/setting/setting",
+    "pages/template/profile/setting/set-password",
+    "pages/template/profile/setting/forget-password",
+    "pages/template/profile/level/level",
+    "pages/template/profile/topList-lottery/topList-lottery",
+    "pages/template/profile/topList-order/topList-order",
+    "pages/template/profile/topList-team/topList-team",
+    "pages/template/profile/topList-encourage/topList-encourage",
+    "pages/template/profile/list-sum/list-sum",
+    "pages/template/profile/list-real-name/list-real-name",
+    "pages/template/profile/list-address/list-address",
+    "pages/template/profile/list-feedback/list-feedback",
+    "pages/template/profile/list-edition/list-edition"
   ],
   "subPackages": [],
   "window": {

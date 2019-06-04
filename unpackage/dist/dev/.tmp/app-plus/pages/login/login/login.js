@@ -170,9 +170,9 @@ var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/login/in
       inputClearValue: '' };
 
   },
-  created: function created() {
+  onLoad: function onLoad() {
     uni.getStorage({
-      key: 'Authorization',
+      key: 'user',
       success: function success(res) {
         if (res.data) {
           uni.switchTab({
@@ -201,8 +201,8 @@ var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/login/in
                   _index.default.login(e, { 'Content-Type': 'application/json' }));case 2:res = _context.sent;
                 if (res.success) {
                   uni.setStorage({
-                    key: 'Authorization',
-                    data: res.data.token,
+                    key: 'user',
+                    data: res.data,
                     success: function success() {
                       uni.showToast({
                         title: '登录成功' });

@@ -70,20 +70,31 @@
 					"scrollIndicator": "none"
 				}
 			}
+		},{
+			"path": "components/zhiwen-share/zhiwen-share",
+			"style": {
+				"app-plus": {
+					"bounce": "vertical",
+					"titleNView": {
+						"titleText": "分享"
+					},
+					"scrollIndicator": "none"
+				}
+			}
 		}
 	],
 	"subPackages": [
 		{
-			"root": "pages/template",
+			"root": "pages/template/profile",
 			"pages": [
 				{
-					"path": "/personal_info/personal_info",
+					"path": "/info/info",
 					"style": {
 						"navigationBarTitleText": "我的账号"
 					}
 				},
 				{
-					"path": "/personal_info/set_info",
+					"path": "/info/set-info",
 					"style": {
 						"navigationBarTitleText": "修改资料",
 						"app-plus": {
@@ -95,6 +106,84 @@
 								]
 							}
 						}
+					}
+				},
+				{
+					"path": "/setting/setting",
+					"style": {
+						"navigationBarTitleText": "设置"
+					}
+				},
+				{
+					"path": "/setting/set-password",
+					"style": {
+						"navigationBarTitleText": "更改密码"
+					}
+				},
+				{
+					"path": "/setting/forget-password",
+					"style": {
+						"navigationBarTitleText": "忘记密码"
+					}
+				},
+				{
+					"path": "/level/level",
+					"style": {
+						"navigationBarTitleText": "会员等级"
+					}
+				},
+				{
+					"path": "/topList-lottery/topList-lottery",
+					"style": {
+						"navigationBarTitleText": "抽奖"
+					}
+				},
+				{
+					"path": "/topList-order/topList-order",
+					"style": {
+						"navigationBarTitleText": "交换中心订单"
+					}
+				},
+				{
+					"path": "/topList-team/topList-team",
+					"style": {
+						"navigationBarTitleText": "我的团队"
+					}
+				},
+				{
+					"path": "/topList-encourage/topList-encourage",
+					"style": {
+						"navigationBarTitleText": "激活鼓励金"
+					}
+				},
+				{
+					"path": "/list-sum/list-sum",
+					"style": {
+						"navigationBarTitleText": "米库总量"
+					}
+				},
+				{
+					"path": "/list-real-name/list-real-name",
+					"style": {
+						"navigationBarTitleText": "实名认证"
+					}
+				},
+				{
+					"path": "/list-address/list-address",
+					"style": {
+						"navigationBarTitleText": "收货地址"
+					}
+				},
+				{
+					"path": "/list-feedback/list-feedback",
+					"style": {
+						"navigationBarTitleText": "问题反馈"
+					}
+				},
+				{
+					"path": "/list-edition/list-edition",
+					"style": {
+						"navigationBarTitleText": "检测版本"
 					}
 				}
 			]

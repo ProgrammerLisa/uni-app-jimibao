@@ -154,15 +154,11 @@ var _img_announ = _interopRequireDefault(__webpack_require__(/*! @/static/image/
 
   },
   onLoad: function onLoad() {
-
+    this.getData();
   },
   onReady: function onReady() {
     this.setStyle(0, true);
     this.setStyle(1, true, '9');
-
-  },
-  created: function created() {
-    this.getData();
   },
   methods: {
     /**

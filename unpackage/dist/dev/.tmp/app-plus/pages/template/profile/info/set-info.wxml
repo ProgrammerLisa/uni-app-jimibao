@@ -1,0 +1,1 @@
+<view class="y-content-hasNav data-v-962d0e1e" bind:__l="__l"><input maxlength="20" placeholder="{{'请输入'+info.title}}" value="{{value}}" class="data-v-962d0e1e"/></view>

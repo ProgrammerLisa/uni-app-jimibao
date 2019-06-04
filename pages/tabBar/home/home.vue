@@ -54,14 +54,11 @@
 			});
 		},
 		onLoad() {
-			
+			this.getData()
 		},
 		onReady() {
 			this.setStyle(0,true)
 			this.setStyle(1,true,'9')
-		},
-		created () {
-			this.getData()
 		},
 		methods: {
 			/**

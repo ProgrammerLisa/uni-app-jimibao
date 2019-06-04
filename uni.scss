@@ -67,7 +67,7 @@ $uni-spacing-col-lg: 24upx;
 /* */
 
 /* 透明度 */
-$uni-opacity-disabled: 0.3; // 组件禁用态的透明度
+$uni-opacity-disabled: 0.4; // 组件禁用态的透明度
 
 /* 文章场景相关 */
 $uni-color-title: #2C405A; // 文章标题颜色
@@ -91,9 +91,9 @@ $uni-box-line: #21232c;
 /* 登录 */
 $uni-login-bg-color: #2c2e37;
 $uni-input-bg-color: #23242d;
-$uni-input-border-color: #23242d;
+$uni-input-border-color: #555;
 $uni-input-caret-color: #F7E8D1;
-$uni-font-color: #fff;
+$uni-font-color: #ccc;
 $uni-router-color: #ffe0b2;
 
 .uni-checkbox-input {

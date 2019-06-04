@@ -159,7 +159,7 @@
 		font-size: 30upx;
 		text-overflow: ellipsis;
 		white-space: nowrap;
-		color: inherit;
+		color: #ccc;
 		line-height: 1.5;
 		overflow: hidden
 	}
@@ -175,7 +175,6 @@
 	}
 
 	.uni-list-item__extra {
-		width: 25%;
 		display: flex;
 		flex-direction: row;
 		justify-content: flex-end;

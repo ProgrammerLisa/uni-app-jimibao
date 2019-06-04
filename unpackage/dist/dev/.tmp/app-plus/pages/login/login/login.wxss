@@ -91,7 +91,7 @@
     color: #ccc;
 }
 .box .y-input-border.data-v-2eb6055b {
-    border: 0.2px solid #23242d;
+    border: 0.2px solid #555;
 }
 .box .y-login-btn.data-v-2eb6055b {
     margin-top: 40rpx;
@@ -124,7 +124,7 @@
     color: #2c2e37;
 }
 .box .y-login[disabled].data-v-2eb6055b {
-    opacity: 0.3;
+    opacity: 0.4;
 }
 .box .y-login[disabled].data-v-2eb6055b:active {
     background: transparent;
@@ -243,7 +243,7 @@
   height: 100vh;
   overflow: hidden;
   background: #2c2e37;
-  color: #fff;
+  color: #ccc;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;

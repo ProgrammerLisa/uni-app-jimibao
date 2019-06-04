@@ -7,10 +7,10 @@
 				</view>
 				<view class="header-profile" @click="goSetInfo">
 					<view class="profile-avatar">
-						<image :src="profile.avatar?profile.avatar:defaultAvatar"></image>
+						<image :src="userInfo.headimage?imageUrl+userInfo.headimage:defaultAvatar"></image>
 						<view class="profile-info">
-							<view class="text-black">{{profile.phone}}</view>
-							<view>ID: {{profile.id}}</view>
+							<view class="text-black">{{userInfo.phone}}</view>
+							<view>ID: {{userInfo.tuijianma}}</view>
 						</view>
 					</view>
 					<view>
@@ -35,30 +35,22 @@
 				</view>
 			</view>
 			<view class="fill-box">
-				<view>
-					<view class="fill-box-top">Lv1</view>
-					<view class="fill-box-bottom"><image :src="diamond"></image><text>会员等级</text></view>
-				</view>
-				<view>
-					<view class="fill-box-top">1</view>
-					<view class="fill-box-bottom"><image :src="hot"></image><text>活跃值</text></view>
-				</view>
-				<view>
-					<view class="fill-box-top">0</view>
-					<view class="fill-box-bottom"><image :src="gift"></image><text>贡献值</text></view>
+				<view class="fill-box-content" v-for="(i, index) in levelList" :key="'level'+index" @click="goLevel">
+					<view class="fill-box-top">{{i.text}}</view>
+					<view class="fill-box-bottom"><image :src="i.icon"></image><text>{{i.title}}</text></view>
 				</view>
 			</view>
 		</view>
 		<view class="y-list">
 			<view class="y-list-box">
-				<view class="y-list-box-item" v-for="(i, index) in topList" :key="index">
+				<view class="y-list-box-item" v-for="(i, index) in topList" :key="'list'+index" @click="goToplist(index)">
 					<uni-icon :type="i.icon" color="#fedba3"></uni-icon>
 					<view>{{i.title}}</view>
 				</view>
 			</view>
 			<view class="y-uni-list">
 				<uni-list>
-					<uni-list-item v-for="(i, index) in list" :key="'list'+index" :show-arrow="i.showArrow" :title="i.title" :show-extra-icon="i.showExtraIcon" :extra-icon="i.extraIcon" :show-badge="i.showBadge" :badge-text="i.badgeText" />
+					<uni-list-item @click="running(index)" v-for="(i, index) in list" :key="'item'+index" :show-arrow="i.showArrow" :title="i.title" :show-extra-icon="i.showExtraIcon" :extra-icon="i.extraIcon" :show-badge="i.showBadge" :badge-text="i.badgeText" :badgeType="i.badgeType" />
 				</uni-list>
 			</view>
 		</view>
@@ -76,6 +68,7 @@
 	import uniIcon from '@/components/uni-icon/uni-icon.vue'
 	import uniList from '@/components/uni-list/uni-list.vue'
 	import uniListItem from '@/components/uni-list-item/uni-list-item.vue'
+	import api from '@/utils/api/tabBar/index.js'
 	
 	export default {
 		components: {
@@ -91,46 +84,145 @@
 				wave1: [wave1, wave1],
 				wave2: [wave2, wave2],
 				defaultAvatar: avatar,
-				profile: {},
+				imageUrl: '',
+				userInfo: {},
+				servicePhone: {},
 				extraIcon1: {
 					color: '#007aff',
 					size: '22',
 					type: 'info-filled'
 				},
+				levelList: [
+					{ title: '会员等级', type: 'level', icon: diamond, text: '' },
+					{ title: '活跃值', type: 'active', icon: hot, text: '' },
+					{ title: '贡献值', type: 'contribution', icon: gift, text: '' }
+				],
 				topList: [
-					{ title: '抽奖', icon: 'spinner', url: '' },
-					{ title: '订单', icon: 'compose', url: '' },
-					{ title: '团队', icon: 'contact', url: '' },
-					{ title: '鼓励金', icon: 'circle-filled', url: '' }
+					{ title: '抽奖', type: 'lottery', icon: 'spinner', url: '/pages/template/profile/topList-lottery/topList-lottery' },
+					{ title: '订单', type: 'order', icon: 'compose', url: '/pages/template/profile/topList-order/topList-order' },
+					{ title: '团队', type: 'team', icon: 'contact', url: '/pages/template/profile/topList-team/topList-team' },
+					{ title: '鼓励金', type: 'encourage', icon: 'circle-filled', url: '/pages/template/profile/topList-encourage/topList-encourage' }
 				],
 				list: [
-					{ title: '米库总量', showArrow: true, showExtraIcon: true, extraIcon: { color: '#a1adc1', size: '22', type: 'star-filled' }, showBadge: true, badgeText: null },
-					{ title: '实名认证', showArrow: true, showExtraIcon: true, extraIcon: { color: '#a1adc1', size: '22', type: 'personadd-filled' }, showBadge: true, badgeText: null },
-					{ title: '收货地址', showArrow: true, showExtraIcon: true, extraIcon: { color: '#a1adc1', size: '22', type: 'location-filled' }, showBadge: false, badgeText: null },
-					{ title: '问题反馈', showArrow: true, showExtraIcon: true, extraIcon: { color: '#a1adc1', size: '22', type: 'help-filled' }, showBadge: false, badgeText: null },
-					{ title: '检测版本', showArrow: true, showExtraIcon: true, extraIcon: { color: '#a1adc1', size: '22', type: 'info-filled' }, showBadge: true, badgeText: null },
-					{ title: '客服微信', showArrow: false, showExtraIcon: true, extraIcon: { color: '#a1adc1', size: '22', type: 'weixin' }, showBadge: true, badgeText: null },
-					{ title: '客服热线', showArrow: false, showExtraIcon: true, extraIcon: { color: '#a1adc1', size: '22', type: 'phone-filled' }, showBadge: true, badgeText: null }
+					{ title: '米库总量', type: 'sum', showArrow: true, showExtraIcon: true, extraIcon: { color: '#a1adc1', size: '22', type: 'star-filled' }, showBadge: true, badgeText: null, badgeType: 'warning', runningWay: 'goPage', path: '/pages/template/profile/list-sum/list-sum' },
+					{ title: '实名认证', type: 'realName', showArrow: true, showExtraIcon: true, extraIcon: { color: '#a1adc1', size: '22', type: 'personadd-filled' }, showBadge: true, badgeText: null, badgeType: 'warning', runningWay: 'goPage', path: '/pages/template/profile/list-real-name/list-real-name' },
+					{ title: '收货地址', type: 'address', showArrow: true, showExtraIcon: true, extraIcon: { color: '#a1adc1', size: '22', type: 'location-filled' }, showBadge: false, badgeText: null, badgeType: 'warning', runningWay: 'goPage', path: '/pages/template/profile/list-address/list-address' },
+					{ title: '问题反馈', type: 'feedback', showArrow: true, showExtraIcon: true, extraIcon: { color: '#a1adc1', size: '22', type: 'help-filled' }, showBadge: false, badgeText: null, badgeType: 'warning', runningWay: 'goPage', path: '/pages/template/profile/list-feedback/list-feedback' },
+					{ title: '检测版本', type: 'edition', showArrow: true, showExtraIcon: true, extraIcon: { color: '#a1adc1', size: '22', type: 'info-filled' }, showBadge: true, badgeText: null, badgeType: 'warning', runningWay: 'goPage', path: '/pages/template/profile/list-edition/list-edition' },
+					{ title: '客服微信', type: 'wechat', showArrow: false, showExtraIcon: true, extraIcon: { color: '#a1adc1', size: '22', type: 'weixin' }, showBadge: true, badgeText: null, badgeType: 'default', runningWay: 'copy' },
+					{ title: '客服热线', type: 'phone', showArrow: false, showExtraIcon: true, extraIcon: { color: '#a1adc1', size: '22', type: 'phone-filled' }, showBadge: true, badgeText: null, badgeType: 'default', runningWay: 'dialPhone' }
 				]
 			}
 		},
 		onLoad() {
-			
+			this.getData()
+			this.getListData()
+			this.imageUrl = this.$imageUrl
 		},
 		onReady () {
 			
 		},
-		mounted () {
-			
-		},
 		methods: {
+			async getData () {
+				const res = await api.home()
+				if (res.success) {
+					this.userInfo = res.data.TFirmPO
+					this.levelList.forEach(element => {
+						switch (element.type) {
+							case 'level':
+								element.text = 'Lv'+this.userInfo.levelid
+								break
+							case 'active':
+								element.text = this.userInfo.activevalue
+								break
+							case 'contribution':
+								element.text = this.userInfo.contribution
+								break
+						}
+					})
+					this.list.forEach(element => {
+						switch (element.type) {
+							case 'sum':
+								element.badgeText = res.data.FirmFunds.lastbalance
+								break
+							case 'edition':
+								element.badgeText = '当前版本： ' + this.$version
+								break
+						}
+					})
+				}
+			},
+			async getListData () {
+				const res = await api.phoneVersion()
+				if (res.success) {
+					this.servicePhone = res.data
+					this.list.forEach(element => {
+						switch (element.type) {
+							case 'wechat':
+								element.badgeText = res.data.wechat
+								break
+							case 'phone':
+								element.badgeText = res.data.telphone
+						}
+					})
+				}
+			},
 			goSetting () {
-				
+				uni.navigateTo({
+					url: '/pages/template/profile/setting/setting'
+				})
 			},
 			goSetInfo () {
 				uni.navigateTo({
-					url: '/pages/template/personal_info/personal_info'
+					url: '/pages/template/profile/info/info'
 				})
+			},
+			goLevel () {
+				uni.navigateTo({
+					url: '/pages/template/profile/level/level'
+				})
+			},
+			goToplist (index) {
+				uni.navigateTo({
+					url: this.topList[index].url
+				})
+			},
+			running (index) {
+				let e = this.list[index]
+				switch (e.runningWay) {
+					case 'copy':
+						uni.setClipboardData({
+							data: e.badgeText,
+							success () {
+								uni.showToast({
+									title: '复制成功'
+								})
+							},
+							fail () {
+								uni.showToast({
+									title: '复制失败',
+									icon: 'none'
+								})
+							}
+						})
+						break
+					case 'dialPhone':
+						uni.makePhoneCall({
+							phoneNumber: e.badgeText,
+							fail () {
+								uni.showToast({
+									title: '调用手机拨号失败，请手动输入号码拨号',
+									icon: 'none'
+								})
+							}
+						})
+						break
+					case 'goPage':
+						uni.navigateTo({
+							url: e.path
+						})
+						break
+				}
 			}
 		}
 	}
@@ -152,6 +244,7 @@
 	padding-bottom: 60upx;
 }
 .fill-box {
+	position: relative;
 	background: #7F7F7F;
 	display: flex;
 	overflow: hidden;
@@ -206,6 +299,7 @@
 	border-radius: 18upx;
 }
 .y-list {
+	position: relative;
 	padding: 20upx 20upx 100upx;
 	margin-top: -60upx;
 	.y-list-box {

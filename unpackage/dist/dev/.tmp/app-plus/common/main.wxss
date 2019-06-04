@@ -1683,25 +1683,41 @@ radio-group label, checkbox-group label{
 page {
   background: #21232c;
   height: 100%;
-  font-size: 28rpx;
+  font-size: 30rpx;
   line-height: 1.8;
 }
 .y-content-db {
   width: 100%;
   min-height: calc(100vh - 94px);
   background: #21232c;
-  color: #fff;
+  color: #ccc;
 }
 .y-content-hasNav {
   width: 100%;
   min-height: calc(100vh - 44px);
   background: #21232c;
-  color: #fff;
+  color: #ccc;
 }
 .y-content-hasTab {
   width: 100%;
   min-height: calc(100vh - 50px);
   background: #21232c;
-  color: #fff;
+  color: #ccc;
+}
+.y-button {
+  background: transparent;
+  border: 1rpx solid #ffe0b2;
+  color: #ffe0b2;
+  font-size: 32rpx;
+  -webkit-transition: .2s;
+  -o-transition: .2s;
+  transition: .2s;
+}
+.y-button:active {
+  background: #ffe0b2;
+  color: #2c2e37;
+}
+.y-button[disabled] {
+  opacity: 0.4;
 }
 

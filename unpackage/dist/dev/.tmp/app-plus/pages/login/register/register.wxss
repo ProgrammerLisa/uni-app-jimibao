@@ -91,7 +91,7 @@
     color: #ccc;
 }
 .box .y-input-border.data-v-bedc92b2 {
-    border: 0.2px solid #23242d;
+    border: 0.2px solid #555;
 }
 .box .y-login-btn.data-v-bedc92b2 {
     margin-top: 40rpx;
@@ -124,7 +124,7 @@
     color: #2c2e37;
 }
 .box .y-login[disabled].data-v-bedc92b2 {
-    opacity: 0.3;
+    opacity: 0.4;
 }
 .box .y-login[disabled].data-v-bedc92b2:active {
     background: transparent;

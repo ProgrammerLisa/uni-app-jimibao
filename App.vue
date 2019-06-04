@@ -21,7 +21,7 @@
 	page {
 		background: $uni-bg-color;
 		height: 100%;
-		font-size: 28upx;
+		font-size: 30upx;
 		line-height: 1.8;
 	}
 	.y-content-db {
@@ -41,5 +41,19 @@
 		min-height: $uni-content-hasTab-height;
 		background: $uni-bg-color;
 		color: $uni-font-color;
+	}
+	.y-button {
+		background: transparent;
+		border: 1upx solid $uni-router-color;
+		color: $uni-router-color;
+		font-size: 32upx;
+		transition: .2s;
+	}
+	.y-button:active {
+		background: $uni-router-color;
+		color: $uni-login-bg-color;
+	}
+	.y-button[disabled] {
+		opacity: $uni-opacity-disabled;
 	}
 </style>

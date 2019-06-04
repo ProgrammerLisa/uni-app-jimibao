@@ -56,6 +56,7 @@
   padding-bottom: 60rpx;
 }
 .fill-box.data-v-a93791b8 {
+  position: relative;
   background: #7F7F7F;
   display: -webkit-box;
   display: -webkit-flex;
@@ -107,6 +108,7 @@
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  position: relative;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
@@ -142,6 +144,7 @@
   border-radius: 18rpx;
 }
 .y-list.data-v-a93791b8 {
+  position: relative;
   padding: 20rpx 20rpx 100rpx;
   margin-top: -60rpx;
 }

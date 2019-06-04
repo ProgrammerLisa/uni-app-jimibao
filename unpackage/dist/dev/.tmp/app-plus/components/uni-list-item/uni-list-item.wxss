@@ -132,7 +132,7 @@
   -o-text-overflow: ellipsis;
      text-overflow: ellipsis;
   white-space: nowrap;
-  color: inherit;
+  color: #ccc;
   line-height: 1.5;
   overflow: hidden;
 }
@@ -146,7 +146,6 @@
   overflow: hidden;
 }
 .uni-list-item__extra {
-  width: 25%;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
