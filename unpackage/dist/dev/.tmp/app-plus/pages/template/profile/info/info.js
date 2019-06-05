@@ -98,7 +98,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js"));
 
 
 
@@ -112,33 +112,124 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _avatar = _interopRequireDefault(__webpack_require__(/*! @/static/image/avatar.png */ "../../../../../y/uni-app-jimibao/static/image/avatar.png"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var uniIcon = function uniIcon() {return __webpack_require__.e(/*! import() | components/uni-icon/uni-icon */ "components/uni-icon/uni-icon").then(__webpack_require__.bind(null, /*! @/components/uni-icon/uni-icon.vue */ "../../../../../y/uni-app-jimibao/components/uni-icon/uni-icon.vue"));};var _default = { components: { uniIcon: uniIcon }, data: function data() {return { defaultAvatar: _avatar.default, list: [{ canEdit: true, title: '头像', type: 'image', url: '' }, { canEdit: false, title: 'ID', type: 'id', value: '15073719360' }, { canEdit: true, title: '账号', type: 'account', value: '15073719360', path: '/pages/template/personal_info/set_info' }, { canEdit: true, title: '昵称', type: 'nickname', value: '15073719360', path: '/pages/template/personal_info/set_info' },
-      { canEdit: true, title: '性别', type: 'sex', value: '15073719360', path: '/pages/template/personal_info/set_info' },
-      { canEdit: true, title: '实名认证', type: 'text', value: '', path: false }] };
+
+
+
+
+var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/tabBar/index.js */ "../../../../../y/uni-app-jimibao/utils/api/tabBar/index.js"));
+var _index2 = __webpack_require__(/*! @/common/image-tools/index.js */ "../../../../../y/uni-app-jimibao/common/image-tools/index.js");function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var uniIcon = function uniIcon() {return __webpack_require__.e(/*! import() | components/uni-icon/uni-icon */ "components/uni-icon/uni-icon").then(__webpack_require__.bind(null, /*! @/components/uni-icon/uni-icon.vue */ "../../../../../y/uni-app-jimibao/components/uni-icon/uni-icon.vue"));};var yModal = function yModal() {return __webpack_require__.e(/*! import() | components/uni-popup/uni-popup */ "components/uni-popup/uni-popup").then(__webpack_require__.bind(null, /*! @/components/uni-popup/uni-popup.vue */ "../../../../../y/uni-app-jimibao/components/uni-popup/uni-popup.vue"));};var avatar = function avatar() {return __webpack_require__.e(/*! import() | components/cut-picture/cut-picture */ "components/cut-picture/cut-picture").then(__webpack_require__.bind(null, /*! @/components/cut-picture/cut-picture.vue */ "../../../../../y/uni-app-jimibao/components/cut-picture/cut-picture.vue"));};var _default =
+
+
+
+
+{
+  components: {
+    uniIcon: uniIcon,
+    yModal: yModal,
+    avatar: avatar },
+
+  data: function data() {
+    return {
+      sexModalShow: false,
+      avatarModalShow: false,
+      list: [
+      { canEdit: true, title: '头像', type: 'image', url: '' },
+      { canEdit: false, title: 'ID', type: 'id', value: '' },
+      { canEdit: false, title: '账号', type: 'account', value: '', path: '/pages/template/profile/info/set-info' },
+      { canEdit: true, title: '昵称', type: 'nickname', value: '', path: '/pages/template/profile/info/set-info' },
+      { canEdit: true, title: '性别', type: 'sex', value: '', status: '' },
+      { canEdit: true, title: '实名认证', type: 'realName', value: '', path: '/pages/template/profile/list-real-name/list-real-name' }],
+
+      sexList: [
+      { title: '男', type: 1 },
+      { title: '女', type: 2 }],
+
+      avatarList: [
+      { title: '拍照', type: 'camera' },
+      { title: '从相机选择', type: 'albums' }] };
 
 
   },
+  onShow: function onShow() {
+    this.getData();
+  },
   methods: {
+    getData: function () {var _getData = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var _this, res, data;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
+                _this = this;_context.next = 3;return (
+                  _index.default.home());case 3:res = _context.sent;
+                if (res.success) {
+                  data = res.data.TFirmPO;
+                  this.list.forEach(function (elememt) {
+                    switch (elememt.type) {
+                      case 'image':
+                        if (data.headimage) {
+                          elememt.url = _this.$imageUrl + data.headimage;
+                        }
+                        break;
+                      case 'id':
+                        elememt.value = data.tuijianma;
+                        break;
+                      case 'account':
+                        if (data.account) {
+                          elememt.value = data.account;
+                        } else {
+                          elememt.canEdit = true;
+                        }
+                        break;
+                      case 'nickname':
+                        elememt.value = data.nickname;
+                        break;
+                      case 'sex':
+                        elememt.status = data.sex;
+                        data.sex === 1 ? elememt.value = '男' : data.sex === 2 ? elememt.value = '女' : elememt.value = '';
+                        break;
+                      case 'realName':
+                        data.status === 0 ? elememt.value = '未实名' : data.status === 1 ? elememt.value = '已实名' : data.status === 2 ? elememt.value = '已冻结' : elememt.value = '';}
+
+
+                  });
+                }case 5:case "end":return _context.stop();}}}, _callee, this);}));function getData() {return _getData.apply(this, arguments);}return getData;}(),
+
     setInfo: function setInfo(i) {
       if (i.canEdit && i.path) {
         uni.navigateTo({
           url: "".concat(i.path, "?type=").concat(i.type, "&title=").concat(i.title) });
 
+      } else {
+        switch (i.type) {
+          case 'sex':
+            this.sexModalShow = true;
+            break;}
+
       }
-    } } };exports.default = _default;
+    },
+    getSex: function getSex(e) {
+      this.sendSex(e.type);
+    },
+    sendSex: function () {var _sendSex = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2(e) {var res;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:_context2.next = 2;return (
+                  _index.default.updateInfo({ sex: e }));case 2:res = _context2.sent;
+                if (res.success) {
+                  this.sexModalShow = false;
+                  this.getData();
+                }case 4:case "end":return _context2.stop();}}}, _callee2, this);}));function sendSex(_x) {return _sendSex.apply(this, arguments);}return sendSex;}(),
+
+    uploadImage: function uploadImage(res) {var _this2 = this;
+      if (res.path) {
+        (0, _index2.pathToBase64)(res.path).then(function (base64) {
+          _this2.sendImage(base64);
+        });
+      }
+    },
+    sendImage: function () {var _sendImage = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3(e) {var res;return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:_context3.next = 2;return (
+                  _index.default.uploadImage({ type: 'Pic_HeadImage_App', file: e }));case 2:res = _context3.sent;
+                if (res.success) {
+                  this.getData();
+                  setTimeout(function () {
+                    uni.showToast({
+                      title: '头像上传成功' });
+
+                  }, 500);
+                }case 4:case "end":return _context3.stop();}}}, _callee3, this);}));function sendImage(_x2) {return _sendImage.apply(this, arguments);}return sendImage;}() } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 
 /***/ }),
@@ -169,6 +260,11 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  if (!_vm._isMounted) {
+    _vm.e0 = function($event) {
+      _vm.sexModalShow = false
+    }
+  }
 }
 var staticRenderFns = []
 render._withStripped = true

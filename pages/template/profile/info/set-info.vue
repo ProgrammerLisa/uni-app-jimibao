@@ -21,7 +21,9 @@
 		},
 		onNavigationBarButtonTap (e) {
 			if (this.content) {
-				this.sendForm()
+				let obj = {}
+				obj[this.info.type] = this.content
+				this.sendForm(obj)
 			} else {
 				uni.showToast({
 					title: '请输入' + this.info.title,
@@ -30,8 +32,19 @@
 			}
 		},
 		methods: {
-			async sendForm () {
-				const res = await api.updateInfo({ '' : this.content })
+			goBack () {
+				uni.navigateBack()
+			},
+			async sendForm (obj) {
+				const res = await api.updateInfo(obj)
+				if (res.success) {
+					uni.showToast({
+						title: '修改成功'
+					})
+					setTimeout(() => {
+						this.goBack()
+					}, 500)
+				}
 			}
 		}
 	}
@@ -39,12 +52,12 @@
 	
 <style lang="scss" scoped>
 	.y-content-hasNav {
-		background: #fff;
 		color: #555;
 	}
 	input {
 		font-size: 15px;
 		padding: 20upx;
-		border-bottom: 1px solid #d7d7d7;
+		border-bottom: 1px solid #555;
+		color: $uni-text-color;
 	}
 </style>

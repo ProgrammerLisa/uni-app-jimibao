@@ -176,7 +176,7 @@ var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/login/in
       success: function success(res) {
         if (res.data) {
           uni.switchTab({
-            url: '/pages/tabBar/home/home' });
+            url: '/pages/tabBar/profile/profile' });
 
         }
       } });

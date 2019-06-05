@@ -1,0 +1,8 @@
+{
+  "bounce": "vertical",
+  "titleNView": {
+    "titleText": "分享"
+  },
+  "scrollIndicator": "none",
+  "usingComponents": {}
+}

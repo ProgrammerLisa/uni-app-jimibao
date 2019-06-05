@@ -1685,21 +1685,19 @@ page {
   height: 100%;
   font-size: 30rpx;
   line-height: 1.8;
+  color: #e1e1e1;
 }
 .y-content-db {
-  width: 100%;
   min-height: calc(100vh - 94px);
   background: #21232c;
   color: #ccc;
 }
 .y-content-hasNav {
-  width: 100%;
   min-height: calc(100vh - 44px);
   background: #21232c;
   color: #ccc;
 }
 .y-content-hasTab {
-  width: 100%;
   min-height: calc(100vh - 50px);
   background: #21232c;
   color: #ccc;

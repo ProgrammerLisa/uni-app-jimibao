@@ -3,25 +3,35 @@
 		<view class="y-list" @click="setInfo(i)" v-for="(i, index) in list" :key="index">
 			<view class="y-list-left">{{i.title}}</view>
 			<view class="y-list-right">
-				<image :src="i.url?i.url:defaultAvatar" v-if="i.type==='image'"></image>
+				<avatar v-if="i.type==='image'" class="y-headImage"
+					selWidth="400upx" selHeight="400upx" @upload="uploadImage" canRotate="false" inner="true" :avatarSrc="i.url?i.url:''"
+					avatarStyle="width: 100upx; height: 100upx; border-radius: 100%;">
+				</avatar>
 				<text v-else>{{i.value}}</text>
 				<uni-icon v-if="i.canEdit" size="20" type="arrowright" color="#fff"></uni-icon>
 			</view>
 		</view>
+		<y-modal :show="sexModalShow" :list="sexList" @hideModal="sexModalShow=false" @getItem="getSex"></y-modal>
 	</view>
 </template>
 
 <script>
-	import avatar from '@/static/image/avatar.png'
-	import uniIcon from '@/components/uni-icon/uni-icon.vue'
 	import api from '@/utils/api/tabBar/index.js'
+	import { pathToBase64, base64ToPath } from '@/common/image-tools/index.js'
+	import uniIcon from '@/components/uni-icon/uni-icon.vue'
+	import yModal from '@/components/uni-popup/uni-popup.vue'
+	import avatar from '@/components/cut-picture/cut-picture.vue'
+
 	export default {
 		components: {
-			uniIcon
+			uniIcon,
+			yModal,
+			avatar
 		},
 		data () {
 			return {
-				defaultAvatar: avatar,
+				sexModalShow: false,
+				avatarModalShow: false,
 				list: [
 					{ canEdit: true, title: '头像', type: 'image', url: '' },
 					{ canEdit: false, title: 'ID', type: 'id', value: '' },
@@ -29,10 +39,18 @@
 					{ canEdit: true, title: '昵称', type: 'nickname', value: '', path: '/pages/template/profile/info/set-info' },
 					{ canEdit: true, title: '性别', type: 'sex', value: '', status: '' },
 					{ canEdit: true, title: '实名认证', type: 'realName', value: '', path: '/pages/template/profile/list-real-name/list-real-name' },
+				],
+				sexList: [
+					{ title: '男', type: 1 },
+					{ title: '女', type: 2 }
+				],
+				avatarList: [
+					{ title: '拍照', type: 'camera' },
+					{ title: '从相机选择', type: 'albums' }
 				]
 			}
 		},
-		onLoad () {
+		onShow () {
 			this.getData()
 		},
 		methods: {
@@ -77,6 +95,40 @@
 					uni.navigateTo({
 						url: `${i.path}?type=${i.type}&title=${i.title}`
 					})
+				} else {
+					switch (i.type) {
+						case 'sex':
+							this.sexModalShow = true
+							break
+					}
+				}
+			},
+			getSex (e) {
+				this.sendSex(e.type)
+			},
+			async sendSex(e) {
+				const res = await api.updateInfo({ sex: e })
+				if (res.success) {
+					this.sexModalShow = false
+					this.getData()
+				}
+			},
+			uploadImage(res) {
+				if (res.path) {
+					pathToBase64(res.path).then(base64 => {
+						this.sendImage(base64)
+					})
+				}
+			},
+			async sendImage (e) {
+				const res = await api.uploadImage({ type: 'Pic_HeadImage_App', file: e })
+				if (res.success) {
+					this.getData()
+					setTimeout(() => {
+						uni.showToast({
+							title: '头像上传成功'
+						})
+					}, 500)
 				}
 			}
 		}
@@ -103,12 +155,13 @@
 			font-size: 32upx;
 			display: flex;
 			align-items: center;
-			image {
-				width: 100upx;
-				height: 100upx;
-				
-			}
 		}
+	}
+	.y-headImage {
+		width: 100upx;
+		height: 100upx;
+		border-radius: 100%;
+		border: solid 1px $uni-router-color;
 	}
 	.uni-icon {
 		margin-left: 20upx;

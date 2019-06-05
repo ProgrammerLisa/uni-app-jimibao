@@ -193,9 +193,9 @@ var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/tabBar/i
         type: 'info-filled' },
 
       levelList: [
-      { title: '会员等级', type: 'level', icon: _diamond.default, text: '' },
-      { title: '活跃值', type: 'active', icon: _hot.default, text: '' },
-      { title: '贡献值', type: 'contribution', icon: _gift.default, text: '' }],
+      { title: '会员等级', type: 'level', icon: _diamond.default, text: 'Lv0' },
+      { title: '活跃值', type: 'active', icon: _hot.default, text: '0' },
+      { title: '贡献值', type: 'contribution', icon: _gift.default, text: '0' }],
 
       topList: [
       { title: '抽奖', type: 'lottery', icon: 'spinner', url: '/pages/template/profile/topList-lottery/topList-lottery' },
@@ -214,7 +214,7 @@ var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/tabBar/i
 
 
   },
-  onLoad: function onLoad() {
+  onShow: function onShow() {
     this.getData();
     this.getListData();
     this.imageUrl = this.$imageUrl;
@@ -274,7 +274,7 @@ var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/tabBar/i
     },
     goSetInfo: function goSetInfo() {
       uni.navigateTo({
-        url: '/pages/template/personal_info/personal_info' });
+        url: '/pages/template/profile/info/info' });
 
     },
     goLevel: function goLevel() {

@@ -53,7 +53,7 @@
 				url: '/pages/about/about'
 			});
 		},
-		onLoad() {
+		onShow() {
 			this.getData()
 		},
 		onReady() {

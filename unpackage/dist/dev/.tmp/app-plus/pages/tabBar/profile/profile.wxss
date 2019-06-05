@@ -108,7 +108,6 @@
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  position: relative;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
@@ -135,6 +134,7 @@
       height: 150rpx;
       border-radius: 50%;
       margin-right: 30rpx;
+      border: 1px solid #ffe0b2;
 }
 .text-black.data-v-a93791b8 {
   color: #444;

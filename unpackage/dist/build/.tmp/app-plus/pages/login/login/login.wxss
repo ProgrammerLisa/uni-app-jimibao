@@ -1,0 +1,263 @@
+@charset "UTF-8";
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* */
+/* 透明度 */
+/* 文章场景相关 */
+/* 页面content高度(有navBar和tabBar) */
+/* 页面content高度(有navBar) */
+/* 页面content高度(有tabBar) */
+/* 页面box颜色 */
+/* 登录 */
+.uni-checkbox-input.data-v-62ab80f7 {
+  -webkit-transition: .2s;
+  -o-transition: .2s;
+  transition: .2s;
+  color: #fff !important;
+}
+.uni-checkbox-input.uni-checkbox-input-checked.data-v-62ab80f7 {
+  background: #E09529;
+  color: #fff !important;
+}
+.box.data-v-62ab80f7 {
+  width: 100%;
+  padding: 40rpx 10%;
+}
+.box .login-item.data-v-62ab80f7 {
+    margin-bottom: 20rpx;
+}
+.box .register-item.data-v-62ab80f7 {
+    margin-bottom: 10rpx;
+}
+.box .logo.data-v-62ab80f7 {
+    text-align: center;
+    margin-bottom: 40rpx;
+}
+.box .logo image.data-v-62ab80f7 {
+      width: 80px;
+      height: 80px;
+      border-radius: 10rpx;
+      border: 1rpx solid #ffe0b2;
+}
+.box .y-label.data-v-62ab80f7 {
+    font-size: small;
+    display: inline-block;
+    padding-bottom: 10rpx;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+}
+.box .y-label .y-checkbox.data-v-62ab80f7 {
+      -webkit-transform: scale(0.7);
+          -ms-transform: scale(0.7);
+              transform: scale(0.7);
+}
+.box .y-caret.data-v-62ab80f7 {
+    color: #F7E8D1;
+}
+.box .y-input.data-v-62ab80f7 {
+    background: #23242d;
+    font-size: 14px;
+    border: none;
+    padding: 15rpx 20rpx;
+    border-radius: 5rpx;
+    caret-color: #F7E8D1;
+    color: #ccc;
+}
+.box .y-input-border.data-v-62ab80f7 {
+    border: 0.2px solid #555;
+}
+.box .y-login-btn.data-v-62ab80f7 {
+    margin-top: 40rpx;
+}
+.box .y-register-btn.data-v-62ab80f7 {
+    margin-top: 20rpx;
+}
+.box .y-login.data-v-62ab80f7 {
+    background: transparent;
+    color: #ffe0b2;
+    border: 1rpx solid #ffe0b2;
+    -webkit-transition: .2s;
+    -o-transition: .2s;
+    transition: .2s;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+}
+.box .y-login.data-v-62ab80f7:active {
+    background: #ffe0b2;
+    color: #2c2e37;
+}
+.box .y-login[disabled].data-v-62ab80f7 {
+    opacity: 0.4;
+}
+.box .y-login[disabled].data-v-62ab80f7:active {
+    background: transparent;
+    color: #ffe0b2;
+}
+.box .y-flex.data-v-62ab80f7 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    font-size: small;
+    color: #ffe0b2;
+}
+.box .y-login-back.data-v-62ab80f7 {
+    margin: 40rpx auto 0;
+}
+.box .y-code.data-v-62ab80f7 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-justify-content: space-around;
+        -ms-flex-pack: distribute;
+            justify-content: space-around;
+}
+.box .y-code input.data-v-62ab80f7 {
+      -webkit-box-flex: 1.5;
+      -webkit-flex: 1.5;
+          -ms-flex: 1.5;
+              flex: 1.5;
+}
+.box .y-code button.data-v-62ab80f7 {
+      font-size: small;
+      -webkit-box-flex: 1;
+      -webkit-flex: 1;
+          -ms-flex: 1;
+              flex: 1;
+      margin-left: 20rpx;
+}
+.box .uni-form-item .with-fun.data-v-62ab80f7 {
+    width: 100%;
+    background: #23242d;
+    padding-bottom: 1px;
+}
+.box .uni-form-item .with-fun input.data-v-62ab80f7 {
+      -webkit-box-flex: 6;
+      -webkit-flex: 6;
+          -ms-flex: 6;
+              flex: 6;
+}
+.box .uni-form-item .with-fun .uni-icon.data-v-62ab80f7 {
+      -webkit-box-flex: 1;
+      -webkit-flex: 1;
+          -ms-flex: 1;
+              flex: 1;
+      color: #555;
+      background: #23242d;
+      border: none;
+}
+.box .uni-form-item .with-fun .uni-icon.uni-active.data-v-62ab80f7 {
+      color: #ccc;
+      border: none;
+}
+.box .uni-form-item .with-fun .uni-icon-clear.data-v-62ab80f7 {
+      color: #ccc;
+}
+
+@charset "UTF-8";
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* */
+/* 透明度 */
+/* 文章场景相关 */
+/* 页面content高度(有navBar和tabBar) */
+/* 页面content高度(有navBar) */
+/* 页面content高度(有tabBar) */
+/* 页面box颜色 */
+/* 登录 */
+.uni-checkbox-input.data-v-62ab80f7 {
+  -webkit-transition: .2s;
+  -o-transition: .2s;
+  transition: .2s;
+  color: #fff !important;
+}
+.uni-checkbox-input.uni-checkbox-input-checked.data-v-62ab80f7 {
+  background: #E09529;
+  color: #fff !important;
+}
+.y-content-hasTab.data-v-62ab80f7 {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #2c2e37;
+  color: #ccc;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+.y-content-hasTab .box.data-v-62ab80f7 {
+    height: 1000px;
+    padding-top: 25%;
+}
+.uni-icon.data-v-62ab80f7 {
+  border: none;
+  margin-bottom: 1px;
+}
+.uni-icon.data-v-62ab80f7:active {
+  border: none;
+}
+

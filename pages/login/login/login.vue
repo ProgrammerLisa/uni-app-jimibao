@@ -58,7 +58,7 @@
 				success: function (res) {
 					if (res.data) {
 						uni.switchTab({
-							url: '/pages/tabBar/home/home'
+							url: '/pages/tabBar/profile/profile'
 						})
 					}
 				}

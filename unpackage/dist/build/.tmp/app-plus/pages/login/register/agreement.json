@@ -1,0 +1,8 @@
+{
+  "bounce": "vertical",
+  "titleNView": {
+    "titleText": "服务协议"
+  },
+  "scrollIndicator": "none",
+  "usingComponents": {}
+}

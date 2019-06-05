@@ -1,5 +1,120 @@
 (global["webpackJsonp"] = global["webpackJsonp"] || []).push([["common/vendor"],{
 
+/***/ "../../../../../y/uni-app-jimibao/common/image-tools/index.js":
+/*!********************************************************!*\
+  !*** D:/y/uni-app-jimibao/common/image-tools/index.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.pathToBase64 = pathToBase64;exports.base64ToPath = base64ToPath;function pathToBase64(path) {
+  return new Promise(function (resolve, reject) {
+    if (typeof window === 'object' && 'document' in window) {
+      var canvas = document.createElement('canvas');
+      var c2x = canvas.getContext('2d');
+      var img = new Image();
+      img.onload = function () {
+        canvas.width = img.width;
+        canvas.height = img.height;
+        c2x.drawImage(img, 0, 0);
+        resolve(canvas.toDataURL());
+      };
+      img.onerror = reject;
+      img.src = path;
+      return;
+    }
+    if (typeof plus === 'object') {
+      var bitmap = new plus.nativeObj.Bitmap('bitmap' + Date.now());
+      bitmap.load(path, function () {
+        try {
+          var base64 = bitmap.toBase64Data();
+        } catch (error) {
+          reject(error);
+        }
+        bitmap.clear();
+        resolve(base64);
+      }, function (error) {
+        bitmap.clear();
+        reject(error);
+      });
+      return;
+    }
+    if (typeof wx === 'object' && wx.canIUse('getFileSystemManager')) {
+      wx.getFileSystemManager().readFile({
+        filePath: path,
+        encoding: 'base64',
+        success: function success(res) {
+          resolve('data:image/png;base64,' + res.data);
+        },
+        fail: function fail(error) {
+          reject(error);
+        } });
+
+      return;
+    }
+    reject(new Error('not support'));
+  });
+}
+
+function base64ToPath(base64) {
+  return new Promise(function (resolve, reject) {
+    if (typeof window === 'object' && 'document' in window) {
+      base64 = base64.split(',');
+      var type = base64[0].match(/:(.*?);/)[1];
+      var str = atob(base64[1]);
+      var n = str.length;
+      var array = new Uint8Array(n);
+      while (n--) {
+        array[n] = str.charCodeAt(n);
+      }
+      return resolve((window.URL || window.webkitURL).createObjectURL(new Blob([array], { type: type })));
+    }
+    var extName = base64.match(/data\:\S+\/(\S+);/);
+    if (extName) {
+      extName = extName[1];
+    } else {
+      reject(new Error('base64 error'));
+    }
+    var fileName = Date.now() + '.' + extName;
+    if (typeof plus === 'object') {
+      var bitmap = new plus.nativeObj.Bitmap('bitmap' + Date.now());
+      bitmap.loadBase64Data(base64, function () {
+        var filePath = '_doc/uniapp_temp/' + fileName;
+        bitmap.save(filePath, {}, function () {
+          bitmap.clear();
+          resolve(filePath);
+        }, function (error) {
+          bitmap.clear();
+          reject(error);
+        });
+      }, function (error) {
+        bitmap.clear();
+        reject(error);
+      });
+      return;
+    }
+    if (typeof wx === 'object' && wx.canIUse('getFileSystemManager')) {
+      var filePath = wx.env.USER_DATA_PATH + '/' + fileName;
+      wx.getFileSystemManager().writeFile({
+        filePath: filePath,
+        data: base64.replace(/^data:\S+\/\S+;base64,/, ''),
+        encoding: 'base64',
+        success: function success() {
+          resolve(filePath);
+        },
+        fail: function fail(error) {
+          reject(error);
+        } });
+
+      return;
+    }
+    reject(new Error('not support'));
+  });
+}
+
+/***/ }),
+
 /***/ "../../../../../y/uni-app-jimibao/main.js":
 /*!************************************!*\
   !*** D:/y/uni-app-jimibao/main.js ***!
@@ -14,6 +129,7 @@ var _App = _interopRequireDefault(__webpack_require__(/*! ./App */ "../../../../
 var _config = _interopRequireDefault(__webpack_require__(/*! ./utils/request/config.js */ "../../../../../y/uni-app-jimibao/utils/request/config.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
 
 _vue.default.config.productionTip = false;
+
 _vue.default.prototype.$imageUrl = _config.default.uploadImgUrl;
 _vue.default.prototype.$version = '集米宝1.4';
 
@@ -628,6 +744,18 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
   // 官方信息
   phoneVersion: function phoneVersion(obj) {
     return _index.default.get('/common/PhoneVersion', obj);
+  },
+  // 修改个人信息
+  updateInfo: function updateInfo(obj) {
+    return _index.default.post('/firm/addfirminfo', obj);
+  },
+  // 上传头像
+  uploadImage: function uploadImage(obj) {
+    return _index.default.post('/firm/addfirmheadImage', obj);
+  },
+  // 会员等级
+  level: function level(obj) {
+    return _index.default.get('/firm/firmlevel', obj);
   } };exports.default = _default;
 
 /***/ }),
@@ -643,7 +771,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var patternDevelopment = true; // true是开发模式 false是生产模式
 var url, uploadImgUrl, socketUrl;
 if (patternDevelopment) {
-  url = 'http://192.168.0.105:88/api',
+  url = 'http://192.168.1.253:88/api',
   uploadImgUrl = 'https://static.gzjimibao.com',
   socketUrl = 'ws://192.168.1.111:88/api/userChannel';
 } else {

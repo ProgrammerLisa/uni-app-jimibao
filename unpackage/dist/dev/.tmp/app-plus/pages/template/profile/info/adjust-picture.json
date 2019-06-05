@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "移动和缩放",
+  "usingComponents": {
+    "avatar": "/components/cut-picture/cut-picture"
+  }
+}

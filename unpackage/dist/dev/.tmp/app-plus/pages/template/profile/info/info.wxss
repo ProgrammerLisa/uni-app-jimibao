@@ -76,9 +76,11 @@
         -ms-flex-align: center;
             align-items: center;
 }
-.y-list .y-list-right image.data-v-584db3e6 {
-      width: 100rpx;
-      height: 100rpx;
+.y-headImage.data-v-584db3e6 {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 100%;
+  border: solid 1px #ffe0b2;
 }
 .uni-icon.data-v-584db3e6 {
   margin-left: 20rpx;

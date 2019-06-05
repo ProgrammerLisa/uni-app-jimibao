@@ -153,7 +153,7 @@ var _img_announ = _interopRequireDefault(__webpack_require__(/*! @/static/image/
       url: '/pages/about/about' });
 
   },
-  onLoad: function onLoad() {
+  onShow: function onShow() {
     this.getData();
   },
   onReady: function onReady() {

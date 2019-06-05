@@ -17,5 +17,13 @@ export default {
 	// 修改个人信息
 	updateInfo (obj) {
 		return request.post('/firm/addfirminfo', obj)
+	},
+	// 上传头像
+	uploadImage (obj) {
+		return request.post('/firm/addfirmheadImage', obj)
+	},
+	// 会员等级
+	level (obj) {
+		return request.get('/firm/firmlevel', obj)
 	}
 }

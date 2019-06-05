@@ -93,9 +93,9 @@
 					type: 'info-filled'
 				},
 				levelList: [
-					{ title: '会员等级', type: 'level', icon: diamond, text: '' },
-					{ title: '活跃值', type: 'active', icon: hot, text: '' },
-					{ title: '贡献值', type: 'contribution', icon: gift, text: '' }
+					{ title: '会员等级', type: 'level', icon: diamond, text: 'Lv0' },
+					{ title: '活跃值', type: 'active', icon: hot, text: '0' },
+					{ title: '贡献值', type: 'contribution', icon: gift, text: '0' }
 				],
 				topList: [
 					{ title: '抽奖', type: 'lottery', icon: 'spinner', url: '/pages/template/profile/topList-lottery/topList-lottery' },
@@ -114,7 +114,7 @@
 				]
 			}
 		},
-		onLoad() {
+		onShow() {
 			this.getData()
 			this.getListData()
 			this.imageUrl = this.$imageUrl
@@ -288,6 +288,7 @@
 			height: 150upx;
 			border-radius: 50%;
 			margin-right: 30upx;
+			border: 1px solid $uni-router-color;
 		}
 	}
 }

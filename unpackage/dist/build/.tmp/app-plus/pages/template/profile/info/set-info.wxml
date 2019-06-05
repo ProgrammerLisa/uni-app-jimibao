@@ -1,0 +1,1 @@
+<view class="y-content-hasNav data-v-179a58c0" bind:__l="__l"><input maxlength="20" placeholder="{{'请输入'+info.title}}" data-event-opts="{{[['input',[['__set_model',['$0','content','$event',[]],['']]]]]}}" value="{{content}}" bindinput="__e" class="data-v-179a58c0"/></view>

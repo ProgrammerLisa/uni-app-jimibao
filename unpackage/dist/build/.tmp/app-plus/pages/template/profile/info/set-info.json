@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "修改资料",
+  "titleNView": {
+    "buttons": [
+      {
+        "text": "完成",
+        "fontSize": "15"
+      }
+    ]
+  },
+  "usingComponents": {}
+}

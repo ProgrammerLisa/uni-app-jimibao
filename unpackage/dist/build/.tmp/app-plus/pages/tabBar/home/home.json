@@ -1,0 +1,18 @@
+{
+  "navigationBarTitleText": "集米宝",
+  "bounce": "vertical",
+  "titleNView": {
+    "buttons": [
+      {
+        "text": "",
+        "fontSrc": "/static/uni.ttf",
+        "fontSize": "22px",
+        "color": "#eee",
+        "redDot": true
+      }
+    ]
+  },
+  "usingComponents": {
+    "uni-swiper-dot": "/components/uni-swiper-dot/uni-swiper-dot"
+  }
+}
