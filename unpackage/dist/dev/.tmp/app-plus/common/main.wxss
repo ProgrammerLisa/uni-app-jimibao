@@ -1693,7 +1693,7 @@ page {
   color: #ccc;
 }
 .y-content-hasNav {
-  min-height: calc(100vh - 44px);
+  min-height: calc(100vh - 90rpx);
   background: #21232c;
   color: #ccc;
 }
@@ -1717,5 +1717,9 @@ page {
 }
 .y-button[disabled] {
   opacity: 0.4;
+}
+uni-button[disabled]:not([type]), uni-button[disabled][type=default] {
+  color: #ccc;
+  background: transparent;
 }
 

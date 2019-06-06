@@ -133,7 +133,7 @@
 					}
 				},
 				{
-					"path": "/topList-lottery/topList-lottery",
+					"path": "/topList-lottery/lottery",
 					"style": {
 						"navigationBarTitleText": "抽奖"
 					}

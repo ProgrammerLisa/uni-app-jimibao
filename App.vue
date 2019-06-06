@@ -54,4 +54,8 @@
 	.y-button[disabled] {
 		opacity: $uni-opacity-disabled;
 	}
+	 uni-button[disabled]:not([type]), uni-button[disabled][type=default] {
+		 color: $uni-font-color;
+		 background: transparent;
+	 }
 </style>

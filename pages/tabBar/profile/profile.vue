@@ -98,7 +98,7 @@
 					{ title: '贡献值', type: 'contribution', icon: gift, text: '0' }
 				],
 				topList: [
-					{ title: '抽奖', type: 'lottery', icon: 'spinner', url: '/pages/template/profile/topList-lottery/topList-lottery' },
+					{ title: '抽奖', type: 'lottery', icon: 'spinner', url: '/pages/template/profile/topList-lottery/lottery' },
 					{ title: '订单', type: 'order', icon: 'compose', url: '/pages/template/profile/topList-order/topList-order' },
 					{ title: '团队', type: 'team', icon: 'contact', url: '/pages/template/profile/topList-team/topList-team' },
 					{ title: '鼓励金', type: 'encourage', icon: 'circle-filled', url: '/pages/template/profile/topList-encourage/topList-encourage' }

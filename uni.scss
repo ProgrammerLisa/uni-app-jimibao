@@ -26,6 +26,7 @@ $uni-text-color-inverse:#333;//反色
 $uni-text-color-grey:#999;//辅助灰色，如加载更多的提示信息
 $uni-text-color-placeholder: #808080;
 $uni-text-color-disable:#c0c0c0;
+$uni-text-color-light: #f7f7f7;
 
 /* 背景颜色 */
 $uni-bg-color:#21232c;
@@ -81,7 +82,7 @@ $uni-wechat-color: #42B983; // 绿色场景
 /* 页面content高度(有navBar和tabBar) */
 $uni-content-db-height: calc(100vh - 94px);
 /* 页面content高度(有navBar) */
-$uni-content-hasNav-height: calc(100vh - 44px);
+$uni-content-hasNav-height: calc(100vh - 90upx);
 /* 页面content高度(有tabBar) */
 $uni-content-hasTab-height: calc(100vh - 50px);
 

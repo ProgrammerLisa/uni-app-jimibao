@@ -2,10 +2,20 @@
 	<view class="y-modal-container" v-show="show">
 		<view class="y-modal" @click="showBefore=false" :class="showBefore?`fade-in`:`fade-out`"></view>
 		<view class="y-modal-content" :class="showBefore?`slow-up`:`slow-down`">
-			<view v-for="(i, index) in list" :key="index" @click="sendItem(index)" class="y-modal-item">
-				{{i.title}}
+			<view v-show="boxType === 'radio'">
+				<view v-for="(i, index) in list" :key="index" @click="sendItem(index)" class="y-modal-item">
+					{{i.title}}
+				</view>
+				<view class="y-modal-item" @click="showBefore=false">取消</view>
 			</view>
-			<view class="y-modal-item" @click="showBefore=false">取消</view>
+			<view v-show="boxType === 'confirm'" class="y-confirm">
+				<view class="title">{{confirm.title}}</view>
+				<view class="content">{{confirm.content}}</view>
+				<view class="footer">
+					<button class="footer-button" @click="sendConfirm">确定</button>
+					<button class="footer-button" @click="showBefore=false">取消</button>
+				</view>
+			</view>
 		</view>
 	</view>
 </template>
@@ -14,7 +24,15 @@
 	export default {
 		props: {
 			list: Array,
-			show: Boolean
+			show: Boolean,
+			boxType: {
+				type: String,
+				default: 'radio'
+			},
+			confirm: {
+				title: String,
+				content: String
+			}
 		},
 		data () {
 			return {
@@ -38,6 +56,9 @@
 		methods: {
 			sendItem (index) {
 				this.$emit('getItem', this.list[index])
+			},
+			sendConfirm () {
+				this.$emit('confirm', this.confirm.content)
 			}
 		}
 	}
@@ -90,5 +111,8 @@
 		.slow-down {
 			bottom: -100%;
 		}
+	}
+	.y-confirm {
+		
 	}
 </style>
