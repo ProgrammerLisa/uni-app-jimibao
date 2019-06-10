@@ -19,7 +19,7 @@
 					<view class="uni-icon uni-icon-eye" :class="[!showPassword ? 'uni-active' : '']" @click="showPassword=!showPassword"></view>
 					<view class="forgetPwd" @click="goForget">忘记密码</view>
 				</view>
-				 <view class="uni-btn-v">
+				<view class="uni-btn-v">
                     <button formType="submit" class="y-button">确定</button>
                 </view>
 			</form>

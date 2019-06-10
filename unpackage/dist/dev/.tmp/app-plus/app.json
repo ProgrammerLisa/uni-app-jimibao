@@ -21,8 +21,10 @@
     "pages/template/profile/topList-encourage/topList-encourage",
     "pages/template/profile/list-sum/list-sum",
     "pages/template/profile/list-real-name/list-real-name",
-    "pages/template/profile/list-address/list-address",
-    "pages/template/profile/list-feedback/list-feedback",
+    "pages/template/profile/address/address",
+    "pages/template/profile/address-add/address-add",
+    "pages/template/profile/feedback/feedback",
+    "pages/template/profile/feedback-add/feedback-add",
     "pages/template/profile/list-edition/list-edition"
   ],
   "subPackages": [],

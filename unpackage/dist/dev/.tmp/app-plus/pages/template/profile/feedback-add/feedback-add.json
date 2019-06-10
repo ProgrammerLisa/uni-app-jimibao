@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "我要反馈",
+  "usingComponents": {
+    "mpvue-city-picker": "/components/mpvue-citypicker/mpvueCityPicker"
+  }
+}

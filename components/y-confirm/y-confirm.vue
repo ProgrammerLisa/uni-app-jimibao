@@ -1,17 +1,13 @@
 <template>
-	<view class="modal-cantainer y-content-hasNav" v-if="show">
-		<view class="modal-bg" @click="showBefore=false" :class="showBefore?`fade-in`:`fade-out`"></view>
-		<view class="modal-box" :class="showBefore?`modal-box-show`:`modal-box-hide`">
-			<view class="box-title" v-if="type.title">{{type.title}}</view>
-			<!-- <view class="box-content">
-				<view v-if="type.contentType.includes('input')">
-					<input class="content-input" v-model="confirmInput" :type="type.inputType" focus placeholder="请输入兑换个数" />
+	<view class="y-modal-container" v-if="show">
+		<view class="y-modal" @click="showBefore=false" :class="showBefore?`fade-in`:`fade-out`"></view>
+		<view class="y-modal-content" :class="showBefore?`slow-up`:`slow-down`">
+			<view class="y-confirm">
+				<view class="title">{{title}}</view>
+				<view class="footer">
+					<view class="footer-button footer-sure" @click="sendConfirm">确定</view>
+					<view class="footer-button" @click="showBefore=false">取消</view>
 				</view>
-				<view class="box-content-text" v-html="type.content" v-if="type.content"></view>
-			</view> -->
-			<view class="box-footer">
-				<button class="y-button" @click="$emit('success', confirmInput)">{{type.confirmText}}</button>
-				<button class="y-button y-button-cancel" @click="showBefore=false" v-show="type.showCancel">{{type.cancelText}}</button>
 			</view>
 		</view>
 	</view>
@@ -20,117 +16,100 @@
 <script>
 	export default {
 		props: {
-			show: false,
-			type: {
-				title: String,
-				content: String,
-				showCancel: true,
-				contentType: [],
-				confirmText: '确定',
-				cancelText: '取消',
-				inputType: 'text'
-			}
+			list: Array,
+			show: Boolean,
+			title: String,
+			content: String
 		},
 		data () {
 			return {
-				showBrfore: false,
-				confirmInput: ''
+				showBefore: false
 			}
 		},
 		watch: {
 			show (val) {
 				if (val) {
-					this.showBrfore = val
+					this.showBefore = val
 				}
 			},
 			showBefore (val) {
 				if (!val) {
 					setTimeout(() => {
-						this.$emit('fail')
+						this.$emit('hideModal')
 					}, 200)
 				}
+			}
+		},
+		methods: {
+			sendConfirm () {
+				this.$emit('confirm')
 			}
 		}
 	}
 </script>
 
-<style lang="scss" scoped>
-	.modal-cantainer {
-		color: $uni-text-color-light;
-		width: 100%;
+<style scoped lang="scss">
+	.y-modal-container {
 		height: 100vh;
+		width: 100%;
 		overflow: hidden;
 		position: fixed;
 		top: 0;
 		left: 0;
-		background: transparent;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-	.modal-bg {
-		width: 100%;
-		height: 100%;
-		position: fixed;
-		z-index: 1;
-		top: 0;
-		left: 0;
-		background: rgba(0, 0, 0, 0.6);
-	}
-	.modal-box {
-		width: 80%;
-		max-width: 600upx;
-		position: relative;
-		z-index: 2;
-		background: $uni-box-color;
-		border: solid 1upx $uni-router-color;
-		border-radius: 20upx;
-		transition: .2s;
-		.box-title {
-			text-align: center;
-			font-size: $uni-font-size-lg;
-			border-bottom: 1px solid $uni-input-border-color;
-			padding: 20upx;
-		}
-		.box-content-text {
-			padding: 20upx;
-			border-top: 1upx solid $uni-input-border-color;
-		}
-		.content-input {
-			background: transparent;
+		z-index: 10;
+		.y-modal {
+			height: 100%;
 			width: 100%;
-			font-size: $uni-font-size-lg;
-			border: 0;
-			outline: none;
-			color: $uni-font-color;
+			background: rgba(0, 0, 0, .4);
+			transition: .2s;
+		}
+		.y-modal-content {
+			position: fixed;
+			bottom: $uni-spacing-row-base;
+			left: 5%;
+			width: 90%;
+			border-radius: $uni-spacing-row-base;
+			overflow: hidden;
+			transition: .2s;
+		}
+		.fade-in {
+			opacity: 1
+		}
+		.fade-out {
+			opacity: 0
+		}
+		.slow-up {
+			bottom: 20upx;
+		}
+		.slow-down {
+			bottom: -100%;
+		}
+	}
+	.y-confirm {
+		background: #fff;
+		.title {
 			text-align: center;
-			padding: 20upx 0;
+			color: #333;
+			font-size: 32upx;
+			padding: 20upx;
+			border-bottom: 1px solid #eee;
 		}
-		.box-footer {
+		.footer {
 			display: flex;
-			border-top: 1px solid $uni-input-border-color;
-			button {
+			align-items: center;
+			.footer-button {
 				flex: 1;
-				border-top:none;
-				border-left:none;
-				border-bottom:none;
-				border-right: 1upx solid $uni-input-border-color;
-				border-radius: 0;
+				text-align: center;
+				border-radius: none;
+				border: none;
+				font-size: 32upx;
+				color: #777;
+				padding: 20upx 0;
 			}
-			button:last-child {
-				border-right: none;
-			}
-			.y-button-cancel {
-				color: $uni-font-color;
+			.footer-sure {
+				color: #007aff;
+				border-right: 1px solid #eee;
 			}
 		}
-	}
-	.modal-box-hide {
-		opacity: 0.3;
-		transform: scale(0.5);
-	}
-	.modal-box-show {
-		opacity: 1;
-		transform: scale(1);
 	}
 </style>

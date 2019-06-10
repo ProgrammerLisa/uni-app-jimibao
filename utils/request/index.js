@@ -1,7 +1,7 @@
 import dataUrl from '@/utils/request/config.js'
 import store from '@/utils/store/index.js'
 function checkStatus (response) {
-	uni.hideToast()
+	uni.hideLoading()
 	if (response[1]) {
 		if (response[1].statusCode === 200 || response.statusCode[1] === 304) {
 			return response[1].data
@@ -53,6 +53,9 @@ function checkCode (res) {
 }
 export default {
 	post (url, data, header =  null) {
+		uni.showLoading({
+			mask: true
+		})
 		var Authorization
 		uni.getStorage({
 			key: 'user',

@@ -81,6 +81,7 @@
 			},
 			async sendFormRequest (e) {
 				const res = await api.login(e, { 'Content-Type': 'application/json' })
+				console.log(res)
 				if (res.success) {
 					uni.setStorage({
 						key: 'user',

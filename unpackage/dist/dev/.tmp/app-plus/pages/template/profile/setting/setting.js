@@ -136,7 +136,6 @@ var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/login/in
                   uni.removeStorage({
                     key: 'user',
                     success: function success(res) {
-                      console.log('success', " at pages\\template\\profile\\setting\\setting.vue:39");
                       uni.reLaunch({
                         url: '/pages/login/login/login' });
 

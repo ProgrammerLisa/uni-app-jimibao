@@ -1683,9 +1683,11 @@ radio-group label, checkbox-group label{
 page {
   background: #21232c;
   height: 100%;
-  font-size: 30rpx;
   line-height: 1.8;
   color: #e1e1e1;
+}
+view {
+  font-size: 32rpx;
 }
 .y-content-db {
   min-height: calc(100vh - 94px);

@@ -36,7 +36,6 @@
 					uni.removeStorage({
 						key: 'user',
 						success: function (res) {
-							console.log('success')
 							uni.reLaunch({
 								url: '/pages/login/login/login'
 							})

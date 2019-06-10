@@ -21,9 +21,11 @@
 	page {
 		background: $uni-bg-color;
 		height: 100%;
-		font-size: 30upx;
 		line-height: 1.8;
 		color: $uni-text-color;
+	}
+	view {
+		font-size: 32upx;
 	}
 	.y-content-db {
 		min-height: $uni-content-db-height;

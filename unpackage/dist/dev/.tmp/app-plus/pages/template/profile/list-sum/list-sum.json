@@ -1,4 +1,8 @@
 {
   "navigationBarTitleText": "米库总量",
-  "usingComponents": {}
+  "onReachBottomDistance": 100,
+  "bounce": "none",
+  "usingComponents": {
+    "uni-mescroll": "/components/mescroll-uni/mescroll-uni"
+  }
 }

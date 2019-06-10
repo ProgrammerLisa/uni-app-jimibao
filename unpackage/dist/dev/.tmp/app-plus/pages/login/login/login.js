@@ -199,6 +199,7 @@ var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/login/in
     },
     sendFormRequest: function () {var _sendFormRequest = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee(e) {var res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
                   _index.default.login(e, { 'Content-Type': 'application/json' }));case 2:res = _context.sent;
+                console.log(res, " at pages\\login\\login\\login.vue:84");
                 if (res.success) {
                   uni.setStorage({
                     key: 'user',
@@ -212,7 +213,7 @@ var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/login/in
 
                     } });
 
-                }case 4:case "end":return _context.stop();}}}, _callee, this);}));function sendFormRequest(_x) {return _sendFormRequest.apply(this, arguments);}return sendFormRequest;}(),
+                }case 5:case "end":return _context.stop();}}}, _callee, this);}));function sendFormRequest(_x) {return _sendFormRequest.apply(this, arguments);}return sendFormRequest;}(),
 
     checkForm: function checkForm(e) {
       var _this = this;

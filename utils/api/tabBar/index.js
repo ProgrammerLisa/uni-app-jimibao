@@ -41,5 +41,32 @@ export default {
 	// 抽奖次数
 	lotteryExchange (obj) {
 		return request.post('/prize/exchange/' + obj)
-	}
+	},
+	// 会员流水信息
+	TransactionRecord (obj) {
+		return request.get('/firm/firmflows', obj)
+	},
+	// 会员积分余额
+	AccountBalance (obj) {
+		return request.get('/firm/firmfounds', obj)
+	},
+	address (obj) {
+		return request.get('/firmaddress/firmaddress', obj)
+	},
+	addAddress (obj) {
+		return request.post('/firmaddress/addfirmaddress', obj)
+	},
+	editAddress (obj) {
+		return request.post('/firmaddress/updatefirmaddress', obj)
+	},
+	deleteAddress (obj) {
+		return request.post('/firmaddress/delfirmaddress', obj)
+	},
+	// 反馈列表
+	feedback (obj) {
+		return request.get('/message/historicalMessage', obj)
+	},
+	addFeedback (obj) {
+		return request.post('/message/addmessage', obj)
+	},
 }

@@ -1,0 +1,15 @@
+{
+  "navigationBarTitleText": "问题反馈",
+  "titleNView": {
+    "buttons": [
+      {
+        "text": "我要反馈",
+        "fontSize": "15"
+      }
+    ]
+  },
+  "usingComponents": {
+    "uni-card": "/components/uni-card/uni-card",
+    "uni-mescroll": "/components/mescroll-uni/mescroll-uni"
+  }
+}

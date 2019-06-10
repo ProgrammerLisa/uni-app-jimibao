@@ -159,7 +159,11 @@
 				{
 					"path": "/list-sum/list-sum",
 					"style": {
-						"navigationBarTitleText": "米库总量"
+						"navigationBarTitleText": "米库总量",
+						"onReachBottomDistance" : 100,
+						"app-plus" : {
+							"bounce" : "none" // 取消iOS回弹,避免和下拉刷新冲突 (小程序无法取消)
+						}
 					}
 				},
 				{
@@ -169,15 +173,36 @@
 					}
 				},
 				{
-					"path": "/list-address/list-address",
+					"path": "/address/address",
 					"style": {
 						"navigationBarTitleText": "收货地址"
 					}
 				},
 				{
-					"path": "/list-feedback/list-feedback",
+					"path": "/address-add/address-add",
 					"style": {
-						"navigationBarTitleText": "问题反馈"
+						"navigationBarTitleText": "新增地址"
+					}
+				},
+				{
+					"path": "/feedback/feedback",
+					"style": {
+						"navigationBarTitleText": "问题反馈",
+						"app-plus": {
+							"titleNView": {
+								"buttons": [{
+										"text": "我要反馈",
+										"fontSize": "15"
+									}
+								]
+							}
+						}
+					}
+				},
+				{
+					"path": "/feedback-add/feedback-add",
+					"style": {
+						"navigationBarTitleText": "我要反馈"
 					}
 				},
 				{
