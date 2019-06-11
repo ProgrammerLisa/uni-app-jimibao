@@ -38,7 +38,7 @@
 </template>
 
 <script>
-	import logo from '@/static/image/96@2x.png'
+	import logo from '@/static/image/logo.png'
 	import rules from '@/static/js/formRules'
 	import api from '@/utils/api/login/index.js'
 	export default {
@@ -81,7 +81,6 @@
 			},
 			async sendFormRequest (e) {
 				const res = await api.login(e, { 'Content-Type': 'application/json' })
-				console.log(res)
 				if (res.success) {
 					uni.setStorage({
 						key: 'user',

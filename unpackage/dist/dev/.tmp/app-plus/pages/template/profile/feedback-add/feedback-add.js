@@ -98,7 +98,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var mpvueCityPicker = function mpvueCityPicker() {return Promise.all(/*! import() | components/mpvue-citypicker/mpvueCityPicker */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/mpvue-citypicker/mpvueCityPicker")]).then(__webpack_require__.bind(null, /*! @/components/mpvue-citypicker/mpvueCityPicker.vue */ "../../../../../y/uni-app-jimibao/components/mpvue-citypicker/mpvueCityPicker.vue"));};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js"));
 
 
 
@@ -134,17 +134,194 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
 
+
+
+
+var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/tabBar/index.js */ "../../../../../y/uni-app-jimibao/utils/api/tabBar/index.js"));
+var _index2 = __webpack_require__(/*! @/common/image-tools/index.js */ "../../../../../y/uni-app-jimibao/common/image-tools/index.js");
+var _formRules = _interopRequireDefault(__webpack_require__(/*! @/static/js/formRules */ "../../../../../y/uni-app-jimibao/static/js/formRules.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var mpvuePicker = function mpvuePicker() {return __webpack_require__.e(/*! import() | components/mpvue-picker/mpvuePicker */ "components/mpvue-picker/mpvuePicker").then(__webpack_require__.bind(null, /*! @/components/mpvue-picker/mpvuePicker.vue */ "../../../../../y/uni-app-jimibao/components/mpvue-picker/mpvuePicker.vue"));};var uniIcon = function uniIcon() {return __webpack_require__.e(/*! import() | components/uni-icon/uni-icon */ "components/uni-icon/uni-icon").then(__webpack_require__.bind(null, /*! @/components/uni-icon/uni-icon.vue */ "../../../../../y/uni-app-jimibao/components/uni-icon/uni-icon.vue"));};var _default =
 {
   components: {
-    mpvueCityPicker: mpvueCityPicker },
+    mpvuePicker: mpvuePicker,
+    uniIcon: uniIcon },
 
   data: function data() {
     return {
-      form: {},
-      themeColor: '#007AFF',
-      cityPickerValueDefault: [0, 0, 1] };
+      imageUrl: '',
+      form: {
+        messagetype: '' },
 
-  } };exports.default = _default;
+      themeColor: '#007AFF',
+      cityPickerValueDefault: [0, 0, 1],
+      pickerSingleArray: [{
+        label: '解绑(提供身份证正面)',
+        value: 1 },
+
+      {
+        label: '解冻(提供身份证正面)',
+        value: 2 },
+
+      {
+        label: '商圈售后(提供订单号截图)',
+        value: 3 },
+
+      {
+        label: '其他问题',
+        value: 4 }] };
+
+
+
+  },
+  methods: {
+    goBack: function goBack() {
+      uni.navigateBack();
+    },
+    onCancel: function onCancel() {
+
+    },
+    onConfirm: function onConfirm(e) {
+      this.form.messagetype = e.label;
+    },
+    showSinglePicker: function showSinglePicker() {
+      this.$refs.mpvuePicker.show();
+    },
+    chooseImage: function chooseImage() {
+      var _this = this;
+      uni.chooseImage({
+        count: 1,
+        sizeType: ['compressed'],
+        success: function success(e) {
+          (0, _index2.pathToBase64)(e.tempFilePaths[0]).then(function (res) {
+            _this.imageUrl = res;
+          });
+        },
+        fail: function fail(e) {
+          uni.showToast({
+            title: '取消选择',
+            icon: 'none' });
+
+        } });
+
+    },
+    formSubmit: function formSubmit(e) {
+      if (this.checkForm(e.detail.value)) {
+        var data = e.detail.value;
+        if (!this.imageUrl) {
+          uni.showToast({
+            title: '请上传相关图片',
+            icon: 'none' });
+
+          return false;
+        }
+        this.sendForm(_objectSpread({}, data, { file: this.imageUrl, type: 'feedback' }));
+      }
+    },
+    sendForm: function () {var _sendForm = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee(e) {var _this2 = this;var res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
+                  _index.default.addFeedback(e));case 2:res = _context.sent;
+                if (res.success) {
+                  uni.showToast({
+                    title: '反馈成功' });
+
+                  setTimeout(function () {
+                    _this2.goBack();
+                  }, 500);
+                }case 4:case "end":return _context.stop();}}}, _callee, this);}));function sendForm(_x) {return _sendForm.apply(this, arguments);}return sendForm;}(),
+
+    checkForm: function checkForm(e) {
+      var _this = this;
+      var status;
+      for (var i in e) {
+        var callback = _this.checkItem(i, e[i]);
+        if (callback.status) {
+          status = true;
+        } else {
+          uni.showToast({
+            title: callback.message,
+            icon: 'none' });
+
+          return false;
+        }
+      }
+      return status;
+    },
+    checkItem: function checkItem(e, value) {
+      switch (e) {
+        case 'name':
+          if (!value) {
+            return {
+              status: false,
+              message: '请输入姓名' };
+
+          }
+          if (value.length < 2 || value.length > 15) {
+            return {
+              status: false,
+              message: '姓名不正确' };
+
+          }
+          return {
+            status: true };
+
+          break;
+        case 'phone':
+          if (!value) {
+            return {
+              status: false,
+              message: '请输入电话号码' };
+
+          }
+          if (!_formRules.default.phone.test(value)) {
+            return {
+              status: false,
+              message: '手机号码格式不正确' };
+
+          }
+          return {
+            status: true };
+
+          break;
+        case 'idcard':
+          if (!value) {
+            return {
+              status: false,
+              message: '身份证不能为空' };
+
+          }
+          if (!_formRules.default.IdCard.test(value)) {
+            return {
+              status: false,
+              message: '身份证号码格式不正确' };
+
+          }
+          return {
+            status: true };
+
+          break;
+        case 'messagetype':
+          if (!value) {
+            return {
+              status: false,
+              message: '请选择问题类型' };
+
+          }
+          return {
+            status: true };
+
+          break;
+        case 'content':
+          if (!value) {
+            return {
+              status: false,
+              message: '请输入问题详情' };
+
+          }
+          return {
+            status: true };
+
+          break;}
+
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 
 /***/ }),
 

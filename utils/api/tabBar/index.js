@@ -69,4 +69,20 @@ export default {
 	addFeedback (obj) {
 		return request.post('/message/addmessage', obj)
 	},
+	// 版本信息
+	version (obj) {
+		return request.get('/appversion/appversioninfo', obj)
+	},
+	// 获取银行列表
+	bank (obj) {
+		return request.get('/bank/bankinfo', obj)
+	},
+	// 激活鼓励金
+	encourage (obj) {
+		return request.post('/firm/activeEncourage', obj)
+	},
+	// 实名认证
+	realName (obj) {
+		return request.postJson('/firm/realNameByFaceCheck', obj)
+	}
 }

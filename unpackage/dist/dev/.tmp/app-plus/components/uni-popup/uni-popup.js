@@ -112,27 +112,11 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 var _default =
 {
   props: {
     list: Array,
-    show: Boolean,
-    boxType: {
-      type: String,
-      default: 'radio' },
-
-    confirm: {
-      title: String,
-      content: String } },
-
+    show: Boolean },
 
   data: function data() {
     return {
@@ -156,9 +140,6 @@ var _default =
   methods: {
     sendItem: function sendItem(index) {
       this.$emit('getItem', this.list[index]);
-    },
-    sendConfirm: function sendConfirm() {
-      this.$emit('confirm', this.confirm.content);
     } } };exports.default = _default;
 
 /***/ }),
@@ -195,10 +176,6 @@ var render = function() {
     }
 
     _vm.e1 = function($event) {
-      _vm.showBefore = false
-    }
-
-    _vm.e2 = function($event) {
       _vm.showBefore = false
     }
   }

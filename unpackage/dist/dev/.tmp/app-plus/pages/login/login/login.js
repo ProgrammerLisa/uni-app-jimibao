@@ -156,13 +156,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _x2 = _interopRequireDefault(__webpack_require__(/*! @/static/image/96@2x.png */ "../../../../../y/uni-app-jimibao/static/image/96@2x.png"));
+var _logo = _interopRequireDefault(__webpack_require__(/*! @/static/image/logo.png */ "../../../../../y/uni-app-jimibao/static/image/logo.png"));
 var _formRules = _interopRequireDefault(__webpack_require__(/*! @/static/js/formRules */ "../../../../../y/uni-app-jimibao/static/js/formRules.js"));
 var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/login/index.js */ "../../../../../y/uni-app-jimibao/utils/api/login/index.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var _default =
 {
   data: function data() {
     return {
-      logo: _x2.default,
+      logo: _logo.default,
       pickerHidden: true,
       chosen: '',
       showPassword: true,
@@ -199,7 +199,6 @@ var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/login/in
     },
     sendFormRequest: function () {var _sendFormRequest = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee(e) {var res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
                   _index.default.login(e, { 'Content-Type': 'application/json' }));case 2:res = _context.sent;
-                console.log(res, " at pages\\login\\login\\login.vue:84");
                 if (res.success) {
                   uni.setStorage({
                     key: 'user',
@@ -213,7 +212,7 @@ var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/login/in
 
                     } });
 
-                }case 5:case "end":return _context.stop();}}}, _callee, this);}));function sendFormRequest(_x) {return _sendFormRequest.apply(this, arguments);}return sendFormRequest;}(),
+                }case 4:case "end":return _context.stop();}}}, _callee, this);}));function sendFormRequest(_x) {return _sendFormRequest.apply(this, arguments);}return sendFormRequest;}(),
 
     checkForm: function checkForm(e) {
       var _this = this;

@@ -3,11 +3,12 @@
   "titleNView": {
     "buttons": [
       {
-        "text": "我要反馈",
+        "text": "反馈",
         "fontSize": "15"
       }
     ]
   },
+  "scrollIndicator": "none",
   "usingComponents": {
     "uni-card": "/components/uni-card/uni-card",
     "uni-mescroll": "/components/mescroll-uni/mescroll-uni"

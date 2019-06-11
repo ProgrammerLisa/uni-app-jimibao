@@ -98,7 +98,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js"));
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
 
 
@@ -108,16 +108,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/login/index.js */ "../../../../../y/uni-app-jimibao/utils/api/login/index.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var uniList = function uniList() {return __webpack_require__.e(/*! import() | components/uni-list/uni-list */ "components/uni-list/uni-list").then(__webpack_require__.bind(null, /*! @/components/uni-list/uni-list.vue */ "../../../../../y/uni-app-jimibao/components/uni-list/uni-list.vue"));};var uniListItem = function uniListItem() {return __webpack_require__.e(/*! import() | components/uni-list-item/uni-list-item */ "components/uni-list-item/uni-list-item").then(__webpack_require__.bind(null, /*! @/components/uni-list-item/uni-list-item.vue */ "../../../../../y/uni-app-jimibao/components/uni-list-item/uni-list-item.vue"));};var _default =
-
-
-{
-  components: {
-    uniList: uniList,
-    uniListItem: uniListItem },
-
-  data: function data() {
-    return {
+var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/login/index.js */ "../../../../../y/uni-app-jimibao/utils/api/login/index.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
+//
+//
+//
+//
+//
+//
+//
+//
+var uniList = function uniList() {return __webpack_require__.e(/*! import() | components/uni-list/uni-list */ "components/uni-list/uni-list").then(__webpack_require__.bind(null, /*! @/components/uni-list/uni-list.vue */ "../../../../../y/uni-app-jimibao/components/uni-list/uni-list.vue"));};var uniListItem = function uniListItem() {return __webpack_require__.e(/*! import() | components/uni-list-item/uni-list-item */ "components/uni-list-item/uni-list-item").then(__webpack_require__.bind(null, /*! @/components/uni-list-item/uni-list-item.vue */ "../../../../../y/uni-app-jimibao/components/uni-list-item/uni-list-item.vue"));};var _default = { components: { uniList: uniList, uniListItem: uniListItem }, data: function data() {return {
       metaList: [
       { title: '交换密码', type: 'Tread' },
       { title: '登录密码', type: 'Login' }] };
@@ -130,18 +130,16 @@ var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/login/in
         url: "/pages/template/profile/setting/set-password?title=".concat(this.metaList[index].title, "&type=").concat(this.metaList[index].type) });
 
     },
-    logout: function () {var _logout = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
-                  _index.default.logout());case 2:res = _context.sent;
-                if (res.success) {
-                  uni.removeStorage({
-                    key: 'user',
-                    success: function success(res) {
-                      uni.reLaunch({
-                        url: '/pages/login/login/login' });
+    logout: function logout() {
+      uni.removeStorage({
+        key: 'user',
+        success: function success(res) {
+          uni.reLaunch({
+            url: '/pages/login/login/login' });
 
-                    } });
+        } });
 
-                }case 4:case "end":return _context.stop();}}}, _callee, this);}));function logout() {return _logout.apply(this, arguments);}return logout;}() } };exports.default = _default;
+    } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 
 /***/ }),

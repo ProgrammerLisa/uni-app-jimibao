@@ -40,9 +40,6 @@
   background: #E09529;
   color: #fff !important;
 }
-.mpvue-picker-view.data-v-735f4a38 {
-  background: #000;
-}
 .y-content.data-v-735f4a38 {
   padding: 0;
   background: #2c2e37;

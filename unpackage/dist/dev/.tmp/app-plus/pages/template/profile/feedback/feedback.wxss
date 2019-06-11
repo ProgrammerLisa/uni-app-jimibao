@@ -40,7 +40,26 @@
   background: #E09529;
   color: #fff !important;
 }
-.mescroll-empty.data-v-bad6a374 {
-  padding: 20px 0;
+.y-card-box.data-v-bad6a374 {
+  margin-bottom: 20rpx;
+}
+.y-flex.data-v-bad6a374 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.y-flex .y-flex-item.data-v-bad6a374:first-child {
+    margin-right: 20rpx;
+}
+.y-flex .y-flex-item image.data-v-bad6a374 {
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 100%;
+    border: 1px solid #ffe0b2;
 }
 

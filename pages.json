@@ -167,7 +167,7 @@
 					}
 				},
 				{
-					"path": "/list-real-name/list-real-name",
+					"path": "/real-name/real-name",
 					"style": {
 						"navigationBarTitleText": "实名认证"
 					}
@@ -175,7 +175,10 @@
 				{
 					"path": "/address/address",
 					"style": {
-						"navigationBarTitleText": "收货地址"
+						"navigationBarTitleText": "收货地址",
+						"app-plus": {
+							"scrollIndicator": "none"
+						}
 					}
 				},
 				{
@@ -191,18 +194,22 @@
 						"app-plus": {
 							"titleNView": {
 								"buttons": [{
-										"text": "我要反馈",
+										"text": "反馈",
 										"fontSize": "15"
 									}
 								]
-							}
+							},
+							"scrollIndicator": "none"
 						}
 					}
 				},
 				{
 					"path": "/feedback-add/feedback-add",
 					"style": {
-						"navigationBarTitleText": "我要反馈"
+						"navigationBarTitleText": "我要反馈",
+						"app-plus": {
+							"scrollIndicator": "none"
+						}
 					}
 				},
 				{

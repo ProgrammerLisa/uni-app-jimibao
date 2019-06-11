@@ -1,9 +1,14 @@
 <template>
 	<view>
 		<uni-mescroll @down="downCallback" @up="upCallback" @init="mescrollInit">
-			<uni-card v-for="(value, key) in dataList" :key="key" :is-full="true" title="DCloud" thumbnail="https://img-cdn-qiniu.dcloud.net.cn/new-page/uni.png" extra="2018.12.12" note="Tips">
-				
-			</uni-card>
+			<view class="y-card-box" v-for="(value, key) in dataList" :key="key" >
+				<uni-card :is-full="true" :title="`反馈人: ${value.name}`" :thumbnail="test" :extra="value.mstatus === 0?'未解决':'已解决'" :note="value.messagetime">
+					<view class="y-flex">
+						<view class="y-flex-item">{{value.content}}</view>
+						<view class="y-flex-item"><image mode="aspectFill" :src="imageUrl+value.path" @click="checkImage(value.path)"></image></view>
+					</view>
+				</uni-card>
+			</view>
 		</uni-mescroll>
 	</view>
 </template>
@@ -12,6 +17,7 @@
 	import uniCard from '@/components/uni-card/uni-card.vue'
 	import uniMescroll from '@/components/mescroll-uni/mescroll-uni.vue'
 	import api from '@/utils/api/tabBar/index.js'
+	import test from '@/static/image/avatar.png'
 	export default {
 		components: {
 			uniCard,
@@ -19,6 +25,8 @@
 		},
 		data () {
 			return {
+				test,
+				imageUrl: '',
 				mescroll: null, //mescroll实例对象
 				// 下拉刷新的配置
 				downOption: { 
@@ -56,12 +64,15 @@
 		onPageScroll(e) {
 			this.mescroll && this.mescroll.onPageScroll(e);
 		},
+		onShow () {
+			this.imageUrl = this.$imageUrl
+			this.getData()
+		},
 		methods: {
 			async getData () {
 				const res = await api.feedback()
 				if (res.success) {
 					this.dataList = res.data.list
-					console.log(res.data)
 				}
 			},
 			// mescroll组件初始化的回调,可获取到mescroll对象
@@ -92,11 +103,42 @@
 					// 失败隐藏下拉加载状态
 					mescroll.endErr()
 				}
+			},
+			checkImage (url) {
+				const _this = this
+				uni.previewImage({
+					current: _this.$imageUrl + url,
+					urls: [_this.$imageUrl + url],
+					indicator: 'none',
+					fail(err) {
+						uni.showToast({
+							title: '无法打开图片',
+							icon: 'none'
+						})
+					}
+				})
 			}
 		}
 	}
 </script>
 
 <style lang="scss" scoped>
-	
+	.y-card-box {
+		margin-bottom: 20upx;
+	}
+	.y-flex {
+		display: flex;
+		justify-content: space-between;
+		.y-flex-item:first-child {
+			margin-right: 20upx;
+		}
+		.y-flex-item {
+			image {
+				width: 100upx;
+				height: 100upx;
+				border-radius: 100%;
+				border: 1px solid $uni-router-color;
+			}
+		}
+	}
 </style>

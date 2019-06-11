@@ -1,6 +1,8 @@
 {
   "navigationBarTitleText": "我要反馈",
+  "scrollIndicator": "none",
   "usingComponents": {
-    "mpvue-city-picker": "/components/mpvue-citypicker/mpvueCityPicker"
+    "mpvue-picker": "/components/mpvue-picker/mpvuePicker",
+    "uni-icon": "/components/uni-icon/uni-icon"
   }
 }

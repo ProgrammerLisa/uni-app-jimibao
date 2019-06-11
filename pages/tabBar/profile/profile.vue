@@ -105,7 +105,7 @@
 				],
 				list: [
 					{ title: '米库总量', type: 'sum', showArrow: true, showExtraIcon: true, extraIcon: { color: '#a1adc1', size: '22', type: 'star-filled' }, showBadge: true, badgeText: null, badgeType: 'warning', runningWay: 'goPage', path: '/pages/template/profile/list-sum/list-sum' },
-					{ title: '实名认证', type: 'realName', showArrow: true, showExtraIcon: true, extraIcon: { color: '#a1adc1', size: '22', type: 'personadd-filled' }, showBadge: true, badgeText: null, badgeType: 'warning', runningWay: 'goPage', path: '/pages/template/profile/list-real-name/list-real-name' },
+					{ title: '实名认证', type: 'realName', showArrow: true, showExtraIcon: true, extraIcon: { color: '#a1adc1', size: '22', type: 'personadd-filled' }, showBadge: true, badgeText: null, badgeType: 'warning', runningWay: 'goPage', path: '/pages/template/profile/real-name/real-name' },
 					{ title: '收货地址', type: 'address', showArrow: true, showExtraIcon: true, extraIcon: { color: '#a1adc1', size: '22', type: 'location-filled' }, showBadge: false, badgeText: null, badgeType: 'warning', runningWay: 'goPage', path: '/pages/template/profile/address/address' },
 					{ title: '问题反馈', type: 'feedback', showArrow: true, showExtraIcon: true, extraIcon: { color: '#a1adc1', size: '22', type: 'help-filled' }, showBadge: false, badgeText: null, badgeType: 'warning', runningWay: 'goPage', path: '/pages/template/profile/feedback/feedback' },
 					{ title: '检测版本', type: 'edition', showArrow: true, showExtraIcon: true, extraIcon: { color: '#a1adc1', size: '22', type: 'info-filled' }, showBadge: true, badgeText: null, badgeType: 'warning', runningWay: 'goPage', path: '/pages/template/profile/list-edition/list-edition' },
@@ -145,8 +145,11 @@
 							case 'sum':
 								element.badgeText = res.data.FirmFunds.lastbalance
 								break
+							case 'realName':
+								res.data.TFirmPO.idcard ? element.badgeText = '已认证' : element.badgeText = '未认证'
+								break
 							case 'edition':
-								element.badgeText = '当前版本： ' + this.$version
+								element.badgeText = this.$version
 								break
 						}
 					})

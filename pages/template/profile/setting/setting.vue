@@ -30,18 +30,15 @@
 					url: `/pages/template/profile/setting/set-password?title=${this.metaList[index].title}&type=${this.metaList[index].type}`
 				})
 			},
-			async logout () {
-				const res = await api.logout()
-				if (res.success) {
-					uni.removeStorage({
-						key: 'user',
-						success: function (res) {
-							uni.reLaunch({
-								url: '/pages/login/login/login'
-							})
-						}
-					})
-				}
+			logout () {
+				uni.removeStorage({
+					key: 'user',
+					success: function (res) {
+						uni.reLaunch({
+							url: '/pages/login/login/login'
+						})
+					}
+				})
 			}
 		}
 	}

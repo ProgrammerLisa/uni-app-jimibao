@@ -47,13 +47,13 @@
 	}
 </script>
 
-<style>
+<style lang="scss">
 	@charset "UTF-8";
 
 	.uni-card {
 		margin-left: 24upx;
 		margin-right: 24upx;
-		background: #fff;
+		background: $uni-box-color;
 		box-shadow: none;
 		position: relative;
 		display: flex;

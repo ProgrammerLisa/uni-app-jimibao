@@ -20,16 +20,6 @@ function checkStatus (response) {
 }
 function checkCode (res) {
 	if (res.code === 403) {
-		store.commit('clearAuthorization')
-		store.commit('clearUserInfo')
-		store.commit('clearBlackMenu')
-		store.commit('clearPhoneVersion')
-		store.commit('clearInit')
-		store.commit('clearProductionid')
-		store.commit('clearLottery')
-		store.commit('clearBusinessAddress')
-		store.commit('clearMineScrollTop')
-		store.commit('clearSocketObj')
 		uni.removeStorage({
 			key: 'user',
 			success: function (res) {
@@ -74,6 +64,28 @@ export default {
 			}
 		}).then(checkStatus).then(checkCode)
 	},
+	postJson (url, data, header =  null) {
+		uni.showLoading({
+			mask: true
+		})
+		var Authorization
+		uni.getStorage({
+			key: 'user',
+			success: function(res){
+				Authorization = res.data.token
+			}
+		})
+		return uni.request({
+			url: dataUrl.url + url,
+			data: header ? JSON.stringify(data) : data,
+			method: 'POST',
+			header: {
+				'Authorization': Authorization,
+				'Content-Type': 'application/json',
+				...header
+			}
+		}).then(checkStatus).then(checkCode)
+	},
 	get (url, params, header) {
 		var Authorization
 		if (params) {
@@ -100,12 +112,5 @@ export default {
 				...header
 			}
 		}).then(checkStatus).then(checkCode)
-		// return fetch(dataUrl.url + url, {
-		// 	method: 'GET',
-		// 	headers: {
-		// 		'Authorization': Authorization,
-		// 		...header
-		// 	}
-		// }).then(checkStatus).then(checkCode)
 	}
 }

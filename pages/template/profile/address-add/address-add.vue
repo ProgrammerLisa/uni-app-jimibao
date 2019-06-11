@@ -200,9 +200,6 @@
 </script>
 
 <style lang="scss" scoped>
-	.mpvue-picker-view {
-		background: #000;
-	}
 	.y-content {
 		padding: 0;
 		background: $uni-box-color;
