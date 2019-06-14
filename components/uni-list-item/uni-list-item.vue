@@ -85,11 +85,6 @@
 				}
 			}
 		},
-		data() {
-			return {
-
-			}
-		},
 		methods: {
 			onClick() {
 				this.$emit('click')
@@ -159,7 +154,7 @@
 		font-size: 30upx;
 		text-overflow: ellipsis;
 		white-space: nowrap;
-		color: #ccc;
+		color: $uni-text-color;
 		line-height: 1.5;
 		overflow: hidden
 	}

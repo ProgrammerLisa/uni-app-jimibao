@@ -126,15 +126,26 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
+
 var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/tabBar/index.js */ "../../../../../y/uni-app-jimibao/utils/api/tabBar/index.js"));
-var _img_announ = _interopRequireDefault(__webpack_require__(/*! @/static/image/img_announ.png */ "../../../../../y/uni-app-jimibao/static/image/img_announ.png"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var uniSwiperDot = function uniSwiperDot() {return __webpack_require__.e(/*! import() | components/uni-swiper-dot/uni-swiper-dot */ "components/uni-swiper-dot/uni-swiper-dot").then(__webpack_require__.bind(null, /*! @/components/uni-swiper-dot/uni-swiper-dot.vue */ "../../../../../y/uni-app-jimibao/components/uni-swiper-dot/uni-swiper-dot.vue"));};var _default =
+var _partner = _interopRequireDefault(__webpack_require__(/*! @/static/image/partner.png */ "../../../../../y/uni-app-jimibao/static/image/partner.png"));
+var _propaganda = _interopRequireDefault(__webpack_require__(/*! @/static/image/propaganda.png */ "../../../../../y/uni-app-jimibao/static/image/propaganda.png"));
+var _tool = _interopRequireDefault(__webpack_require__(/*! @/static/image/tool.png */ "../../../../../y/uni-app-jimibao/static/image/tool.png"));
+var _course = _interopRequireDefault(__webpack_require__(/*! @/static/image/course.png */ "../../../../../y/uni-app-jimibao/static/image/course.png"));
+var _lottery = _interopRequireDefault(__webpack_require__(/*! @/static/image/lottery.png */ "../../../../../y/uni-app-jimibao/static/image/lottery.png"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var uniSwiperDot = function uniSwiperDot() {return __webpack_require__.e(/*! import() | components/uni-swiper-dot/uni-swiper-dot */ "components/uni-swiper-dot/uni-swiper-dot").then(__webpack_require__.bind(null, /*! @/components/uni-swiper-dot/uni-swiper-dot.vue */ "../../../../../y/uni-app-jimibao/components/uni-swiper-dot/uni-swiper-dot.vue"));};var uniIcon = function uniIcon() {return __webpack_require__.e(/*! import() | components/uni-icon/uni-icon */ "components/uni-icon/uni-icon").then(__webpack_require__.bind(null, /*! @/components/uni-icon/uni-icon.vue */ "../../../../../y/uni-app-jimibao/components/uni-icon/uni-icon.vue"));};var _default =
 {
   components: {
-    uniSwiperDot: uniSwiperDot },
+    uniSwiperDot: uniSwiperDot,
+    uniIcon: uniIcon },
 
   data: function data() {
     return {
-      icon: _img_announ.default,
       carousel: [],
       current: 0,
       mode: 'long',
@@ -145,20 +156,67 @@ var _img_announ = _interopRequireDefault(__webpack_require__(/*! @/static/image/
         selectedBackgroundColor: 'rgba(255, 255, 255, .9)',
         selectedBorder: '1px rgba(255, 255, 255, .9) solid' },
 
-      msg: [] };
+      msg: [],
+      list: [
+      { title: '合伙人', path: '/pages/template/home/partner/partner', img: _partner.default },
+      { title: '招募', path: '/pages/template/profile/topList-team-recruit/topList-team-recruit', img: _propaganda.default },
+      { title: '工具', path: '/pages/template/home/tool/tool', img: _tool.default },
+      { title: '商学院', path: '/pages/template/home/course/course', img: _course.default },
+      { title: '抽奖', path: '/pages/template/profile/topList-lottery/topList-lottery', img: _lottery.default }] };
+
 
   },
   onNavigationBarButtonTap: function onNavigationBarButtonTap(e) {
-    uni.navigateTo({
-      url: '/pages/about/about' });
+    if (e.tips === 'news') {
+      uni.setStorage({
+        key: 'home-dot',
+        data: 'prohibit',
+        success: function success() {
+          uni.navigateTo({
+            url: '/pages/template/home/news/news' });
 
+        } });
+
+    }
+    if (e.tips === 'scanCode') {
+      uni.scanCode({
+        success: function success(res) {
+          if (res.result.indexOf('http://') !== -1 || res.result.indexOf('https://') !== -1) {
+            plus.runtime.openURL(res.result);
+          } else {
+            uni.navigateTo({
+              url: '/pages/template/home/scan-code/scan-code?content=' + res.result });
+
+          }
+        },
+        fail: function fail() {
+          uni.showToast({
+            title: '解析失败',
+            icon: 'none' });
+
+        } });
+
+    }
   },
   onShow: function onShow() {
+    var _this = this;
+    uni.getStorage({
+      key: 'home-dot',
+      success: function success(res) {
+        if (res.data === 'prohibit') {
+          _this.setStyle(0, false);
+        } else {
+          _this.setStyle(0, true);
+        }
+      },
+      fail: function fail() {
+        _this.setStyle(0, true);
+      } });
+
     this.getData();
   },
   onReady: function onReady() {
-    this.setStyle(0, true);
-    this.setStyle(1, true, '9');
+
   },
   methods: {
     /**
@@ -197,6 +255,11 @@ var _img_announ = _interopRequireDefault(__webpack_require__(/*! @/static/image/
 
     change: function change(e) {
       this.current = e.detail.current;
+    },
+    goPath: function goPath(path) {
+      uni.navigateTo({
+        url: path });
+
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 

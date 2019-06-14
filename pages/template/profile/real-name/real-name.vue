@@ -185,7 +185,7 @@
 						plus.zip.compressImage({
 							src: e.tempFilePaths[0],
 							dst: dstUrl,
-							width: '15%',
+							width: '20%',
 							quality: 30
 						}, function (res) {
 							pathToBase64(dstUrl).then(response => {

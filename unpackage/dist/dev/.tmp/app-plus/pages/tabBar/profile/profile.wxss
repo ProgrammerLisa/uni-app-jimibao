@@ -68,6 +68,7 @@
           justify-content: space-around;
   text-align: center;
   padding-top: 20rpx;
+  color: #ccc;
 }
 .fill-box image.data-v-a93791b8 {
     width: 36rpx;
@@ -76,7 +77,8 @@
 }
 .fill-box .fill-box-top.data-v-a93791b8 {
     border: #dece98 solid 1px;
-    border-radius: 50rpx;
+    -webkit-border-radius: 50rpx;
+            border-radius: 50rpx;
 }
 .fill-box .fill-box-bottom.data-v-a93791b8 {
     padding: 10rpx 0 60rpx;
@@ -132,16 +134,18 @@
 .header-profile .profile-avatar image.data-v-a93791b8 {
       width: 150rpx;
       height: 150rpx;
-      border-radius: 50%;
+      -webkit-border-radius: 50%;
+              border-radius: 50%;
       margin-right: 30rpx;
-      border: 1px solid #ffe0b2;
+      border: 1px solid #ff9800;
 }
 .text-black.data-v-a93791b8 {
   color: #444;
 }
 .y-uni-list.data-v-a93791b8 {
   overflow: hidden;
-  border-radius: 18rpx;
+  -webkit-border-radius: 18rpx;
+          border-radius: 18rpx;
 }
 .y-list.data-v-a93791b8 {
   position: relative;
@@ -154,8 +158,9 @@
     display: -ms-flexbox;
     display: flex;
     text-align: center;
-    background: #2c2e37;
-    border-radius: 18rpx;
+    background: #fff;
+    -webkit-border-radius: 18rpx;
+            border-radius: 18rpx;
     margin-bottom: 20rpx;
 }
 .y-list .y-list-box .y-list-box-item.data-v-a93791b8 {

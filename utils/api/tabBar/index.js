@@ -84,5 +84,45 @@ export default {
 	// 实名认证
 	realName (obj) {
 		return request.postJson('/firm/realNameByFaceCheck', obj)
+	},
+	// 我的团队
+	team (obj) {
+		return request.get('/firm/myteam', obj)
+	},
+	// 打赏
+	reward (obj) {
+		return request.post('/firm/reward/' + obj.number, obj)
+	},
+	// 订单
+	order (obj) {
+		return request.get('/order/mine/' + obj.sign, obj)
+	},
+	// 撤销订单
+	revoke (obj) {
+		return request.post('/order/delete/' + obj.orderid, obj)
+	},
+	// 根据订单获取聊天室id
+	getChatIdByOrderId (obj) {
+		return request.get('/chat/chatByOrderid/' + obj.orderid, obj)
+	},
+	// 首页消息-系统推送
+	newsSystem (obj) {
+		return request.get('/notice/findAllNotices', obj)
+	},
+	// 首页消息-个人接收的系统消息
+	newsSystemSelf (obj) {
+		return request.get('/chat/firmTipsInfo', obj)
+	},
+	// 获取所有工具
+	tools (obj) {
+		return request.get('/tool/findAllTools', obj)
+	},
+	// 获取我的工具
+	toolMine (obj) {
+		return request.get('/tool/firmtoolsInfo', obj)
+	},
+	// 兑换工具
+	toolExchange (obj) {
+		return request.post('/tool/exchangeTools', obj)
 	}
 }

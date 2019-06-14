@@ -129,7 +129,6 @@
 	}
 	.uni-media-list {
 		background: $uni-box-color;
-		border-bottom: 1px solid #717278;
 	}
 	.default-tag {
 		margin-right: 20upx;

@@ -4,15 +4,28 @@
   "titleNView": {
     "buttons": [
       {
-        "text": "",
+        "text": "",
         "fontSrc": "/static/uni.ttf",
         "fontSize": "22px",
-        "color": "#eee",
-        "redDot": true
+        "color": "#555",
+        "float": "left",
+        "redDot": true,
+        "tips": "news"
+      },
+      {
+        "text": "",
+        "fontSrc": "/static/uni.ttf",
+        "fontSize": "22px",
+        "color": "#555",
+        "float": "right",
+        "redDot": false,
+        "tips": "scanCode"
       }
     ]
   },
+  "scrollIndicator": "none",
   "usingComponents": {
-    "uni-swiper-dot": "/components/uni-swiper-dot/uni-swiper-dot"
+    "uni-swiper-dot": "/components/uni-swiper-dot/uni-swiper-dot",
+    "uni-icon": "/components/uni-icon/uni-icon"
   }
 }

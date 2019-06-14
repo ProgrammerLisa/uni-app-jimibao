@@ -97,7 +97,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default =
 {
   onLaunch: function onLaunch() {
     console.log('App Launch', " at App.vue:4");
@@ -106,8 +106,12 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
     console.log('App Show', " at App.vue:7");
   },
   onHide: function onHide() {
-    console.log('App Hide', " at App.vue:10");
+    uni.removeStorage({
+      key: 'home-dot' });
+
+    console.log('App Hide', " at App.vue:13");
   } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 
 /***/ }),
 

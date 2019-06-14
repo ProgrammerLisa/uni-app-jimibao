@@ -1,5 +1,6 @@
 {
   "navigationBarTitleText": "设置",
+  "scrollIndicator": "none",
   "usingComponents": {
     "uni-list": "/components/uni-list/uni-list",
     "uni-list-item": "/components/uni-list-item/uni-list-item"

@@ -30,23 +30,23 @@
 /* 页面content高度(有tabBar) */
 /* 页面box颜色 */
 /* 登录 */
-.uni-checkbox-input.data-v-179a58c0 {
+.uni-checkbox-input.data-v-6012548f {
   -webkit-transition: .2s;
   -o-transition: .2s;
   transition: .2s;
   color: #fff !important;
 }
-.uni-checkbox-input.uni-checkbox-input-checked.data-v-179a58c0 {
+.uni-checkbox-input.uni-checkbox-input-checked.data-v-6012548f {
   background: #E09529;
   color: #fff !important;
 }
-.y-content-hasNav.data-v-179a58c0 {
-  background: #fff;
+.y-content-hasNav.data-v-6012548f {
   color: #555;
 }
-input.data-v-179a58c0 {
+input.data-v-6012548f {
   font-size: 15px;
   padding: 20rpx;
-  border-bottom: 1px solid #d7d7d7;
+  border-bottom: 1px solid #555;
+  color: #e1e1e1;
 }
 

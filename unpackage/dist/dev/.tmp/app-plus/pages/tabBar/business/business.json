@@ -1,5 +1,16 @@
 {
+  "navigationBarTitleText": "商城",
   "enablePullDownRefresh": true,
-  "titleNView": false,
+  "scrollIndicator": "none",
+  "titleNView": {
+    "buttons": [
+      {
+        "text": "                                                                                                                                                                                 ",
+        "fontSize": "15",
+        "width": "auto",
+        "color": "#dece98"
+      }
+    ]
+  },
   "usingComponents": {}
 }

@@ -23,7 +23,6 @@ function checkCode (res) {
 		uni.removeStorage({
 			key: 'user',
 			success: function (res) {
-				console.log('success')
 				uni.reLaunch({
 					url: '/pages/login/login/login'
 				})
@@ -59,6 +58,7 @@ export default {
 			method: 'POST',
 			header: {
 				'Authorization': Authorization,
+				'app-version': dataUrl.versionHeader,
 				'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
 				...header
 			}
@@ -81,6 +81,7 @@ export default {
 			method: 'POST',
 			header: {
 				'Authorization': Authorization,
+				'app-version': dataUrl.versionHeader,
 				'Content-Type': 'application/json',
 				...header
 			}
@@ -109,6 +110,7 @@ export default {
 			method: 'GET',
 			header: {
 				'Authorization': Authorization,
+				'app-version': dataUrl.versionHeader,
 				...header
 			}
 		}).then(checkStatus).then(checkCode)

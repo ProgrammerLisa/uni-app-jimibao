@@ -144,7 +144,7 @@
 	.y-list {
 		display: flex;
 		align-items: center;
-		color: #ccc;
+		color: $uni-text-color;
 		padding: 30upx 20upx;
 		justify-content: space-between;
 		border-bottom: 1px solid $uni-box-line;

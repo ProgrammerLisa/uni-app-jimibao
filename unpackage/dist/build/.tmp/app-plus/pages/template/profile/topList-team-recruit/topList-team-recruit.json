@@ -1,0 +1,16 @@
+{
+  "navigationBarTitleText": "团队招募",
+  "scrollIndicator": "none",
+  "titleNView": {
+    "backgroundColor": "#FCE6B5",
+    "titleColor": "#999",
+    "buttons": [
+      {
+        "type": "share"
+      }
+    ]
+  },
+  "usingComponents": {
+    "uni-popup": "/components/uni-popup/uni-popup"
+  }
+}

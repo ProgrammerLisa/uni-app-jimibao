@@ -43,7 +43,7 @@
 .y-content.data-v-7021d100 {
   padding: 10rpx 20rpx 0;
   overflow: hidden;
-  background: #2c2e37;
+  background: #fff;
 }
 .y-list.data-v-7021d100 {
   display: -webkit-box;
@@ -60,7 +60,7 @@
   -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  border-bottom: 1px solid #21232c;
+  border-bottom: 1px solid #DFDFE1;
 }
 .y-list .y-list-left.data-v-7021d100 {
     font-size: 32rpx;
@@ -79,8 +79,9 @@
 .y-headImage.data-v-7021d100 {
   width: 100rpx;
   height: 100rpx;
-  border-radius: 100%;
-  border: solid 1px #ffe0b2;
+  -webkit-border-radius: 100%;
+          border-radius: 100%;
+  border: solid 1px #ff9800;
 }
 .uni-icon.data-v-7021d100 {
   margin-left: 20rpx;

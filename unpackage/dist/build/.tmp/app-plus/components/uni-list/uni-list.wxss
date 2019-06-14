@@ -53,7 +53,8 @@
   -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
-  border-radius: 18rpx;
+  -webkit-border-radius: 18rpx;
+          border-radius: 18rpx;
 }
 .uni-list:after {
   position: absolute;

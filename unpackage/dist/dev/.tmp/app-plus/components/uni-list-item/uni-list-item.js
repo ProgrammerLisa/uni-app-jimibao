@@ -185,11 +185,6 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
       } } },
 
 
-  data: function data() {
-    return {};
-
-
-  },
   methods: {
     onClick: function onClick() {
       this.$emit('click');

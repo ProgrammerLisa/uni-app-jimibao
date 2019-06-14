@@ -30,22 +30,22 @@
 /* 页面content高度(有tabBar) */
 /* 页面box颜色 */
 /* 登录 */
-.uni-checkbox-input.data-v-67331cfe {
+.uni-checkbox-input.data-v-39167b7c {
   -webkit-transition: .2s;
   -o-transition: .2s;
   transition: .2s;
   color: #fff !important;
 }
-.uni-checkbox-input.uni-checkbox-input-checked.data-v-67331cfe {
+.uni-checkbox-input.uni-checkbox-input-checked.data-v-39167b7c {
   background: #E09529;
   color: #fff !important;
 }
-.y-content.data-v-67331cfe {
+.y-content.data-v-39167b7c {
   padding: 10rpx 20rpx 0;
   overflow: hidden;
   background: #2c2e37;
 }
-.y-list.data-v-67331cfe {
+.y-list.data-v-39167b7c {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -62,10 +62,10 @@
           justify-content: space-between;
   border-bottom: 1px solid #21232c;
 }
-.y-list .y-list-left.data-v-67331cfe {
+.y-list .y-list-left.data-v-39167b7c {
     font-size: 32rpx;
 }
-.y-list .y-list-right.data-v-67331cfe {
+.y-list .y-list-right.data-v-39167b7c {
     font-size: 32rpx;
     display: -webkit-box;
     display: -webkit-flex;
@@ -76,11 +76,14 @@
         -ms-flex-align: center;
             align-items: center;
 }
-.y-list .y-list-right image.data-v-67331cfe {
-      width: 100rpx;
-      height: 100rpx;
+.y-headImage.data-v-39167b7c {
+  width: 100rpx;
+  height: 100rpx;
+  -webkit-border-radius: 100%;
+          border-radius: 100%;
+  border: solid 1px #ffe0b2;
 }
-.uni-icon.data-v-67331cfe {
+.uni-icon.data-v-39167b7c {
   margin-left: 20rpx;
 }
 

@@ -59,7 +59,8 @@
 .y-flex .y-flex-item image.data-v-bad6a374 {
     width: 100rpx;
     height: 100rpx;
-    border-radius: 100%;
-    border: 1px solid #ffe0b2;
+    -webkit-border-radius: 100%;
+            border-radius: 100%;
+    border: 1px solid #ff9800;
 }
 

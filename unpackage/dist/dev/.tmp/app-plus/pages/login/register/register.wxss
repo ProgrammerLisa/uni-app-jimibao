@@ -57,8 +57,9 @@
 .box .logo image.data-v-bedc92b2 {
       width: 80px;
       height: 80px;
-      border-radius: 10rpx;
-      border: 1rpx solid #ffe0b2;
+      -webkit-border-radius: 10rpx;
+              border-radius: 10rpx;
+      border: 1rpx solid #ff9800;
 }
 .box .y-label.data-v-bedc92b2 {
     font-size: small;
@@ -79,19 +80,20 @@
               transform: scale(0.7);
 }
 .box .y-caret.data-v-bedc92b2 {
-    color: #F7E8D1;
+    color: #555;
 }
 .box .y-input.data-v-bedc92b2 {
-    background: #23242d;
+    background: #f7f7f7;
     font-size: 14px;
     border: none;
     padding: 15rpx 20rpx;
-    border-radius: 5rpx;
-    caret-color: #F7E8D1;
-    color: #ccc;
+    -webkit-border-radius: 5rpx;
+            border-radius: 5rpx;
+    caret-color: #555;
+    color: #333;
 }
 .box .y-input-border.data-v-bedc92b2 {
-    border: 0.2px solid #555;
+    border: 1px solid #ccc;
 }
 .box .y-login-btn.data-v-bedc92b2 {
     margin-top: 40rpx;
@@ -101,8 +103,8 @@
 }
 .box .y-login.data-v-bedc92b2 {
     background: transparent;
-    color: #ffe0b2;
-    border: 1rpx solid #ffe0b2;
+    color: #ff9800;
+    border: 1rpx solid #ff9800;
     -webkit-transition: .2s;
     -o-transition: .2s;
     transition: .2s;
@@ -120,15 +122,15 @@
             justify-content: center;
 }
 .box .y-login.data-v-bedc92b2:active {
-    background: #ffe0b2;
-    color: #2c2e37;
+    background: #ff9800;
+    color: #fff;
 }
 .box .y-login[disabled].data-v-bedc92b2 {
     opacity: 0.4;
 }
 .box .y-login[disabled].data-v-bedc92b2:active {
     background: transparent;
-    color: #ffe0b2;
+    color: #ff9800;
 }
 .box .y-flex.data-v-bedc92b2 {
     display: -webkit-box;
@@ -140,7 +142,7 @@
         -ms-flex-pack: justify;
             justify-content: space-between;
     font-size: small;
-    color: #ffe0b2;
+    color: #ff9800;
 }
 .box .y-login-back.data-v-bedc92b2 {
     margin: 40rpx auto 0;
@@ -170,7 +172,7 @@
 }
 .box .uni-form-item .with-fun.data-v-bedc92b2 {
     width: 100%;
-    background: #23242d;
+    background: #f7f7f7;
     padding-bottom: 1px;
 }
 .box .uni-form-item .with-fun input.data-v-bedc92b2 {
@@ -185,7 +187,7 @@
           -ms-flex: 1;
               flex: 1;
       color: #555;
-      background: #23242d;
+      background: #f7f7f7;
       border: none;
 }
 .box .uni-form-item .with-fun .uni-icon.uni-active.data-v-bedc92b2 {
@@ -249,7 +251,7 @@
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  background: #2c2e37;
+  background: #fff;
 }
 .y-agree.data-v-bedc92b2 {
   -webkit-box-pack: left;

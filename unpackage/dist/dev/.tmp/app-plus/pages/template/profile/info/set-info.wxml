@@ -1,1 +1,1 @@
-<view class="y-content-hasNav data-v-962d0e1e" bind:__l="__l"><input maxlength="20" placeholder="{{'请输入'+info.title}}" data-event-opts="{{[['input',[['__set_model',['$0','content','$event',[]],['']]]]]}}" value="{{content}}" bindinput="__e" class="data-v-962d0e1e"/></view>
+<view class="y-content-hasNav data-v-962d0e1e"><input maxlength="20" placeholder="{{'请输入'+info.title}}" data-event-opts="{{[['input',[['__set_model',['','content','$event',[]]]]]]}}" value="{{content}}" bindinput="__e" class="data-v-962d0e1e"/></view>

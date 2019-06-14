@@ -41,27 +41,60 @@
 					"bounce": "vertical",
 					"titleNView": {
 						"buttons": [{
-							"text": "\ue439",
+								"text": "\ue203",
+								"fontSrc": "/static/uni.ttf",
+								"fontSize": "22px",
+								"color": "#555",
+								"float": "left",
+								"redDot": true,
+								"tips": "news"
+							},{
+							"text": "\ue612",
 							"fontSrc": "/static/uni.ttf",
 							"fontSize": "22px",
-							"color": "#eee",
-							"redDot": true
+							"color": "#555",
+							"float": "right",
+							"redDot": false,
+							"tips": "scanCode"
 						}]
-					}
+					},
+					"scrollIndicator": "none"
 				}
 			}
 		},{
 			"path": "pages/tabBar/business/business",
 			"style": {
+				"navigationBarTitleText": "商城",
 				"app-plus": {
-					"titleNView": false
+					"scrollIndicator": "none",
+					"titleNView": {
+						"buttons": [{
+								"text": "                                                                                                                                                                                 ",
+								"fontSize": "15",
+								"width": "auto",
+								"color": "#dece98"
+							}
+						]
+					}
 				},
 				"enablePullDownRefresh": true
 			}
 		},{
 			"path": "pages/tabBar/exchange/exchange"
 		},{
-			"path": "pages/tabBar/messageList/messageList"
+			"path": "pages/tabBar/chat/chat",
+			"style": {
+				"app-plus": {
+					"scrollIndicator": "none"
+				}
+			}
+		},{
+			"path": "pages/tabBar/chat/room",
+			"style": {
+				"app-plus": {
+					"scrollIndicator": "none"
+				}
+			}
 		},{
 			"path": "pages/tabBar/profile/profile",
 			"style": {
@@ -111,65 +144,116 @@
 				{
 					"path": "/setting/setting",
 					"style": {
-						"navigationBarTitleText": "设置"
+						"navigationBarTitleText": "设置",
+						"app-plus": {
+							"scrollIndicator": "none"
+						}
 					}
 				},
 				{
 					"path": "/setting/set-password",
 					"style": {
-						"navigationBarTitleText": "更改密码"
+						"navigationBarTitleText": "更改密码",
+						"app-plus": {
+							"scrollIndicator": "none"
+						}
 					}
 				},
 				{
 					"path": "/setting/forget-password",
 					"style": {
-						"navigationBarTitleText": "忘记密码"
+						"navigationBarTitleText": "忘记密码",
+						"app-plus": {
+							"scrollIndicator": "none"
+						}
 					}
 				},
 				{
 					"path": "/level/level",
 					"style": {
-						"navigationBarTitleText": "会员等级"
+						"navigationBarTitleText": "会员等级",
+						"app-plus": {
+							"scrollIndicator": "none"
+						}
 					}
 				},
 				{
 					"path": "/topList-lottery/lottery",
 					"style": {
-						"navigationBarTitleText": "抽奖"
+						"navigationBarTitleText": "抽奖",
+						"app-plus": {
+							"scrollIndicator": "none"
+						}
 					}
 				},
 				{
 					"path": "/topList-order/topList-order",
 					"style": {
-						"navigationBarTitleText": "交换中心订单"
+						"navigationBarTitleText": "交换中心订单",
+						"app-plus": {
+							"scrollIndicator": "none"
+						}
 					}
 				},
 				{
 					"path": "/topList-team/topList-team",
 					"style": {
-						"navigationBarTitleText": "我的团队"
+						"navigationBarTitleText": "我的团队",
+						"app-plus": {
+							"scrollIndicator": "none",
+							"titleNView": {
+								"buttons": [{
+										"text": "团队招募",
+										"fontSize": "15",
+										"width": "auto",
+										"color": "#dece98"
+									}
+								]
+							}
+						}
+					}
+				},
+				{
+					"path": "/topList-team-recruit/topList-team-recruit",
+					"style": {
+						"navigationBarTitleText": "团队招募",
+						"app-plus": {
+							"scrollIndicator": "none",
+							"titleNView": {
+								"buttons": [{
+									"type": "share"
+								}]
+							}
+						}
 					}
 				},
 				{
 					"path": "/topList-encourage/topList-encourage",
 					"style": {
-						"navigationBarTitleText": "激活鼓励金"
+						"navigationBarTitleText": "激活鼓励金",
+						"app-plus": {
+							"scrollIndicator": "none"
+						}
 					}
 				},
 				{
-					"path": "/list-sum/list-sum",
+					"path": "/sum/sum",
 					"style": {
 						"navigationBarTitleText": "米库总量",
 						"onReachBottomDistance" : 100,
 						"app-plus" : {
-							"bounce" : "none" // 取消iOS回弹,避免和下拉刷新冲突 (小程序无法取消)
+							"bounce" : "none",// 取消iOS回弹,避免和下拉刷新冲突 (小程序无法取消)
+							"scrollIndicator": "none"
 						}
 					}
 				},
 				{
 					"path": "/real-name/real-name",
 					"style": {
-						"navigationBarTitleText": "实名认证"
+						"navigationBarTitleText": "实名认证",
+						"app-plus": {
+							"scrollIndicator": "none"
+						}
 					}
 				},
 				{
@@ -184,7 +268,10 @@
 				{
 					"path": "/address-add/address-add",
 					"style": {
-						"navigationBarTitleText": "新增地址"
+						"navigationBarTitleText": "新增地址",
+						"app-plus": {
+							"scrollIndicator": "none"
+						}
 					}
 				},
 				{
@@ -194,8 +281,10 @@
 						"app-plus": {
 							"titleNView": {
 								"buttons": [{
-										"text": "反馈",
-										"fontSize": "15"
+										"text": "我要反馈",
+										"fontSize": "15",
+										"width": "auto",
+										"color": "#dece98"
 									}
 								]
 							},
@@ -213,27 +302,90 @@
 					}
 				},
 				{
-					"path": "/list-edition/list-edition",
+					"path": "/edition/edition",
 					"style": {
 						"navigationBarTitleText": "检测版本"
+					}
+				}
+			]
+		},
+		{
+			"root": "pages/template/home",
+			"pages": [
+				{
+					"path": "/news/news",
+					"style": {
+						"navigationBarTitleText": "消息",
+						"app-plus": {
+							"scrollIndicator": "none"
+						}
+					}
+				},{
+					"path": "/news/detail",
+					"style": {
+						"navigationBarTitleText": "消息详情",
+						"app-plus": {
+							"scrollIndicator": "none"
+						}
+					}
+				},{
+					"path": "/scan-code/scan-code",
+					"style": {
+						"navigationBarTitleText": "扫描结果",
+						"app-plus": {
+							"scrollIndicator": "none"
+						}
+					}
+				},{
+					"path": "/partner/partner",
+					"style": {
+						"navigationBarTitleText": "合伙人",
+						"app-plus": {
+							"titleNView": {
+								"buttons": [{
+										"text": "我的合伙人",
+										"width": "auto",
+										"fontSize": "15",
+										"color": "#dece98"
+									}
+								]
+							},
+							"scrollIndicator": "none"
+						}
+					}
+				},{
+					"path": "/tool/tool",
+					"style": {
+						"navigationBarTitleText": "工具",
+						"app-plus": {
+							"scrollIndicator": "none"
+						}
+					}
+				},{
+					"path": "/course/course",
+					"style": {
+						"navigationBarTitleText": "商学院",
+						"app-plus": {
+							"scrollIndicator": "none"
+						}
 					}
 				}
 			]
 		}
 	],
 	"globalStyle": {
-		"navigationBarTextStyle": "white",
+		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "集米宝",
-		"navigationBarBackgroundColor": "#282a34",
-		"backgroundColor": "#23232b",
-		"backgroundTextStyle": "light",
+		"navigationBarBackgroundColor": "#fff",
+		"backgroundColor": "#fff",
+		"backgroundTextStyle": "dark",
 		"enablePullDownRefresh": false
 	},
 	"tabBar": {
         "color": "#999",
-        "selectedColor": "#F8E3AA",
+        "selectedColor": "#ff9800",
         "borderStyle": "black",
-        "backgroundColor": "#1a1b22",
+        "backgroundColor": "#fff",
         "list": [{
             "pagePath": "pages/tabBar/home/home",
             "iconPath": "static/image/btn_home_normal@2x.png",
@@ -250,7 +402,7 @@
             "selectedIconPath": "static/image/btn_exchange_pressed@2x.png",
             "text": "交换"
         }, {
-            "pagePath": "pages/tabBar/messageList/messageList",
+            "pagePath": "pages/tabBar/chat/chat",
             "iconPath": "static/image/btn_com_normal@2x.png",
             "selectedIconPath": "static/image/btn_com_pressed@2x.png",
             "text": "通讯"

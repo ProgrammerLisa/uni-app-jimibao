@@ -43,7 +43,7 @@
 .level-box.data-v-d6bec220 {
   text-align: center;
   padding: 30rpx 0;
-  background: #2c2e37;
+  background: #fff;
 }
 .level-flex.data-v-d6bec220 {
   margin-bottom: 30rpx;
@@ -66,18 +66,20 @@
     margin: 0 15rpx;
 }
 .level-flex .count.data-v-d6bec220 {
-    background: #ffe0b2;
-    color: #333;
+    background: #ff9800;
+    color: #e1e1e1;
     padding: 0 15rpx;
-    border-radius: 10rpx;
+    -webkit-border-radius: 10rpx;
+            border-radius: 10rpx;
     line-height: 1.5;
 }
 .level-flex .contribution.data-v-d6bec220 {
     background: transparent;
     padding: 0 15rpx;
-    border-radius: 10rpx;
+    -webkit-border-radius: 10rpx;
+            border-radius: 10rpx;
     line-height: 1.5;
-    border: solid 1px #ffe0b2;
+    border: solid 1px #ff9800;
 }
 .level-flex.data-v-d6bec220:last-child {
   margin-bottom: 0;
@@ -110,6 +112,6 @@
           justify-content: space-between;
 }
 .uni-media-list-text-top text.data-v-d6bec220:first-child {
-    color: #ffe0b2;
+    color: #ff9800;
 }
 

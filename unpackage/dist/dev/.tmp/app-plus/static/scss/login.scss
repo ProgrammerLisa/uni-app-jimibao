@@ -38,10 +38,10 @@
 		padding: 15upx 20upx;
 		border-radius: 5upx;
 		caret-color: $uni-input-caret-color;
-		color: #ccc;
+		color: $uni-text-color;
 	}
 	.y-input-border {
-		border: 0.2px solid $uni-input-border-color;
+		border: 1px solid $uni-input-border-color;
 	}
 	.y-login-btn {
 		margin-top: 40upx;

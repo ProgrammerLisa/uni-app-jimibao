@@ -1,7 +1,7 @@
 import request from '@/utils/request/index'
 export default {
-	login (obj, header) {
-		return request.post('/firm/login', obj, header)
+	login (obj) {
+		return request.postJson('/firm/login', obj)
 	},
 	register (obj, header) {
 		return request.post('/firm/register', obj, header)

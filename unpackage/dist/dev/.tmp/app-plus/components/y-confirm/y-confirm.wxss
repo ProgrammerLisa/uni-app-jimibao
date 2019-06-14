@@ -62,7 +62,8 @@
     bottom: 20rpx;
     left: 5%;
     width: 90%;
-    border-radius: 20rpx;
+    -webkit-border-radius: 20rpx;
+            border-radius: 20rpx;
     overflow: hidden;
     -webkit-transition: .2s;
     -o-transition: .2s;
@@ -106,7 +107,8 @@
           -ms-flex: 1;
               flex: 1;
       text-align: center;
-      border-radius: none;
+      -webkit-border-radius: none;
+              border-radius: none;
       border: none;
       font-size: 32rpx;
       color: #777;

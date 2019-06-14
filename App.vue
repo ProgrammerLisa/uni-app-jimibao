@@ -7,6 +7,9 @@
 			console.log('App Show')
 		},
 		onHide: function() {
+			uni.removeStorage({
+				key: 'home-dot'
+			})
 			console.log('App Hide')
 		}
 	}
@@ -30,17 +33,17 @@
 	.y-content-db {
 		min-height: $uni-content-db-height;
 		background: $uni-bg-color;
-		color: $uni-font-color;
+		color: $uni-text-color;
 	}
 	.y-content-hasNav {
 		min-height: $uni-content-hasNav-height;
 		background: $uni-bg-color;
-		color: $uni-font-color;
+		color: $uni-text-color;
 	}
 	.y-content-hasTab {
 		min-height: $uni-content-hasTab-height;
 		background: $uni-bg-color;
-		color: $uni-font-color;
+		color: $uni-text-color;
 	}
 	.y-button {
 		background: transparent;
@@ -59,5 +62,8 @@
 	 uni-button[disabled]:not([type]), uni-button[disabled][type=default] {
 		 color: $uni-font-color;
 		 background: transparent;
+	 }
+	 .y-tabs-item {
+		 margin-top: 96upx;
 	 }
 </style>

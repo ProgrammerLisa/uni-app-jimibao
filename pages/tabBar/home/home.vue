@@ -1,7 +1,7 @@
 <template>
 	<view class="y-content-db">
 		<template>
-			<uni-swiper-dot :info="carousel" :current="current" :mode="mode" :dots-styles="dotsStyles" field="content">
+			<uni-swiper-dot :info="carousel" :current="current" :mode="mode" field="content" :dotsStyles="dotsStyles">
 				<swiper class="swiper-box" @change="change">
 					<swiper-item v-for="(item ,index) in carousel" :key="index">
 						<view class="swiper-item">
@@ -13,7 +13,7 @@
 		</template>
 		<view class="uni-swiper-msg">
 			<view class="uni-swiper-msg-icon">
-				<image :src="icon" mode="widthFix"></image>
+				<uni-icon type="sound" color="#E16912"></uni-icon>
 			</view>
 			<swiper vertical="true" autoplay="true" circular="true" interval="3000">
 				<swiper-item v-for="(item, index) in msg" :key="index">
@@ -21,20 +21,31 @@
 				</swiper-item>
 			</swiper>
 		</view>
+		<view class="y-list">
+			<view v-for="(i, index) in list" :key="index" @click="goPath(i.path)" class="y-list-item">
+				<image :src="i.img" class="image"></image>
+				<text class="title">{{i.title}}</text>
+			</view>
+		</view>
 	</view>
 </template>
 
 <script>
 	import uniSwiperDot from '@/components/uni-swiper-dot/uni-swiper-dot.vue'
+	import uniIcon from '@/components/uni-icon/uni-icon.vue'
 	import api from '@/utils/api/tabBar/index.js'
-	import icon from '@/static/image/img_announ.png'
+	import partner from '@/static/image/partner.png'
+	import propaganda from '@/static/image/propaganda.png'
+	import tool from '@/static/image/tool.png'
+	import course from '@/static/image/course.png'
+	import lottery from '@/static/image/lottery.png'
 	export default {
 		components: {
-			uniSwiperDot
+			uniSwiperDot,
+			uniIcon
 		},
 		data() {
 			return {
-				icon,
 				carousel: [],
 				current: 0,
 				mode: 'long',
@@ -45,20 +56,67 @@
 					selectedBackgroundColor: 'rgba(255, 255, 255, .9)',
 					selectedBorder: '1px rgba(255, 255, 255, .9) solid'
 				},
-				msg : []
+				msg : [],
+				list: [
+					{ title: '合伙人', path: '/pages/template/home/partner/partner', img: partner },
+					{ title: '招募', path: '/pages/template/profile/topList-team-recruit/topList-team-recruit', img: propaganda },
+					{ title: '工具', path: '/pages/template/home/tool/tool', img: tool },
+					{ title: '商学院', path: '/pages/template/home/course/course', img: course },
+					{ title: '抽奖', path: '/pages/template/profile/topList-lottery/topList-lottery', img: lottery }
+				]
 			}
 		},
 		onNavigationBarButtonTap(e) {
-			uni.navigateTo({
-				url: '/pages/about/about'
-			});
+			if (e.tips === 'news') {
+				uni.setStorage({
+					key: 'home-dot',
+					data: 'prohibit',
+					success () {
+						uni.navigateTo({
+							url: '/pages/template/home/news/news'
+						})
+					}
+				})
+			}
+			if (e.tips === 'scanCode') {
+				uni.scanCode({
+					success (res) {
+						if ((res.result.indexOf('http://') !== -1) || (res.result.indexOf('https://') !== -1)) {
+							plus.runtime.openURL(res.result)
+						} else {
+							uni.navigateTo({
+								url: '/pages/template/home/scan-code/scan-code?content=' + res.result
+							})
+						}
+					},
+					fail () {
+						uni.showToast({
+							title: '解析失败',
+							icon: 'none'
+						})
+					}
+				})
+			}
 		},
 		onShow() {
+			const _this = this
+			uni.getStorage({
+				key: 'home-dot',
+				success (res) {
+					if (res.data === 'prohibit') {
+						_this.setStyle(0, false)
+					} else {
+						_this.setStyle(0, true)
+					}
+				},
+				fail () {
+					_this.setStyle(0, true)
+				}
+			})
 			this.getData()
 		},
-		onReady() {
-			this.setStyle(0,true)
-			this.setStyle(1,true,'9')
+		onReady () {
+			
 		},
 		methods: {
 			/**
@@ -97,6 +155,11 @@
 			},
 			change(e) {
 				this.current = e.detail.current
+			},
+			goPath (path) {
+				uni.navigateTo({
+					url: path
+				})
 			}
 		}
 	}
@@ -165,5 +228,24 @@
 	.uni-swiper-msg {
 		padding: 10upx 20upx;
 		background: $uni-box-color;
+	}
+	.y-list {
+		display: flex;
+		padding: 20upx 0;
+		border-top: 10upx solid $uni-box-spacing-line;
+		border-bottom: 10upx solid $uni-box-spacing-line;
+		background: $uni-login-bg-color;
+		.y-list-item {
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			text-align: center;
+			.image {
+				width: 80upx;
+				height: 80upx;
+				margin: auto;
+			}
+		}
 	}
 </style>

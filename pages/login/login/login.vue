@@ -49,7 +49,8 @@
 				chosen: '',
 				showPassword: true,
 				showClearIcon: false,
-				inputClearValue: ''
+				inputClearValue: '',
+				phoneInfo: {}
 			}
 		},
 		onLoad () {
@@ -58,29 +59,45 @@
 				success: function (res) {
 					if (res.data) {
 						uni.switchTab({
-							url: '/pages/tabBar/profile/profile'
+							url: '/pages/tabBar/home/home'
 						})
 					}
 				}
 			})
+			// if (plus) {
+			// 	this.phoneInfo = {
+			// 		model: plus.device.model, // 设备型号
+			// 		vendor: plus.device.vendor, // 设备厂商
+			// 		imei: plus.device.imei, // IMEI
+			// 		uuid: plus.device.uuid // UUID
+			// 	}
+			// }
+			this.phoneInfo = {
+				model: 'vivo X9s Plus', // 设备型号
+				vendor: 'vivo', // 设备厂商
+				imei: '866355039816963,866355039816971', // IMEI
+				uuid: '866355039816963,866355039816971' // UUID
+			}
 		},
 		methods: {
 			formSubmit: function(e) {
+				const _this = this
 				let data = {}
 				if (this.checkForm(e.detail.value)) {
 					if (rules.phone.test(e.detail.value.phone)) {
-						this.sendFormRequest(e.detail.value)
+						this.sendFormRequest({ ...e.detail.value, firmDevice: _this.phoneInfo })
 					} else {
 						data = {
 							account: e.detail.value.phone,
-							password: e.detail.value.password
+							password: e.detail.value.password,
+							firmDevice: _this.phoneInfo
 						}
 						this.sendFormRequest(data)
 					}
 				}
 			},
 			async sendFormRequest (e) {
-				const res = await api.login(e, { 'Content-Type': 'application/json' })
+				const res = await api.login(e)
 				if (res.success) {
 					uni.setStorage({
 						key: 'user',

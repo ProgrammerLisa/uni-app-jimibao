@@ -47,6 +47,6 @@ input.data-v-962d0e1e {
   font-size: 15px;
   padding: 20rpx;
   border-bottom: 1px solid #555;
-  color: #e1e1e1;
+  color: #333;
 }
 

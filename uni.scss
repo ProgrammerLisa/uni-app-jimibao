@@ -21,15 +21,15 @@ $uni-color-warning: #f0ad4e;
 $uni-color-error: #dd524d;
 
 /* 文字基本颜色 */
-$uni-text-color:#e1e1e1;//基本色
-$uni-text-color-inverse:#333;//反色
+$uni-text-color:#333;//基本色
+$uni-text-color-inverse:#e1e1e1;//反色
 $uni-text-color-grey:#999;//辅助灰色，如加载更多的提示信息
 $uni-text-color-placeholder: #808080;
 $uni-text-color-disable:#c0c0c0;
 $uni-text-color-light: #f7f7f7;
 
 /* 背景颜色 */
-$uni-bg-color:#21232c;
+$uni-bg-color:#f7f7f7;
 $uni-bg-color-grey:#eee;
 $uni-bg-color-hover:#f1f1f1;//点击状态颜色
 $uni-bg-color-mask:rgba(0, 0, 0, 0.4);//遮罩颜色
@@ -87,17 +87,18 @@ $uni-content-hasNav-height: calc(100vh - 90upx);
 $uni-content-hasTab-height: calc(100vh - 50px);
 
 /* 页面box颜色 */
-$uni-box-color: #2c2e37;
-$uni-box-line: #21232c;
+$uni-box-color: #fff;
+$uni-box-line: #DFDFE1;
 $uni-box-line-inverse: #7A7B81;
+$uni-box-spacing-line: #eee;
 
 /* 登录 */
-$uni-login-bg-color: #2c2e37;
-$uni-input-bg-color: #23242d;
-$uni-input-border-color: #555;
-$uni-input-caret-color: #F7E8D1;
-$uni-font-color: #ccc;
-$uni-router-color: #ffe0b2;
+$uni-login-bg-color: #fff;
+$uni-input-bg-color: #f7f7f7;
+$uni-input-border-color: #ccc;
+$uni-input-caret-color: #555;
+$uni-font-color: #333;
+$uni-router-color: #ff9800;
 
 .uni-checkbox-input {
 	transition: .2s;

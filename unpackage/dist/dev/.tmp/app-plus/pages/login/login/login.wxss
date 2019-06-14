@@ -57,8 +57,9 @@
 .box .logo image.data-v-2eb6055b {
       width: 80px;
       height: 80px;
-      border-radius: 10rpx;
-      border: 1rpx solid #ffe0b2;
+      -webkit-border-radius: 10rpx;
+              border-radius: 10rpx;
+      border: 1rpx solid #ff9800;
 }
 .box .y-label.data-v-2eb6055b {
     font-size: small;
@@ -79,19 +80,20 @@
               transform: scale(0.7);
 }
 .box .y-caret.data-v-2eb6055b {
-    color: #F7E8D1;
+    color: #555;
 }
 .box .y-input.data-v-2eb6055b {
-    background: #23242d;
+    background: #f7f7f7;
     font-size: 14px;
     border: none;
     padding: 15rpx 20rpx;
-    border-radius: 5rpx;
-    caret-color: #F7E8D1;
-    color: #ccc;
+    -webkit-border-radius: 5rpx;
+            border-radius: 5rpx;
+    caret-color: #555;
+    color: #333;
 }
 .box .y-input-border.data-v-2eb6055b {
-    border: 0.2px solid #555;
+    border: 1px solid #ccc;
 }
 .box .y-login-btn.data-v-2eb6055b {
     margin-top: 40rpx;
@@ -101,8 +103,8 @@
 }
 .box .y-login.data-v-2eb6055b {
     background: transparent;
-    color: #ffe0b2;
-    border: 1rpx solid #ffe0b2;
+    color: #ff9800;
+    border: 1rpx solid #ff9800;
     -webkit-transition: .2s;
     -o-transition: .2s;
     transition: .2s;
@@ -120,15 +122,15 @@
             justify-content: center;
 }
 .box .y-login.data-v-2eb6055b:active {
-    background: #ffe0b2;
-    color: #2c2e37;
+    background: #ff9800;
+    color: #fff;
 }
 .box .y-login[disabled].data-v-2eb6055b {
     opacity: 0.4;
 }
 .box .y-login[disabled].data-v-2eb6055b:active {
     background: transparent;
-    color: #ffe0b2;
+    color: #ff9800;
 }
 .box .y-flex.data-v-2eb6055b {
     display: -webkit-box;
@@ -140,7 +142,7 @@
         -ms-flex-pack: justify;
             justify-content: space-between;
     font-size: small;
-    color: #ffe0b2;
+    color: #ff9800;
 }
 .box .y-login-back.data-v-2eb6055b {
     margin: 40rpx auto 0;
@@ -170,7 +172,7 @@
 }
 .box .uni-form-item .with-fun.data-v-2eb6055b {
     width: 100%;
-    background: #23242d;
+    background: #f7f7f7;
     padding-bottom: 1px;
 }
 .box .uni-form-item .with-fun input.data-v-2eb6055b {
@@ -185,7 +187,7 @@
           -ms-flex: 1;
               flex: 1;
       color: #555;
-      background: #23242d;
+      background: #f7f7f7;
       border: none;
 }
 .box .uni-form-item .with-fun .uni-icon.uni-active.data-v-2eb6055b {
@@ -242,8 +244,8 @@
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  background: #2c2e37;
-  color: #ccc;
+  background: #fff;
+  color: #333;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;

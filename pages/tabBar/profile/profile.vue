@@ -44,7 +44,7 @@
 		<view class="y-list">
 			<view class="y-list-box">
 				<view class="y-list-box-item" v-for="(i, index) in topList" :key="'list'+index" @click="goToplist(index)">
-					<uni-icon :type="i.icon" color="#fedba3"></uni-icon>
+					<uni-icon :type="i.icon" color="#ff9800"></uni-icon>
 					<view>{{i.title}}</view>
 				</view>
 			</view>
@@ -101,16 +101,15 @@
 					{ title: '抽奖', type: 'lottery', icon: 'spinner', url: '/pages/template/profile/topList-lottery/lottery' },
 					{ title: '订单', type: 'order', icon: 'compose', url: '/pages/template/profile/topList-order/topList-order' },
 					{ title: '团队', type: 'team', icon: 'contact', url: '/pages/template/profile/topList-team/topList-team' },
-					{ title: '鼓励金', type: 'encourage', icon: 'circle-filled', url: '/pages/template/profile/topList-encourage/topList-encourage' }
+					{ title: '收货地址', type: 'encourage', icon: 'location-filled', url: '/pages/template/profile/address/address' }
 				],
 				list: [
-					{ title: '米库总量', type: 'sum', showArrow: true, showExtraIcon: true, extraIcon: { color: '#a1adc1', size: '22', type: 'star-filled' }, showBadge: true, badgeText: null, badgeType: 'warning', runningWay: 'goPage', path: '/pages/template/profile/list-sum/list-sum' },
-					{ title: '实名认证', type: 'realName', showArrow: true, showExtraIcon: true, extraIcon: { color: '#a1adc1', size: '22', type: 'personadd-filled' }, showBadge: true, badgeText: null, badgeType: 'warning', runningWay: 'goPage', path: '/pages/template/profile/real-name/real-name' },
-					{ title: '收货地址', type: 'address', showArrow: true, showExtraIcon: true, extraIcon: { color: '#a1adc1', size: '22', type: 'location-filled' }, showBadge: false, badgeText: null, badgeType: 'warning', runningWay: 'goPage', path: '/pages/template/profile/address/address' },
-					{ title: '问题反馈', type: 'feedback', showArrow: true, showExtraIcon: true, extraIcon: { color: '#a1adc1', size: '22', type: 'help-filled' }, showBadge: false, badgeText: null, badgeType: 'warning', runningWay: 'goPage', path: '/pages/template/profile/feedback/feedback' },
-					{ title: '检测版本', type: 'edition', showArrow: true, showExtraIcon: true, extraIcon: { color: '#a1adc1', size: '22', type: 'info-filled' }, showBadge: true, badgeText: null, badgeType: 'warning', runningWay: 'goPage', path: '/pages/template/profile/list-edition/list-edition' },
-					{ title: '客服微信', type: 'wechat', showArrow: false, showExtraIcon: true, extraIcon: { color: '#a1adc1', size: '22', type: 'weixin' }, showBadge: true, badgeText: null, badgeType: 'default', runningWay: 'copy' },
-					{ title: '客服热线', type: 'phone', showArrow: false, showExtraIcon: true, extraIcon: { color: '#a1adc1', size: '22', type: 'phone-filled' }, showBadge: true, badgeText: null, badgeType: 'default', runningWay: 'dialPhone' }
+					{ title: '米库总量', type: 'sum', showArrow: true, showExtraIcon: true, extraIcon: { color: '#a1adc1', size: '22', type: 'star-filled' }, showBadge: true, badgeText: '', badgeType: 'warning', runningWay: 'goPage', path: '/pages/template/profile/sum/sum' },
+					{ title: '实名认证', type: 'realName', showArrow: true, showExtraIcon: true, extraIcon: { color: '#a1adc1', size: '22', type: 'personadd-filled' }, showBadge: true, badgeText: '', badgeType: 'warning', runningWay: 'goPage', path: '/pages/template/profile/real-name/real-name' },
+					{ title: '问题反馈', type: 'feedback', showArrow: true, showExtraIcon: true, extraIcon: { color: '#a1adc1', size: '22', type: 'help-filled' }, showBadge: false, badgeText: '', badgeType: 'warning', runningWay: 'goPage', path: '/pages/template/profile/feedback/feedback' },
+					{ title: '检测版本', type: 'edition', showArrow: true, showExtraIcon: true, extraIcon: { color: '#a1adc1', size: '22', type: 'info-filled' }, showBadge: true, badgeText: '', badgeType: 'warning', runningWay: 'goPage', path: '/pages/template/profile/edition/edition' },
+					{ title: '客服微信', type: 'wechat', showArrow: false, showExtraIcon: true, extraIcon: { color: '#a1adc1', size: '22', type: 'weixin' }, showBadge: true, badgeText: '', badgeType: 'default', runningWay: 'copy' },
+					{ title: '客服热线', type: 'phone', showArrow: false, showExtraIcon: true, extraIcon: { color: '#a1adc1', size: '22', type: 'phone-filled' }, showBadge: true, badgeText: '', badgeType: 'default', runningWay: 'dialPhone' }
 				]
 			}
 		},
@@ -254,6 +253,7 @@
 	justify-content: space-around;
 	text-align: center;
 	padding-top: 20upx;
+	color: #ccc;
 	image {
 		width: 36upx;
 		height: 36upx;

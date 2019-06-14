@@ -30,17 +30,17 @@
 /* 页面content高度(有tabBar) */
 /* 页面box颜色 */
 /* 登录 */
-.uni-checkbox-input.data-v-45bdf02a {
+.uni-checkbox-input.data-v-528afbd6 {
   -webkit-transition: .2s;
   -o-transition: .2s;
   transition: .2s;
   color: #fff !important;
 }
-.uni-checkbox-input.uni-checkbox-input-checked.data-v-45bdf02a {
+.uni-checkbox-input.uni-checkbox-input-checked.data-v-528afbd6 {
   background: #E09529;
   color: #fff !important;
 }
-.y-button.data-v-45bdf02a {
+.y-button.data-v-528afbd6 {
   position: absolute;
   bottom: 0;
   width: 95%;

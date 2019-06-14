@@ -1,1 +1,0 @@
-<view class="content" bind:__l="__l"><view><text data-event-opts="{{[['tap',[['setTabBarBadge',['$event']]]]]}}" class="title" bindtap="__e">{{title}}</text><uni-icon type="{{item}}" color="#8f8f94" size="40" data-event-opts="{{[['^click',[['switchActive']]]]}}" bind:click="__e"></uni-icon></view></view>

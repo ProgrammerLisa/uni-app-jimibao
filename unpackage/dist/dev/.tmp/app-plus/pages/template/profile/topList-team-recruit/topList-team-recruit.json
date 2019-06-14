@@ -1,0 +1,14 @@
+{
+  "navigationBarTitleText": "团队招募",
+  "scrollIndicator": "none",
+  "titleNView": {
+    "buttons": [
+      {
+        "type": "share"
+      }
+    ]
+  },
+  "usingComponents": {
+    "uni-popup": "/components/uni-popup/uni-popup"
+  }
+}

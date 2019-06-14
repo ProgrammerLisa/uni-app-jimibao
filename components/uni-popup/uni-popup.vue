@@ -1,10 +1,10 @@
 <template>
-	<view class="y-modal-container" v-show="show">
+	<view class="y-modal-container" v-if="show">
 		<view class="y-modal" @click="showBefore=false" :class="showBefore?`fade-in`:`fade-out`"></view>
 		<view class="y-modal-content" :class="showBefore?`slow-up`:`slow-down`">
 			<view>
 				<view v-for="(i, index) in list" :key="index" @click="sendItem(index)" class="y-modal-item">
-					{{i.title}}
+					<uni-icon v-if="i.icon" :type="i.icon"></uni-icon>{{i.title}}
 				</view>
 				<view class="y-modal-item" @click="showBefore=false">取消</view>
 			</view>
@@ -13,7 +13,11 @@
 </template>
 
 <script>
+	import uniIcon from '@/components/uni-icon/uni-icon.vue'
 	export default {
+		components: {
+			uniIcon
+		},
 		props: {
 			list: Array,
 			show: Boolean

@@ -1,1 +1,0 @@
-document.dispatchEvent(new CustomEvent("generateFuncReady", { detail: { generateFunc: $gwx('./pages/template/profile/list-address/list-address.wxml') } }));

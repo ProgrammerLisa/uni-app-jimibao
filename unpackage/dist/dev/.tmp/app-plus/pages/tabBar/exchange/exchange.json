@@ -1,3 +1,8 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "uni-badge": "/components/uni-badge/uni-badge",
+    "uni-mescroll": "/components/mescroll-uni/mescroll-uni",
+    "y-tabs": "/components/y-tabs/y-tabs",
+    "y-input-confirm": "/components/y-confirm/y-input-confirm"
+  }
 }

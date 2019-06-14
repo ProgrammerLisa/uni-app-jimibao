@@ -42,14 +42,15 @@
 }
 .y-content.data-v-735f4a38 {
   padding: 0;
-  background: #2c2e37;
+  background: #fff;
   margin-top: 20rpx;
   padding: 0 20rpx;
 }
 .y-content input.data-v-735f4a38 {
-    background: #23242d;
-    border: solid 1rpx #555;
-    border-radius: 10rpx;
+    background: #f7f7f7;
+    border: solid 1rpx #ccc;
+    -webkit-border-radius: 10rpx;
+            border-radius: 10rpx;
     margin: 0 20rpx;
 }
 .y-content .forget-box.data-v-735f4a38 {
@@ -70,7 +71,7 @@
       color: #f7f7f7;
 }
 .y-content .forget-box .forgetPwd.data-v-735f4a38 {
-      color: #ffe0b2;
+      color: #ff9800;
 }
 .y-content .y-button.data-v-735f4a38 {
     margin: 120rpx 20rpx 20rpx;

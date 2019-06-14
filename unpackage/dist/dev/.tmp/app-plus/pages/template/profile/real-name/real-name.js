@@ -285,7 +285,7 @@ var _formRules = _interopRequireDefault(__webpack_require__(/*! @/static/js/form
           plus.zip.compressImage({
             src: e.tempFilePaths[0],
             dst: dstUrl,
-            width: '15%',
+            width: '20%',
             quality: 30 },
           function (res) {
             (0, _index2.pathToBase64)(dstUrl).then(function (response) {

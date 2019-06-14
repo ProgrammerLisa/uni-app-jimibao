@@ -5,7 +5,8 @@ import url from './utils/request/config.js'
 Vue.config.productionTip = false
 
 Vue.prototype.$imageUrl = url.uploadImgUrl
-Vue.prototype.$version = '集米宝2.0'
+Vue.prototype.$socketUrl = url.socketUrl
+Vue.prototype.$version = url.version
 
 App.mpType = 'app'
 

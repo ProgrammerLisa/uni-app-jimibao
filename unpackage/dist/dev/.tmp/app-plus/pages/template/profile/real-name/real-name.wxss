@@ -47,8 +47,8 @@
 .y-top .y-top-title.data-v-66c6179c {
     display: inline-block;
     padding: 10rpx 20rpx;
-    border: solid 1px #ffe0b2;
-    color: #ffe0b2;
+    border: solid 1px #ff9800;
+    color: #ff9800;
 }
 .y-content-hasNav.data-v-66c6179c {
   position: relative;
@@ -58,7 +58,7 @@
 }
 .y-content.data-v-66c6179c {
   padding: 0 20rpx;
-  background: #2c2e37;
+  background: #fff;
 }
 .y-list.data-v-66c6179c {
   display: -webkit-box;
@@ -75,7 +75,7 @@
   -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  border-bottom: 1px solid #21232c;
+  border-bottom: 1px solid #DFDFE1;
 }
 .y-list .y-list-left.data-v-66c6179c {
     font-size: 32rpx;
@@ -96,13 +96,14 @@
 }
 .y-content.data-v-66c6179c {
   padding: 0;
-  background: #2c2e37;
+  background: #fff;
   padding: 0 20rpx;
 }
 .y-content input.data-v-66c6179c {
-    background: #23242d;
-    border: solid 1rpx #555;
-    border-radius: 10rpx;
+    background: #f7f7f7;
+    border: solid 1rpx #ccc;
+    -webkit-border-radius: 10rpx;
+            border-radius: 10rpx;
     margin: 0 20rpx;
 }
 .y-content .forget-box.data-v-66c6179c {
@@ -123,7 +124,7 @@
       color: #f7f7f7;
 }
 .y-content .forget-box .forgetPwd.data-v-66c6179c {
-      color: #ffe0b2;
+      color: #ff9800;
 }
 .y-content .set-default.data-v-66c6179c {
     padding: 20rpx;
@@ -148,7 +149,7 @@
           -ms-flex-pack: center;
               justify-content: center;
       overflow: hidden;
-      border: 1px solid #e1e1e1;
+      border: 1px solid #333;
       margin-right: 10rpx;
 }
 .y-content .uni-item-flex .uni-item-image image.data-v-66c6179c {
@@ -158,7 +159,7 @@
   position: absolute;
   bottom: 0;
   left: 0;
-  background: #23242d;
+  background: #f7f7f7;
   width: 100%;
 }
 .uni-btn-v .y-button.data-v-66c6179c {
@@ -170,7 +171,7 @@
 }
 .y-tips .y-tips-title.data-v-66c6179c {
     font-weight: bold;
-    color: #ffe0b2;
+    color: #ff9800;
 }
 .y-tips .y-tips-content.data-v-66c6179c {
     font-size: 28rpx;

@@ -8,22 +8,22 @@
 				<form @submit="formSubmit">
 					<view class="register-item">
 						<text class="y-label">手机号</text>
-						<input name="phone" v-model="phone" class="y-input" />
+						<input name="phone" v-model="phone" class="y-input y-input-border" />
 					</view>
 					<view class="register-item">
 						<text class="y-label">密码</text>
-						<input name="password" password class="y-input" />
+						<input name="password" password class="y-input y-input-border" />
 					</view>
 					<view class="register-item">
 						<text class="y-label">验证码</text>
 						<view class="y-code">
-							<input maxlength="4" type="number" name="code" class="y-input" />
+							<input maxlength="4" type="number" name="code" class="y-input y-input-border" />
 							<button class="y-login" :disabled="disabled" @click="getCode">{{codeText}}</button>
 						</view>
 					</view>
 					<view class="register-item">
 						<text class="y-label">推荐人</text>
-						<input name="superior" class="y-input" />
+						<input name="superior" class="y-input y-input-border" />
 					</view>
 					<view class="y-label y-agree">
 						<checkbox-group @change="checkboxChange" style="flex: 1;">
