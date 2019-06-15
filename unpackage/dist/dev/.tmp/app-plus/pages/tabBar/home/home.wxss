@@ -117,8 +117,7 @@ view.data-v-5f22e8b0 {
   display: -ms-flexbox;
   display: flex;
   padding: 20rpx 0;
-  border-top: 10rpx solid #eee;
-  border-bottom: 10rpx solid #eee;
+  margin: 10rpx 0;
   background: #fff;
 }
 .y-list .y-list-item.data-v-5f22e8b0 {
@@ -142,8 +141,11 @@ view.data-v-5f22e8b0 {
     text-align: center;
 }
 .y-list .y-list-item .image.data-v-5f22e8b0 {
-      width: 80rpx;
-      height: 80rpx;
+      width: 70rpx;
+      height: 70rpx;
       margin: auto;
+}
+.y-list .y-list-item .title.data-v-5f22e8b0 {
+      font-size: 30rpx;
 }
 

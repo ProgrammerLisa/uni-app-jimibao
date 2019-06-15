@@ -1,19 +1,40 @@
 <template>
 	<view>
-		<y-tabs :tabList="tabList" :active="active" @changeTabs="changeTabs" tabColor="#424242" activeBgColor="#333333" textColor="#c9c9c9" activeTextColor="#fff" lineColor="#7f7f7f"></y-tabs>
-		<view v-for="(i, index) in tabList" :key="index">
-			<view v-if="active===index" class="order-box">
-				<uni-mescroll @down="downCallback" @up="upCallback" @init="mescrollInit">
-					<view v-for="(value, key) in i.dataList" :key="key" class="y-order" @click="clickEvent(value)">
-						<view class="left">
-							<view class="title">{{active===0?value.title:value.content}}</view>
-							<view class="time">{{active===0?value.releasetime:value.createTime}}</view>
-						</view>
-						<view class="right" v-if="active===0">
-							<uni-icon type="arrowright"></uni-icon>
-						</view>
+		<view class="banner">
+			<image :src="partner" mode="widthFix" class="banner-image"></image>
+		</view>
+		<view class="content">
+			<view class="search">
+				<view class="uni-title uni-common-pl">地区选择</view>
+				<view class="uni-list">
+				    <view class="uni-list-cell">
+				        <view class="uni-list-cell-left">
+				            当前选择
+				        </view>
+				        <view class="uni-list-cell-db">
+				            <picker @change="bindPickerChange" :value="index" :range="dataList">
+				                <view class="uni-input">{{dataList[index]}}</view>
+				            </picker>
+				        </view>
+				    </view>
+				</view>
+			</view>
+			<view class="button">
+				<button class="y-button" @click="partnerSend">我要合伙</button>
+			</view>
+		</view>
+		<view class="tips">
+			<view class="title">
+				合伙人规则
+				<view class="title-tips">(请仔细阅读)</view>
+			</view>
+			<view v-for="(i, index) in docx" :key="`docx${index}`">
+			    <view class="docx-title">{{i.title}}</view>
+			    <view>
+					<view v-for="(item, itemIndex) in i.item" :key="itemIndex" class="docx-item">
+						{{itemIndex + 1}}. <view v-html="item.content" class="content-text"></view>
 					</view>
-				</uni-mescroll>
+			    </view>
 			</view>
 		</view>
 	</view>
@@ -21,117 +42,75 @@
 
 <script>
 	import uniIcon from '@/components/uni-icon/uni-icon.vue'
-	import uniMescroll from '@/components/mescroll-uni/mescroll-uni.vue'
-	import yTabs from '@/components/y-tabs/y-tabs.vue'
 	import api from '@/utils/api/tabBar/index.js'
+	import partner from '@/static/image/partnerBanner.png'
 	export default {
 		components: {
-			uniIcon,
-			uniMescroll,
-			yTabs
+			uniIcon
 		},
 		data () {
 			return {
-				active: 0,
-				tabList: [
-					{ title: '系统消息', dataList: [] },
-					{ title: '个人消息', dataList: [] }
-				],
-				mescroll: null, //mescroll实例对象
-				// 下拉刷新的配置
-				downOption: { 
-					use: true, // 是否启用下拉刷新; 默认true
-					auto: true, // 是否在初始化完毕之后自动执行下拉刷新的回调; 默认true
-				},
-				// 上拉加载的配置
-				upOption: {
-					use: true, // 是否启用上拉加载; 默认true
-					auto: true, // 是否在初始化完毕之后自动执行上拉加载的回调; 默认true
-					isLock: false, // 是否锁定上拉加载 (可用于不触发upCallback,只保留回到顶部按钮的场景)
-					page: {
-						num: 0, // 当前页码,默认0,回调之前会加1,即callback(page)会从1开始
-						size: 10 // 每页数据的数量,默认10
+				partner,
+				optionShow: false,
+				index: 0,
+				sendId: '',
+				valueList: [],
+				dataList: [],
+				docx: [
+					{
+					  title: '第一章 总则',
+					  item: [
+						{ content: '为了维护公司和合伙人利益，特制定本规则，公司股东及合伙人必须严格遵守。本规则中所涉及的集米宝用户均为实名认证用户。' },
+						{ content: '合伙人需年满十八周岁，并具有完全民事权利能力和完全民事行为能力的自然人。' },
+						{ content: '合伙人需遵守公司相关的规章制度，协助公司搞好市场，不得扰乱市场有序经营。' },
+						{ content: '合伙人之间的竞争冲突，以公司裁定为准。' },
+						{ content: '合伙人不得参与经营与本公司或其他合伙人竞争的业务。' },
+						{ content: '合伙人未经公司同意而转让其服务权益，所产生的后果自行负责。' },
+						{ content: '双方约定合伙期限到期的，可选择续期或者退伙。' },
+						{ content: '因违反合作机制契约精神，借用公司名义进行虚假宣传以谋取不正当利益的，给公司造成重大影响的，将追究合伙人的相关责任后并进行退伙处理。' }
+					  ]
 					},
-					noMoreSize: 9, // 配置列表的总数量要大于等于5条才显示'-- END --'的提示
-					empty: {
-						tip: '暂无相关数据'
+					{
+					  title: '第二章 细则',
+					  item: [
+						{ content: '合伙人是根据省市县/区的层级划分来确定的，每个省市县/区有且只有一位。层级等级越高，合伙人的权益越大。' },
+						{ content: '合伙人分红是根据层级划分以及合伙人所处的层级以下实名认证账户进行定义的。合伙人层级等级越高，该层级以下用户人数越多，所得分红越多。合伙人所得分红=<span style="color: #f68728;">合伙人所处层级以下的其他所有已实名会员</span>每日定时赠送米粒总数x百分比<span style="color: #f68728;">（省/直辖市/自治区合伙人为1%，地级市/直辖市的区合伙人为3%，县/地级市的区合伙人为5%）</span> (具体情况根据市场进行变更，可在系统消息中查看)' }
+					  ]
 					}
-				}
+				]
 			}
 		},
 		onShow () {
-			this.getData(0)
-			this.getData(1)
+			this.getData()
 		},
-		// 必须注册滚动到底部的事件,使上拉加载生效
-		onReachBottom() {
-			this.mescroll && this.mescroll.onReachBottom();
-		},
-		// 必须注册列表滚动事件,使下拉刷新生效
-		onPageScroll(e) {
-			this.mescroll && this.mescroll.onPageScroll(e);
+		onNavigationBarButtonTap (e) {
+			uni.navigateTo({
+				url: './partner-team'
+			})
 		},
 		methods: {
-			async getData (e) {
-				let url
-				switch (e) {
-					case 0:
-						url = api.newsSystem
-						break
-					case 1:
-						url = api.newsSystemSelf
-				}
-				const res = await url()
+			async getData () {
+				const res = await api.partner()
 				if (res.success) {
-					this.tabList[e].dataList = res.data.list
-				}
-			},
-			async changeTabs (e) {
-				this.active = e
-			},
-			clickEvent (e) {
-				if (this.active === 0) {
-					uni.navigateTo({
-						url: './detail?content='+e.content+'&title='+e.title
+					this.valueList = res.data
+					this.sendId = res.data[this.index].plocalnumber
+					let data = res.data.map(element => {
+						return `${element.partnername} - 时间${element.validtime}天 - 价格${element.partnerprice}kg`
 					})
+					this.dataList = data
+					
 				}
 			},
-			// mescroll组件初始化的回调,可获取到mescroll对象
-			mescrollInit(mescroll) {
-				this.mescroll = mescroll
+			 bindPickerChange: function(e) {
+				this.index = e.target.value
+				this.sendId = this.valueList[parseInt(e.target.value)].plocalnumber
 			},
-			/*下拉刷新的回调, 有三种处理方式: */
-			downCallback(mescroll){
-				mescroll.resetUpScroll() // 重置列表为第一页 (自动执行 page.num=1, 再触发upCallback方法 )
-			},
-			/*上拉加载的回调*/
-			async upCallback(mescroll) {
-				// 此时mescroll会携带page的参数:
-				let pageNum = mescroll.num; // 页码, 默认从1开始
-				let pageSize = mescroll.size; // 页长, 默认每页10条
-				let url
-				switch (this.active) {
-					case 0:
-						url = api.newsSystem
-						break
-					case 1:
-						url = api.newsSystemSelf
-						break
-				}
-				const res = await url({ page: pageNum, size: pageSize })
+			async partnerSend () {
+				const res = await api.partnerAdd({ plocalnumber: this.sendId })
 				if (res.success) {
-					let curPageData = res.data.list
-					let totalSize = res.data.total
-					let hasNext = res.data.hasNextPage
-					setTimeout(() => {
-						mescroll.endSuccess(curPageData.length, hasNext)
-						//设置列表数据
-						if (mescroll.num === 1) this.tabList[this.active].dataList = []; //如果是第一页需手动制空列表
-						this.tabList[this.active].dataList = this.tabList[this.active].dataList.concat(curPageData); //追加新数据
-					}, 500)
-				} else {
-					// 失败隐藏下拉加载状态
-					mescroll.endErr()
+					uni.showToast({
+						title: '申请成功！'
+					})
 				}
 			}
 		}
@@ -139,23 +118,38 @@
 </script>
 
 <style lang="scss" scoped>
-	.order-box {
-		height: calc(100vh - 100upx);
-		overflow: scroll;
+	.banner-image {
+		width: 100vw;
 	}
-	.y-order {
+	.content {
+		padding: 50upx 0;
+		background: $uni-box-color;
+	}
+	.docx-item {
 		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		padding: 20upx;
-		border-bottom: 1px solid $uni-box-line;
-		.right {
-			min-width: 100upx;
-			text-align: right;
+		width: 100%;
+	}
+	.button {
+		width: 60%;
+		margin: 30upx auto;
+	}
+	.y-button {
+		background: #f06292;
+		border-radius: 40upx;
+		border: none;
+		color: #fff;
+	}
+	.tips {
+		padding: 20upx 30upx;
+		.title {
+			text-align: center;
+			font-weight: bold;
 		}
-		.time {
-			color: $uni-text-color-placeholder;
+		.title-tips {
 			font-size: $uni-font-size-sm;
+		}
+		.content-text {
+			font-size: $uni-font-size-base;
 		}
 	}
 </style>

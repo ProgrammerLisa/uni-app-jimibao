@@ -81,7 +81,7 @@
   height: 100rpx;
   -webkit-border-radius: 100%;
           border-radius: 100%;
-  border: solid 1px #ff9800;
+  border: solid 1px #F0AD4E;
 }
 .uni-icon.data-v-584db3e6 {
   margin-left: 20rpx;

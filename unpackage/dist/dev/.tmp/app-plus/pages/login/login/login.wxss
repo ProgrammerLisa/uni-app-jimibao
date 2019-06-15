@@ -59,7 +59,7 @@
       height: 80px;
       -webkit-border-radius: 10rpx;
               border-radius: 10rpx;
-      border: 1rpx solid #ff9800;
+      border: 1rpx solid #F0AD4E;
 }
 .box .y-label.data-v-2eb6055b {
     font-size: small;
@@ -83,7 +83,7 @@
     color: #555;
 }
 .box .y-input.data-v-2eb6055b {
-    background: #f7f7f7;
+    background: #fff;
     font-size: 14px;
     border: none;
     padding: 15rpx 20rpx;
@@ -93,7 +93,7 @@
     color: #333;
 }
 .box .y-input-border.data-v-2eb6055b {
-    border: 1px solid #ccc;
+    border: 1px solid #E5E5E5;
 }
 .box .y-login-btn.data-v-2eb6055b {
     margin-top: 40rpx;
@@ -103,8 +103,7 @@
 }
 .box .y-login.data-v-2eb6055b {
     background: transparent;
-    color: #ff9800;
-    border: 1rpx solid #ff9800;
+    color: #F0AD4E;
     -webkit-transition: .2s;
     -o-transition: .2s;
     transition: .2s;
@@ -122,7 +121,7 @@
             justify-content: center;
 }
 .box .y-login.data-v-2eb6055b:active {
-    background: #ff9800;
+    background: #F0AD4E;
     color: #fff;
 }
 .box .y-login[disabled].data-v-2eb6055b {
@@ -130,7 +129,7 @@
 }
 .box .y-login[disabled].data-v-2eb6055b:active {
     background: transparent;
-    color: #ff9800;
+    color: #F0AD4E;
 }
 .box .y-flex.data-v-2eb6055b {
     display: -webkit-box;
@@ -142,7 +141,7 @@
         -ms-flex-pack: justify;
             justify-content: space-between;
     font-size: small;
-    color: #ff9800;
+    color: #F0AD4E;
 }
 .box .y-login-back.data-v-2eb6055b {
     margin: 40rpx auto 0;
@@ -172,8 +171,7 @@
 }
 .box .uni-form-item .with-fun.data-v-2eb6055b {
     width: 100%;
-    background: #f7f7f7;
-    padding-bottom: 1px;
+    background: #fff;
 }
 .box .uni-form-item .with-fun input.data-v-2eb6055b {
       -webkit-box-flex: 6;
@@ -187,7 +185,7 @@
           -ms-flex: 1;
               flex: 1;
       color: #555;
-      background: #f7f7f7;
+      background: #fff;
       border: none;
 }
 .box .uni-form-item .with-fun .uni-icon.uni-active.data-v-2eb6055b {
@@ -258,6 +256,7 @@
 .uni-icon.data-v-2eb6055b {
   border: none;
   margin-bottom: 1px;
+  background: #fff;
 }
 .uni-icon.data-v-2eb6055b:active {
   border: none;

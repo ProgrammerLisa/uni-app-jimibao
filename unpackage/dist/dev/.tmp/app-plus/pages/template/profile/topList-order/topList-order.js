@@ -199,10 +199,6 @@ var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/tabBar/i
 
 
   },
-  onShow: function onShow() {
-    this.getData(1);
-    this.getData(2);
-  },
   // 必须注册滚动到底部的事件,使上拉加载生效
   onReachBottom: function onReachBottom() {
     this.mescroll && this.mescroll.onReachBottom();
@@ -212,21 +208,8 @@ var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/tabBar/i
     this.mescroll && this.mescroll.onPageScroll(e);
   },
   methods: {
-    getData: function () {var _getData = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee(e) {var res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
-                  _index.default.order({ sign: e }));case 2:res = _context.sent;if (!
-                res.success) {_context.next = 11;break;}_context.t0 =
-                e;_context.next = _context.t0 ===
-                1 ? 7 : _context.t0 ===
-
-
-                2 ? 9 : 11;break;case 7:this.tabList[0].dataList = res.data.list;return _context.abrupt("break", 11);case 9:
-                this.tabList[1].dataList = res.data.list;return _context.abrupt("break", 11);case 11:case "end":return _context.stop();}}}, _callee, this);}));function getData(_x) {return _getData.apply(this, arguments);}return getData;}(),
-
-
-
-
-    changeTabs: function () {var _changeTabs = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2(e) {return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:
-                this.active = e;case 1:case "end":return _context2.stop();}}}, _callee2, this);}));function changeTabs(_x2) {return _changeTabs.apply(this, arguments);}return changeTabs;}(),
+    changeTabs: function () {var _changeTabs = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee(e) {return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
+                this.active = e;case 1:case "end":return _context.stop();}}}, _callee, this);}));function changeTabs(_x) {return _changeTabs.apply(this, arguments);}return changeTabs;}(),
 
     orderEvent: function orderEvent(e) {
       this.orderId = e.orderid;
@@ -242,8 +225,8 @@ var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/tabBar/i
         this.getChatRoomId();
       }
     },
-    getChatRoomId: function () {var _getChatRoomId = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3() {var res;return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:_context3.next = 2;return (
-                  _index.default.getChatIdByOrderId({ orderid: this.orderId }));case 2:res = _context3.sent;
+    getChatRoomId: function () {var _getChatRoomId = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var res;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:_context2.next = 2;return (
+                  _index.default.getChatIdByOrderId({ orderid: this.orderId }));case 2:res = _context2.sent;
                 if (res.success) {
                   uni.setStorage({
                     key: 'chat-id',
@@ -254,10 +237,10 @@ var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/tabBar/i
 
                     } });
 
-                }case 4:case "end":return _context3.stop();}}}, _callee3, this);}));function getChatRoomId() {return _getChatRoomId.apply(this, arguments);}return getChatRoomId;}(),
+                }case 4:case "end":return _context2.stop();}}}, _callee2, this);}));function getChatRoomId() {return _getChatRoomId.apply(this, arguments);}return getChatRoomId;}(),
 
-    revoke: function () {var _revoke = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee4() {var _this = this;var res;return _regenerator.default.wrap(function _callee4$(_context4) {while (1) {switch (_context4.prev = _context4.next) {case 0:_context4.next = 2;return (
-                  _index.default.revoke({ orderid: this.orderId }));case 2:res = _context4.sent;
+    revoke: function () {var _revoke = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3() {var _this = this;var res;return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:_context3.next = 2;return (
+                  _index.default.revoke({ orderid: this.orderId }));case 2:res = _context3.sent;
                 if (res.success) {
                   this.tabList[this.active].dataList.forEach(function (element) {
                     if (element.orderid === _this.orderId) {
@@ -268,7 +251,7 @@ var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/tabBar/i
                   uni.showToast({
                     title: '订单已撤销' });
 
-                }case 4:case "end":return _context4.stop();}}}, _callee4, this);}));function revoke() {return _revoke.apply(this, arguments);}return revoke;}(),
+                }case 4:case "end":return _context3.stop();}}}, _callee3, this);}));function revoke() {return _revoke.apply(this, arguments);}return revoke;}(),
 
     // mescroll组件初始化的回调,可获取到mescroll对象
     mescrollInit: function mescrollInit(mescroll) {
@@ -279,20 +262,20 @@ var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/tabBar/i
       mescroll.resetUpScroll(); // 重置列表为第一页 (自动执行 page.num=1, 再触发upCallback方法 )
     },
     /*上拉加载的回调*/
-    upCallback: function () {var _upCallback = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee5(mescroll) {var _this2 = this;var pageNum, pageSize, sign, res, curPageData, totalSize, hasNext;return _regenerator.default.wrap(function _callee5$(_context5) {while (1) {switch (_context5.prev = _context5.next) {case 0:
+    upCallback: function () {var _upCallback = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee4(mescroll) {var _this2 = this;var pageNum, pageSize, sign, res, curPageData, totalSize, hasNext;return _regenerator.default.wrap(function _callee4$(_context4) {while (1) {switch (_context4.prev = _context4.next) {case 0:
                 // 此时mescroll会携带page的参数:
                 pageNum = mescroll.num; // 页码, 默认从1开始
                 pageSize = mescroll.size; // 页长, 默认每页10条
-                _context5.t0 =
-                this.active;_context5.next = _context5.t0 ===
-                0 ? 5 : _context5.t0 ===
+                _context4.t0 =
+                this.active;_context4.next = _context4.t0 ===
+                0 ? 5 : _context4.t0 ===
 
 
-                1 ? 7 : 9;break;case 5:sign = 1;return _context5.abrupt("break", 9);case 7:
-                sign = 2;return _context5.abrupt("break", 9);case 9:_context5.next = 11;return (
+                1 ? 7 : 9;break;case 5:sign = 1;return _context4.abrupt("break", 9);case 7:
+                sign = 2;return _context4.abrupt("break", 9);case 9:_context4.next = 11;return (
 
 
-                  _index.default.order({ page: pageNum, size: pageSize, sign: sign }));case 11:res = _context5.sent;
+                  _index.default.order({ page: pageNum, size: pageSize, sign: sign }));case 11:res = _context4.sent;
                 if (res.success) {
                   curPageData = res.data.list;
                   totalSize = res.data.total;
@@ -306,7 +289,7 @@ var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/tabBar/i
                 } else {
                   // 失败隐藏下拉加载状态
                   mescroll.endErr();
-                }case 13:case "end":return _context5.stop();}}}, _callee5, this);}));function upCallback(_x3) {return _upCallback.apply(this, arguments);}return upCallback;}() } };exports.default = _default;
+                }case 13:case "end":return _context4.stop();}}}, _callee4, this);}));function upCallback(_x2) {return _upCallback.apply(this, arguments);}return upCallback;}() } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 
 /***/ }),

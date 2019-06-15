@@ -47,7 +47,6 @@
 	}
 	.y-button {
 		background: transparent;
-		border: 1upx solid $uni-router-color;
 		color: $uni-router-color;
 		font-size: 32upx;
 		transition: .2s;

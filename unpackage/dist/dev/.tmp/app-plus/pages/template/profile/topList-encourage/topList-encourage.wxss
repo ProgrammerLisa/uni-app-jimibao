@@ -47,12 +47,12 @@
 .y-top .y-top-title.data-v-421efa4e {
     display: inline-block;
     padding: 10rpx 20rpx;
-    border: solid 1px #ff9800;
+    border: solid 1px #F0AD4E;
     -webkit-border-radius: 6rpx;
             border-radius: 6rpx;
 }
 .y-top .y-top-count.data-v-421efa4e {
-    color: #ff9800;
+    color: #F0AD4E;
 }
 .y-input-box.data-v-421efa4e {
   text-align: center;
@@ -75,7 +75,7 @@
 }
 .y-docx-box .y-docx-title.data-v-421efa4e {
     font-weight: bold;
-    color: #ff9800;
+    color: #F0AD4E;
 }
 .y-docx-content.data-v-421efa4e {
   margin-top: 20rpx;

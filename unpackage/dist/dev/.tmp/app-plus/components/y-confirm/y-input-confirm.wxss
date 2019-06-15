@@ -76,7 +76,7 @@
     opacity: 0;
 }
 .y-modal-container .slow-up.data-v-6d55ef14 {
-    bottom: 50%;
+    top: 200rpx;
 }
 .y-modal-container .slow-down.data-v-6d55ef14 {
     top: -100%;
@@ -100,6 +100,9 @@
     -webkit-align-items: center;
         -ms-flex-align: center;
             align-items: center;
+    -webkit-border-radius: 20rpx;
+            border-radius: 20rpx;
+    overflow: hidden;
 }
 .y-confirm .footer .footer-button.data-v-6d55ef14 {
       -webkit-box-flex: 1;
@@ -107,8 +110,6 @@
           -ms-flex: 1;
               flex: 1;
       text-align: center;
-      -webkit-border-radius: none;
-              border-radius: none;
       border: none;
       font-size: 32rpx;
       color: #777;
@@ -126,10 +127,12 @@
   text-align: center;
 }
 .input .input-style.data-v-6d55ef14 {
+    width: 80%;
+    margin: auto;
     font-size: 32rpx;
     outline: none;
     padding: 20rpx;
-    border: solid 1px #c8c7cc;
+    border: solid 1px #E5E5E5;
     -webkit-border-radius: 6rpx;
             border-radius: 6rpx;
     text-align: center;

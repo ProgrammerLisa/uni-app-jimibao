@@ -110,11 +110,6 @@
 		onLoad() {
 			this.imageUrl = this.$imageUrl
 		},
-		onShow () {
-			this.getData(2)
-			this.getData(1)
-			this.getData(0)
-		},
 		onNavigationBarButtonTap (e) {
 			uni.navigateTo({
 				url: '../topList-team-recruit/topList-team-recruit'
@@ -129,24 +124,6 @@
 			this.mescroll && this.mescroll.onPageScroll(e);
 		},
 		methods: {
-			async getData(e) {
-				let index
-				const res = await api.team({ status: e })
-				if (res.success) {
-					switch (e) {
-						case 0:
-							index = 2
-							break
-						case 1:
-							index = 1
-							break
-						case 2:
-							index = 0
-							break
-					}
-					this.tabList[index].dataList = res.data.list
-				}
-			},
 			async changeTabs(e) {
 				this.active = e
 			},

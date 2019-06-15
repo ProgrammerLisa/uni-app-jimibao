@@ -98,25 +98,74 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
-//
-//
-//
-//
-//
-//
-var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js"));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/business/index.js */ "../../../../../y/uni-app-jimibao/utils/api/business/index.js"));
+var _business = _interopRequireDefault(__webpack_require__(/*! @/static/image/business.png */ "../../../../../y/uni-app-jimibao/static/image/business.png"));
+var _goods = _interopRequireDefault(__webpack_require__(/*! @/static/image/goods1.png */ "../../../../../y/uni-app-jimibao/static/image/goods1.png"));
+var _goods2 = _interopRequireDefault(__webpack_require__(/*! @/static/image/goods2.png */ "../../../../../y/uni-app-jimibao/static/image/goods2.png"));
+var _goods3 = _interopRequireDefault(__webpack_require__(/*! @/static/image/goods3.png */ "../../../../../y/uni-app-jimibao/static/image/goods3.png"));
+var _goods4 = _interopRequireDefault(__webpack_require__(/*! @/static/image/goods4.png */ "../../../../../y/uni-app-jimibao/static/image/goods4.png"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var _default =
 {
   data: function data() {
     return {
-      title: 'Hello' };
+      business: _business.default,
+      renderImage: false,
+      productList: [
+      { image: _goods.default, details: 'https://static.gzjimibao.com/app/shop-kongtiao-xiangqing.png' },
+      { image: _goods2.default, details: 'https://static.gzjimibao.com/app/shop-dianfanbao-xiangqing.png' },
+      { image: _goods3.default, details: 'https://static.gzjimibao.com/app/shop-fengshan-xiangqing.png' },
+      { image: _goods4.default, details: 'https://static.gzjimibao.com/app/shop-zhazhiji-xiangqing.png' }] };
+
 
   },
-  onLoad: function onLoad() {
+  onShow: function onShow() {var _this2 = this;
+    this.getData();
+    setTimeout(function () {
+      _this2.renderImage = true;
+    }, 300);
+  },
+  onNavigationBarButtonTap: function onNavigationBarButtonTap(e) {
+    uni.navigateTo({
+      url: '/pages/template/business/order/order' });
 
   },
-  methods: {} };exports.default = _default;
+  methods: {
+    getData: function () {var _getData = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var res, _this;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
+                  _index.default.list());case 2:res = _context.sent;
+                if (res.success) {
+                  _this = this;
+                  this.productList = res.data.list.map(function (element, index) {
+                    return _objectSpread({}, element, _this.productList[index]);
+                  });
+                }case 4:case "end":return _context.stop();}}}, _callee, this);}));function getData() {return _getData.apply(this, arguments);}return getData;}(),
+
+    goDetail: function goDetail(e) {
+      uni.navigateTo({
+        url: '/pages/template/business/detail/detail?src=' + JSON.stringify({ detail: e }) });
+
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 
 /***/ }),
 

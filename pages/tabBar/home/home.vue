@@ -82,7 +82,9 @@
 				uni.scanCode({
 					success (res) {
 						if ((res.result.indexOf('http://') !== -1) || (res.result.indexOf('https://') !== -1)) {
-							plus.runtime.openURL(res.result)
+							uni.navigateTo({
+								url: '/pages/template/home/course/web-view?title="扫描结果"&src=' + res.result
+							})
 						} else {
 							uni.navigateTo({
 								url: '/pages/template/home/scan-code/scan-code?content=' + res.result
@@ -115,9 +117,7 @@
 			})
 			this.getData()
 		},
-		onReady () {
-			
-		},
+		
 		methods: {
 			/**
 			 * 修改导航栏buttons
@@ -232,8 +232,9 @@
 	.y-list {
 		display: flex;
 		padding: 20upx 0;
-		border-top: 10upx solid $uni-box-spacing-line;
-		border-bottom: 10upx solid $uni-box-spacing-line;
+		margin: 10upx 0;
+		// border-top: 10upx solid $uni-box-spacing-line;
+		// border-bottom: 10upx solid $uni-box-spacing-line;
 		background: $uni-login-bg-color;
 		.y-list-item {
 			flex: 1;
@@ -242,9 +243,12 @@
 			justify-content: center;
 			text-align: center;
 			.image {
-				width: 80upx;
-				height: 80upx;
+				width: 70upx;
+				height: 70upx;
 				margin: auto;
+			}
+			.title {
+				font-size: 30upx;
 			}
 		}
 	}

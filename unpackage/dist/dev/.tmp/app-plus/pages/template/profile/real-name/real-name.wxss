@@ -47,8 +47,8 @@
 .y-top .y-top-title.data-v-66c6179c {
     display: inline-block;
     padding: 10rpx 20rpx;
-    border: solid 1px #ff9800;
-    color: #ff9800;
+    border: solid 1px #F0AD4E;
+    color: #F0AD4E;
 }
 .y-content-hasNav.data-v-66c6179c {
   position: relative;
@@ -100,8 +100,8 @@
   padding: 0 20rpx;
 }
 .y-content input.data-v-66c6179c {
-    background: #f7f7f7;
-    border: solid 1rpx #ccc;
+    background: #fff;
+    border: solid 1rpx #E5E5E5;
     -webkit-border-radius: 10rpx;
             border-radius: 10rpx;
     margin: 0 20rpx;
@@ -124,7 +124,7 @@
       color: #f7f7f7;
 }
 .y-content .forget-box .forgetPwd.data-v-66c6179c {
-      color: #ff9800;
+      color: #F0AD4E;
 }
 .y-content .set-default.data-v-66c6179c {
     padding: 20rpx;
@@ -159,7 +159,7 @@
   position: absolute;
   bottom: 0;
   left: 0;
-  background: #f7f7f7;
+  background: #fff;
   width: 100%;
 }
 .uni-btn-v .y-button.data-v-66c6179c {
@@ -171,7 +171,7 @@
 }
 .y-tips .y-tips-title.data-v-66c6179c {
     font-weight: bold;
-    color: #ff9800;
+    color: #F0AD4E;
 }
 .y-tips .y-tips-content.data-v-66c6179c {
     font-size: 28rpx;

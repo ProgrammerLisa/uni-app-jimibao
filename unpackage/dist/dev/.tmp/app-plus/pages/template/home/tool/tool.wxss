@@ -57,7 +57,7 @@
     font-size: 28rpx;
 }
 .y-tips.data-v-75661672 {
-  background: #f7f7f7;
+  background: #fff;
   padding: 10rpx;
   text-align: center;
   color: #999;

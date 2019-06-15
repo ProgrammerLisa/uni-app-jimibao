@@ -1,4 +1,4 @@
-const patternDevelopment = true // true是开发模式 false是生产模式
+const patternDevelopment = false // true是开发模式 false是生产模式
 let url, uploadImgUrl, socketUrl
 if (patternDevelopment) {
 	url = 'http://192.168.1.253:88/api',

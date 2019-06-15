@@ -182,7 +182,9 @@ var _lottery = _interopRequireDefault(__webpack_require__(/*! @/static/image/lot
       uni.scanCode({
         success: function success(res) {
           if (res.result.indexOf('http://') !== -1 || res.result.indexOf('https://') !== -1) {
-            plus.runtime.openURL(res.result);
+            uni.navigateTo({
+              url: '/pages/template/home/course/web-view?title="扫描结果"&src=' + res.result });
+
           } else {
             uni.navigateTo({
               url: '/pages/template/home/scan-code/scan-code?content=' + res.result });
@@ -215,9 +217,7 @@ var _lottery = _interopRequireDefault(__webpack_require__(/*! @/static/image/lot
 
     this.getData();
   },
-  onReady: function onReady() {
 
-  },
   methods: {
     /**
               * 修改导航栏buttons

@@ -20,7 +20,7 @@
 						<view class="uni-form-item">
 							<view class="y-input-border with-fun">
 								<input name="password" :password="showPassword" class="y-input" />
-								<view class="uni-icon uni-icon-eye" :class="[!showPassword ? 'uni-active' : '']" @click="showPassword=!showPassword"></view>
+								<view class="uni-icon uni-icon-eye" style="background: #fff;" :class="[!showPassword ? 'uni-active' : '']" @click="showPassword=!showPassword"></view>
 							</view>
 						</view>
 					</view>
@@ -203,6 +203,7 @@
 	.uni-icon {
 		border: none;
 		margin-bottom: 1px;
+		background: $uni-login-bg-color;
 	}
 	.uni-icon:active {
 		border: none;

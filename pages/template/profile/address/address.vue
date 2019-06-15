@@ -7,7 +7,7 @@
 						<view class="uni-media-list-logo" @click="goEdit(value)">
 							<uni-icon type="compose"></uni-icon>
 						</view>
-						<view class="uni-media-list-body">
+						<view class="uni-media-list-body" @click="copyPath(value)">
 							<view class="uni-media-list-text-top">{{value.location}} {{value.address}}</view>
 							<view class="uni-media-list-text-bottom uni-ellipsis">
 								<uni-tag class="default-tag" v-if="value.status === 1" size="small" type="warning" text="默认"/>
@@ -54,7 +54,13 @@
 					}
 				}],
 				show: false,
-				deleteForm: {}
+				deleteForm: {},
+				canCopy: false
+			}
+		},
+		onLoad (e) {
+			if (e.fromUrl === 'business') {
+				this.canCopy = true
 			}
 		},
 		onShow () {
@@ -91,6 +97,15 @@
 							title: '成功删除地址'
 						})
 					}, 500)
+				}
+			},
+			copyPath (e) {
+				if (this.canCopy) {
+					let pages = getCurrentPages()
+					let currPage = pages[pages.length - 1] // 当前页面
+					let prevPage = pages[pages.length - 2] // 上一个页面
+					prevPage._data.address = e
+					uni.navigateBack()
 				}
 			}
 		}

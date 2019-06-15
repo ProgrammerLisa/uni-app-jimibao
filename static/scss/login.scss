@@ -32,7 +32,7 @@
 		color: $uni-input-caret-color;
 	}
 	.y-input {
-		background: $uni-input-bg-color;
+		background: $uni-login-bg-color;
 		font-size: 14px;
 		border: none;
 		padding: 15upx 20upx;
@@ -52,7 +52,6 @@
 	.y-login {
 		background: transparent;
 		color: $uni-router-color;
-		border: 1upx solid $uni-router-color;
 		transition: .2s;
 		display: flex;
 		align-items: center;
@@ -94,7 +93,6 @@
 		.with-fun {
 			width: 100%;
 			background: $uni-input-bg-color;
-			padding-bottom: 1px;
 			input {
 				flex: 6;
 			}

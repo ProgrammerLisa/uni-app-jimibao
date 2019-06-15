@@ -124,5 +124,21 @@ export default {
 	// 兑换工具
 	toolExchange (obj) {
 		return request.post('/tool/exchangeTools', obj)
+	},
+	// 视频区-3/合作媒体-2/新手指南-1
+	article (obj) {
+		return request.get('/article/articleInfo', obj)
+	},
+	// 查询合伙人信息
+	partner (obj) {
+		return request.get('/partner/current', obj)
+	},
+	// 申请合伙人
+	partnerAdd (obj) {
+		return request.post('/partner/apply', obj)
+	},
+	// 查询合伙人信息
+	partnerTeam (obj) {
+		return request.get('/partner/getFirmPartnerInfo', obj)
 	}
 }

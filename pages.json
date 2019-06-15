@@ -66,16 +66,16 @@
 			"style": {
 				"navigationBarTitleText": "商城",
 				"app-plus": {
-					"scrollIndicator": "none",
 					"titleNView": {
 						"buttons": [{
-								"text": "                                                                                                                                                                                 ",
-								"fontSize": "15",
+								"text": "我的订单",
 								"width": "auto",
+								"fontSize": "15",
 								"color": "#dece98"
 							}
 						]
-					}
+					},
+					"scrollIndicator": "none"
 				},
 				"enablePullDownRefresh": true
 			}
@@ -354,6 +354,14 @@
 						}
 					}
 				},{
+					"path": "/partner/partner-team",
+					"style": {
+						"navigationBarTitleText": "我的合伙人",
+						"app-plus": {
+							"scrollIndicator": "none"
+						}
+					}
+				},{
 					"path": "/tool/tool",
 					"style": {
 						"navigationBarTitleText": "工具",
@@ -365,6 +373,44 @@
 					"path": "/course/course",
 					"style": {
 						"navigationBarTitleText": "商学院",
+						"app-plus": {
+							"scrollIndicator": "none"
+						}
+					}
+				},{
+					"path": "/course/video",
+					"style": {
+						"navigationBarTitleText": "视频播放",
+						"app-plus": {
+							"scrollIndicator": "none"
+						}
+					}
+				},{
+					"path": "/course/web-view",
+					"style": {
+						"navigationBarTitleText": "合作媒体",
+						"app-plus": {
+							"scrollIndicator": "none"
+						}
+					}
+				}
+			]
+		},
+		{
+			"root": "pages/template/business",
+			"pages": [
+				{
+					"path": "/detail/detail",
+					"style": {
+						"navigationBarTitleText": "商品详情",
+						"app-plus": {
+							"scrollIndicator": "none"
+						}
+					}
+				},{
+					"path": "/order/order",
+					"style": {
+						"navigationBarTitleText": "商品订单",
 						"app-plus": {
 							"scrollIndicator": "none"
 						}

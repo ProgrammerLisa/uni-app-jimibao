@@ -70,16 +70,7 @@
 		onPageScroll(e) {
 			this.mescroll && this.mescroll.onPageScroll(e);
 		},
-		onShow () {
-			this.getData()
-		},
 	    methods: {
-			async getData () {
-				const res = await api.AccountBalance()
-				if (res.success) {
-					this.pageInfo = res.data
-				}
-			},
 			// mescroll组件初始化的回调,可获取到mescroll对象
 			mescrollInit(mescroll) {
 				this.mescroll = mescroll;

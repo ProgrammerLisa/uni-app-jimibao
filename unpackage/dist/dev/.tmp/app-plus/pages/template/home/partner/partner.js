@@ -123,116 +123,95 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/tabBar/index.js */ "../../../../../y/uni-app-jimibao/utils/api/tabBar/index.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var uniIcon = function uniIcon() {return __webpack_require__.e(/*! import() | components/uni-icon/uni-icon */ "components/uni-icon/uni-icon").then(__webpack_require__.bind(null, /*! @/components/uni-icon/uni-icon.vue */ "../../../../../y/uni-app-jimibao/components/uni-icon/uni-icon.vue"));};var uniMescroll = function uniMescroll() {return Promise.all(/*! import() | components/mescroll-uni/mescroll-uni */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/mescroll-uni/mescroll-uni")]).then(__webpack_require__.bind(null, /*! @/components/mescroll-uni/mescroll-uni.vue */ "../../../../../y/uni-app-jimibao/components/mescroll-uni/mescroll-uni.vue"));};var yTabs = function yTabs() {return __webpack_require__.e(/*! import() | components/y-tabs/y-tabs */ "components/y-tabs/y-tabs").then(__webpack_require__.bind(null, /*! @/components/y-tabs/y-tabs.vue */ "../../../../../y/uni-app-jimibao/components/y-tabs/y-tabs.vue"));};var _default =
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/tabBar/index.js */ "../../../../../y/uni-app-jimibao/utils/api/tabBar/index.js"));
+var _partnerBanner = _interopRequireDefault(__webpack_require__(/*! @/static/image/partnerBanner.png */ "../../../../../y/uni-app-jimibao/static/image/partnerBanner.png"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var uniIcon = function uniIcon() {return __webpack_require__.e(/*! import() | components/uni-icon/uni-icon */ "components/uni-icon/uni-icon").then(__webpack_require__.bind(null, /*! @/components/uni-icon/uni-icon.vue */ "../../../../../y/uni-app-jimibao/components/uni-icon/uni-icon.vue"));};var _default =
 {
   components: {
-    uniIcon: uniIcon,
-    uniMescroll: uniMescroll,
-    yTabs: yTabs },
+    uniIcon: uniIcon },
 
   data: function data() {
     return {
-      active: 0,
-      tabList: [
-      { title: '系统消息', dataList: [] },
-      { title: '个人消息', dataList: [] }],
+      partner: _partnerBanner.default,
+      optionShow: false,
+      index: 0,
+      sendId: '',
+      valueList: [],
+      dataList: [],
+      docx: [
+      {
+        title: '第一章 总则',
+        item: [
+        { content: '为了维护公司和合伙人利益，特制定本规则，公司股东及合伙人必须严格遵守。本规则中所涉及的集米宝用户均为实名认证用户。' },
+        { content: '合伙人需年满十八周岁，并具有完全民事权利能力和完全民事行为能力的自然人。' },
+        { content: '合伙人需遵守公司相关的规章制度，协助公司搞好市场，不得扰乱市场有序经营。' },
+        { content: '合伙人之间的竞争冲突，以公司裁定为准。' },
+        { content: '合伙人不得参与经营与本公司或其他合伙人竞争的业务。' },
+        { content: '合伙人未经公司同意而转让其服务权益，所产生的后果自行负责。' },
+        { content: '双方约定合伙期限到期的，可选择续期或者退伙。' },
+        { content: '因违反合作机制契约精神，借用公司名义进行虚假宣传以谋取不正当利益的，给公司造成重大影响的，将追究合伙人的相关责任后并进行退伙处理。' }] },
 
-      mescroll: null, //mescroll实例对象
-      // 下拉刷新的配置
-      downOption: {
-        use: true, // 是否启用下拉刷新; 默认true
-        auto: true // 是否在初始化完毕之后自动执行下拉刷新的回调; 默认true
-      },
-      // 上拉加载的配置
-      upOption: {
-        use: true, // 是否启用上拉加载; 默认true
-        auto: true, // 是否在初始化完毕之后自动执行上拉加载的回调; 默认true
-        isLock: false, // 是否锁定上拉加载 (可用于不触发upCallback,只保留回到顶部按钮的场景)
-        page: {
-          num: 0, // 当前页码,默认0,回调之前会加1,即callback(page)会从1开始
-          size: 10 // 每页数据的数量,默认10
-        },
-        noMoreSize: 9, // 配置列表的总数量要大于等于5条才显示'-- END --'的提示
-        empty: {
-          tip: '暂无相关数据' } } };
+
+      {
+        title: '第二章 细则',
+        item: [
+        { content: '合伙人是根据省市县/区的层级划分来确定的，每个省市县/区有且只有一位。层级等级越高，合伙人的权益越大。' },
+        { content: '合伙人分红是根据层级划分以及合伙人所处的层级以下实名认证账户进行定义的。合伙人层级等级越高，该层级以下用户人数越多，所得分红越多。合伙人所得分红=<span style="color: #f68728;">合伙人所处层级以下的其他所有已实名会员</span>每日定时赠送米粒总数x百分比<span style="color: #f68728;">（省/直辖市/自治区合伙人为1%，地级市/直辖市的区合伙人为3%，县/地级市的区合伙人为5%）</span> (具体情况根据市场进行变更，可在系统消息中查看)' }] }] };
+
 
 
 
   },
   onShow: function onShow() {
-    this.getData(0);
-    this.getData(1);
+    this.getData();
   },
-  // 必须注册滚动到底部的事件,使上拉加载生效
-  onReachBottom: function onReachBottom() {
-    this.mescroll && this.mescroll.onReachBottom();
-  },
-  // 必须注册列表滚动事件,使下拉刷新生效
-  onPageScroll: function onPageScroll(e) {
-    this.mescroll && this.mescroll.onPageScroll(e);
+  onNavigationBarButtonTap: function onNavigationBarButtonTap(e) {
+    uni.navigateTo({
+      url: './partner-team' });
+
   },
   methods: {
-    getData: function () {var _getData = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee(e) {var url, res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.t0 =
-
-                e;_context.next = _context.t0 ===
-                0 ? 3 : _context.t0 ===
-
-
-                1 ? 5 : 6;break;case 3:url = _index.default.newsSystem;return _context.abrupt("break", 6);case 5:
-                url = _index.default.newsSystemSelf;case 6:_context.next = 8;return (
-
-                  url());case 8:res = _context.sent;
+    getData: function () {var _getData = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var res, data;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
+                  _index.default.partner());case 2:res = _context.sent;
                 if (res.success) {
-                  this.tabList[e].dataList = res.data.list;
-                }case 10:case "end":return _context.stop();}}}, _callee, this);}));function getData(_x) {return _getData.apply(this, arguments);}return getData;}(),
+                  this.valueList = res.data;
+                  this.sendId = res.data[this.index].plocalnumber;
+                  data = res.data.map(function (element) {
+                    return "".concat(element.partnername, " - \u65F6\u95F4").concat(element.validtime, "\u5929 - \u4EF7\u683C").concat(element.partnerprice, "kg");
+                  });
+                  this.dataList = data;
 
-    changeTabs: function () {var _changeTabs = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2(e) {return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:
-                this.active = e;case 1:case "end":return _context2.stop();}}}, _callee2, this);}));function changeTabs(_x2) {return _changeTabs.apply(this, arguments);}return changeTabs;}(),
+                }case 4:case "end":return _context.stop();}}}, _callee, this);}));function getData() {return _getData.apply(this, arguments);}return getData;}(),
 
-    clickEvent: function clickEvent(e) {
-      if (this.active === 0) {
-        uni.navigateTo({
-          url: './detail?content=' + e.content + '&title=' + e.title });
-
-      }
+    bindPickerChange: function bindPickerChange(e) {
+      this.index = e.target.value;
+      this.sendId = this.valueList[parseInt(e.target.value)].plocalnumber;
     },
-    // mescroll组件初始化的回调,可获取到mescroll对象
-    mescrollInit: function mescrollInit(mescroll) {
-      this.mescroll = mescroll;
-    },
-    /*下拉刷新的回调, 有三种处理方式: */
-    downCallback: function downCallback(mescroll) {
-      mescroll.resetUpScroll(); // 重置列表为第一页 (自动执行 page.num=1, 再触发upCallback方法 )
-    },
-    /*上拉加载的回调*/
-    upCallback: function () {var _upCallback = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3(mescroll) {var _this = this;var pageNum, pageSize, url, res, curPageData, totalSize, hasNext;return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:
-                // 此时mescroll会携带page的参数:
-                pageNum = mescroll.num; // 页码, 默认从1开始
-                pageSize = mescroll.size; // 页长, 默认每页10条
-                _context3.t0 =
-                this.active;_context3.next = _context3.t0 ===
-                0 ? 5 : _context3.t0 ===
-
-
-                1 ? 7 : 9;break;case 5:url = _index.default.newsSystem;return _context3.abrupt("break", 9);case 7:
-                url = _index.default.newsSystemSelf;return _context3.abrupt("break", 9);case 9:_context3.next = 11;return (
-
-
-                  url({ page: pageNum, size: pageSize }));case 11:res = _context3.sent;
+    partnerSend: function () {var _partnerSend = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var res;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:_context2.next = 2;return (
+                  _index.default.partnerAdd({ plocalnumber: this.sendId }));case 2:res = _context2.sent;
                 if (res.success) {
-                  curPageData = res.data.list;
-                  totalSize = res.data.total;
-                  hasNext = res.data.hasNextPage;
-                  setTimeout(function () {
-                    mescroll.endSuccess(curPageData.length, hasNext);
-                    //设置列表数据
-                    if (mescroll.num === 1) _this.tabList[_this.active].dataList = []; //如果是第一页需手动制空列表
-                    _this.tabList[_this.active].dataList = _this.tabList[_this.active].dataList.concat(curPageData); //追加新数据
-                  }, 500);
-                } else {
-                  // 失败隐藏下拉加载状态
-                  mescroll.endErr();
-                }case 13:case "end":return _context3.stop();}}}, _callee3, this);}));function upCallback(_x3) {return _upCallback.apply(this, arguments);}return upCallback;}() } };exports.default = _default;
+                  uni.showToast({
+                    title: '申请成功！' });
+
+                }case 4:case "end":return _context2.stop();}}}, _callee2, this);}));function partnerSend() {return _partnerSend.apply(this, arguments);}return partnerSend;}() } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 
 /***/ }),

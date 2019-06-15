@@ -1,5 +1,11 @@
 {
   "navigationBarTitleText": "商学院",
   "scrollIndicator": "none",
-  "usingComponents": {}
+  "usingComponents": {
+    "uni-collapse": "/components/uni-collapse/uni-collapse",
+    "uni-collapse-item": "/components/uni-collapse-item/uni-collapse-item",
+    "uni-mescroll": "/components/mescroll-uni/mescroll-uni",
+    "y-tabs": "/components/y-tabs/y-tabs",
+    "y-media-list": "/components/y-media-list/y-media-list"
+  }
 }

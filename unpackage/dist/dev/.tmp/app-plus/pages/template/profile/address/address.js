@@ -154,8 +154,14 @@ var _avatar = _interopRequireDefault(__webpack_require__(/*! @/static/image/avat
 
 
       show: false,
-      deleteForm: {} };
+      deleteForm: {},
+      canCopy: false };
 
+  },
+  onLoad: function onLoad(e) {
+    if (e.fromUrl === 'business') {
+      this.canCopy = true;
+    }
   },
   onShow: function onShow() {
     this.getData();
@@ -191,7 +197,17 @@ var _avatar = _interopRequireDefault(__webpack_require__(/*! @/static/image/avat
                       title: '成功删除地址' });
 
                   }, 500);
-                }case 5:case "end":return _context2.stop();}}}, _callee2, this);}));function deleteAddress() {return _deleteAddress.apply(this, arguments);}return deleteAddress;}() } };exports.default = _default;
+                }case 5:case "end":return _context2.stop();}}}, _callee2, this);}));function deleteAddress() {return _deleteAddress.apply(this, arguments);}return deleteAddress;}(),
+
+    copyPath: function copyPath(e) {
+      if (this.canCopy) {
+        var pages = getCurrentPages();
+        var currPage = pages[pages.length - 1]; // 当前页面
+        var prevPage = pages[pages.length - 2]; // 上一个页面
+        prevPage._data.address = e;
+        uni.navigateBack();
+      }
+    } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 
 /***/ }),

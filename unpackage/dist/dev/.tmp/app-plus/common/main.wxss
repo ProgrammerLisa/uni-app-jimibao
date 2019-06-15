@@ -1714,15 +1714,14 @@ view {
 }
 .y-button {
   background: transparent;
-  border: 1rpx solid #ff9800;
-  color: #ff9800;
+  color: #F0AD4E;
   font-size: 32rpx;
   -webkit-transition: .2s;
   -o-transition: .2s;
   transition: .2s;
 }
 .y-button:active {
-  background: #ff9800;
+  background: #F0AD4E;
   color: #fff;
 }
 .y-button[disabled] {

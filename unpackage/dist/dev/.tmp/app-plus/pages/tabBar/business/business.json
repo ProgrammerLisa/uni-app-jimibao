@@ -1,16 +1,16 @@
 {
   "navigationBarTitleText": "商城",
   "enablePullDownRefresh": true,
-  "scrollIndicator": "none",
   "titleNView": {
     "buttons": [
       {
-        "text": "                                                                                                                                                                                 ",
-        "fontSize": "15",
+        "text": "我的订单",
         "width": "auto",
+        "fontSize": "15",
         "color": "#dece98"
       }
     ]
   },
+  "scrollIndicator": "none",
   "usingComponents": {}
 }

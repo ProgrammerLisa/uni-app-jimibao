@@ -66,7 +66,7 @@
     margin: 0 15rpx;
 }
 .level-flex .count.data-v-d6bec220 {
-    background: #ff9800;
+    background: #F0AD4E;
     color: #e1e1e1;
     padding: 0 15rpx;
     -webkit-border-radius: 10rpx;
@@ -79,7 +79,7 @@
     -webkit-border-radius: 10rpx;
             border-radius: 10rpx;
     line-height: 1.5;
-    border: solid 1px #ff9800;
+    border: solid 1px #F0AD4E;
 }
 .level-flex.data-v-d6bec220:last-child {
   margin-bottom: 0;
@@ -112,6 +112,6 @@
           justify-content: space-between;
 }
 .uni-media-list-text-top text.data-v-d6bec220:first-child {
-    color: #ff9800;
+    color: #F0AD4E;
 }
 

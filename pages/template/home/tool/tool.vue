@@ -133,8 +133,6 @@
 			}
 		},
 		onShow () {
-			this.getData(0)
-			this.getData(1)
 			this.getAll()
 		},
 		// 必须注册滚动到底部的事件,使上拉加载生效
@@ -146,20 +144,6 @@
 			this.mescroll && this.mescroll.onPageScroll(e);
 		},
 		methods: {
-			async getData (e) {
-				let url
-				switch (e) {
-					case 0:
-						url = api.tools
-						break
-					case 1:
-						url = api.toolMine
-				}
-				const res = await url()
-				if (res.success) {
-					this.tabList[e].dataList = res.data.list
-				}
-			},
 			async getAll () {
 				const res = await api.AccountBalance()
 				if (res.success) {

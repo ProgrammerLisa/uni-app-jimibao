@@ -99,10 +99,6 @@
 				}
 			}
 		},
-		onShow () {
-			this.getData(1)
-			this.getData(2)
-		},
 		// 必须注册滚动到底部的事件,使上拉加载生效
 		onReachBottom() {
 			this.mescroll && this.mescroll.onReachBottom();
@@ -112,19 +108,6 @@
 			this.mescroll && this.mescroll.onPageScroll(e);
 		},
 		methods: {
-			async getData (e) {
-				const res = await api.order({ sign: e })
-				if (res.success) {
-					switch (e) {
-						case 1:
-							this.tabList[0].dataList = res.data.list
-							break
-						case 2:
-							this.tabList[1].dataList = res.data.list
-							break
-					}
-				}
-			},
 			async changeTabs (e) {
 				this.active = e
 			},

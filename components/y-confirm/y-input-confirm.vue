@@ -98,7 +98,7 @@
 			opacity: 0
 		}
 		.slow-up {
-			bottom: 50%;
+			top: 200upx;
 		}
 		.slow-down {
 			top: -100%;
@@ -116,10 +116,11 @@
 		.footer {
 			display: flex;
 			align-items: center;
+			border-radius: $uni-spacing-row-base;
+			overflow: hidden;
 			.footer-button {
 				flex: 1;
 				text-align: center;
-				border-radius: none;
 				border: none;
 				font-size: 32upx;
 				color: #777;
@@ -138,10 +139,12 @@
 	.input {
 		text-align: center;
 		.input-style {
+			width: 80%;
+			margin: auto;
 			font-size: $uni-font-size-lg;
 			outline: none;
 			padding: 20upx;
-			border: solid 1px $uni-border-color;
+			border: solid 1px $uni-input-border-color;
 			border-radius: 6upx;
 			text-align: center;
 			color: $uni-text-color;

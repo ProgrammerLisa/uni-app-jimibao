@@ -41,7 +41,9 @@
   color: #fff !important;
 }
 .content.data-v-5f4654d0 {
-  text-align: center;
-  height: 400rpx;
+  background: #fff;
+}
+.banner-image.data-v-5f4654d0 {
+  width: 100vw;
 }
 

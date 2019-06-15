@@ -170,16 +170,7 @@ var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/tabBar/i
   onPageScroll: function onPageScroll(e) {
     this.mescroll && this.mescroll.onPageScroll(e);
   },
-  onShow: function onShow() {
-    this.getData();
-  },
   methods: {
-    getData: function () {var _getData = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
-                  _index.default.AccountBalance());case 2:res = _context.sent;
-                if (res.success) {
-                  this.pageInfo = res.data;
-                }case 4:case "end":return _context.stop();}}}, _callee, this);}));function getData() {return _getData.apply(this, arguments);}return getData;}(),
-
     // mescroll组件初始化的回调,可获取到mescroll对象
     mescrollInit: function mescrollInit(mescroll) {
       this.mescroll = mescroll;
@@ -193,11 +184,11 @@ var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/tabBar/i
       // mescroll.endSuccess()
     },
     /*上拉加载的回调*/
-    upCallback: function () {var _upCallback = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2(mescroll) {var _this = this;var pageNum, pageSize, res, curPageData, totalSize, hasNext;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:
+    upCallback: function () {var _upCallback = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee(mescroll) {var _this = this;var pageNum, pageSize, res, curPageData, totalSize, hasNext;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
                 // 此时mescroll会携带page的参数:
                 pageNum = mescroll.num; // 页码, 默认从1开始
                 pageSize = mescroll.size; // 页长, 默认每页10条
-                _context2.next = 4;return _index.default.TransactionRecord({ page: pageNum, size: pageSize });case 4:res = _context2.sent;
+                _context.next = 4;return _index.default.TransactionRecord({ page: pageNum, size: pageSize });case 4:res = _context.sent;
                 if (res.success) {
                   // 接口返回的当前页数据列表 (数组)
                   curPageData = res.data.list;
@@ -224,7 +215,7 @@ var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/tabBar/i
                 } else {
                   // 失败隐藏下拉加载状态
                   mescroll.endErr();
-                }case 6:case "end":return _context2.stop();}}}, _callee2, this);}));function upCallback(_x) {return _upCallback.apply(this, arguments);}return upCallback;}() } };exports.default = _default;
+                }case 6:case "end":return _context.stop();}}}, _callee, this);}));function upCallback(_x) {return _upCallback.apply(this, arguments);}return upCallback;}() } };exports.default = _default;
 
 /***/ }),
 
