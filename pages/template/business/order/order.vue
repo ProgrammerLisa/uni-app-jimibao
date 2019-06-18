@@ -6,14 +6,16 @@
 				<uni-mescroll @down="downCallback" @up="upCallback" @init="mescrollInit">
 					<view v-for="(value, key) in i.dataList" :key="key" class="y-list-item">
 						<view class="left">
-							<image class="image" :src="value.image" mode="aspectFit"></image>
+							<image class="image" :src="value.productionname | imageFilter" mode="aspectFit"></image>
 						</view>
 						<view class="right rightAll">
 							<view>
-								<view class="title"><text>{{value.name}}</text> <uni-badge class="badge" type="warning" :text="'最多可兑换'+value.limitnumber+'个'"></uni-badge></uni-badge> </view>
-								<view class="rightAll-font">每次收集： {{value.harvestpd}}kg</view>
-								<view class="rightAll-font">总共奖励： {{value.sumReward}}kg</view>
-								<view class="rightAll-font">有效时间： {{value.validitytime}}kg</view>
+								<view class="title"><text>{{value.productionname}}</text> <uni-badge class="badge" type="warning" :text="value.status | statusFilter"></uni-badge></uni-badge> </view>
+								<view class="rightAll-font">单价： {{value.price}}kg</view>
+								<view class="rightAll-font">交易数量： {{value.number}}</view>
+								<view class="rightAll-font">总费用： {{value.number*value.price}}kg</view>
+								<view class="rightAll-font" v-if="value.expressname">快递公司： {{value.expressname}}</view>
+								<view class="rightAll-font" v-if="value.expressname">快递单号： {{value.expressno}}</view>
 							</view>
 						</view>
 					</view>
@@ -31,12 +33,40 @@
 	import yTabs from '@/components/y-tabs/y-tabs.vue'
 	import yInputConfirm from '@/components/y-confirm/y-input-confirm.vue'
 	import api from '@/utils/api/business/index.js'
+	import goods1 from '@/static/image/goods1.png'
+	import goods2 from '@/static/image/goods2.png'
+	import goods3 from '@/static/image/goods3.png'
+	import goods4 from '@/static/image/goods4.png'
 	export default {
 		components: {
 			uniBadge,
 			uniMescroll,
 			yTabs,
 			yInputConfirm
+		},
+		filters: {
+			imageFilter: function(value) {
+				switch (value) {
+					case '格力空调':
+						return goods1
+					case '美的电饭煲':
+						return goods2
+					case '美的电风扇':
+						return goods3
+					case '苏泊尔榨汁机':
+						return goods4
+				}
+			},
+			statusFilter (type) {
+				switch (type) {
+				case 0:
+				  return '待发货'
+				case 1:
+				  return '已发货'
+				case 2:
+				  return '已签收'
+				}
+			}
 		},
 		data () {
 			return {
@@ -145,27 +175,11 @@
 				// 此时mescroll会携带page的参数:
 				let pageNum = mescroll.num; // 页码, 默认从1开始
 				let pageSize = mescroll.size; // 页长, 默认每页10条
-				let url
-				switch (this.active) {
-					case 0:
-						url = api.tools
-						break
-					case 1:
-						url = api.toolMine
-						break
-				}
-				const res = await api.order({ page: pageNum, size: pageSize })
+				const res = await api.order({ page: pageNum, size: pageSize, status: this.active })
 				if (res.success) {
-					let curPageData, totalSize, hasNext
-					if (this.active === 0) {
-						curPageData = res.data
-						totalSize = res.data.length
-						hasNext = false
-					} else {
-						curPageData = res.data.list
-						totalSize = res.data.total
-						hasNext = res.data.hasNextPage
-					}
+					let curPageData = res.data.list
+					let totalSize = res.data.total
+					let hasNext = res.data.hasNextPage
 					setTimeout(() => {
 						mescroll.endSuccess(curPageData.length, hasNext)
 						//设置列表数据
@@ -210,9 +224,11 @@
 		border-bottom: 1px solid $uni-box-line;
 		.left {
 			flex: 1;
+			margin-right: 20upx;
 			.image {
 				width: 200upx;
 				height: 200upx;
+				border-radius: 10upx;
 			}
 		}
 		.right {

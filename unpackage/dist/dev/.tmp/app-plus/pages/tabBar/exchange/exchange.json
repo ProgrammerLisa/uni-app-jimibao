@@ -1,8 +1,28 @@
 {
+  "navigationBarTitleText": "交换中心",
+  "titleNView": {
+    "buttons": [
+      {
+        "text": "我的订单",
+        "width": "auto",
+        "fontSize": "15",
+        "color": "#dece98",
+        "navType": "order",
+        "float": "left"
+      },
+      {
+        "text": "发布订单",
+        "width": "auto",
+        "fontSize": "15",
+        "color": "#dece98",
+        "navType": "send",
+        "float": "right"
+      }
+    ]
+  },
   "usingComponents": {
-    "uni-badge": "/components/uni-badge/uni-badge",
     "uni-mescroll": "/components/mescroll-uni/mescroll-uni",
     "y-tabs": "/components/y-tabs/y-tabs",
-    "y-input-confirm": "/components/y-confirm/y-input-confirm"
+    "y-pay-confirm": "/components/y-confirm/y-pay-confirm"
   }
 }

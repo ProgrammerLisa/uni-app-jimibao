@@ -134,6 +134,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/tabBar/index.js */ "../../../../../y/uni-app-jimibao/utils/api/tabBar/index.js"));
+var _index2 = _interopRequireDefault(__webpack_require__(/*! @/utils/api/chat/index.js */ "../../../../../y/uni-app-jimibao/utils/api/chat/index.js"));
 var _partner = _interopRequireDefault(__webpack_require__(/*! @/static/image/partner.png */ "../../../../../y/uni-app-jimibao/static/image/partner.png"));
 var _propaganda = _interopRequireDefault(__webpack_require__(/*! @/static/image/propaganda.png */ "../../../../../y/uni-app-jimibao/static/image/propaganda.png"));
 var _tool = _interopRequireDefault(__webpack_require__(/*! @/static/image/tool.png */ "../../../../../y/uni-app-jimibao/static/image/tool.png"));
@@ -216,6 +217,12 @@ var _lottery = _interopRequireDefault(__webpack_require__(/*! @/static/image/lot
       } });
 
     this.getData();
+
+    uni.onSocketMessage(function (res) {
+      if (JSON.parse(res.data).type === 'CHAT') {
+        _this.noReadCount();
+      }
+    });
   },
 
   methods: {
@@ -252,6 +259,23 @@ var _lottery = _interopRequireDefault(__webpack_require__(/*! @/static/image/lot
                   this.carousel = res.data.AppUrl;
                   this.msg = res.data.NoticePO;
                 }case 4:case "end":return _context.stop();}}}, _callee, this);}));function getData() {return _getData.apply(this, arguments);}return getData;}(),
+
+    noReadCount: function () {var _noReadCount = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var res, text;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:_context2.next = 2;return (
+                  _index.default.unRead());case 2:res = _context2.sent;
+                if (res.success) {
+                  if (res.data > 0) {
+
+                    if (res.data < 100) {
+                      text = res.data.toString();
+                    } else {
+                      text = '99+';
+                    }
+                    uni.setTabBarBadge({
+                      index: 3,
+                      text: text });
+
+                  }
+                }case 4:case "end":return _context2.stop();}}}, _callee2, this);}));function noReadCount() {return _noReadCount.apply(this, arguments);}return noReadCount;}(),
 
     change: function change(e) {
       this.current = e.detail.current;

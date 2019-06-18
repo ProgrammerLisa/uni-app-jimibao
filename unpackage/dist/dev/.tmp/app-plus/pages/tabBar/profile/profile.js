@@ -168,7 +168,8 @@ var _gift = _interopRequireDefault(__webpack_require__(/*! @/static/image/gift.p
 
 
 
-var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/tabBar/index.js */ "../../../../../y/uni-app-jimibao/utils/api/tabBar/index.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var uniIcon = function uniIcon() {return __webpack_require__.e(/*! import() | components/uni-icon/uni-icon */ "components/uni-icon/uni-icon").then(__webpack_require__.bind(null, /*! @/components/uni-icon/uni-icon.vue */ "../../../../../y/uni-app-jimibao/components/uni-icon/uni-icon.vue"));};var uniList = function uniList() {return __webpack_require__.e(/*! import() | components/uni-list/uni-list */ "components/uni-list/uni-list").then(__webpack_require__.bind(null, /*! @/components/uni-list/uni-list.vue */ "../../../../../y/uni-app-jimibao/components/uni-list/uni-list.vue"));};var uniListItem = function uniListItem() {return __webpack_require__.e(/*! import() | components/uni-list-item/uni-list-item */ "components/uni-list-item/uni-list-item").then(__webpack_require__.bind(null, /*! @/components/uni-list-item/uni-list-item.vue */ "../../../../../y/uni-app-jimibao/components/uni-list-item/uni-list-item.vue"));};var _default =
+var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/tabBar/index.js */ "../../../../../y/uni-app-jimibao/utils/api/tabBar/index.js"));
+var _index2 = _interopRequireDefault(__webpack_require__(/*! @/utils/api/chat/index.js */ "../../../../../y/uni-app-jimibao/utils/api/chat/index.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var uniIcon = function uniIcon() {return __webpack_require__.e(/*! import() | components/uni-icon/uni-icon */ "components/uni-icon/uni-icon").then(__webpack_require__.bind(null, /*! @/components/uni-icon/uni-icon.vue */ "../../../../../y/uni-app-jimibao/components/uni-icon/uni-icon.vue"));};var uniList = function uniList() {return __webpack_require__.e(/*! import() | components/uni-list/uni-list */ "components/uni-list/uni-list").then(__webpack_require__.bind(null, /*! @/components/uni-list/uni-list.vue */ "../../../../../y/uni-app-jimibao/components/uni-list/uni-list.vue"));};var uniListItem = function uniListItem() {return __webpack_require__.e(/*! import() | components/uni-list-item/uni-list-item */ "components/uni-list-item/uni-list-item").then(__webpack_require__.bind(null, /*! @/components/uni-list-item/uni-list-item.vue */ "../../../../../y/uni-app-jimibao/components/uni-list-item/uni-list-item.vue"));};var _default =
 
 {
   components: {
@@ -198,7 +199,7 @@ var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/tabBar/i
       { title: '贡献值', type: 'contribution', icon: _gift.default, text: '0' }],
 
       topList: [
-      { title: '抽奖', type: 'lottery', icon: 'spinner', url: '/pages/template/profile/topList-lottery/lottery' },
+      { title: '抽奖', type: 'lottery', icon: 'spinner', url: '/pages/template/profile/topList-lottery/topList-lottery' },
       { title: '订单', type: 'order', icon: 'compose', url: '/pages/template/profile/topList-order/topList-order' },
       { title: '团队', type: 'team', icon: 'contact', url: '/pages/template/profile/topList-team/topList-team' },
       { title: '收货地址', type: 'encourage', icon: 'location-filled', url: '/pages/template/profile/address/address' }],
@@ -216,26 +217,31 @@ var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/tabBar/i
   onShow: function onShow() {
     this.getData();
     this.getListData();
-    this.imageUrl = this.$imageUrl;
+    var _this = this;
+    uni.onSocketMessage(function (res) {
+      if (JSON.parse(res.data).type === 'CHAT') {
+        _this.noReadCount();
+      }
+    });
   },
   onReady: function onReady() {
-
+    this.imageUrl = this.$imageUrl;
   },
   methods: {
-    getData: function () {var _getData = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var _this = this;var res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
+    getData: function () {var _getData = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var _this2 = this;var res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
                   _index.default.home());case 2:res = _context.sent;
                 if (res.success) {
                   this.userInfo = res.data.TFirmPO;
                   this.levelList.forEach(function (element) {
                     switch (element.type) {
                       case 'level':
-                        element.text = 'Lv' + _this.userInfo.levelid;
+                        element.text = 'Lv' + _this2.userInfo.levelid;
                         break;
                       case 'active':
-                        element.text = _this.userInfo.activevalue;
+                        element.text = _this2.userInfo.activevalue;
                         break;
                       case 'contribution':
-                        element.text = _this.userInfo.contribution;
+                        element.text = _this2.userInfo.contribution;
                         break;}
 
                   });
@@ -248,7 +254,7 @@ var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/tabBar/i
                         res.data.TFirmPO.idcard ? element.badgeText = '已认证' : element.badgeText = '未认证';
                         break;
                       case 'edition':
-                        element.badgeText = _this.$version;
+                        element.badgeText = _this2.$version;
                         break;}
 
                   });
@@ -268,6 +274,23 @@ var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/tabBar/i
 
                   });
                 }case 4:case "end":return _context2.stop();}}}, _callee2, this);}));function getListData() {return _getListData.apply(this, arguments);}return getListData;}(),
+
+    noReadCount: function () {var _noReadCount = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3() {var res, text;return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:_context3.next = 2;return (
+                  _index.default.unRead());case 2:res = _context3.sent;
+                if (res.success) {
+                  if (res.data > 0) {
+
+                    if (res.data < 100) {
+                      text = res.data.toString();
+                    } else {
+                      text = '99+';
+                    }
+                    uni.setTabBarBadge({
+                      index: 3,
+                      text: text });
+
+                  }
+                }case 4:case "end":return _context3.stop();}}}, _callee3, this);}));function noReadCount() {return _noReadCount.apply(this, arguments);}return noReadCount;}(),
 
     goSetting: function goSetting() {
       uni.navigateTo({

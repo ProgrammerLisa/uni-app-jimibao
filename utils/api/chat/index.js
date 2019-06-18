@@ -11,5 +11,9 @@ export default {
 	// 获取本人信息
 	getInfo (obj) {
 		return request.get('/firm/logininfo', obj)
+	},
+	// 未读总数
+	unRead (obj) {
+		return request.get('/chat/getcountSumUnReadChats', obj)
 	}
 }

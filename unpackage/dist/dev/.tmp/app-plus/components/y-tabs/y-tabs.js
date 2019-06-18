@@ -118,23 +118,23 @@ var _default =
     tabList: Array,
     tabColor: {
       type: String,
-      default: '#fff' },
+      default: '#424242' },
 
     textColor: {
       type: String,
-      default: '#333' },
+      default: '#c9c9c9' },
 
     lineColor: {
       type: String,
-      default: 'red' },
+      default: '#7f7f7f' },
 
     activeTextColor: {
       type: String,
-      default: 'red' },
+      default: '#fff' },
 
     activeBgColor: {
       type: String,
-      default: '#777' },
+      default: '#333' },
 
     position: {
       type: String,
@@ -150,7 +150,7 @@ var _default =
 
     zIndex: {
       type: Number,
-      default: 99 },
+      default: 10 },
 
     active: Number },
 

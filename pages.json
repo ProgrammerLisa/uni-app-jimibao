@@ -80,7 +80,30 @@
 				"enablePullDownRefresh": true
 			}
 		},{
-			"path": "pages/tabBar/exchange/exchange"
+			"path": "pages/tabBar/exchange/exchange",
+			"style": {
+				"navigationBarTitleText": "交换中心",
+				"app-plus": {
+					"titleNView": {
+						"buttons": [{
+							"text": "我的订单",
+							"width": "auto",
+							"fontSize": "15",
+							"color": "#dece98",
+							"navType": "order",
+							"float": "left"
+						},{
+							"text": "发布订单",
+							"width": "auto",
+							"fontSize": "15",
+							"color": "#dece98",
+							"navType": "send",
+							"float": "right"
+						}]
+					}
+				}
+			}
+			
 		},{
 			"path": "pages/tabBar/chat/chat",
 			"style": {
@@ -178,7 +201,7 @@
 					}
 				},
 				{
-					"path": "/topList-lottery/lottery",
+					"path": "/topList-lottery/topList-lottery",
 					"style": {
 						"navigationBarTitleText": "抽奖",
 						"app-plus": {
@@ -411,6 +434,20 @@
 					"path": "/order/order",
 					"style": {
 						"navigationBarTitleText": "商品订单",
+						"app-plus": {
+							"scrollIndicator": "none"
+						}
+					}
+				}
+			]
+		},
+		{
+			"root": "pages/template/exchange",
+			"pages": [
+				{
+					"path": "/send/send",
+					"style": {
+						"navigationBarTitleText": "发布订单",
 						"app-plus": {
 							"scrollIndicator": "none"
 						}

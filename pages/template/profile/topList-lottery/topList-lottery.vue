@@ -1,10 +1,10 @@
 <template>
 	<view class="y-container">
 		<view class="y-row">
-			<uni-tag :mark="true" :text="`当前米库总量：${info.sum} kg`" :inverted="true" />
+			<uni-tag :mark="true" :text="`当前米库总量：${sum} kg`" :inverted="true" />
 		</view>
 		<view class="y-row">
-			<uni-tag :mark="true" :text="`次数：${info.chance}`" :inverted="true" />
+			<uni-tag :mark="true" :text="`次数：${chance}`" :inverted="true" />
 			<uni-tag :mark="true" :disabled="lotterySub"  text="我的奖品" class="uni-tag-right" :inverted="true" />
 		</view>
 		<view class="lottery-box">
@@ -15,13 +15,17 @@
 			</view>
 		</view>
 		<view class="y-button-box">
-			<button class="y-button" :disabled="lotterySub" @click="lotteryOnceTest">单次抽奖</button>
+			<button class="y-button" :disabled="lotterySub" @click="lotteryOnce">单次抽奖</button>
 			<button class="y-button" :disabled="lotterySub">批量抽奖</button>
 		</view>
 		<y-modal :show="sexModalShow" boxType="confirm" @hideModal="sexModalShow=false"></y-modal>
-		<y-confirm :type="lotteryBox" :show="lotteryBoxShow" @success="lotterySuccess" @fail="lotteryBoxShow=false"></y-confirm>
-		<y-confirm :type="exchangeBox" :show="exchangeBoxShow" @success="exchangeSuccess" @fail="exchangeBoxShow=false"></y-confirm>
-		<y-confirm :type="buyBox" :show="buyBoxShow" @success="buySuccess" @fail="buyBoxShow=false"></y-confirm>
+		<y-confirm title="恭喜您获得" bottom="40%" :tips="lotteryInfo.prizename+' '+lotteryInfo.prizecontent" :cancel="false" :show="lotteryBoxShow" @confirm="lotteryBoxShow=false" @hideModal="lotteryBoxShow=false">
+			<view class="giftImage-box">
+				<image class="giftImage" :src="giftImage"></image>
+			</view>
+		</y-confirm>
+		<y-confirm :show="exchangeBoxShow" title="你的抽奖可用次数已不足1次 是否兑换？" @confirm="exchangeSuccess" @hideModal="exchangeBoxShow=false"></y-confirm>
+		<y-input-confirm type="number" title="兑换次数" tips="请输入整数" :show="buyBoxShow" @confirm="buySuccess" @hideModal="buyBoxShow=false"></y-input-confirm>
 	</view>
 </template>
 
@@ -29,20 +33,20 @@
 	import api from '@/utils/api/tabBar/index.js'
 	import uniTag from '@/components/uni-tag/uni-tag.vue'
 	import yConfirm from '@/components/y-confirm/y-confirm.vue'
+	import yInputConfirm from '@/components/y-confirm/y-input-confirm.vue'
 	import yModal from '@/components/uni-popup/uni-popup.vue'
 	export default {
 		components: {
 			uniTag,
 			yConfirm,
-			yModal
+			yModal,
+			yInputConfirm
 		},
 		data () {
 			return {
 				sexModalShow: false,
-				info: {
-					num: 0,
-					chance: 0
-				},
+				sum: 0,
+				chance: 0,
 				allHide: false,
 				subShow: null,
 				lotterySub: false,
@@ -54,6 +58,7 @@
 				buyBoxShow: false,
 				buyBox: {},
 				lotteryOnceImage: '',
+				giftImage: '',
 				list: [
 					{ img: 'https://gzjimibao.oss-cn-shenzhen.aliyuncs.com/prize/prize-qiche.png', index: 0, direction: 'right' },
 					{ img: 'https://gzjimibao.oss-cn-shenzhen.aliyuncs.com/prize/prize-shoubiao.png', index: 1 },
@@ -74,8 +79,10 @@
 				]
 			}
 		},
-		onShow () {
+		onLoad() {
 			this.getData()
+		},
+		onShow () {
 			setTimeout(() => {
 				this.allHide = true
 			}, 300)
@@ -84,11 +91,11 @@
 			async getData () {
 				const res = await api.home()
 				if (res.success) {
-					this.info.sum = res.data.FirmFunds.lastbalance
+					this.sum = res.data.FirmFunds.lastbalance
 				}
 				const response = await api.lotteryChance()
 				if (response.success) {
-					this.info.chance = response.data.availabletimes
+					this.chance = response.data.availabletimes
 				}
 			},
 			lotteryOnceTest () {
@@ -105,13 +112,7 @@
 				} else {
 					if (res.message === '你的抽奖可用次数已不足1次') {
 						this.exchangeBoxShow = true
-						this.exchangeBox = {
-							title: res.message + ' 是否兑换？',
-							showCancel: true,
-							contentType: ['image'],
-							confirmText: '确定',
-							cancelText: '取消'
-						}
+						
 					}
 				}
 			},
@@ -121,18 +122,6 @@
 						this.lotteryOnceImage = element.img
 					}
 				})
-			},
-			buy () {
-				const _this = this
-				this.buyBoxShow = true
-				this.buyBox = {
-					title: '兑换',
-					contentType: ['input'],
-					showCancel: true,
-					inputType: 'number',
-					confirmText: '确定',
-					cancelText: '取消'
-				}
 			},
 			buyAfter () {
 				this.getData()
@@ -156,24 +145,19 @@
 					if (num > 1 && (this.subShow === (parseInt(this.lotteryInfo.prizeid)/100-1))) {
 						this.lotterySub = false
 						clearInterval(timer)
+						this.list.forEach(element => {
+							if(parseInt(element.index) === (parseInt(this.lotteryInfo.prizeid)/100-1)) {
+								this.giftImage = element.img
+							}
+						})
 						this.lotteryBoxShow = true
-						this.lotteryBox = {
-							title: _this.lotteryInfo.prizename,
-							content: `<uni-view style="text-align: center;"><uni-view style="margin-bottom:10px">恭喜您获得：</uni-view><image style="max-width: 100px;height:100px" src="${_this.lotteryOnceImage}"></image><uni-view>${_this.lotteryInfo.prizecontent}</uni-view></uni-view>`,
-							show: true,
-							showCancel: false,
-							contentType: ['image'],
-							inputType: 'text',
-							confirmText: '确定',
-							cancelText: '取消'
-						}
 					}
 				}, 50)
 			},
-			exchangeSuccess (e) {
+			exchangeSuccess () {
 				this.exchangeBoxShow = false
 				setTimeout(() =>{
-					this.buy()
+					this.buyBoxShow = true
 				}, 200)
 			},
 			lotterySuccess (e) {
@@ -181,6 +165,7 @@
 			},
 			buySuccess (e) {
 				let _this = this
+				console.log(e)
 				if (e) {
 					const self = this
 					if (/^[0-9]+$/.test(e)) {
@@ -268,10 +253,9 @@
 		}
 		.y-modal-single {
 			opacity: 0;
-			transition: .05s;
+			transition: .03s;
 		}
 		.y-modal-hide {
-			transform: rotate(180deg);
 			width: 0;
 			height: 0;
 			top: 50%;
@@ -281,5 +265,13 @@
 	.y-button-box {
 		display: flex;
 		margin-top: 50upx;
+	}
+	.giftImage-box {
+		text-align: center;
+		.giftImage {
+			width: 150upx;
+			height: 150upx;
+			margin: 20upx;
+		}
 	}
 </style>

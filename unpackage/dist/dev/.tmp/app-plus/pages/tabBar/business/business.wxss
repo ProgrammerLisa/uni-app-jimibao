@@ -46,4 +46,7 @@
 .banner-image.data-v-5f4654d0 {
   width: 100vw;
 }
+.uni-product-price-original.data-v-5f4654d0 {
+  color: #F0AD4E;
+}
 

@@ -69,6 +69,7 @@
 	import uniList from '@/components/uni-list/uni-list.vue'
 	import uniListItem from '@/components/uni-list-item/uni-list-item.vue'
 	import api from '@/utils/api/tabBar/index.js'
+	import apiChat from '@/utils/api/chat/index.js'
 	
 	export default {
 		components: {
@@ -98,7 +99,7 @@
 					{ title: '贡献值', type: 'contribution', icon: gift, text: '0' }
 				],
 				topList: [
-					{ title: '抽奖', type: 'lottery', icon: 'spinner', url: '/pages/template/profile/topList-lottery/lottery' },
+					{ title: '抽奖', type: 'lottery', icon: 'spinner', url: '/pages/template/profile/topList-lottery/topList-lottery' },
 					{ title: '订单', type: 'order', icon: 'compose', url: '/pages/template/profile/topList-order/topList-order' },
 					{ title: '团队', type: 'team', icon: 'contact', url: '/pages/template/profile/topList-team/topList-team' },
 					{ title: '收货地址', type: 'encourage', icon: 'location-filled', url: '/pages/template/profile/address/address' }
@@ -116,10 +117,15 @@
 		onShow() {
 			this.getData()
 			this.getListData()
-			this.imageUrl = this.$imageUrl
+			const _this = this
+			uni.onSocketMessage(function(res){
+				if (JSON.parse(res.data).type === 'CHAT') {
+					_this.noReadCount()
+				}
+			})
 		},
 		onReady () {
-			
+			this.imageUrl = this.$imageUrl
 		},
 		methods: {
 			async getData () {
@@ -167,6 +173,23 @@
 								element.badgeText = res.data.telphone
 						}
 					})
+				}
+			},		
+			async noReadCount () {
+				const res = await api.unRead()
+				if (res.success) {
+					if(res.data > 0) {
+						let text
+						if (res.data < 100) {
+							text = res.data.toString()
+						} else {
+							text = '99+'
+						}
+						uni.setTabBarBadge({
+							index: 3,
+							text: text
+						})
+					}
 				}
 			},
 			goSetting () {

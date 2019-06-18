@@ -3,7 +3,7 @@ import store from '@/utils/store/index.js'
 function checkStatus (response) {
 	uni.hideLoading()
 	if (response[1]) {
-		if (response[1].statusCode === 200 || response.statusCode[1] === 304) {
+		if (response[1].statusCode === 200 || response[1].statusCode === 304) {
 			return response[1].data
 		} else {
 			return {

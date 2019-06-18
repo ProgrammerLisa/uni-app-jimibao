@@ -34,6 +34,7 @@
 	import uniSwiperDot from '@/components/uni-swiper-dot/uni-swiper-dot.vue'
 	import uniIcon from '@/components/uni-icon/uni-icon.vue'
 	import api from '@/utils/api/tabBar/index.js'
+	import apiChat from '@/utils/api/chat/index.js'
 	import partner from '@/static/image/partner.png'
 	import propaganda from '@/static/image/propaganda.png'
 	import tool from '@/static/image/tool.png'
@@ -116,6 +117,12 @@
 				}
 			})
 			this.getData()
+			
+			uni.onSocketMessage(function(res){
+				if (JSON.parse(res.data).type === 'CHAT') {
+					_this.noReadCount()
+				}
+			})
 		},
 		
 		methods: {
@@ -151,6 +158,23 @@
 				if (res.success) {
 					this.carousel = res.data.AppUrl
 					this.msg = res.data.NoticePO
+				}
+			},
+			async noReadCount () {
+				const res = await api.unRead()
+				if (res.success) {
+					if(res.data > 0) {
+						let text
+						if (res.data < 100) {
+							text = res.data.toString()
+						} else {
+							text = '99+'
+						}
+						uni.setTabBarBadge({
+							index: 3,
+							text: text
+						})
+					}
 				}
 			},
 			change(e) {

@@ -121,6 +121,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/business/index.js */ "../../../../../y/uni-app-jimibao/utils/api/business/index.js"));
+var _index2 = _interopRequireDefault(__webpack_require__(/*! @/utils/api/chat/index.js */ "../../../../../y/uni-app-jimibao/utils/api/chat/index.js"));
 var _business = _interopRequireDefault(__webpack_require__(/*! @/static/image/business.png */ "../../../../../y/uni-app-jimibao/static/image/business.png"));
 var _goods = _interopRequireDefault(__webpack_require__(/*! @/static/image/goods1.png */ "../../../../../y/uni-app-jimibao/static/image/goods1.png"));
 var _goods2 = _interopRequireDefault(__webpack_require__(/*! @/static/image/goods2.png */ "../../../../../y/uni-app-jimibao/static/image/goods2.png"));
@@ -144,6 +145,13 @@ var _goods4 = _interopRequireDefault(__webpack_require__(/*! @/static/image/good
     setTimeout(function () {
       _this2.renderImage = true;
     }, 300);
+
+    var _this = this;
+    uni.onSocketMessage(function (res) {
+      if (JSON.parse(res.data).type === 'CHAT') {
+        _this.noReadCount();
+      }
+    });
   },
   onNavigationBarButtonTap: function onNavigationBarButtonTap(e) {
     uni.navigateTo({
@@ -159,6 +167,23 @@ var _goods4 = _interopRequireDefault(__webpack_require__(/*! @/static/image/good
                     return _objectSpread({}, element, _this.productList[index]);
                   });
                 }case 4:case "end":return _context.stop();}}}, _callee, this);}));function getData() {return _getData.apply(this, arguments);}return getData;}(),
+
+    noReadCount: function () {var _noReadCount = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var res, text;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:_context2.next = 2;return (
+                  _index.default.unRead());case 2:res = _context2.sent;
+                if (res.success) {
+                  if (res.data > 0) {
+
+                    if (res.data < 100) {
+                      text = res.data.toString();
+                    } else {
+                      text = '99+';
+                    }
+                    uni.setTabBarBadge({
+                      index: 3,
+                      text: text });
+
+                  }
+                }case 4:case "end":return _context2.stop();}}}, _callee2, this);}));function noReadCount() {return _noReadCount.apply(this, arguments);}return noReadCount;}(),
 
     goDetail: function goDetail(e) {
       uni.navigateTo({

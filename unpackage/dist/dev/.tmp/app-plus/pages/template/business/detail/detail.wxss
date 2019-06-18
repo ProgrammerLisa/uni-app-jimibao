@@ -198,4 +198,11 @@
   text-align: center;
   padding-bottom: 20rpx;
 }
+.modal-submit .y-button.data-v-5913cc33 {
+  background: #F0AD4E;
+  color: #fff;
+  -webkit-border-radius: 0;
+          border-radius: 0;
+  border: none;
+}
 

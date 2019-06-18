@@ -1,12 +1,14 @@
 <template>
 	<view class="y-modal-container" v-if="show">
-		<view class="y-modal" @click="showBefore=false" :class="showBefore?`fade-in`:`fade-out`"></view>
-		<view class="y-modal-content" :class="showBefore?`slow-up`:`slow-down`">
+		<view class="y-modal" @click="showBefore=false" :style="showBefore?`fade-in`:`fade-out`"></view>
+		<view class="y-modal-content" :style="showBefore?`bottom:${bottom}`:`bottom:-100%`">
 			<view class="y-confirm">
 				<view class="title">{{title}}</view>
+				<view class="tips">{{tips}}</view>
+				<slot></slot>
 				<view class="footer">
-					<view class="footer-button footer-sure" @click="sendConfirm">确定</view>
-					<view class="footer-button" @click="showBefore=false">取消</view>
+					<view v-if="sure" class="footer-button footer-sure" @click="sendConfirm">确定</view>
+					<view v-if="cancel" class="footer-button" @click="showBefore=false">取消</view>
 				</view>
 			</view>
 		</view>
@@ -19,7 +21,19 @@
 			list: Array,
 			show: Boolean,
 			title: String,
-			content: String
+			tips: String,
+			sure: {
+				type: Boolean,
+				default: true
+			},
+			cancel: {
+				type: Boolean,
+				default: true
+			},
+			bottom: {
+				type: String,
+				default: '10px'
+			}
 		},
 		data () {
 			return {
@@ -93,6 +107,11 @@
 			font-size: 32upx;
 			padding: 20upx;
 			border-bottom: 1px solid #eee;
+		}
+		.tips {
+			font-size: $uni-font-size-base;
+			color: $uni-text-color-grey;
+			text-align: center;
 		}
 		.footer {
 			display: flex;

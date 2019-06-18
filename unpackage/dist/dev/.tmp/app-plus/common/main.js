@@ -97,20 +97,100 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js"));
+var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/chat/index.js */ "../../../../../y/uni-app-jimibao/utils/api/chat/index.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var _default =
 {
+  data: function data() {
+    return {
+      id: '',
+      timeOut: '',
+      intervalTime: null, // 重连间隔时间
+      lockReconnect: false // 避免重复连接
+    };
+  },
   onLaunch: function onLaunch() {
-    console.log('App Launch', " at App.vue:4");
+    this.noReadCount();
   },
   onShow: function onShow() {
-    console.log('App Show', " at App.vue:7");
+    var _this = this;
+    uni.getStorage({
+      key: 'user',
+      success: function success(res) {
+        if (res.data) {
+          _this.id = res.data.firmid;
+          _this.socket();
+        }
+      } });
+
   },
   onHide: function onHide() {
     uni.removeStorage({
       key: 'home-dot' });
 
-    console.log('App Hide', " at App.vue:13");
-  } };exports.default = _default;
+    uni.onSocketOpen(function () {
+      uni.closeSocket();
+    });
+  },
+  methods: {
+    // 创建连接 并初始化
+    socket: function socket() {
+      var _this = this;
+      uni.connectSocket({
+        url: _this.$socketUrl + _this.id });
+
+      uni.onSocketOpen(function () {
+        _this.start();
+      });
+      uni.onSocketClose(function () {
+        _this.connectAgain();
+      });
+      uni.onSocketError(function (err) {
+        _this.connectAgain();
+      });
+      uni.onSocketMessage(function () {
+        _this.reset();
+      });
+    },
+    // 重连
+    connectAgain: function connectAgain() {
+      var _this = this;
+      if (this.lockReconnect) return false;
+      this.lockReconnect = true;
+      // 没连接上会一直重连，设置延迟，避免请求过多
+      this.intervalTime && clearTimeout(_this.intervalTime);
+      this.intervalTime = setTimeout(function () {
+        _this.socket();
+      });
+    },
+    // 重置心跳
+    reset: function reset() {
+      clearTimeout(this.timeOut);
+      this.start();
+    },
+    // 心跳检测
+    start: function start() {
+      this.timeOut = setTimeout(function () {
+        uni.sendSocketMessage({
+          data: 'heart' });
+
+      }, 300000);
+    },
+    noReadCount: function () {var _noReadCount = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var res, text;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
+                  _index.default.unRead());case 2:res = _context.sent;
+                if (res.success) {
+                  if (res.data > 0) {
+
+                    if (res.data < 100) {
+                      text = res.data.toString();
+                    } else {
+                      text = '99+';
+                    }
+                    uni.setTabBarBadge({
+                      index: 3,
+                      text: text });
+
+                  }
+                }case 4:case "end":return _context.stop();}}}, _callee, this);}));function noReadCount() {return _noReadCount.apply(this, arguments);}return noReadCount;}() } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 
 /***/ }),

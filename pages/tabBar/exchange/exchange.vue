@@ -1,115 +1,114 @@
 <template>
 	<view>
-		<y-tabs :tabList="tabList" :active="active" @changeTabs="changeTabs" tabColor="#424242" activeBgColor="#333333" textColor="#c9c9c9" activeTextColor="#fff" lineColor="#7f7f7f"></y-tabs>
-		<view class="y-flex">
-			<view class="y-flex-item">米库总量： {{allUse}}</view>
-			<view class="y-flex-item">可用米粒： {{canUse}}</view>
-		</view>
-		<view class="y-tips">
-			初始交换密码为 123456
-		</view>
-		<view v-for="(i, index) in tabList" :key="index">
-			<view v-if="active===index" class="y-list">
-				<uni-mescroll @down="downCallback" @up="upCallback" @init="mescrollInit">
-					<view v-for="(value, key) in i.dataList" :key="key" class="y-list-item">
-						<view class="left">
-							<image class="image" :src="{value: value.name, type: 'img'} | imageFilter" mode="aspectFit"></image>
+		<y-tabs position="fixed" :tabList="tabList" :active="active" @changeTabs="changeTabs" tabColor="#424242" activeBgColor="#333333" textColor="#c9c9c9" activeTextColor="#fff" lineColor="#7f7f7f"></y-tabs>
+		<view class="y-tabs-item">
+			<view v-for="(i, index) in tabList" :key="index">
+				<view v-if="active===index" class="y-list">
+					<view class="banner">
+						<view class="banner-item">
+							<view class="item-title">买单</view>
+							<view class="item-count">{{info.curBuyNum}}</view>
 						</view>
-						<view class="right rightAll" v-if="active===0">
-							<view>
-								<view class="title"><text>{{value.name}}</text> <uni-badge class="badge" type="warning" :text="'最多可兑换'+value.limitnumber+'个'"></uni-badge></uni-badge> </view>
-								<view class="rightAll-font">每次收集： {{value.harvestpd}}kg</view>
-								<view class="rightAll-font">总共奖励： {{value.sumReward}}kg</view>
-								<view class="rightAll-font">有效时间： {{value.validitytime}}kg</view>
-							</view>
-							<view class="rightAll-right">
-								<view class="rightAll-font exchange">兑换： {{{value: value.name, type:'text'} | imageFilter}}</view>
-								<button class="y-button" @click="openReward(value.toolid)">兑换</button>
-							</view>
+						<view class="banner-item">
+							<view class="item-title">卖单</view>
+							<view class="item-count">{{info.curSellNum}}</view>
 						</view>
-						<view class="right" v-if="active===1">
-							<view class="title"><text>{{value.name}}</text> <uni-badge class="badge" type="warning" :text="value.toolnumber+'个'"></uni-badge></uni-badge> </view>
-							<view class="rightAll-font">每次收集： {{value.harvestpd}}kg</view>
-							<view class="rightAll-font">总共奖励： {{value.sumReward}}kg</view>
-							<view class="rightAll-font">生效时间： {{value.ftbegintime}}</view>
-							<view class="rightAll-font">到期时间： {{value.ftendtime}}</view>
+						<view class="banner-item">
+							<view class="item-title">价格</view>
+							<view class="item-count">{{info.curPrice.price}}</view>
+						</view>
+						<view class="banner-item">
+							<view class="item-title">开盘价</view>
+							<view class="item-count">{{info.curPrice.price}}</view>
 						</view>
 					</view>
-				</uni-mescroll>
+					<uni-mescroll @down="downCallback" @up="upCallback" @init="mescrollInit">
+						<view v-for="(value, key) in i.dataList" :key="key" class="y-list-item">
+							<view class="left">
+								<image class="image" :src="avatar" mode="aspectFit"></image>
+							</view>
+							<view class="right">
+								<view class="y-flex">
+									<view class="y-flex-item">单价： ￥{{value.price}}/kg</view>
+									<view class="y-flex-item">数量： {{value.number}}kg</view>
+								</view>
+								<view class="y-flex">
+									<view class="y-flex-item">合计： ￥{{value.price*value.number}}</view>
+									<view class="y-flex-item">
+										<button :disabled="value.exist" class="y-button" @click="openPay(value)">{{active===0?'出米':'收米'}}</button>
+									</view>
+								</view>
+							</view>
+						</view>
+					</uni-mescroll>
+				</view>
 			</view>
 		</view>
-		<y-input-confirm :show="rewardShow" :zIndex="10" title="兑换" tips="请输入个数" type="number" :maxlength="4" @confirm="reward" @hideModal="rewardShow=false"></y-input-confirm>
-		<y-input-confirm :show="passwordShow" :zIndex="11" :notHide="true" title="密码" tips="请输入密码" type="password" @confirm="checkPassword" @hideModal="passwordHide"></y-input-confirm>
+		<y-pay-confirm :show="payShow" @hideModal="payShow=false">
+			<view class="modal">
+				<view class="modal-title">{{pay.sign===1?'出米粒':'收米粒'}}</view>
+				<view class="uni-center">正在{{pay.sign===1?'出米粒':'收米粒'}}</view>
+				<view class="modal-tips">大米余额: {{balance}}kg</view>
+				<view class="modal-goods">
+					<view class="modal-goods-item">
+						<view>{{pay.price}}</view><view>单价(￥)</view>
+					</view>
+					<view class="modal-goods-item">
+						<view>{{pay.number}}</view><view>数量(kg)</view>
+					</view>
+				</view>
+				<view class="modal-tips">提示: 请认真核对单价及数量</view>
+				<view class="modal-password">
+					<view class="modal-password-box">
+						<text class="modal-password-label">交换密码</text>
+						<input class="modal-password-input" type="password" v-model="password" placeholder="请输入交换密码" />
+					</view>
+				</view>
+				<view class="modal-password-tips">
+					初始交换密码为123456
+				</view>
+				<view class="modal-submit">
+					<button class="y-button" @click="exchange">确定</button>
+				</view>
+			</view>
+		</y-pay-confirm>
 	</view>
 </template>
 
 <script>
-	import uniBadge from '@/components/uni-badge/uni-badge.vue'
+	import yPayConfirm from '@/components/y-confirm/y-pay-confirm.vue'
 	import uniMescroll from '@/components/mescroll-uni/mescroll-uni.vue'
 	import yTabs from '@/components/y-tabs/y-tabs.vue'
-	import yInputConfirm from '@/components/y-confirm/y-input-confirm.vue'
 	import api from '@/utils/api/tabBar/index.js'
-	import tool1 from '@/static/image/tool1.png'
-	import tool2 from '@/static/image/tool2.png'
-	import tool3 from '@/static/image/tool3.png'
-	import tool4 from '@/static/image/tool4.png'
-	import tool5 from '@/static/image/tool5.png'
+	import apiChat from '@/utils/api/chat/index.js'
+	import avatar from '@/static/image/avatar.png'
 	export default {
 		components: {
-			uniBadge,
 			uniMescroll,
 			yTabs,
-			yInputConfirm
-		},
-		filters: {
-			imageFilter (e) {
-				switch (e.value) {
-					case '小米袋':
-						if (e.type === 'img') {
-							return tool1
-						} else {
-							return '10kg'
-						}
-					case '中米袋':
-						if (e.type === 'img') {
-							return tool2
-						} else {
-							return '50kg'
-						}
-					case '大米袋':
-						if (e.type === 'img') {
-							return tool3
-						} else {
-							return '100kg'
-						}
-					case '米缸':
-						if (e.type === 'img') {
-							return tool4
-						} else {
-							return '1000kg'
-						}
-					case '米仓':
-						if (e.type === 'img') {
-							return tool5
-						} else {
-							return '50000kg'
-						}
-				}
-			}
+			yPayConfirm
 		},
 		data () {
 			return {
+				avatar,
 				active: 0,
 				tabList: [
-					{ title: '集米工具', dataList: [] },
-					{ title: '我的工具', dataList: [] }
+					{ title: '收单', dataList: [] },
+					{ title: '出单', dataList: [] }
 				],
-				rewardShow: false,
-				passwordShow: false,
-				rewardId: '',
-				rewardCount: '',
-				canUse: '',
-				allUse: '',
+				info: {
+					curBuyNum: 0,
+					curSellNum: 0,
+					curPrice: {
+						beginTime: 0,
+						price: 0
+					}
+				},
+				payShow: false,
+				pay: {},
+				balance: '',
+				password: '',
+				timer: '',
 				mescroll: null, //mescroll实例对象
 				// 下拉刷新的配置
 				downOption: { 
@@ -132,11 +131,6 @@
 				}
 			}
 		},
-		onShow () {
-			this.getData(0)
-			this.getData(1)
-			this.getAll()
-		},
 		// 必须注册滚动到底部的事件,使上拉加载生效
 		onReachBottom() {
 			this.mescroll && this.mescroll.onReachBottom();
@@ -145,76 +139,110 @@
 		onPageScroll(e) {
 			this.mescroll && this.mescroll.onPageScroll(e);
 		},
-		methods: {
-			async getData (e) {
-				let url
-				switch (e) {
-					case 0:
-						url = api.tools
-						break
-					case 1:
-						url = api.toolMine
+		onNavigationBarButtonTap (e) {
+			if (e.navType === 'order') {
+				uni.navigateTo({
+					url: '/pages/template/profile/topList-order/topList-order'
+				})
+			} else {
+				uni.navigateTo({
+					url: '/pages/template/exchange/send/send'
+				})
+			}
+		},
+		onShow () {
+			this.initList()
+			this.getData()
+			this.timer = setInterval(() => {
+				this.getData()
+			}, 30000)
+			
+			const _this = this
+			uni.onSocketMessage(function(res){
+				if (JSON.parse(res.data).type === 'CHAT') {
+					_this.noReadCount()
 				}
-				const res = await url()
+			})
+		},
+		onHide () {
+			const _this = this
+			clearInterval(_this.timer)
+		},
+		watch: {
+			payShow (val) {
+				this.password = ''
+			}
+		},
+		methods: {
+			async getData () {
+				const res = await api.exchangeInfo()
 				if (res.success) {
-					this.tabList[e].dataList = res.data.list
+					this.info = res.data
+				}
+				const response = await api.AccountBalance()
+				if (response.success) {
+					this.balance = response.data.balance
 				}
 			},
-			async getAll () {
-				const res = await api.AccountBalance()
+			async initList () {
+				const res = await api.exchangeList({ sign: this.active + 1 })
 				if (res.success) {
-					this.canUse = res.data.balance
-					this.allUse = res.data.lastbalance
+					this.tabList[this.active].dataList = res.data.list
+				}
+			},
+			async noReadCount () {
+				const res = await api.unRead()
+				if (res.success) {
+					if(res.data > 0) {
+						let text
+						if (res.data < 100) {
+							text = res.data.toString()
+						} else {
+							text = '99+'
+						}
+						uni.setTabBarBadge({
+							index: 3,
+							text: text
+						})
+					}
 				}
 			},
 			async changeTabs (e) {
 				this.active = e
 			},
-			openReward (e) {
-				this.rewardId = e
-				this.rewardShow = true
+			openPay (e) {
+				this.pay = e
+				this.payShow = true
 			},
-			reward (e) {
-				if (!e) {
-					uni.showToast({
-						title: '数量不能为空',
-						icon: 'none'
-					})
-				} else {
-					if (!/^[123456789]\d{0,3}$/.test(e)) {
-						uni.showToast({
-							title: '请输入[1-9999]之间的整数',
-							icon: 'none'
-						})
-					} else {
-						this.rewardCount = e
-						this.passwordShow = true
-					}
-				}
-			},
-			checkPassword (e) {
-				if (!e) {
+			async exchange () {
+				if (!this.password) {
 					uni.showToast({
 						title: '请输入密码',
 						icon: 'none'
 					})
-				} else {
-					this.sendReward(e)
+					return false
 				}
-			},
-			async sendReward (e) {
-				const res = await api.toolExchange({ toolid: this.rewardId, tradepassword: e, number: this.rewardCount })
+				let type
+				if (this.pay.sign === 1) {
+					type = 'sell'
+				} else {
+					type = 'buy'
+				}
+				const res = await api.exchange({ type: type, orderid: this.pay.orderid, owner: this.pay.firmid, tradepassword: this.password })
+				this.payShow = false
 				if (res.success) {
-					this.rewardShow = false
-					this.passwordShow = false
+					this.existCheck()
 					uni.showToast({
 						title: '兑换成功'
 					})
 				}
 			},
-			passwordHide () {
-				this.rewardShow = false
-				this.passwordShow = false
+			existCheck () {
+				this.tabList[this.active].dataList.forEach(element => {
+					if (this.pay = element) {
+						element.exist = true
+					}
+				})
 			},
 			// mescroll组件初始化的回调,可获取到mescroll对象
 			mescrollInit(mescroll) {
@@ -229,27 +257,20 @@
 				// 此时mescroll会携带page的参数:
 				let pageNum = mescroll.num; // 页码, 默认从1开始
 				let pageSize = mescroll.size; // 页长, 默认每页10条
-				let url
+				let sign
 				switch (this.active) {
 					case 0:
-						url = api.tools
+						sign = 1
 						break
 					case 1:
-						url = api.toolMine
+						sign = 2
 						break
 				}
-				const res = await url({ page: pageNum, size: pageSize })
+				const res = await api.exchangeList({ page: pageNum, size: pageSize, sign: sign })
 				if (res.success) {
-					let curPageData, totalSize, hasNext
-					if (this.active === 0) {
-						curPageData = res.data
-						totalSize = res.data.length
-						hasNext = false
-					} else {
-						curPageData = res.data.list
-						totalSize = res.data.total
-						hasNext = res.data.hasNextPage
-					}
+					let curPageData = res.data.list
+					let totalSize = res.data.total
+					let hasNext = res.data.hasNextPage
 					setTimeout(() => {
 						mescroll.endSuccess(curPageData.length, hasNext)
 						//设置列表数据
@@ -266,72 +287,105 @@
 </script>
 
 <style lang="scss" scoped>
-	.y-flex {
+	.y-tabs-item {
+		padding-top: 30upx;
+	}
+	.banner {
 		display: flex;
-		padding: 10upx 0;
-		background: #fff;
-		.y-flex-item {
+		align-items: center;
+		width: 90vw;
+		margin: 0 5vw 5vw;
+		background: $uni-box-color;
+		border-radius: 30upx;
+		box-shadow: 10upx 10upx 30upx rgba(0, 0, 0, 0.05);
+		.banner-item {
 			flex: 1;
 			text-align: center;
-			font-size: $uni-font-size-base;
+			padding: 30upx 0;
 		}
-	}
-	.y-tips {
-		background: $uni-input-bg-color;
-		padding: 10upx;
-		text-align: center;
-		color: $uni-text-color-grey;
-	}
-	.y-list {
-		height: calc(100vh - 100upx);
-		overflow: scroll;
-		background: $uni-login-bg-color;
 	}
 	.y-list-item {
 		display: flex;
 		align-items: center;
 		padding: 20upx;
-		border-bottom: 1px solid $uni-box-line;
+		border-bottom: 1px solid #f5f5f5;
+		background: $uni-box-color;
 		.left {
 			flex: 1;
 			.image {
-				width: 200upx;
-				height: 200upx;
+				width: 100upx;
+				height: 100upx;
+				border-radius: 100%;
 			}
 		}
 		.right {
-			flex: 4;
-			min-width: 100upx;
-			.title {
+			flex: 5;
+			.y-flex {
 				display: flex;
 				align-items: center;
-				font-weight: bold;
-				margin-bottom: 20upx;
-				.badge {
-					margin-left: 10upx;
-				}
+				justify-content: space-between;
+				padding: 10upx;
 			}
 		}
-		.rightAll {
+	}
+	.modal {
+		background: #fff;
+		position: relative;
+		padding-top: 100upx;
+	}
+	.modal-title {
+		font-weight: bold;
+		border-radius: 100%;
+		width: 100upx;
+		height: 100upx;
+		background: $uni-router-color;
+		position: absolute;
+		top: -50upx;
+		left: 50%;
+		margin-left: -50upx;
+		color: #fff;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.modal-tips {
+		color: $uni-router-color;
+		text-align: center;
+		font-size: $uni-font-size-base;
+	}
+	.modal-goods {
+		display: flex;
+		.modal-goods-item {
+			flex: 1;
+			text-align: center;
+		}
+	}
+	.modal-password {
+		padding: 20upx 50upx;
+		.modal-password-box {
 			display: flex;
-			justify-content: space-between;
-			.rightAll-right {
-				margin: auto 0;
+			background: $uni-bg-color-grey;
+			border-radius: 10upx;
+			padding: 20upx 10upx;
+			.modal-password-label {
+				flex: 1;
 			}
-			.exchange {
-				margin-bottom: 10upx;
-			}
-			.y-button {
-				width: 150upx;
+			.modal-password-input {
+				flex: 1;
 			}
 		}
-		.rightAll-font {
-			font-size: $uni-font-size-base;
-			color: $uni-color-subtitle;
-		}
-		.time {
-			color: $uni-text-color-placeholder;
-			font-size: $uni-font-size-sm;
+	}
+	.modal-password-tips {
+		color: $uni-text-color-grey;
+		text-align: center;
+		padding-bottom: 20upx;
+	}
+	.modal-submit {
+		.y-button {
+			background: $uni-router-color;
+			color: #fff;
+			border-radius: 0;
+			border:none;
 		}
 	}
 </style>

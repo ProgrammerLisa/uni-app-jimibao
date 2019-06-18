@@ -74,15 +74,20 @@
 			this.imageUrl = this.$imageUrl
 		},
 		onShow () {
-			this.getData()
+			const _this = this
+			_this.noReadCount()
+			uni.onSocketMessage(function(res){
+				if (JSON.parse(res.data).type === 'CHAT') {
+					_this.dataList.forEach(element => {
+						if (JSON.parse(res.data).sender === element.bfirmid) {
+							element.unread++
+						}
+					})
+					_this.noReadCount()
+				}
+			})
 		},
 		methods: {
-			async getData () {
-				const res = await api.contacts()
-				if (res.success) {
-					this.dataList = res.data.list
-				}
-			},
 			async goRoom (e) {
 				uni.setStorage({
 					key: 'chat-id',
@@ -93,6 +98,27 @@
 						})
 					}
 				})
+			},
+			async noReadCount () {
+				const res = await api.unRead()
+				if (res.success) {
+					if(res.data > 0) {
+						let text
+						if (res.data < 100) {
+							text = res.data.toString()
+						} else {
+							text = '99+'
+						}
+						uni.setTabBarBadge({
+							index: 3,
+							text: text
+						})
+					} else {
+						uni.removeTabBarBadge({
+							index: 3
+						})
+					}
+				}
 			},
 			// mescroll组件初始化的回调,可获取到mescroll对象
 			mescrollInit(mescroll) {

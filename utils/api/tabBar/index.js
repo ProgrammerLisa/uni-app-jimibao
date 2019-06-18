@@ -140,5 +140,20 @@ export default {
 	// 查询合伙人信息
 	partnerTeam (obj) {
 		return request.get('/partner/getFirmPartnerInfo', obj)
+	},
+	// 交换列表
+	exchangeList (obj) {
+		return request.get('/order/' + obj.sign, obj)
+	},
+	// 发布订单
+	exchangeSend (obj) {
+		return request.post('/order/push/' + obj.sign, obj)
+	},
+	exchangeInfo (obj) {
+		return request.get('/order/tradeInfo', obj)
+	},
+	// 交换
+	exchange (obj) {
+		return request.post('/order/' + obj.type + '/' + obj.orderid, obj)
 	}
 }

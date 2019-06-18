@@ -238,7 +238,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/chat/index.js */ "../../../../../y/uni-app-jimibao/utils/api/chat/index.js"));
-var _index2 = _interopRequireDefault(__webpack_require__(/*! @/utils/socket/index.js */ "../../../../../y/uni-app-jimibao/utils/socket/index.js"));
+
 var _avatar = _interopRequireDefault(__webpack_require__(/*! @/static/image/avatar.png */ "../../../../../y/uni-app-jimibao/static/image/avatar.png"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var _default =
 {
   data: function data() {
@@ -303,7 +303,8 @@ var _avatar = _interopRequireDefault(__webpack_require__(/*! @/static/image/avat
       otherId: '',
       hasNextPage: false,
       myId: '',
-      socketTask: {} };
+      nickname: '',
+      avatar: '' };
 
   },
   onLoad: function onLoad(option) {var _this2 = this;
@@ -324,26 +325,33 @@ var _avatar = _interopRequireDefault(__webpack_require__(/*! @/static/image/avat
     });
 
   },
-  onShow: function onShow() {var _this3 = this;
+  onShow: function onShow() {
     this.scrollTop = 9999999;
+    var _this = this;
+    uni.onSocketMessage(function (res) {
+      if (JSON.parse(res.data).type === 'CHAT') {
+        if (JSON.parse(res.data).sender === _this.otherId) {
+          var nowDate = new Date();
+          var msg = { type: 'user', msg: { id: nowDate.getTime(), time: nowDate.getHours() + ":" + nowDate.getMinutes(), type: JSON.parse(res.data).content.contentType, userinfo: { uid: 1, username: _this.nickname, face: _this.avatar }, content: JSON.parse(res.data).content } };
+          _this.screenMsg(msg);
+        }
+      }
+    });
     //模板借由本地缓存实现发红包效果，实际应用中请不要使用此方法。
     //
-    uni.getStorage({
-      key: 'redEnvelopeData',
-      success: function success(res) {
-        var nowDate = new Date();
-        var lastid = _this3.msgList[_this3.msgList.length - 1].msg.id;
-        lastid++;
-        var row = { type: "user", msg: { id: lastid, type: "redEnvelope", time: nowDate.getHours() + ":" + nowDate.getMinutes(), userinfo: { uid: 0, username: "大黑哥", face: "/static/img/face.jpg" }, content: { blessing: res.data.blessing, rid: Math.floor(Math.random() * 1000 + 1), isReceived: false } } };
-        _this3.screenMsg(row);
-        uni.removeStorage({ key: 'redEnvelopeData' });
-      } });
-
+    // uni.getStorage({
+    // 	key: 'redEnvelopeData',
+    // 	success:  (res)=>{
+    // 		let nowDate = new Date()
+    // 		let lastid = this.msgList[this.msgList.length-1].msg.id
+    // 		lastid++
+    // 		let row = {type:"user",msg:{id:lastid,type:"redEnvelope",time:nowDate.getHours()+":"+nowDate.getMinutes(),userinfo:{uid:0,username:"大黑哥",face:"/static/img/face.jpg"},content:{blessing:res.data.blessing,rid:Math.floor(Math.random()*1000+1),isReceived:false}}};
+    // 		this.screenMsg(row)
+    // 		uni.removeStorage({key: 'redEnvelopeData'})
+    // 	}
+    // })
   },
-  watch: {
-    onMessageVal: function onMessageVal(val) {
-      console.log(val, " at pages\\tabBar\\chat\\room.vue:245");
-    } },
+  watch: {},
 
   methods: {
     // 根据本地缓存获取对方id
@@ -358,25 +366,25 @@ var _avatar = _interopRequireDefault(__webpack_require__(/*! @/static/image/avat
 
 
     // 获取本人信息（头像/昵称 等） 建立通讯
-    getMyInfo: function () {var _getMyInfo = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2(e) {var res;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:_context2.next = 2;return (
-                  _index.default.getInfo());case 2:res = _context2.sent;
-                if (res.success) {
-                  this.myId = res.data.firmid;
-                  if (res.data.headimage) {
-                    this.myAvatar = this.$imageUrl + res.data.headimage;
-                  } else {
-                    this.myAvatar = _avatar.default;
-                  }
-                  this.getSocket(res.data.firmid);
-                }case 4:case "end":return _context2.stop();}}}, _callee2, this);}));function getMyInfo(_x) {return _getMyInfo.apply(this, arguments);}return getMyInfo;}(),
+    getMyInfo: function () {var _getMyInfo = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var _this;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:
+                _this = this;
+                uni.getStorage({
+                  key: 'user',
+                  success: function success(res) {
+                    _this.myId = res.data.firmid;
+                    if (res.data.headimage) {
+                      _this.myAvatar = _this.$imageUrl + res.data.headimage;
+                    } else {
+                      _this.myAvatar = _avatar.default;
+                    }
 
-    getSocket: function getSocket() {
-      this.socketTask = (0, _index2.default)(this.myId);
-      this.socketTask.onSocket.createWebSocket();
-      this.onMessageVal = this.socketTask.onMessageVal;
-      this.messageInit();
-    },
-    // 初始化
+                    _this.messageInit();
+                    // _this.socket()
+                  } });case 2:case "end":return _context2.stop();}}}, _callee2, this);}));function getMyInfo() {return _getMyInfo.apply(this, arguments);}return getMyInfo;}(),
+
+
+
+    // 聊天记录初始化
     messageInit: function () {var _messageInit = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3() {var list, i;return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:_context3.next = 2;return (
                   this.getRecord());case 2:list = _context3.sent;if (!(
                 !list || list.length === 0)) {_context3.next = 5;break;}return _context3.abrupt("return");case 5:
@@ -389,7 +397,6 @@ var _avatar = _interopRequireDefault(__webpack_require__(/*! @/static/image/avat
                     this.msgImgList.push(list[i].msg.content.url);
                   }
                 }
-                console.log(list[3].msg.content.text, " at pages\\tabBar\\chat\\room.vue:292");
                 this.msgList = list;
                 // 滚动到底部
                 this.$nextTick(function () {
@@ -399,21 +406,27 @@ var _avatar = _interopRequireDefault(__webpack_require__(/*! @/static/image/avat
                     this.scrollAnimation = true;
                     this.loadingShow = false;
                   });
-                });case 9:case "end":return _context3.stop();}}}, _callee3, this);}));function messageInit() {return _messageInit.apply(this, arguments);}return messageInit;}(),
+                });case 8:case "end":return _context3.stop();}}}, _callee3, this);}));function messageInit() {return _messageInit.apply(this, arguments);}return messageInit;}(),
 
     // 根据对方的id获取双方之间的聊天记录
     getRecord: function () {var _getRecord = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee4() {var _this, res, list;return _regenerator.default.wrap(function _callee4$(_context4) {while (1) {switch (_context4.prev = _context4.next) {case 0:
                 _this = this;_context4.next = 3;return (
                   _index.default.record({ page: this.page, size: this.pageSize, id: this.otherId }));case 3:res = _context4.sent;if (!
-                res.success) {_context4.next = 11;break;}
+                res.success) {_context4.next = 12;break;}
                 if (res.data.dfnkname) {
+                  this.nickname = res.data.dfnkname;
                   uni.setNavigationBarTitle({
                     title: res.data.dfnkname });
 
                 }
+                if (res.data.dfpath) {
+                  this.avatar = _this.$imageUrl + res.data.dfpath;
+                } else {
+                  this.avatar = _avatar.default;
+                }
                 this.hasNextPage = res.data.hasNextPage;
                 list = res.data.list.reverse();if (!(
-                list.length > 0)) {_context4.next = 11;break;}
+                list.length > 0)) {_context4.next = 12;break;}
                 list = list.map(function (element) {
                   var role, contentBox, face, content;
                   contentBox = JSON.parse(element.content);
@@ -453,7 +466,7 @@ var _avatar = _interopRequireDefault(__webpack_require__(/*! @/static/image/avat
 
 
                 });return _context4.abrupt("return",
-                list);case 11:case "end":return _context4.stop();}}}, _callee4, this);}));function getRecord() {return _getRecord.apply(this, arguments);}return getRecord;}(),
+                list);case 12:case "end":return _context4.stop();}}}, _callee4, this);}));function getRecord() {return _getRecord.apply(this, arguments);}return getRecord;}(),
 
 
 
@@ -486,10 +499,9 @@ var _avatar = _interopRequireDefault(__webpack_require__(/*! @/static/image/avat
             this.addRedEnvelopeMsg(msg);
             break;}
 
-        console.log('用户消息', " at pages\\tabBar\\chat\\room.vue:389");
         //非自己的消息震动
         if (msg.msg.userinfo.uid != this.myuid) {
-          console.log('振动', " at pages\\tabBar\\chat\\room.vue:392");
+          console.log('振动', " at pages\\tabBar\\chat\\room.vue:404");
           uni.vibrateLong();
         }
       }
@@ -499,7 +511,7 @@ var _avatar = _interopRequireDefault(__webpack_require__(/*! @/static/image/avat
       });
     },
     //触发滑动到顶部(加载历史信息记录)
-    loadHistory: function loadHistory(e) {var _this4 = this;
+    loadHistory: function loadHistory(e) {var _this3 = this;
       if (this.isHistoryLoading) {
         return;
       }
@@ -516,21 +528,21 @@ var _avatar = _interopRequireDefault(__webpack_require__(/*! @/static/image/avat
             // 获取消息中的图片,并处理显示尺寸
             for (var i = 0; i < list.length; i++) {
               if (list[i].type == 'user' && list[i].msg.type == "img") {
-                list[i].msg.content = _this4.setPicSize(list[i].msg.content);
-                _this4.msgImgList.unshift(list[i].msg.content.url);
+                list[i].msg.content = _this3.setPicSize(list[i].msg.content);
+                _this3.msgImgList.unshift(list[i].msg.content.url);
               }
               list[i].msg.id = Math.floor(Math.random() * 1000 + 1);
-              _this4.msgList.unshift(list[i]);
+              _this3.msgList.unshift(list[i]);
             }
 
             // 这段代码很重要，不然每次加载历史数据都会跳到顶部
-            _this4.$nextTick(function () {
+            _this3.$nextTick(function () {
               this.scrollToView = 'msg' + Viewid; // 跳转上次的第一行信息位置
               this.$nextTick(function () {
                 this.scrollAnimation = true; // 恢复滚动动画
               });
             });
-            _this4.isHistoryLoading = false;
+            _this3.isHistoryLoading = false;
           }, 1000);
         });
       } else {
@@ -601,11 +613,11 @@ var _avatar = _interopRequireDefault(__webpack_require__(/*! @/static/image/avat
       this.popupLayerClass = 'showLayer';
     },
     // 隐藏抽屉
-    hideDrawer: function hideDrawer() {var _this5 = this;
+    hideDrawer: function hideDrawer() {var _this4 = this;
       this.popupLayerClass = '';
       setTimeout(function () {
-        _this5.hideMore = true;
-        _this5.hideEmoji = true;
+        _this4.hideMore = true;
+        _this4.hideEmoji = true;
       }, 150);
     },
     // 选择图片发送
@@ -617,7 +629,7 @@ var _avatar = _interopRequireDefault(__webpack_require__(/*! @/static/image/avat
       this.getImage('camera');
     },
     //选照片 or 拍照
-    getImage: function getImage(type) {var _this6 = this;
+    getImage: function getImage(type) {var _this5 = this;
       this.hideDrawer();
       uni.chooseImage({
         sourceType: [type],
@@ -627,10 +639,10 @@ var _avatar = _interopRequireDefault(__webpack_require__(/*! @/static/image/avat
             uni.getImageInfo({
               src: res.tempFilePaths[i],
               success: function success(image) {
-                console.log(image.width, " at pages\\tabBar\\chat\\room.vue:530");
-                console.log(image.height, " at pages\\tabBar\\chat\\room.vue:531");
+                console.log(image.width, " at pages\\tabBar\\chat\\room.vue:542");
+                console.log(image.height, " at pages\\tabBar\\chat\\room.vue:543");
                 var msg = { url: res.tempFilePaths[i], w: image.width, h: image.height };
-                _this6.sendMsg(msg, 'img');
+                _this5.sendMsg(msg, 'img');
               } });};for (var i = 0; i < res.tempFilePaths.length; i++) {_loop(i);
 
           }
@@ -669,19 +681,19 @@ var _avatar = _interopRequireDefault(__webpack_require__(/*! @/static/image/avat
       this.sendMsg(msg, 'text');
     },
     //替换表情符号为图片
-    replaceEmoji: function replaceEmoji(str) {var _this7 = this;
+    replaceEmoji: function replaceEmoji(str) {var _this6 = this;
       var replacedStr = str.replace(/\[([^(\]|\[)]*)\]/g, function (item, index) {
-        console.log("item: " + item, " at pages\\tabBar\\chat\\room.vue:574");
-        for (var i = 0; i < _this7.emojiList.length; i++) {
-          var row = _this7.emojiList[i];
+        console.log("item: " + item, " at pages\\tabBar\\chat\\room.vue:586");
+        for (var i = 0; i < _this6.emojiList.length; i++) {
+          var row = _this6.emojiList[i];
           for (var j = 0; j < row.length; j++) {
             var EM = row[j];
             if (EM.alt == item) {
               //在线表情路径，图文混排必须使用网络路径，请上传一份表情到你的服务器后再替换此路径 
               //比如你上传服务器后，你的100.gif路径为https://www.xxx.com/emoji/100.gif 则替换onlinePath填写为https://www.xxx.com/emoji/
               var onlinePath = 'https://s2.ax1x.com/2019/04/12/';
-              var imgstr = '<img src="' + onlinePath + _this7.onlineEmoji[EM.url] + '">';
-              console.log("imgstr: " + imgstr, " at pages\\tabBar\\chat\\room.vue:584");
+              var imgstr = '<img src="' + onlinePath + _this6.onlineEmoji[EM.url] + '">';
+              console.log("imgstr: " + imgstr, " at pages\\tabBar\\chat\\room.vue:596");
               return imgstr;
             }
           }
@@ -697,7 +709,7 @@ var _avatar = _interopRequireDefault(__webpack_require__(/*! @/static/image/avat
       var nowDate = new Date();
       var lastid = this.msgList[this.msgList.length - 1].msg.id;
       lastid++;
-      var msg = { type: 'user', msg: { id: lastid, time: nowDate.getHours() + ":" + nowDate.getMinutes(), type: type, userinfo: { uid: 0, username: "大黑哥", face: "/static/img/face.jpg" }, content: content } };
+      var msg = { type: 'user', msg: { id: lastid, time: nowDate.getHours() + ":" + nowDate.getMinutes(), type: type, userinfo: { uid: 0, username: "I", face: this.myAvatar }, content: content } };
 
       var myMsg = {
         content: {
@@ -709,18 +721,7 @@ var _avatar = _interopRequireDefault(__webpack_require__(/*! @/static/image/avat
         targets: _this.otherId, // 接收人
         type: 'CHAT' // 消息类型（通知/聊天）
       };
-      this.socketTask.onSocket.sendMessage(myMsg, function results(e) {
-        if (e.code === 200) {
-          // 发送消息
-          this.screenMsg(msg);
-          this.textMsg = ''; //清空输入框
-        } else {
-          uni.showToast({
-            title: '发送失败， 请重新发送',
-            icon: 'none' });
-
-        }
-      });
+      this.sendSocket(myMsg, msg);
       // 定时器模拟对方回复,三秒
       // setTimeout(()=>{
       // 	lastid = this.msgList[this.msgList.length-1].msg.id;
@@ -730,7 +731,23 @@ var _avatar = _interopRequireDefault(__webpack_require__(/*! @/static/image/avat
       // 	this.screenMsg(msg)
       // },3000)
     },
+    sendSocket: function sendSocket(myMsg, msg) {
+      var _this = this;
+      uni.sendSocketMessage({
+        data: JSON.stringify(myMsg),
+        success: function success() {
+          // 发送消息
+          _this.screenMsg(msg);
+          _this.textMsg = ''; //清空输入框
+        },
+        fail: function fail(err) {
+          uni.showToast({
+            title: '发送失败， 请重新发送',
+            icon: 'none' });
 
+        } });
+
+    },
     // 添加文字消息到列表
     addTextMsg: function addTextMsg(msg) {
       this.msgList.push(msg);
@@ -784,12 +801,12 @@ var _avatar = _interopRequireDefault(__webpack_require__(/*! @/static/image/avat
       this.RECORDER.start({ format: "mp3" }); //录音开始,
     },
     //录音开始UI效果
-    recordBegin: function recordBegin(e) {var _this8 = this;
+    recordBegin: function recordBegin(e) {var _this7 = this;
       this.recording = true;
       this.voiceTis = '松开 结束';
       this.recordLength = 0;
       this.recordTimer = setInterval(function () {
-        _this8.recordLength++;
+        _this7.recordLength++;
       }, 1000);
     },
     // 录音被打断
@@ -829,7 +846,7 @@ var _avatar = _interopRequireDefault(__webpack_require__(/*! @/static/image/avat
     recordEnd: function recordEnd(e) {
       clearInterval(this.recordTimer);
       if (!this.willStop) {
-        console.log("e: " + JSON.stringify(e), " at pages\\tabBar\\chat\\room.vue:732");
+        console.log("e: " + JSON.stringify(e), " at pages\\tabBar\\chat\\room.vue:749");
         var msg = {
           length: 0,
           url: e.tempFilePath };
@@ -841,7 +858,7 @@ var _avatar = _interopRequireDefault(__webpack_require__(/*! @/static/image/avat
         msg.length = min + ':' + sec;
         this.sendMsg(msg, 'voice');
       } else {
-        console.log('取消发送录音', " at pages\\tabBar\\chat\\room.vue:744");
+        console.log('取消发送录音', " at pages\\tabBar\\chat\\room.vue:761");
       }
       this.willStop = false;
     },

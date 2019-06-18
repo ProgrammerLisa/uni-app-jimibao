@@ -179,7 +179,12 @@ var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/business
       renderImage: false,
       payShow: false,
       count: 1,
-      address: {},
+      address: {
+        addressee: '',
+        phone: '',
+        location: '',
+        address: '' },
+
       password: '' };
 
   },

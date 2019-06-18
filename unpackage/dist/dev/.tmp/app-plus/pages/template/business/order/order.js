@@ -130,13 +130,43 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/business/index.js */ "../../../../../y/uni-app-jimibao/utils/api/business/index.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var uniBadge = function uniBadge() {return __webpack_require__.e(/*! import() | components/uni-badge/uni-badge */ "components/uni-badge/uni-badge").then(__webpack_require__.bind(null, /*! @/components/uni-badge/uni-badge.vue */ "../../../../../y/uni-app-jimibao/components/uni-badge/uni-badge.vue"));};var uniMescroll = function uniMescroll() {return Promise.all(/*! import() | components/mescroll-uni/mescroll-uni */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/mescroll-uni/mescroll-uni")]).then(__webpack_require__.bind(null, /*! @/components/mescroll-uni/mescroll-uni.vue */ "../../../../../y/uni-app-jimibao/components/mescroll-uni/mescroll-uni.vue"));};var yTabs = function yTabs() {return __webpack_require__.e(/*! import() | components/y-tabs/y-tabs */ "components/y-tabs/y-tabs").then(__webpack_require__.bind(null, /*! @/components/y-tabs/y-tabs.vue */ "../../../../../y/uni-app-jimibao/components/y-tabs/y-tabs.vue"));};var yInputConfirm = function yInputConfirm() {return __webpack_require__.e(/*! import() | components/y-confirm/y-input-confirm */ "components/y-confirm/y-input-confirm").then(__webpack_require__.bind(null, /*! @/components/y-confirm/y-input-confirm.vue */ "../../../../../y/uni-app-jimibao/components/y-confirm/y-input-confirm.vue"));};var _default =
+
+
+var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/business/index.js */ "../../../../../y/uni-app-jimibao/utils/api/business/index.js"));
+var _goods = _interopRequireDefault(__webpack_require__(/*! @/static/image/goods1.png */ "../../../../../y/uni-app-jimibao/static/image/goods1.png"));
+var _goods2 = _interopRequireDefault(__webpack_require__(/*! @/static/image/goods2.png */ "../../../../../y/uni-app-jimibao/static/image/goods2.png"));
+var _goods3 = _interopRequireDefault(__webpack_require__(/*! @/static/image/goods3.png */ "../../../../../y/uni-app-jimibao/static/image/goods3.png"));
+var _goods4 = _interopRequireDefault(__webpack_require__(/*! @/static/image/goods4.png */ "../../../../../y/uni-app-jimibao/static/image/goods4.png"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var uniBadge = function uniBadge() {return __webpack_require__.e(/*! import() | components/uni-badge/uni-badge */ "components/uni-badge/uni-badge").then(__webpack_require__.bind(null, /*! @/components/uni-badge/uni-badge.vue */ "../../../../../y/uni-app-jimibao/components/uni-badge/uni-badge.vue"));};var uniMescroll = function uniMescroll() {return Promise.all(/*! import() | components/mescroll-uni/mescroll-uni */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/mescroll-uni/mescroll-uni")]).then(__webpack_require__.bind(null, /*! @/components/mescroll-uni/mescroll-uni.vue */ "../../../../../y/uni-app-jimibao/components/mescroll-uni/mescroll-uni.vue"));};var yTabs = function yTabs() {return __webpack_require__.e(/*! import() | components/y-tabs/y-tabs */ "components/y-tabs/y-tabs").then(__webpack_require__.bind(null, /*! @/components/y-tabs/y-tabs.vue */ "../../../../../y/uni-app-jimibao/components/y-tabs/y-tabs.vue"));};var yInputConfirm = function yInputConfirm() {return __webpack_require__.e(/*! import() | components/y-confirm/y-input-confirm */ "components/y-confirm/y-input-confirm").then(__webpack_require__.bind(null, /*! @/components/y-confirm/y-input-confirm.vue */ "../../../../../y/uni-app-jimibao/components/y-confirm/y-input-confirm.vue"));};var _default =
 {
   components: {
     uniBadge: uniBadge,
     uniMescroll: uniMescroll,
     yTabs: yTabs,
     yInputConfirm: yInputConfirm },
+
+  filters: {
+    imageFilter: function imageFilter(value) {
+      switch (value) {
+        case '格力空调':
+          return _goods.default;
+        case '美的电饭煲':
+          return _goods2.default;
+        case '美的电风扇':
+          return _goods3.default;
+        case '苏泊尔榨汁机':
+          return _goods4.default;}
+
+    },
+    statusFilter: function statusFilter(type) {
+      switch (type) {
+        case 0:
+          return '待发货';
+        case 1:
+          return '已发货';
+        case 2:
+          return '已签收';}
+
+    } },
 
   data: function data() {
     return {
@@ -241,31 +271,15 @@ var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/business
       mescroll.resetUpScroll(); // 重置列表为第一页 (自动执行 page.num=1, 再触发upCallback方法 )
     },
     /*上拉加载的回调*/
-    upCallback: function () {var _upCallback = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3(mescroll) {var _this = this;var pageNum, pageSize, url, res, curPageData, totalSize, hasNext;return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:
+    upCallback: function () {var _upCallback = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3(mescroll) {var _this = this;var pageNum, pageSize, res, curPageData, totalSize, hasNext;return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:
                 // 此时mescroll会携带page的参数:
                 pageNum = mescroll.num; // 页码, 默认从1开始
                 pageSize = mescroll.size; // 页长, 默认每页10条
-                _context3.t0 =
-                this.active;_context3.next = _context3.t0 ===
-                0 ? 5 : _context3.t0 ===
-
-
-                1 ? 7 : 9;break;case 5:url = _index.default.tools;return _context3.abrupt("break", 9);case 7:
-                url = _index.default.toolMine;return _context3.abrupt("break", 9);case 9:_context3.next = 11;return (
-
-
-                  _index.default.order({ page: pageNum, size: pageSize }));case 11:res = _context3.sent;
+                _context3.next = 4;return _index.default.order({ page: pageNum, size: pageSize, status: this.active });case 4:res = _context3.sent;
                 if (res.success) {
-
-                  if (this.active === 0) {
-                    curPageData = res.data;
-                    totalSize = res.data.length;
-                    hasNext = false;
-                  } else {
-                    curPageData = res.data.list;
-                    totalSize = res.data.total;
-                    hasNext = res.data.hasNextPage;
-                  }
+                  curPageData = res.data.list;
+                  totalSize = res.data.total;
+                  hasNext = res.data.hasNextPage;
                   setTimeout(function () {
                     mescroll.endSuccess(curPageData.length, hasNext);
                     //设置列表数据
@@ -275,7 +289,7 @@ var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/business
                 } else {
                   // 失败隐藏下拉加载状态
                   mescroll.endErr();
-                }case 13:case "end":return _context3.stop();}}}, _callee3, this);}));function upCallback(_x3) {return _upCallback.apply(this, arguments);}return upCallback;}() } };exports.default = _default;
+                }case 6:case "end":return _context3.stop();}}}, _callee3, this);}));function upCallback(_x3) {return _upCallback.apply(this, arguments);}return upCallback;}() } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 
 /***/ }),
@@ -306,11 +320,38 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  var l1 = _vm.tabList.map(function(i, index) {
+    var l0 = i.dataList.map(function(value, key) {
+      var f0 = _vm._f("imageFilter")(value.productionname)
+
+      var f1 = _vm._f("statusFilter")(value.status)
+
+      return {
+        $orig: _vm.__get_orig(value),
+        f0: f0,
+        f1: f1
+      }
+    })
+    return {
+      $orig: _vm.__get_orig(i),
+      l0: l0
+    }
+  })
+
   if (!_vm._isMounted) {
     _vm.e0 = function($event) {
       _vm.rewardShow = false
     }
   }
+
+  _vm.$mp.data = Object.assign(
+    {},
+    {
+      $root: {
+        l1: l1
+      }
+    }
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

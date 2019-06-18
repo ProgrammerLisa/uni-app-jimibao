@@ -16,7 +16,7 @@
     "pages/template/profile/setting/set-password",
     "pages/template/profile/setting/forget-password",
     "pages/template/profile/level/level",
-    "pages/template/profile/topList-lottery/lottery",
+    "pages/template/profile/topList-lottery/topList-lottery",
     "pages/template/profile/topList-order/topList-order",
     "pages/template/profile/topList-team/topList-team",
     "pages/template/profile/topList-team-recruit/topList-team-recruit",
@@ -38,7 +38,8 @@
     "pages/template/home/course/video",
     "pages/template/home/course/web-view",
     "pages/template/business/detail/detail",
-    "pages/template/business/order/order"
+    "pages/template/business/order/order",
+    "pages/template/exchange/send/send"
   ],
   "subPackages": [],
   "window": {

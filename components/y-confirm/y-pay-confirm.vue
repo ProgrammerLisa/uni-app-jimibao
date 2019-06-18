@@ -50,7 +50,7 @@
 		position: fixed;
 		top: 0;
 		left: 0;
-		z-index: 10;
+		z-index: 11;
 		.y-modal {
 			height: 100%;
 			width: 100%;

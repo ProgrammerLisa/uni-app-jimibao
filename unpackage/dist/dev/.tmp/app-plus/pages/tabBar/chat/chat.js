@@ -174,16 +174,21 @@ var _avatar = _interopRequireDefault(__webpack_require__(/*! @/static/image/avat
     this.imageUrl = this.$imageUrl;
   },
   onShow: function onShow() {
-    this.getData();
+    var _this = this;
+    _this.noReadCount();
+    uni.onSocketMessage(function (res) {
+      if (JSON.parse(res.data).type === 'CHAT') {
+        _this.dataList.forEach(function (element) {
+          if (JSON.parse(res.data).sender === element.bfirmid) {
+            element.unread++;
+          }
+        });
+        _this.noReadCount();
+      }
+    });
   },
   methods: {
-    getData: function () {var _getData = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
-                  _index.default.contacts());case 2:res = _context.sent;
-                if (res.success) {
-                  this.dataList = res.data.list;
-                }case 4:case "end":return _context.stop();}}}, _callee, this);}));function getData() {return _getData.apply(this, arguments);}return getData;}(),
-
-    goRoom: function () {var _goRoom = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2(e) {return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:
+    goRoom: function () {var _goRoom = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee(e) {return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
                 uni.setStorage({
                   key: 'chat-id',
                   data: e.bfirmid,
@@ -191,8 +196,29 @@ var _avatar = _interopRequireDefault(__webpack_require__(/*! @/static/image/avat
                     uni.navigateTo({
                       url: '/pages/tabBar/chat/room' });
 
-                  } });case 1:case "end":return _context2.stop();}}}, _callee2, this);}));function goRoom(_x) {return _goRoom.apply(this, arguments);}return goRoom;}(),
+                  } });case 1:case "end":return _context.stop();}}}, _callee, this);}));function goRoom(_x) {return _goRoom.apply(this, arguments);}return goRoom;}(),
 
+
+    noReadCount: function () {var _noReadCount = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var res, text;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:_context2.next = 2;return (
+                  _index.default.unRead());case 2:res = _context2.sent;
+                if (res.success) {
+                  if (res.data > 0) {
+
+                    if (res.data < 100) {
+                      text = res.data.toString();
+                    } else {
+                      text = '99+';
+                    }
+                    uni.setTabBarBadge({
+                      index: 3,
+                      text: text });
+
+                  } else {
+                    uni.removeTabBarBadge({
+                      index: 3 });
+
+                  }
+                }case 4:case "end":return _context2.stop();}}}, _callee2, this);}));function noReadCount() {return _noReadCount.apply(this, arguments);}return noReadCount;}(),
 
     // mescroll组件初始化的回调,可获取到mescroll对象
     mescrollInit: function mescrollInit(mescroll) {
@@ -203,7 +229,7 @@ var _avatar = _interopRequireDefault(__webpack_require__(/*! @/static/image/avat
       mescroll.resetUpScroll(); // 重置列表为第一页 (自动执行 page.num=1, 再触发upCallback方法 )
     },
     /*上拉加载的回调*/
-    upCallback: function () {var _upCallback = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3(mescroll) {var _this = this;var pageNum, pageSize, sign, res, curPageData, totalSize, hasNext;return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:
+    upCallback: function () {var _upCallback = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3(mescroll) {var _this2 = this;var pageNum, pageSize, sign, res, curPageData, totalSize, hasNext;return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:
                 // 此时mescroll会携带page的参数:
                 pageNum = mescroll.num; // 页码, 默认从1开始
                 pageSize = mescroll.size; // 页长, 默认每页10条
@@ -224,8 +250,8 @@ var _avatar = _interopRequireDefault(__webpack_require__(/*! @/static/image/avat
                   setTimeout(function () {
                     mescroll.endSuccess(curPageData.length, hasNext);
                     //设置列表数据
-                    if (mescroll.num === 1) _this.dataList = []; //如果是第一页需手动制空列表
-                    _this.dataList = _this.dataList.concat(curPageData); //追加新数据
+                    if (mescroll.num === 1) _this2.dataList = []; //如果是第一页需手动制空列表
+                    _this2.dataList = _this2.dataList.concat(curPageData); //追加新数据
                   }, 500);
                 } else {
                   // 失败隐藏下拉加载状态

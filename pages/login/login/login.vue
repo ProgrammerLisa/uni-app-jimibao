@@ -54,13 +54,17 @@
 			}
 		},
 		onLoad () {
+			const _this = this
 			uni.getStorage({
 				key: 'user',
 				success: function (res) {
 					if (res.data) {
-						uni.switchTab({
-							url: '/pages/tabBar/home/home'
-						})
+						_this.myId = res.data.firmid
+						setTimeout(() => {
+							uni.switchTab({
+								url: '/pages/tabBar/home/home'
+							})
+						}, 500)
 					}
 				}
 			})
@@ -97,6 +101,7 @@
 				}
 			},
 			async sendFormRequest (e) {
+				const _this = this
 				const res = await api.login(e)
 				if (res.success) {
 					uni.setStorage({
@@ -106,9 +111,14 @@
 							uni.showToast({
 								title: '登录成功'
 							})
-							uni.switchTab({
-								url: '/pages/tabBar/home/home'
+							uni.connectSocket({
+								url: _this.$socketUrl + res.data.firmid
 							})
+							setTimeout(() => {
+								uni.switchTab({
+									url: '/pages/tabBar/home/home'
+								})
+							}, 500)
 						}
 					})
 				}

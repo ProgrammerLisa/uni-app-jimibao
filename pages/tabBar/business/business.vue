@@ -21,6 +21,7 @@
 
 <script>
 	import api from '@/utils/api/business/index.js'
+	import apiChat from '@/utils/api/chat/index.js'
 	import business from '@/static/image/business.png'
 	import goods1 from '@/static/image/goods1.png'
 	import goods2 from '@/static/image/goods2.png'
@@ -44,6 +45,13 @@
 			setTimeout(()=> {
 			    this.renderImage = true
 			}, 300)
+			
+			const _this = this
+			uni.onSocketMessage(function(res){
+				if (JSON.parse(res.data).type === 'CHAT') {
+					_this.noReadCount()
+				}
+			})
 		},
 		onNavigationBarButtonTap (e) {
 			uni.navigateTo({
@@ -58,6 +66,23 @@
 					this.productList = res.data.list.map((element, index) => {
 						return { ...element, ..._this.productList[index] }
 					})
+				}
+			},
+			async noReadCount () {
+				const res = await api.unRead()
+				if (res.success) {
+					if(res.data > 0) {
+						let text
+						if (res.data < 100) {
+							text = res.data.toString()
+						} else {
+							text = '99+'
+						}
+						uni.setTabBarBadge({
+							index: 3,
+							text: text
+						})
+					}
 				}
 			},
 			goDetail (e) {
@@ -75,5 +100,8 @@
 	}
 	.banner-image {
 		width: 100vw;
+	}
+	.uni-product-price-original {
+		color: $uni-router-color;
 	}
 </style>

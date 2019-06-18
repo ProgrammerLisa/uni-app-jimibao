@@ -47,7 +47,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 10;
+  z-index: 11;
 }
 .y-modal-container .y-modal.data-v-1650a29c {
     height: 100%;

@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "发布订单",
+  "scrollIndicator": "none",
+  "usingComponents": {
+    "y-tabs": "/components/y-tabs/y-tabs"
+  }
+}

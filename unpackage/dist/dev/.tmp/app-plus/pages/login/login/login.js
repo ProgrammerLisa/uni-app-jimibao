@@ -172,13 +172,17 @@ var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/login/in
 
   },
   onLoad: function onLoad() {
+    var _this = this;
     uni.getStorage({
       key: 'user',
       success: function success(res) {
         if (res.data) {
-          uni.switchTab({
-            url: '/pages/tabBar/home/home' });
+          _this.myId = res.data.firmid;
+          setTimeout(function () {
+            uni.switchTab({
+              url: '/pages/tabBar/home/home' });
 
+          }, 500);
         }
       } });
 
@@ -214,8 +218,9 @@ var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/login/in
         }
       }
     },
-    sendFormRequest: function () {var _sendFormRequest = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee(e) {var res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
-                  _index.default.login(e));case 2:res = _context.sent;
+    sendFormRequest: function () {var _sendFormRequest = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee(e) {var _this, res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
+                _this = this;_context.next = 3;return (
+                  _index.default.login(e));case 3:res = _context.sent;
                 if (res.success) {
                   uni.setStorage({
                     key: 'user',
@@ -224,12 +229,17 @@ var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/login/in
                       uni.showToast({
                         title: '登录成功' });
 
-                      uni.switchTab({
-                        url: '/pages/tabBar/home/home' });
+                      uni.connectSocket({
+                        url: _this.$socketUrl + res.data.firmid });
 
+                      setTimeout(function () {
+                        uni.switchTab({
+                          url: '/pages/tabBar/home/home' });
+
+                      }, 500);
                     } });
 
-                }case 4:case "end":return _context.stop();}}}, _callee, this);}));function sendFormRequest(_x) {return _sendFormRequest.apply(this, arguments);}return sendFormRequest;}(),
+                }case 5:case "end":return _context.stop();}}}, _callee, this);}));function sendFormRequest(_x) {return _sendFormRequest.apply(this, arguments);}return sendFormRequest;}(),
 
     checkForm: function checkForm(e) {
       var _this = this;

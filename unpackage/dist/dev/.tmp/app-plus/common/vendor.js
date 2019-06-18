@@ -16390,6 +16390,23 @@ createPage(_order.default);
 
 /***/ }),
 
+/***/ "../../../../../y/uni-app-jimibao/main.js?{\"page\":\"pages%2Ftemplate%2Fexchange%2Fsend%2Fsend\"}":
+/*!*****************************************************************************************!*\
+  !*** D:/y/uni-app-jimibao/main.js?{"page":"pages%2Ftemplate%2Fexchange%2Fsend%2Fsend"} ***!
+  \*****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../y/uni-app-jimibao/pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _send = _interopRequireDefault(__webpack_require__(/*! ./pages/template/exchange/send/send.vue */ "../../../../../y/uni-app-jimibao/pages/template/exchange/send/send.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_send.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["createPage"]))
+
+/***/ }),
+
 /***/ "../../../../../y/uni-app-jimibao/main.js?{\"page\":\"pages%2Ftemplate%2Fhome%2Fcourse%2Fcourse\"}":
 /*!*****************************************************************************************!*\
   !*** D:/y/uni-app-jimibao/main.js?{"page":"pages%2Ftemplate%2Fhome%2Fcourse%2Fcourse"} ***!
@@ -16781,10 +16798,10 @@ createPage(_topListEncourage.default);
 
 /***/ }),
 
-/***/ "../../../../../y/uni-app-jimibao/main.js?{\"page\":\"pages%2Ftemplate%2Fprofile%2FtopList-lottery%2Flottery\"}":
-/*!******************************************************************************************************!*\
-  !*** D:/y/uni-app-jimibao/main.js?{"page":"pages%2Ftemplate%2Fprofile%2FtopList-lottery%2Flottery"} ***!
-  \******************************************************************************************************/
+/***/ "../../../../../y/uni-app-jimibao/main.js?{\"page\":\"pages%2Ftemplate%2Fprofile%2FtopList-lottery%2FtopList-lottery\"}":
+/*!**************************************************************************************************************!*\
+  !*** D:/y/uni-app-jimibao/main.js?{"page":"pages%2Ftemplate%2Fprofile%2FtopList-lottery%2FtopList-lottery"} ***!
+  \**************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16792,8 +16809,8 @@ createPage(_topListEncourage.default);
 /* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../y/uni-app-jimibao/pages.json");
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _lottery = _interopRequireDefault(__webpack_require__(/*! ./pages/template/profile/topList-lottery/lottery.vue */ "../../../../../y/uni-app-jimibao/pages/template/profile/topList-lottery/lottery.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_lottery.default);
+var _topListLottery = _interopRequireDefault(__webpack_require__(/*! ./pages/template/profile/topList-lottery/topList-lottery.vue */ "../../../../../y/uni-app-jimibao/pages/template/profile/topList-lottery/topList-lottery.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_topListLottery.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["createPage"]))
 
 /***/ }),
@@ -17205,6 +17222,10 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
   // 获取本人信息
   getInfo: function getInfo(obj) {
     return _index.default.get('/firm/logininfo', obj);
+  },
+  // 未读总数
+  unRead: function unRead(obj) {
+    return _index.default.get('/chat/getcountSumUnReadChats', obj);
   } };exports.default = _default;
 
 /***/ }),
@@ -17396,6 +17417,21 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
   // 查询合伙人信息
   partnerTeam: function partnerTeam(obj) {
     return _index.default.get('/partner/getFirmPartnerInfo', obj);
+  },
+  // 交换列表
+  exchangeList: function exchangeList(obj) {
+    return _index.default.get('/order/' + obj.sign, obj);
+  },
+  // 发布订单
+  exchangeSend: function exchangeSend(obj) {
+    return _index.default.post('/order/push/' + obj.sign, obj);
+  },
+  exchangeInfo: function exchangeInfo(obj) {
+    return _index.default.get('/order/tradeInfo', obj);
+  },
+  // 交换
+  exchange: function exchange(obj) {
+    return _index.default.post('/order/' + obj.type + '/' + obj.orderid, obj);
   } };exports.default = _default;
 
 /***/ }),
@@ -17408,7 +17444,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var patternDevelopment = false; // true是开发模式 false是生产模式
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var patternDevelopment = true; // true是开发模式 false是生产模式
 var url, uploadImgUrl, socketUrl;
 if (patternDevelopment) {
   url = 'http://192.168.1.253:88/api',
@@ -17441,7 +17477,7 @@ var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/store/index.
 function checkStatus(response) {
   uni.hideLoading();
   if (response[1]) {
-    if (response[1].statusCode === 200 || response.statusCode[1] === 304) {
+    if (response[1].statusCode === 200 || response[1].statusCode === 304) {
       return response[1].data;
     } else {
       return {
@@ -17553,128 +17589,6 @@ function checkCode(res) {
 
     then(checkStatus).then(checkCode);
   } };exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
-
-/***/ }),
-
-/***/ "../../../../../y/uni-app-jimibao/utils/socket/index.js":
-/*!**************************************************!*\
-  !*** D:/y/uni-app-jimibao/utils/socket/index.js ***!
-  \**************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _config = _interopRequireDefault(__webpack_require__(/*! @/utils/request/config.js */ "../../../../../y/uni-app-jimibao/utils/request/config.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-// 创建连接
-var onMessageVal = '';
-var socket = function socket(id) {
-  var socketServer = {
-    socket: null,
-    wsUrl: _config.default.socketUrl + id,
-    lockReconnect: false, // 避免重复链接
-    timeInterval: null, // 重连间隔时间
-    createWebSocket: function createWebSocket() {
-      var _this = this;
-      try {
-        _this.socket = uni.connectSocket({
-          url: _this.wsUrl,
-          complete: function complete() {} });
-        // 初始化
-        _this.webSocketInit();
-      } catch (e) {
-        _this.webSocketReconnect(); // 重连
-      }
-    },
-    // 初始化连接
-    webSocketInit: function webSocketInit() {
-      var _this = this;
-      _this.socket.onClose(function () {
-        _this.webSocketReconnect();
-      });
-      _this.socket.onError(function () {
-        _this.webSocketReconnect();
-      });
-      _this.socket.onOpen(function () {
-        // 连接后启动心跳检测
-        console.log('已连接', " at utils\\socket\\index.js:33");
-        _this.start();
-      });
-      _this.socket.onMessage(function (res) {
-        // 接收一次消息 重置一次心跳检测
-        console.log(res, " at utils\\socket\\index.js:38");
-        onMessageVal = res.data;
-        _this.webSochetOnMessage(res.data);
-        _this.reset();
-      });
-    },
-    // 重连
-    webSocketReconnect: function webSocketReconnect() {
-      var _this = this;
-      if (_this.lockReconnect) return false;
-      _this.lockReconnect = true;
-      // 没连接上会一直重连，设置延迟，避免请求过多
-      _this.timeInterval && clearTimeout(_this.timeInterval);
-      _this.timeInterval = setTimeout(function () {
-        _this.createWebSocket();
-      });
-    },
-    // 接收消息
-    webSochetOnMessage: function webSochetOnMessage(e) {
-      var data = JSON.parse(e);
-      return data;
-    },
-    // 发送消息
-    sendMessage: function sendMessage(msgData, callback) {
-      var _this = this;
-      if (_this.socket) {
-        var json = JSON.stringify(msgData);
-        if (_this.socket['_webSocket'].readyState === 1) {
-          _this.socket.send({
-            data: '1',
-            success: function success(res) {
-              console.log(res, " at utils\\socket\\index.js:69");
-              callback({ code: 200 });
-            },
-            complete: function complete() {
-              console.log({ code: 502, message: '发送失败，请重新发送' }, " at utils\\socket\\index.js:73");
-            } });
-
-        } else {
-          callback({ code: 500, message: '服务器已断开连接' });
-        }
-      } else {
-        this.createWebSocket();
-      }
-    },
-    sendFunction: function sendFunction(msgData, callback) {
-      var _this = this;
-
-    },
-    // 心跳检测
-    timeOut: null,
-    timeNumber: 300000, // 300s
-    reset: function reset() {
-      var _this = this;
-      // 接收成功一次推送，就将心跳检测的倒计时重置为30秒
-      clearTimeout(_this.timeOut);
-      _this.start();
-    },
-    start: function start() {
-      var _this = this;
-      _this.timeOut = setTimeout(function () {
-        var message = 'heart';
-        _this.socket.send(message);
-      }, _this.timeNumber);
-    } };
-
-  return {
-    onSocket: socketServer,
-    onMessageVal: onMessageVal };
-
-};var _default =
-
-socket;exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 
 /***/ }),

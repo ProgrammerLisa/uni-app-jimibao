@@ -69,7 +69,8 @@ const socket = function (id) {
 						console.log(res)
 						callback({ code: 200 })
 					},
-					complete () {
+					fail (err) {
+						console.log(err)
 						console.log({ code: 502, message: '发送失败，请重新发送' })
 					}
 				})

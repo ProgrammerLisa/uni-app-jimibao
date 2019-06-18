@@ -1,16 +1,98 @@
 <script>
+	import api from '@/utils/api/chat/index.js'
 	export default {
+		data() {
+			return {
+				id: '',
+				timeOut: '',
+				intervalTime: null, // 重连间隔时间
+				lockReconnect: false // 避免重复连接
+			}
+		},
 		onLaunch: function() {
-			console.log('App Launch')
+			this.noReadCount()
 		},
 		onShow: function() {
-			console.log('App Show')
+			const _this = this
+			uni.getStorage({
+				key: 'user',
+				success (res) {
+					if (res.data) {
+						_this.id = res.data.firmid
+						_this.socket()
+					}
+				}
+			})
 		},
 		onHide: function() {
 			uni.removeStorage({
 				key: 'home-dot'
 			})
-			console.log('App Hide')
+			uni.onSocketOpen(function(){
+				uni.closeSocket()
+			})
+		},
+		methods: {
+			// 创建连接 并初始化
+			socket () {
+				const _this = this
+				uni.connectSocket({
+					url: _this.$socketUrl + _this.id
+				})
+				uni.onSocketOpen(function(){
+					_this.start()
+				})
+				uni.onSocketClose(function(){
+					_this.connectAgain()
+				})
+				uni.onSocketError(function(err){
+					_this.connectAgain()
+				})
+				uni.onSocketMessage(function(){
+					_this.reset()
+				})
+			},
+			// 重连
+			connectAgain () {
+				const _this = this
+				if (this.lockReconnect) return false
+				this.lockReconnect = true
+				// 没连接上会一直重连，设置延迟，避免请求过多
+				this.intervalTime && clearTimeout(_this.intervalTime)
+				this.intervalTime = setTimeout(() => {
+					_this.socket()
+				})
+			},
+			// 重置心跳
+			reset () {
+				clearTimeout(this.timeOut)
+				this.start()
+			},
+			// 心跳检测
+			start () {
+				this.timeOut = setTimeout(() => {
+					uni.sendSocketMessage({
+						data: 'heart'
+					})
+				}, 300000)
+			},
+			async noReadCount () {
+				const res = await api.unRead()
+				if (res.success) {
+					if(res.data > 0) {
+						let text
+						if (res.data < 100) {
+							text = res.data.toString()
+						} else {
+							text = '99+'
+						}
+						uni.setTabBarBadge({
+							index: 3,
+							text: text
+						})
+					}
+				}
+			}
 		}
 	}
 </script>

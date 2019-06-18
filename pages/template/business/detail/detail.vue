@@ -19,7 +19,7 @@
 			</view>
 		</view>
 		<view class="footer">
-			<button style="position: absolute; top: 0;" class="y-button" @click="payShow=true">立即兑换</button>
+			<button class="y-button" @click="payShow=true">立即兑换</button>
 		</view>
 		<y-pay-confirm :show="payShow" @hideModal="payShow=false">
 			<view class="modal">
@@ -56,7 +56,7 @@
 				<view class="modal-password-tips">
 					初始交换密码为123456
 				</view>
-				<view>
+				<view class="modal-submit">
 					<button class="y-button" @click="pay">确定</button>
 				</view>
 			</view>
@@ -79,7 +79,12 @@
 				renderImage: false,
 				payShow: false,
 				count: 1,
-				address: {},
+				address: {
+					addressee: '',
+					phone: '',
+					location: '',
+					address: ''
+				},
 				password: ''
 			}
 		},
@@ -239,5 +244,13 @@
 		color: $uni-text-color-grey;
 		text-align: center;
 		padding-bottom: 20upx;
+	}
+	.modal-submit {
+		.y-button {
+			background: $uni-router-color;
+			color: #fff;
+			border-radius: 0;
+			border:none;
+		}
 	}
 </style>

@@ -99,9 +99,9 @@
 		<view class="input-box" :class="popupLayerClass" @touchmove.stop.prevent="discard">
 			<!-- H5下不能录音，输入栏布局改动一下 -->
 			<!-- #ifndef H5 -->
-			<view class="voice">
+			<!-- <view class="voice">
 				<view class="icon" :class="isVoice?'jianpan':'yuyin'" @tap="switchVoice"></view>
-			</view>
+			</view> -->
 			<!-- #endif -->
 			<!-- #ifdef H5 -->
 			<view class="more" @tap="showMore">
@@ -114,17 +114,17 @@
 					<view class="box">
 						<textarea auto-height="true" style="color:#333" v-model="textMsg" @focus="textareaFocus"/>
 					</view>
-					<view class="em" @tap="chooseEmoji">
+					<!-- <view class="em" @tap="chooseEmoji">
 						<view class="icon biaoqing"></view>
-					</view>
+					</view> -->
 				</view>
 			</view>
 			<!-- #ifndef H5 -->
-			<view class="more" @tap="showMore">
+			<!-- <view class="more" @tap="showMore">
 				<view class="icon add"></view>
-			</view>
+			</view> -->
 			<!-- #endif -->
-			<view class="send" :class="isVoice?'hidden':''" @tap="sendText">
+			<view class="send" style="margin-left: 10px;" :class="isVoice?'hidden':''" @tap="sendText">
 				<view class="btn">发送</view>
 			</view>
 		</view>
@@ -138,7 +138,7 @@
 </template>
 <script>
 	import api from '@/utils/api/chat/index.js'
-	import socket from '@/utils/socket/index.js'
+	// import socket from '@/utils/socket/index.js'
 	import defaultAvatar from '@/static/image/avatar.png'
 	export default {
 		data() {
@@ -203,7 +203,8 @@
 				otherId: '',
 				hasNextPage: false,
 				myId: '',
-				socketTask: {}
+				nickname: '',
+				avatar: ''
 			}
 		},
 		onLoad(option) {
@@ -226,24 +227,31 @@
 		},
 		onShow(){
 			this.scrollTop = 9999999;
-			//模板借由本地缓存实现发红包效果，实际应用中请不要使用此方法。
-			//
-			uni.getStorage({
-				key: 'redEnvelopeData',
-				success:  (res)=>{
-					let nowDate = new Date()
-					let lastid = this.msgList[this.msgList.length-1].msg.id
-					lastid++
-					let row = {type:"user",msg:{id:lastid,type:"redEnvelope",time:nowDate.getHours()+":"+nowDate.getMinutes(),userinfo:{uid:0,username:"大黑哥",face:"/static/img/face.jpg"},content:{blessing:res.data.blessing,rid:Math.floor(Math.random()*1000+1),isReceived:false}}};
-					this.screenMsg(row)
-					uni.removeStorage({key: 'redEnvelopeData'})
+			const _this = this
+			uni.onSocketMessage(function(res){
+				if (JSON.parse(res.data).type === 'CHAT') {
+					if (JSON.parse(res.data).sender === _this.otherId) {
+						var nowDate = new Date()
+						let msg = {type:'user',msg:{id:nowDate.getTime(),time:nowDate.getHours()+":"+nowDate.getMinutes(),type:JSON.parse(res.data).content.contentType,userinfo:{uid:1,username:_this.nickname,face:_this.avatar},content:JSON.parse(res.data).content}}
+						_this.screenMsg(msg)
+					}
 				}
 			})
+			//模板借由本地缓存实现发红包效果，实际应用中请不要使用此方法。
+			//
+			// uni.getStorage({
+			// 	key: 'redEnvelopeData',
+			// 	success:  (res)=>{
+			// 		let nowDate = new Date()
+			// 		let lastid = this.msgList[this.msgList.length-1].msg.id
+			// 		lastid++
+			// 		let row = {type:"user",msg:{id:lastid,type:"redEnvelope",time:nowDate.getHours()+":"+nowDate.getMinutes(),userinfo:{uid:0,username:"大黑哥",face:"/static/img/face.jpg"},content:{blessing:res.data.blessing,rid:Math.floor(Math.random()*1000+1),isReceived:false}}};
+			// 		this.screenMsg(row)
+			// 		uni.removeStorage({key: 'redEnvelopeData'})
+			// 	}
+			// })
 		},
 		watch: {
-			onMessageVal (val) {
-				console.log(val)
-			}
 		},
 		methods:{
 			// 根据本地缓存获取对方id
@@ -258,25 +266,25 @@
 				})
 			},
 			// 获取本人信息（头像/昵称 等） 建立通讯
-			async getMyInfo (e) {
-				const res = await api.getInfo()
-				if (res.success) {
-					this.myId = res.data.firmid
-					if (res.data.headimage) {
-						this.myAvatar = this.$imageUrl + res.data.headimage
-					} else {
-						this.myAvatar = defaultAvatar
+			async getMyInfo () {
+				const _this = this
+				uni.getStorage({
+					key: 'user',
+					success (res) {
+						_this.myId = res.data.firmid
+						if (res.data.headimage) {
+							_this.myAvatar = _this.$imageUrl + res.data.headimage
+						} else {
+							_this.myAvatar = defaultAvatar
+						}
+						
+						_this.messageInit()
+						// _this.socket()
 					}
-					this.getSocket(res.data.firmid)
-				}
+				})
 			},
-			getSocket () {
-				this.socketTask = socket(this.myId)
-				this.socketTask.onSocket.createWebSocket()
-				this.onMessageVal = this.socketTask.onMessageVal
-				this.messageInit()
-			},
-			// 初始化
+			
+			// 聊天记录初始化
 			async messageInit () {
 				let list = await this.getRecord()
 				if (!list || list.length === 0) {
@@ -289,7 +297,6 @@
 						this.msgImgList.push(list[i].msg.content.url)
 					}
 				}
-				console.log(list[3].msg.content.text)
 				this.msgList = list
 				// 滚动到底部
 				this.$nextTick(function() {
@@ -307,9 +314,15 @@
 				const res = await api.record({ page: this.page, size:  this.pageSize, id: this.otherId })
 				if (res.success) {
 					if (res.data.dfnkname) {
+						this.nickname = res.data.dfnkname
 						uni.setNavigationBarTitle({
 							title: res.data.dfnkname
 						})
+					}
+					if (res.data.dfpath) {
+						this.avatar = _this.$imageUrl + res.data.dfpath
+					} else {
+						this.avatar = defaultAvatar
 					}
 					this.hasNextPage = res.data.hasNextPage
 					let list = res.data.list.reverse()
@@ -386,7 +399,6 @@
 							this.addRedEnvelopeMsg(msg);
 							break;
 					}
-					console.log('用户消息');
 					//非自己的消息震动
 					if(msg.msg.userinfo.uid!=this.myuid){
 						console.log('振动');
@@ -597,7 +609,7 @@
 				var nowDate = new Date()
 				let lastid = this.msgList[this.msgList.length-1].msg.id
 				lastid++
-				let msg = {type:'user',msg:{id:lastid,time:nowDate.getHours()+":"+nowDate.getMinutes(),type:type,userinfo:{uid:0,username:"大黑哥",face:"/static/img/face.jpg"},content:content}}
+				let msg = {type:'user',msg:{id:lastid,time:nowDate.getHours()+":"+nowDate.getMinutes(),type:type,userinfo:{uid:0,username:"I",face:this.myAvatar},content:content}}
 				
 				let myMsg = {
 					content: {
@@ -609,18 +621,7 @@
 					targets: _this.otherId, // 接收人
 					type: 'CHAT'// 消息类型（通知/聊天）
 				}
-				this.socketTask.onSocket.sendMessage(myMsg, function results(e) {
-					if (e.code === 200) {
-						// 发送消息
-						this.screenMsg(msg)
-						this.textMsg = '' //清空输入框
-					} else {
-						uni.showToast({
-							title: '发送失败， 请重新发送',
-							icon: 'none'
-						})
-					}
-				})
+				this.sendSocket(myMsg, msg)
 				// 定时器模拟对方回复,三秒
 				// setTimeout(()=>{
 				// 	lastid = this.msgList[this.msgList.length-1].msg.id;
@@ -630,7 +631,23 @@
 				// 	this.screenMsg(msg)
 				// },3000)
 			},
-			
+			sendSocket (myMsg, msg) {
+				const _this = this
+				uni.sendSocketMessage({
+					data: JSON.stringify(myMsg),
+					success () {
+						// 发送消息
+						_this.screenMsg(msg)
+						_this.textMsg = '' //清空输入框
+					},
+					fail (err) {
+						uni.showToast({
+							title: '发送失败， 请重新发送',
+							icon: 'none'
+						})
+					}
+				})
+			},
 			// 添加文字消息到列表
 			addTextMsg(msg){
 				this.msgList.push(msg);

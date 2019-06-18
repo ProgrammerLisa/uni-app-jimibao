@@ -148,68 +148,67 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/tabBar/index.js */ "../../../../../y/uni-app-jimibao/utils/api/tabBar/index.js"));
-var _tool = _interopRequireDefault(__webpack_require__(/*! @/static/image/tool1.png */ "../../../../../y/uni-app-jimibao/static/image/tool1.png"));
-var _tool2 = _interopRequireDefault(__webpack_require__(/*! @/static/image/tool2.png */ "../../../../../y/uni-app-jimibao/static/image/tool2.png"));
-var _tool3 = _interopRequireDefault(__webpack_require__(/*! @/static/image/tool3.png */ "../../../../../y/uni-app-jimibao/static/image/tool3.png"));
-var _tool4 = _interopRequireDefault(__webpack_require__(/*! @/static/image/tool4.png */ "../../../../../y/uni-app-jimibao/static/image/tool4.png"));
-var _tool5 = _interopRequireDefault(__webpack_require__(/*! @/static/image/tool5.png */ "../../../../../y/uni-app-jimibao/static/image/tool5.png"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var uniBadge = function uniBadge() {return __webpack_require__.e(/*! import() | components/uni-badge/uni-badge */ "components/uni-badge/uni-badge").then(__webpack_require__.bind(null, /*! @/components/uni-badge/uni-badge.vue */ "../../../../../y/uni-app-jimibao/components/uni-badge/uni-badge.vue"));};var uniMescroll = function uniMescroll() {return Promise.all(/*! import() | components/mescroll-uni/mescroll-uni */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/mescroll-uni/mescroll-uni")]).then(__webpack_require__.bind(null, /*! @/components/mescroll-uni/mescroll-uni.vue */ "../../../../../y/uni-app-jimibao/components/mescroll-uni/mescroll-uni.vue"));};var yTabs = function yTabs() {return __webpack_require__.e(/*! import() | components/y-tabs/y-tabs */ "components/y-tabs/y-tabs").then(__webpack_require__.bind(null, /*! @/components/y-tabs/y-tabs.vue */ "../../../../../y/uni-app-jimibao/components/y-tabs/y-tabs.vue"));};var yInputConfirm = function yInputConfirm() {return __webpack_require__.e(/*! import() | components/y-confirm/y-input-confirm */ "components/y-confirm/y-input-confirm").then(__webpack_require__.bind(null, /*! @/components/y-confirm/y-input-confirm.vue */ "../../../../../y/uni-app-jimibao/components/y-confirm/y-input-confirm.vue"));};var _default =
+var _index2 = _interopRequireDefault(__webpack_require__(/*! @/utils/api/chat/index.js */ "../../../../../y/uni-app-jimibao/utils/api/chat/index.js"));
+var _avatar = _interopRequireDefault(__webpack_require__(/*! @/static/image/avatar.png */ "../../../../../y/uni-app-jimibao/static/image/avatar.png"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var yPayConfirm = function yPayConfirm() {return __webpack_require__.e(/*! import() | components/y-confirm/y-pay-confirm */ "components/y-confirm/y-pay-confirm").then(__webpack_require__.bind(null, /*! @/components/y-confirm/y-pay-confirm.vue */ "../../../../../y/uni-app-jimibao/components/y-confirm/y-pay-confirm.vue"));};var uniMescroll = function uniMescroll() {return Promise.all(/*! import() | components/mescroll-uni/mescroll-uni */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/mescroll-uni/mescroll-uni")]).then(__webpack_require__.bind(null, /*! @/components/mescroll-uni/mescroll-uni.vue */ "../../../../../y/uni-app-jimibao/components/mescroll-uni/mescroll-uni.vue"));};var yTabs = function yTabs() {return __webpack_require__.e(/*! import() | components/y-tabs/y-tabs */ "components/y-tabs/y-tabs").then(__webpack_require__.bind(null, /*! @/components/y-tabs/y-tabs.vue */ "../../../../../y/uni-app-jimibao/components/y-tabs/y-tabs.vue"));};var _default =
 {
   components: {
-    uniBadge: uniBadge,
     uniMescroll: uniMescroll,
     yTabs: yTabs,
-    yInputConfirm: yInputConfirm },
-
-  filters: {
-    imageFilter: function imageFilter(e) {
-      switch (e.value) {
-        case '小米袋':
-          if (e.type === 'img') {
-            return _tool.default;
-          } else {
-            return '10kg';
-          }
-        case '中米袋':
-          if (e.type === 'img') {
-            return _tool2.default;
-          } else {
-            return '50kg';
-          }
-        case '大米袋':
-          if (e.type === 'img') {
-            return _tool3.default;
-          } else {
-            return '100kg';
-          }
-        case '米缸':
-          if (e.type === 'img') {
-            return _tool4.default;
-          } else {
-            return '1000kg';
-          }
-        case '米仓':
-          if (e.type === 'img') {
-            return _tool5.default;
-          } else {
-            return '50000kg';
-          }}
-
-    } },
+    yPayConfirm: yPayConfirm },
 
   data: function data() {
     return {
+      avatar: _avatar.default,
       active: 0,
       tabList: [
-      { title: '集米工具', dataList: [] },
-      { title: '我的工具', dataList: [] }],
+      { title: '收单', dataList: [] },
+      { title: '出单', dataList: [] }],
 
-      rewardShow: false,
-      passwordShow: false,
-      rewardId: '',
-      rewardCount: '',
-      canUse: '',
-      allUse: '',
+      info: {
+        curBuyNum: 0,
+        curSellNum: 0,
+        curPrice: {
+          beginTime: 0,
+          price: 0 } },
+
+
+      payShow: false,
+      pay: {},
+      balance: '',
+      password: '',
+      timer: '',
       mescroll: null, //mescroll实例对象
       // 下拉刷新的配置
       downOption: {
@@ -232,11 +231,6 @@ var _tool5 = _interopRequireDefault(__webpack_require__(/*! @/static/image/tool5
 
 
   },
-  onShow: function onShow() {
-    this.getData(0);
-    this.getData(1);
-    this.getAll();
-  },
   // 必须注册滚动到底部的事件,使上拉加载生效
   onReachBottom: function onReachBottom() {
     this.mescroll && this.mescroll.onReachBottom();
@@ -245,76 +239,110 @@ var _tool5 = _interopRequireDefault(__webpack_require__(/*! @/static/image/tool5
   onPageScroll: function onPageScroll(e) {
     this.mescroll && this.mescroll.onPageScroll(e);
   },
+  onNavigationBarButtonTap: function onNavigationBarButtonTap(e) {
+    if (e.navType === 'order') {
+      uni.navigateTo({
+        url: '/pages/template/profile/topList-order/topList-order' });
+
+    } else {
+      uni.navigateTo({
+        url: '/pages/template/exchange/send/send' });
+
+    }
+  },
+  onShow: function onShow() {var _this2 = this;
+    this.initList();
+    this.getData();
+    this.timer = setInterval(function () {
+      _this2.getData();
+    }, 30000);
+
+    var _this = this;
+    uni.onSocketMessage(function (res) {
+      if (JSON.parse(res.data).type === 'CHAT') {
+        _this.noReadCount();
+      }
+    });
+  },
+  onHide: function onHide() {
+    var _this = this;
+    clearInterval(_this.timer);
+  },
+  watch: {
+    payShow: function payShow(val) {
+      this.password = '';
+    } },
+
   methods: {
-    getData: function () {var _getData = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee(e) {var url, res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.t0 =
-
-                e;_context.next = _context.t0 ===
-                0 ? 3 : _context.t0 ===
-
-
-                1 ? 5 : 6;break;case 3:url = _index.default.tools;return _context.abrupt("break", 6);case 5:
-                url = _index.default.toolMine;case 6:_context.next = 8;return (
-
-                  url());case 8:res = _context.sent;
+    getData: function () {var _getData = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var res, response;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
+                  _index.default.exchangeInfo());case 2:res = _context.sent;
                 if (res.success) {
-                  this.tabList[e].dataList = res.data.list;
-                }case 10:case "end":return _context.stop();}}}, _callee, this);}));function getData(_x) {return _getData.apply(this, arguments);}return getData;}(),
+                  this.info = res.data;
+                }_context.next = 6;return (
+                  _index.default.AccountBalance());case 6:response = _context.sent;
+                if (response.success) {
+                  this.balance = response.data.balance;
+                }case 8:case "end":return _context.stop();}}}, _callee, this);}));function getData() {return _getData.apply(this, arguments);}return getData;}(),
 
-    getAll: function () {var _getAll = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var res;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:_context2.next = 2;return (
-                  _index.default.AccountBalance());case 2:res = _context2.sent;
+    initList: function () {var _initList = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var res;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:_context2.next = 2;return (
+                  _index.default.exchangeList({ sign: this.active + 1 }));case 2:res = _context2.sent;
                 if (res.success) {
-                  this.canUse = res.data.balance;
-                  this.allUse = res.data.lastbalance;
-                }case 4:case "end":return _context2.stop();}}}, _callee2, this);}));function getAll() {return _getAll.apply(this, arguments);}return getAll;}(),
+                  this.tabList[this.active].dataList = res.data.list;
+                }case 4:case "end":return _context2.stop();}}}, _callee2, this);}));function initList() {return _initList.apply(this, arguments);}return initList;}(),
 
-    changeTabs: function () {var _changeTabs = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3(e) {return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:
-                this.active = e;case 1:case "end":return _context3.stop();}}}, _callee3, this);}));function changeTabs(_x2) {return _changeTabs.apply(this, arguments);}return changeTabs;}(),
-
-    openReward: function openReward(e) {
-      this.rewardId = e;
-      this.rewardShow = true;
-    },
-    reward: function reward(e) {
-      if (!e) {
-        uni.showToast({
-          title: '数量不能为空',
-          icon: 'none' });
-
-      } else {
-        if (!/^[123456789]\d{0,3}$/.test(e)) {
-          uni.showToast({
-            title: '请输入[1-9999]之间的整数',
-            icon: 'none' });
-
-        } else {
-          this.rewardCount = e;
-          this.passwordShow = true;
-        }
-      }
-    },
-    checkPassword: function checkPassword(e) {
-      if (!e) {
-        uni.showToast({
-          title: '请输入密码',
-          icon: 'none' });
-
-      } else {
-        this.sendReward(e);
-      }
-    },
-    sendReward: function () {var _sendReward = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee4(e) {var res;return _regenerator.default.wrap(function _callee4$(_context4) {while (1) {switch (_context4.prev = _context4.next) {case 0:_context4.next = 2;return (
-                  _index.default.toolExchange({ toolid: this.rewardId, tradepassword: e, number: this.rewardCount }));case 2:res = _context4.sent;
+    noReadCount: function () {var _noReadCount = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3() {var res, text;return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:_context3.next = 2;return (
+                  _index.default.unRead());case 2:res = _context3.sent;
                 if (res.success) {
-                  this.rewardShow = false;
-                  this.passwordShow = false;
+                  if (res.data > 0) {
+
+                    if (res.data < 100) {
+                      text = res.data.toString();
+                    } else {
+                      text = '99+';
+                    }
+                    uni.setTabBarBadge({
+                      index: 3,
+                      text: text });
+
+                  }
+                }case 4:case "end":return _context3.stop();}}}, _callee3, this);}));function noReadCount() {return _noReadCount.apply(this, arguments);}return noReadCount;}(),
+
+    changeTabs: function () {var _changeTabs = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee4(e) {return _regenerator.default.wrap(function _callee4$(_context4) {while (1) {switch (_context4.prev = _context4.next) {case 0:
+                this.active = e;case 1:case "end":return _context4.stop();}}}, _callee4, this);}));function changeTabs(_x) {return _changeTabs.apply(this, arguments);}return changeTabs;}(),
+
+    openPay: function openPay(e) {
+      this.pay = e;
+      this.payShow = true;
+    },
+    exchange: function () {var _exchange = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee5() {var type, res;return _regenerator.default.wrap(function _callee5$(_context5) {while (1) {switch (_context5.prev = _context5.next) {case 0:if (
+                this.password) {_context5.next = 3;break;}
+                uni.showToast({
+                  title: '请输入密码',
+                  icon: 'none' });return _context5.abrupt("return",
+
+                false);case 3:
+
+
+                if (this.pay.sign === 1) {
+                  type = 'sell';
+                } else {
+                  type = 'buy';
+                }_context5.next = 6;return (
+                  _index.default.exchange({ type: type, orderid: this.pay.orderid, owner: this.pay.firmid, tradepassword: this.password }));case 6:res = _context5.sent;
+                this.payShow = false;
+                if (res.success) {
+                  this.existCheck();
                   uni.showToast({
                     title: '兑换成功' });
 
-                }case 4:case "end":return _context4.stop();}}}, _callee4, this);}));function sendReward(_x3) {return _sendReward.apply(this, arguments);}return sendReward;}(),
+                }case 9:case "end":return _context5.stop();}}}, _callee5, this);}));function exchange() {return _exchange.apply(this, arguments);}return exchange;}(),
 
-    passwordHide: function passwordHide() {
-      this.rewardShow = false;
-      this.passwordShow = false;
+    existCheck: function existCheck() {var _this3 = this;
+      this.tabList[this.active].dataList.forEach(function (element) {
+        if (_this3.pay = element) {
+          element.exist = true;
+        }
+      });
     },
     // mescroll组件初始化的回调,可获取到mescroll对象
     mescrollInit: function mescrollInit(mescroll) {
@@ -325,41 +353,34 @@ var _tool5 = _interopRequireDefault(__webpack_require__(/*! @/static/image/tool5
       mescroll.resetUpScroll(); // 重置列表为第一页 (自动执行 page.num=1, 再触发upCallback方法 )
     },
     /*上拉加载的回调*/
-    upCallback: function () {var _upCallback = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee5(mescroll) {var _this = this;var pageNum, pageSize, url, res, curPageData, totalSize, hasNext;return _regenerator.default.wrap(function _callee5$(_context5) {while (1) {switch (_context5.prev = _context5.next) {case 0:
+    upCallback: function () {var _upCallback = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee6(mescroll) {var _this4 = this;var pageNum, pageSize, sign, res, curPageData, totalSize, hasNext;return _regenerator.default.wrap(function _callee6$(_context6) {while (1) {switch (_context6.prev = _context6.next) {case 0:
                 // 此时mescroll会携带page的参数:
                 pageNum = mescroll.num; // 页码, 默认从1开始
                 pageSize = mescroll.size; // 页长, 默认每页10条
-                _context5.t0 =
-                this.active;_context5.next = _context5.t0 ===
-                0 ? 5 : _context5.t0 ===
+                _context6.t0 =
+                this.active;_context6.next = _context6.t0 ===
+                0 ? 5 : _context6.t0 ===
 
 
-                1 ? 7 : 9;break;case 5:url = _index.default.tools;return _context5.abrupt("break", 9);case 7:
-                url = _index.default.toolMine;return _context5.abrupt("break", 9);case 9:_context5.next = 11;return (
+                1 ? 7 : 9;break;case 5:sign = 1;return _context6.abrupt("break", 9);case 7:
+                sign = 2;return _context6.abrupt("break", 9);case 9:_context6.next = 11;return (
 
 
-                  url({ page: pageNum, size: pageSize }));case 11:res = _context5.sent;
+                  _index.default.exchangeList({ page: pageNum, size: pageSize, sign: sign }));case 11:res = _context6.sent;
                 if (res.success) {
-
-                  if (this.active === 0) {
-                    curPageData = res.data;
-                    totalSize = res.data.length;
-                    hasNext = false;
-                  } else {
-                    curPageData = res.data.list;
-                    totalSize = res.data.total;
-                    hasNext = res.data.hasNextPage;
-                  }
+                  curPageData = res.data.list;
+                  totalSize = res.data.total;
+                  hasNext = res.data.hasNextPage;
                   setTimeout(function () {
                     mescroll.endSuccess(curPageData.length, hasNext);
                     //设置列表数据
-                    if (mescroll.num === 1) _this.tabList[_this.active].dataList = []; //如果是第一页需手动制空列表
-                    _this.tabList[_this.active].dataList = _this.tabList[_this.active].dataList.concat(curPageData); //追加新数据
+                    if (mescroll.num === 1) _this4.tabList[_this4.active].dataList = []; //如果是第一页需手动制空列表
+                    _this4.tabList[_this4.active].dataList = _this4.tabList[_this4.active].dataList.concat(curPageData); //追加新数据
                   }, 500);
                 } else {
                   // 失败隐藏下拉加载状态
                   mescroll.endErr();
-                }case 13:case "end":return _context5.stop();}}}, _callee5, this);}));function upCallback(_x4) {return _upCallback.apply(this, arguments);}return upCallback;}() } };exports.default = _default;
+                }case 13:case "end":return _context6.stop();}}}, _callee6, this);}));function upCallback(_x2) {return _upCallback.apply(this, arguments);}return upCallback;}() } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 
 /***/ }),
@@ -390,44 +411,11 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  var l1 = _vm.tabList.map(function(i, index) {
-    var l0 = i.dataList.map(function(value, key) {
-      var f0 = _vm._f("imageFilter")({
-        value: value.name,
-        type: "img"
-      })
-
-      var f1 = _vm._f("imageFilter")({
-        value: value.name,
-        type: "text"
-      })
-
-      return {
-        $orig: _vm.__get_orig(value),
-        f0: f0,
-        f1: f1
-      }
-    })
-    return {
-      $orig: _vm.__get_orig(i),
-      l0: l0
-    }
-  })
-
   if (!_vm._isMounted) {
     _vm.e0 = function($event) {
-      _vm.rewardShow = false
+      _vm.payShow = false
     }
   }
-
-  _vm.$mp.data = Object.assign(
-    {},
-    {
-      $root: {
-        l1: l1
-      }
-    }
-  )
 }
 var staticRenderFns = []
 render._withStripped = true
