@@ -20,6 +20,16 @@
 					}
 				}
 			}
+		},{
+			"path": "pages/login/forget-password/forget-password",
+			"style": {
+				"app-plus": {
+					"bounce": "vertical",
+					"titleNView": {
+						"titleText": "忘记密码"
+					}
+				}
+			}
 		},
 		{
 			"path": "pages/login/register/agreement",
@@ -204,6 +214,15 @@
 					"path": "/topList-lottery/topList-lottery",
 					"style": {
 						"navigationBarTitleText": "抽奖",
+						"app-plus": {
+							"scrollIndicator": "none"
+						}
+					}
+				},
+				{
+					"path": "/topList-lottery/lottery-record",
+					"style": {
+						"navigationBarTitleText": "抽奖记录",
 						"app-plus": {
 							"scrollIndicator": "none"
 						}
@@ -448,6 +467,14 @@
 					"path": "/send/send",
 					"style": {
 						"navigationBarTitleText": "发布订单",
+						"app-plus": {
+							"scrollIndicator": "none"
+						}
+					}
+				},{
+					"path": "/search/search",
+					"style": {
+						"navigationBarTitleText": "订单查询",
 						"app-plus": {
 							"scrollIndicator": "none"
 						}

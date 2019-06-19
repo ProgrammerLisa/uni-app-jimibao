@@ -30,47 +30,47 @@
 /* 页面content高度(有tabBar) */
 /* 页面box颜色 */
 /* 登录 */
-.uni-checkbox-input.data-v-75808e23 {
+.uni-checkbox-input.data-v-43243a8b {
   -webkit-transition: .2s;
   -o-transition: .2s;
   transition: .2s;
   color: #fff !important;
 }
-.uni-checkbox-input.uni-checkbox-input-checked.data-v-75808e23 {
+.uni-checkbox-input.uni-checkbox-input-checked.data-v-43243a8b {
   background: #E09529;
   color: #fff !important;
 }
-.header.data-v-75808e23 {
-  background: #2c2e37;
+.header.data-v-43243a8b {
+  background: #fff;
   text-align: center;
 }
-.header .header-item.data-v-75808e23 {
+.header .header-item.data-v-43243a8b {
     line-height: 80rpx;
 }
-.header .header-item text.data-v-75808e23 {
+.header .header-item text.data-v-43243a8b {
       margin-left: 10rpx;
-      color: #ffe0b2;
+      color: #F0AD4E;
 }
-.header .header-flex.data-v-75808e23 {
+.header .header-flex.data-v-43243a8b {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
 }
-.header .header-flex .header-item.data-v-75808e23 {
+.header .header-flex .header-item.data-v-43243a8b {
       -webkit-box-flex: 1;
       -webkit-flex: 1;
           -ms-flex: 1;
               flex: 1;
       text-align: center;
 }
-.uni-media-list-text-top.data-v-75808e23 {
+.uni-media-list-text-top.data-v-43243a8b {
   color: #333;
 }
-.uni-media-list-logo.data-v-75808e23 {
+.uni-media-list-logo.data-v-43243a8b {
   color: #555;
 }
-.uni-media-list-title.data-v-75808e23 {
+.uni-media-list-title.data-v-43243a8b {
   color: #f44336;
 }
 

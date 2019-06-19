@@ -37,7 +37,7 @@
 		},
 		data () {
 			return {
-				pageInfo: {},
+				 pageInfo: {},
 				 mescroll: null, //mescroll实例对象
                     // 下拉刷新的配置
                     downOption: { 
@@ -70,7 +70,16 @@
 		onPageScroll(e) {
 			this.mescroll && this.mescroll.onPageScroll(e);
 		},
+		onShow () {
+			this.getData()
+		},
 	    methods: {
+			async getData () {
+				const res = await api.home()
+				if (res.success) {
+					this.pageInfo = res.data.FirmFunds
+				}
+			},
 			// mescroll组件初始化的回调,可获取到mescroll对象
 			mescrollInit(mescroll) {
 				this.mescroll = mescroll;

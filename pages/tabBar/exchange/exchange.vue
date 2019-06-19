@@ -1,6 +1,13 @@
 <template>
 	<view>
-		<y-tabs position="fixed" :tabList="tabList" :active="active" @changeTabs="changeTabs" tabColor="#424242" activeBgColor="#333333" textColor="#c9c9c9" activeTextColor="#fff" lineColor="#7f7f7f"></y-tabs>
+		<y-tabs :tabList="tabList" :active="active" @changeTabs="changeTabs" tabColor="#424242" activeBgColor="#333333" textColor="#c9c9c9" activeTextColor="#fff" lineColor="#7f7f7f">
+			<view class="search-box">
+				<view class="search" @click="goSearch">
+					<uni-icon type="search" class="icon"></uni-icon>
+					<view class="text">搜索</view>
+				</view>
+			</view>
+		</y-tabs>
 		<view class="y-tabs-item">
 			<view v-for="(i, index) in tabList" :key="index">
 				<view v-if="active===index" class="y-list">
@@ -78,6 +85,7 @@
 <script>
 	import yPayConfirm from '@/components/y-confirm/y-pay-confirm.vue'
 	import uniMescroll from '@/components/mescroll-uni/mescroll-uni.vue'
+	import uniIcon from '@/components/uni-icon/uni-icon.vue'
 	import yTabs from '@/components/y-tabs/y-tabs.vue'
 	import api from '@/utils/api/tabBar/index.js'
 	import apiChat from '@/utils/api/chat/index.js'
@@ -86,7 +94,8 @@
 		components: {
 			uniMescroll,
 			yTabs,
-			yPayConfirm
+			yPayConfirm,
+			uniIcon
 		},
 		data () {
 			return {
@@ -244,6 +253,11 @@
 					}
 				})
 			},
+			goSearch () {
+				uni.navigateTo({
+					url: '/pages/template/exchange/search/search'
+				})
+			},
 			// mescroll组件初始化的回调,可获取到mescroll对象
 			mescrollInit(mescroll) {
 				this.mescroll = mescroll
@@ -289,6 +303,19 @@
 <style lang="scss" scoped>
 	.y-tabs-item {
 		padding-top: 30upx;
+	}
+	.search-box {
+		padding: 20upx;
+		.search {
+			background: $uni-box-color;
+			padding: 10upx 20upx;
+			border-radius: 10upx;
+			display: flex;
+			align-items: center;
+			.text {
+				color: $uni-text-color-grey;
+			}
+		}
 	}
 	.banner {
 		display: flex;

@@ -139,24 +139,29 @@ var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/tabBar/i
 
   data: function data() {
     return {
-      list: [] };
+      list: [],
+      myInfo: {} };
 
   },
   onLoad: function onLoad() {
     this.getData();
   },
   methods: {
-    getData: function () {var _getData = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
+    getData: function () {var _getData = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var res, response;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
                   _index.default.level());case 2:res = _context.sent;
                 if (res.success) {
                   this.list = res.data.map(function (element) {
                     return {
-                      title: '会员等级 Lv' + element.levelid,
+                      title: '会员等级 ' + element.levelname,
                       count: '贡献值≥' + element.levelstandard,
-                      content: '交易手续费率 ' + element.sfee * 100 + '%' };
+                      content: '交易手续费率 ' + parseInt(element.sfee * 100) + '%' };
 
                   });
-                }case 4:case "end":return _context.stop();}}}, _callee, this);}));function getData() {return _getData.apply(this, arguments);}return getData;}() } };exports.default = _default;
+                }_context.next = 6;return (
+                  _index.default.home());case 6:response = _context.sent;
+                if (response.success) {
+                  this.myInfo = response.data.TFirmPO;
+                }case 8:case "end":return _context.stop();}}}, _callee, this);}));function getData() {return _getData.apply(this, arguments);}return getData;}() } };exports.default = _default;
 
 /***/ }),
 

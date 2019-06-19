@@ -1686,10 +1686,10 @@ radio-group label, checkbox-group label{
 }
 /*每个页面公共scss */
 page {
-  background: #21232c;
+  background: #f7f7f7;
   height: 100%;
   line-height: 1.8;
-  color: #e1e1e1;
+  color: #333;
 }
 view {
   font-size: 32rpx;
@@ -1697,39 +1697,41 @@ view {
 .y-content-db {
   min-height: -webkit-calc(100vh - 94px);
   min-height: calc(100vh - 94px);
-  background: #21232c;
-  color: #ccc;
+  background: #f7f7f7;
+  color: #333;
 }
 .y-content-hasNav {
   min-height: -webkit-calc(100vh - 90rpx);
   min-height: calc(100vh - 90rpx);
-  background: #21232c;
-  color: #ccc;
+  background: #f7f7f7;
+  color: #333;
 }
 .y-content-hasTab {
   min-height: -webkit-calc(100vh - 50px);
   min-height: calc(100vh - 50px);
-  background: #21232c;
-  color: #ccc;
+  background: #f7f7f7;
+  color: #333;
 }
 .y-button {
   background: transparent;
-  border: 1rpx solid #ffe0b2;
-  color: #ffe0b2;
+  color: #F0AD4E;
   font-size: 32rpx;
   -webkit-transition: .2s;
   -o-transition: .2s;
   transition: .2s;
 }
 .y-button:active {
-  background: #ffe0b2;
-  color: #2c2e37;
+  background: #F0AD4E;
+  color: #fff;
 }
 .y-button[disabled] {
   opacity: 0.4;
 }
 uni-button[disabled]:not([type]), uni-button[disabled][type=default] {
-  color: #ccc;
+  color: #333;
   background: transparent;
+}
+.y-tabs-item {
+  margin-top: 96rpx;
 }
 

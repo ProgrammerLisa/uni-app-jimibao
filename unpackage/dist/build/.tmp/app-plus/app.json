@@ -2,11 +2,13 @@
   "pages": [
     "pages/login/login/login",
     "pages/login/register/register",
+    "pages/login/forget-password/forget-password",
     "pages/login/register/agreement",
     "pages/tabBar/home/home",
     "pages/tabBar/business/business",
     "pages/tabBar/exchange/exchange",
-    "pages/tabBar/messageList/messageList",
+    "pages/tabBar/chat/chat",
+    "pages/tabBar/chat/room",
     "pages/tabBar/profile/profile",
     "components/zhiwen-share/zhiwen-share",
     "pages/template/profile/info/info",
@@ -15,7 +17,8 @@
     "pages/template/profile/setting/set-password",
     "pages/template/profile/setting/forget-password",
     "pages/template/profile/level/level",
-    "pages/template/profile/topList-lottery/lottery",
+    "pages/template/profile/topList-lottery/topList-lottery",
+    "pages/template/profile/topList-lottery/lottery-record",
     "pages/template/profile/topList-order/topList-order",
     "pages/template/profile/topList-team/topList-team",
     "pages/template/profile/topList-team-recruit/topList-team-recruit",
@@ -26,22 +29,35 @@
     "pages/template/profile/address-add/address-add",
     "pages/template/profile/feedback/feedback",
     "pages/template/profile/feedback-add/feedback-add",
-    "pages/template/profile/edition/edition"
+    "pages/template/profile/edition/edition",
+    "pages/template/home/news/news",
+    "pages/template/home/news/detail",
+    "pages/template/home/scan-code/scan-code",
+    "pages/template/home/partner/partner",
+    "pages/template/home/partner/partner-team",
+    "pages/template/home/tool/tool",
+    "pages/template/home/course/course",
+    "pages/template/home/course/video",
+    "pages/template/home/course/web-view",
+    "pages/template/business/detail/detail",
+    "pages/template/business/order/order",
+    "pages/template/exchange/send/send",
+    "pages/template/exchange/search/search"
   ],
   "subPackages": [],
   "window": {
-    "navigationBarTextStyle": "white",
+    "navigationBarTextStyle": "black",
     "navigationBarTitleText": "集米宝",
-    "navigationBarBackgroundColor": "#282a34",
-    "backgroundColor": "#23232b",
-    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "backgroundColor": "#fff",
+    "backgroundTextStyle": "dark",
     "enablePullDownRefresh": false
   },
   "tabBar": {
     "color": "#999",
-    "selectedColor": "#F8E3AA",
+    "selectedColor": "#ff9800",
     "borderStyle": "black",
-    "backgroundColor": "#1a1b22",
+    "backgroundColor": "#fff",
     "list": [
       {
         "pagePath": "pages/tabBar/home/home",
@@ -62,7 +78,7 @@
         "text": "交换"
       },
       {
-        "pagePath": "pages/tabBar/messageList/messageList",
+        "pagePath": "pages/tabBar/chat/chat",
         "iconPath": "static/image/btn_com_normal@2x.png",
         "selectedIconPath": "static/image/btn_com_pressed@2x.png",
         "text": "通讯"
@@ -81,6 +97,6 @@
     "autoclose": false
   },
   "appname": "uni-app-jimibao",
-  "compilerVersion": "2.0.0",
+  "compilerVersion": "2.0.1",
   "usingComponents": {}
 }

@@ -39,8 +39,8 @@
     },
     "statusbar": {
       "immersed": "supportedDevice",
-      "style": "light",
-      "background": "#282a34"
+      "style": "dark",
+      "background": "#fff"
     },
     "compatible": {
       "ignoreVersion": true,
@@ -134,13 +134,13 @@
     },
     "allowsInlineMediaPlayback": true,
     "safearea": {
-      "background": "#1a1b22",
+      "background": "#fff",
       "bottom": {
         "offset": "auto"
       }
     },
     "uni-app": {
-      "compilerVersion": "2.0.0",
+      "compilerVersion": "2.0.1",
       "control": "v8",
       "nvueCompiler": "weex"
     },

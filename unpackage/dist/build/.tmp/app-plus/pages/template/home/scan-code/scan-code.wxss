@@ -1,0 +1,15 @@
+
+.button.data-v-72a4cc87 {
+	text-align: center;
+}
+.y-button.data-v-72a4cc87 {
+	width: 80%;
+}
+.content.data-v-72a4cc87 {
+	margin: 30rpx 10%;
+	padding: 30rpx;
+	text-align: center;
+	border: solid 2px #ccc;
+	background: #fff;
+}
+

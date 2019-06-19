@@ -30,38 +30,38 @@
 /* 页面content高度(有tabBar) */
 /* 页面box颜色 */
 /* 登录 */
-.uni-checkbox-input.data-v-2be61c52 {
+.uni-checkbox-input.data-v-7123c7a0 {
   -webkit-transition: .2s;
   -o-transition: .2s;
   transition: .2s;
   color: #fff !important;
 }
-.uni-checkbox-input.uni-checkbox-input-checked.data-v-2be61c52 {
+.uni-checkbox-input.uni-checkbox-input-checked.data-v-7123c7a0 {
   background: #E09529;
   color: #fff !important;
 }
-.box.data-v-2be61c52 {
+.box.data-v-7123c7a0 {
   width: 100%;
   padding: 40rpx 10%;
 }
-.box .login-item.data-v-2be61c52 {
+.box .login-item.data-v-7123c7a0 {
     margin-bottom: 20rpx;
 }
-.box .register-item.data-v-2be61c52 {
+.box .register-item.data-v-7123c7a0 {
     margin-bottom: 10rpx;
 }
-.box .logo.data-v-2be61c52 {
+.box .logo.data-v-7123c7a0 {
     text-align: center;
     margin-bottom: 40rpx;
 }
-.box .logo image.data-v-2be61c52 {
+.box .logo image.data-v-7123c7a0 {
       width: 80px;
       height: 80px;
       -webkit-border-radius: 10rpx;
               border-radius: 10rpx;
-      border: 1rpx solid #ffe0b2;
+      border: 1rpx solid #F0AD4E;
 }
-.box .y-label.data-v-2be61c52 {
+.box .y-label.data-v-7123c7a0 {
     font-size: small;
     display: inline-block;
     padding-bottom: 10rpx;
@@ -74,37 +74,36 @@
         -ms-flex-align: center;
             align-items: center;
 }
-.box .y-label .y-checkbox.data-v-2be61c52 {
+.box .y-label .y-checkbox.data-v-7123c7a0 {
       -webkit-transform: scale(0.7);
           -ms-transform: scale(0.7);
               transform: scale(0.7);
 }
-.box .y-caret.data-v-2be61c52 {
-    color: #F7E8D1;
+.box .y-caret.data-v-7123c7a0 {
+    color: #555;
 }
-.box .y-input.data-v-2be61c52 {
-    background: #23242d;
+.box .y-input.data-v-7123c7a0 {
+    background: #fff;
     font-size: 14px;
     border: none;
     padding: 15rpx 20rpx;
     -webkit-border-radius: 5rpx;
             border-radius: 5rpx;
-    caret-color: #F7E8D1;
-    color: #ccc;
+    caret-color: #555;
+    color: #333;
 }
-.box .y-input-border.data-v-2be61c52 {
-    border: 0.2px solid #555;
+.box .y-input-border.data-v-7123c7a0 {
+    border: 1px solid #E5E5E5;
 }
-.box .y-login-btn.data-v-2be61c52 {
+.box .y-login-btn.data-v-7123c7a0 {
     margin-top: 40rpx;
 }
-.box .y-register-btn.data-v-2be61c52 {
+.box .y-register-btn.data-v-7123c7a0 {
     margin-top: 20rpx;
 }
-.box .y-login.data-v-2be61c52 {
+.box .y-login.data-v-7123c7a0 {
     background: transparent;
-    color: #ffe0b2;
-    border: 1rpx solid #ffe0b2;
+    color: #F0AD4E;
     -webkit-transition: .2s;
     -o-transition: .2s;
     transition: .2s;
@@ -121,18 +120,18 @@
         -ms-flex-pack: center;
             justify-content: center;
 }
-.box .y-login.data-v-2be61c52:active {
-    background: #ffe0b2;
-    color: #2c2e37;
+.box .y-login.data-v-7123c7a0:active {
+    background: #F0AD4E;
+    color: #fff;
 }
-.box .y-login[disabled].data-v-2be61c52 {
+.box .y-login[disabled].data-v-7123c7a0 {
     opacity: 0.4;
 }
-.box .y-login[disabled].data-v-2be61c52:active {
+.box .y-login[disabled].data-v-7123c7a0:active {
     background: transparent;
-    color: #ffe0b2;
+    color: #F0AD4E;
 }
-.box .y-flex.data-v-2be61c52 {
+.box .y-flex.data-v-7123c7a0 {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -142,12 +141,12 @@
         -ms-flex-pack: justify;
             justify-content: space-between;
     font-size: small;
-    color: #ffe0b2;
+    color: #F0AD4E;
 }
-.box .y-login-back.data-v-2be61c52 {
+.box .y-login-back.data-v-7123c7a0 {
     margin: 40rpx auto 0;
 }
-.box .y-code.data-v-2be61c52 {
+.box .y-code.data-v-7123c7a0 {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -156,13 +155,13 @@
         -ms-flex-pack: distribute;
             justify-content: space-around;
 }
-.box .y-code input.data-v-2be61c52 {
+.box .y-code input.data-v-7123c7a0 {
       -webkit-box-flex: 1.5;
       -webkit-flex: 1.5;
           -ms-flex: 1.5;
               flex: 1.5;
 }
-.box .y-code button.data-v-2be61c52 {
+.box .y-code button.data-v-7123c7a0 {
       font-size: small;
       -webkit-box-flex: 1;
       -webkit-flex: 1;
@@ -170,31 +169,30 @@
               flex: 1;
       margin-left: 20rpx;
 }
-.box .uni-form-item .with-fun.data-v-2be61c52 {
+.box .uni-form-item .with-fun.data-v-7123c7a0 {
     width: 100%;
-    background: #23242d;
-    padding-bottom: 1px;
+    background: #fff;
 }
-.box .uni-form-item .with-fun input.data-v-2be61c52 {
+.box .uni-form-item .with-fun input.data-v-7123c7a0 {
       -webkit-box-flex: 6;
       -webkit-flex: 6;
           -ms-flex: 6;
               flex: 6;
 }
-.box .uni-form-item .with-fun .uni-icon.data-v-2be61c52 {
+.box .uni-form-item .with-fun .uni-icon.data-v-7123c7a0 {
       -webkit-box-flex: 1;
       -webkit-flex: 1;
           -ms-flex: 1;
               flex: 1;
       color: #555;
-      background: #23242d;
+      background: #fff;
       border: none;
 }
-.box .uni-form-item .with-fun .uni-icon.uni-active.data-v-2be61c52 {
+.box .uni-form-item .with-fun .uni-icon.uni-active.data-v-7123c7a0 {
       color: #ccc;
       border: none;
 }
-.box .uni-form-item .with-fun .uni-icon-clear.data-v-2be61c52 {
+.box .uni-form-item .with-fun .uni-icon-clear.data-v-7123c7a0 {
       color: #ccc;
 }
 
@@ -230,36 +228,37 @@
 /* 页面content高度(有tabBar) */
 /* 页面box颜色 */
 /* 登录 */
-.uni-checkbox-input.data-v-2be61c52 {
+.uni-checkbox-input.data-v-7123c7a0 {
   -webkit-transition: .2s;
   -o-transition: .2s;
   transition: .2s;
   color: #fff !important;
 }
-.uni-checkbox-input.uni-checkbox-input-checked.data-v-2be61c52 {
+.uni-checkbox-input.uni-checkbox-input-checked.data-v-7123c7a0 {
   background: #E09529;
   color: #fff !important;
 }
-.y-content-hasTab.data-v-2be61c52 {
+.y-content-hasTab.data-v-7123c7a0 {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  background: #2c2e37;
-  color: #ccc;
+  background: #fff;
+  color: #333;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
-.y-content-hasTab .box.data-v-2be61c52 {
+.y-content-hasTab .box.data-v-7123c7a0 {
     height: 1000px;
     padding-top: 25%;
 }
-.uni-icon.data-v-2be61c52 {
+.uni-icon.data-v-7123c7a0 {
   border: none;
   margin-bottom: 1px;
+  background: #fff;
 }
-.uni-icon.data-v-2be61c52:active {
+.uni-icon.data-v-7123c7a0:active {
   border: none;
 }
 

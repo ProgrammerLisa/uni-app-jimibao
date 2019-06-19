@@ -43,7 +43,7 @@
 .uni-card {
   margin-left: 24rpx;
   margin-right: 24rpx;
-  background: #2c2e37;
+  background: #fff;
   -webkit-box-shadow: none;
           box-shadow: none;
   position: relative;

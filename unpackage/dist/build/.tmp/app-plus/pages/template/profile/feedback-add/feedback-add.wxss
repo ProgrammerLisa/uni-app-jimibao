@@ -45,13 +45,13 @@
 }
 .y-content.data-v-37f291cd {
   padding: 0;
-  background: #2c2e37;
+  background: #fff;
   margin-top: 20rpx;
   padding: 0 20rpx;
 }
 .y-content input.data-v-37f291cd {
-    background: #23242d;
-    border: solid 1rpx #555;
+    background: #fff;
+    border: solid 1rpx #E5E5E5;
     -webkit-border-radius: 10rpx;
             border-radius: 10rpx;
     margin: 0 20rpx;
@@ -74,7 +74,7 @@
       color: #f7f7f7;
 }
 .y-content .forget-box .forgetPwd.data-v-37f291cd {
-      color: #ffe0b2;
+      color: #F0AD4E;
 }
 .y-content .y-button.data-v-37f291cd {
     margin: 120rpx 20rpx 20rpx;
@@ -103,7 +103,7 @@
       height: 200rpx;
       line-height: 200rpx;
       overflow: hidden;
-      border: 1px solid #e1e1e1;
+      border: 1px solid #333;
       text-align: center;
       margin-right: 10rpx;
 }

@@ -41,7 +41,7 @@
   color: #fff !important;
 }
 .uni-list {
-  background-color: #2c2e37;
+  background-color: #fff;
   position: relative;
   width: 100%;
   display: -webkit-box;
@@ -67,7 +67,7 @@
   -webkit-transform: scaleY(0.5);
   -ms-transform: scaleY(0.5);
       transform: scaleY(0.5);
-  background-color: #21232c;
+  background-color: #DFDFE1;
 }
 .uni-list:before {
   position: absolute;
@@ -80,6 +80,6 @@
   -webkit-transform: scaleY(0.5);
   -ms-transform: scaleY(0.5);
       transform: scaleY(0.5);
-  background-color: #21232c;
+  background-color: #DFDFE1;
 }
 

@@ -155,5 +155,17 @@ export default {
 	// 交换
 	exchange (obj) {
 		return request.post('/order/' + obj.type + '/' + obj.orderid, obj)
+	},
+	// 批量抽奖所需
+	batchNeedCount (obj) {
+		return request.get('/prize/batchLottery/consumeNumber', obj)
+	},
+	// 批量抽奖
+	batchLottery (obj) {
+		return request.post('/prize/batchLottery', obj)
+	},
+	// 抽奖记录
+	lotteryRecord (obj) {
+		return request.get('/prize/firmFirmPrizeInfo', obj)
 	}
 }

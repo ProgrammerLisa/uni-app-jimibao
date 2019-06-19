@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "订单查询",
+  "scrollIndicator": "none",
+  "usingComponents": {
+    "uni-mescroll": "/components/mescroll-uni/mescroll-uni",
+    "y-pay-confirm": "/components/y-confirm/y-pay-confirm"
+  }
+}

@@ -135,7 +135,7 @@
 					this.levelList.forEach(element => {
 						switch (element.type) {
 							case 'level':
-								element.text = 'Lv'+this.userInfo.levelid
+								element.text = this.userInfo.firmLevel.levelname
 								break
 							case 'active':
 								element.text = this.userInfo.activevalue

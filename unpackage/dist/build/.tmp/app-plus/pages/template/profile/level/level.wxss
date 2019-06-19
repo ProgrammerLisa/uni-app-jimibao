@@ -30,22 +30,22 @@
 /* 页面content高度(有tabBar) */
 /* 页面box颜色 */
 /* 登录 */
-.uni-checkbox-input.data-v-1a983ce5 {
+.uni-checkbox-input.data-v-5e1a0882 {
   -webkit-transition: .2s;
   -o-transition: .2s;
   transition: .2s;
   color: #fff !important;
 }
-.uni-checkbox-input.uni-checkbox-input-checked.data-v-1a983ce5 {
+.uni-checkbox-input.uni-checkbox-input-checked.data-v-5e1a0882 {
   background: #E09529;
   color: #fff !important;
 }
-.level-box.data-v-1a983ce5 {
+.level-box.data-v-5e1a0882 {
   text-align: center;
   padding: 30rpx 0;
-  background: #2c2e37;
+  background: #fff;
 }
-.level-flex.data-v-1a983ce5 {
+.level-flex.data-v-5e1a0882 {
   margin-bottom: 30rpx;
   display: -webkit-box;
   display: -webkit-flex;
@@ -62,32 +62,32 @@
           justify-content: center;
   font-size: 32rpx;
 }
-.level-flex .level.data-v-1a983ce5 {
+.level-flex .level.data-v-5e1a0882 {
     margin: 0 15rpx;
 }
-.level-flex .count.data-v-1a983ce5 {
-    background: #ffe0b2;
-    color: #333;
+.level-flex .count.data-v-5e1a0882 {
+    background: #F0AD4E;
+    color: #e1e1e1;
     padding: 0 15rpx;
     -webkit-border-radius: 10rpx;
             border-radius: 10rpx;
     line-height: 1.5;
 }
-.level-flex .contribution.data-v-1a983ce5 {
+.level-flex .contribution.data-v-5e1a0882 {
     background: transparent;
     padding: 0 15rpx;
     -webkit-border-radius: 10rpx;
             border-radius: 10rpx;
     line-height: 1.5;
-    border: solid 1px #ffe0b2;
+    border: solid 1px #F0AD4E;
 }
-.level-flex.data-v-1a983ce5:last-child {
+.level-flex.data-v-5e1a0882:last-child {
   margin-bottom: 0;
 }
-.uni-list.data-v-1a983ce5 {
+.uni-list.data-v-5e1a0882 {
   background: transparent;
 }
-.uni-media-list-logo.data-v-1a983ce5 {
+.uni-media-list-logo.data-v-5e1a0882 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -101,7 +101,7 @@
       -ms-flex-pack: center;
           justify-content: center;
 }
-.uni-media-list-text-top.data-v-1a983ce5 {
+.uni-media-list-text-top.data-v-5e1a0882 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -111,7 +111,7 @@
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
-.uni-media-list-text-top text.data-v-1a983ce5:first-child {
-    color: #ffe0b2;
+.uni-media-list-text-top text.data-v-5e1a0882:first-child {
+    color: #F0AD4E;
 }
 

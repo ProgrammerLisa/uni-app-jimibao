@@ -5,7 +5,7 @@
 				<swiper class="swiper-box" @change="change">
 					<swiper-item v-for="(item ,index) in carousel" :key="index">
 						<view class="swiper-item">
-							<image :src="item.imageurl" mode="aspectFill" />
+							<image :src="item.imageurl" mode="aspectFill" @click="goPath(item.appurl)" />
 						</view>
 					</swiper-item>
 				</swiper>
@@ -17,7 +17,7 @@
 			</view>
 			<swiper vertical="true" autoplay="true" circular="true" interval="3000">
 				<swiper-item v-for="(item, index) in msg" :key="index">
-					<navigator>{{item.title}}</navigator>
+					<navigator :url="'/pages/template/home/news/detail?content='+item.content">{{item.title}}</navigator>
 				</swiper-item>
 			</swiper>
 		</view>

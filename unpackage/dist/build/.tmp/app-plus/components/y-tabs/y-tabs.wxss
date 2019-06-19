@@ -30,26 +30,32 @@
 /* 页面content高度(有tabBar) */
 /* 页面box颜色 */
 /* 登录 */
-.uni-checkbox-input.data-v-aa465486 {
+.uni-checkbox-input.data-v-6a27c8aa {
   -webkit-transition: .2s;
   -o-transition: .2s;
   transition: .2s;
   color: #fff !important;
 }
-.uni-checkbox-input.uni-checkbox-input-checked.data-v-aa465486 {
+.uni-checkbox-input.uni-checkbox-input-checked.data-v-6a27c8aa {
   background: #E09529;
   color: #fff !important;
 }
-.tabs-container.data-v-aa465486 {
+.y-tabs.data-v-6a27c8aa {
+  border-top: 1px solid transparent;
   position: relative;
 }
-.tabs-box.data-v-aa465486 {
+.tabs-container.data-v-6a27c8aa {
+  position: relative;
+  z-index: 999;
+}
+.tabs-box.data-v-6a27c8aa {
+  width: 100vw;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
-.tabs-box .tabs.data-v-aa465486 {
+.tabs-box .tabs.data-v-6a27c8aa {
     -webkit-box-flex: 1;
     -webkit-flex: 1;
         -ms-flex: 1;
@@ -61,10 +67,10 @@
     -o-transition: .5s;
     transition: .5s;
 }
-.tabs-line.data-v-aa465486 {
+.tabs-line.data-v-6a27c8aa {
   position: absolute;
   bottom: 0;
-  height: 4rpx;
+  height: 6rpx;
   -webkit-transition: .5s;
   -o-transition: .5s;
   transition: .5s;

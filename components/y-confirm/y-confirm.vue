@@ -1,8 +1,11 @@
 <template>
-	<view class="y-modal-container" v-if="show">
-		<view class="y-modal" @click="showBefore=false" :style="showBefore?`fade-in`:`fade-out`"></view>
+	<view class="y-modal-container" v-if="show" :style="'z-index:'+zIndex">
+		<view class="y-modal" @click="hideModalAuto" :style="showBefore?`fade-in`:`fade-out`"></view>
 		<view class="y-modal-content" :style="showBefore?`bottom:${bottom}`:`bottom:-100%`">
 			<view class="y-confirm">
+				<view class="y-close" v-if="!hideAuto">
+					<uni-icon type="close" @click="showBefore=false"></uni-icon>
+				</view>
 				<view class="title">{{title}}</view>
 				<view class="tips">{{tips}}</view>
 				<slot></slot>
@@ -16,7 +19,11 @@
 </template>
 
 <script>
+	import uniIcon from '@/components/uni-icon/uni-icon.vue'
 	export default {
+		components: {
+			uniIcon
+		},
 		props: {
 			list: Array,
 			show: Boolean,
@@ -33,6 +40,14 @@
 			bottom: {
 				type: String,
 				default: '10px'
+			},
+			hideAuto: {
+				type: Boolean,
+				default: true
+			},
+			zIndex: {
+				type: [String, Number],
+				default: 10
 			}
 		},
 		data () {
@@ -57,6 +72,11 @@
 		methods: {
 			sendConfirm () {
 				this.$emit('confirm')
+			},
+			hideModalAuto () {
+				if (this.hideAuto) {
+					this.showBefore=false
+				}
 			}
 		}
 	}
@@ -106,7 +126,6 @@
 			color: #333;
 			font-size: 32upx;
 			padding: 20upx;
-			border-bottom: 1px solid #eee;
 		}
 		.tips {
 			font-size: $uni-font-size-base;
@@ -130,5 +149,9 @@
 				border-right: 1px solid #eee;
 			}
 		}
+	}
+	.y-close {
+		text-align: right;
+		padding: 0 20upx;
 	}
 </style>

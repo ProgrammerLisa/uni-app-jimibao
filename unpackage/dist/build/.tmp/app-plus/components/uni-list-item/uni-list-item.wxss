@@ -65,10 +65,10 @@
   opacity: .3;
 }
 .uni-list-item {
-  background-color: #2c2e37;
+  background-color: #fff;
 }
 .uni-list-item--hover {
-  background-color: #21232c;
+  background-color: #DFDFE1;
 }
 .uni-list-item__container {
   padding: 28rpx 30rpx;
@@ -109,7 +109,7 @@
   -webkit-transform: scaleY(0.5);
   -ms-transform: scaleY(0.5);
       transform: scaleY(0.5);
-  background-color: #21232c;
+  background-color: #DFDFE1;
 }
 .uni-list-item__content {
   -webkit-box-flex: 1;
@@ -132,7 +132,7 @@
   -o-text-overflow: ellipsis;
      text-overflow: ellipsis;
   white-space: nowrap;
-  color: #ccc;
+  color: #333;
   line-height: 1.5;
   overflow: hidden;
 }

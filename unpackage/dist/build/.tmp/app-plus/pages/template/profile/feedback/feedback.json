@@ -3,8 +3,10 @@
   "titleNView": {
     "buttons": [
       {
-        "text": "反馈",
-        "fontSize": "15"
+        "text": "我要反馈",
+        "fontSize": "15",
+        "width": "auto",
+        "color": "#dece98"
       }
     ]
   },

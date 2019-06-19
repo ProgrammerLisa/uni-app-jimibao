@@ -89,7 +89,11 @@
     color: #333;
     font-size: 32rpx;
     padding: 20rpx;
-    border-bottom: 1px solid #eee;
+}
+.y-confirm .tips.data-v-01060052 {
+    font-size: 28rpx;
+    color: #999;
+    text-align: center;
 }
 .y-confirm .footer.data-v-01060052 {
     display: -webkit-box;
@@ -117,5 +121,9 @@
 .y-confirm .footer .footer-sure.data-v-01060052 {
       color: #007aff;
       border-right: 1px solid #eee;
+}
+.y-close.data-v-01060052 {
+  text-align: right;
+  padding: 0 20rpx;
 }
 

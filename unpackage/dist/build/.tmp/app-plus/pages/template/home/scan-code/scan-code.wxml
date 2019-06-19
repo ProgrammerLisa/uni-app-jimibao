@@ -1,0 +1,1 @@
+<view class="content-box data-v-72a4cc87"><view class="content data-v-72a4cc87">{{''+content+''}}</view><view class="button data-v-72a4cc87"><button data-event-opts="{{[['tap',[['copy',['$event']]]]]}}" class="y-button data-v-72a4cc87" bindtap="__e">点击复制</button></view></view>

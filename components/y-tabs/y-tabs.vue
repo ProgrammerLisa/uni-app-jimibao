@@ -1,6 +1,7 @@
 <template>
 	<view class="y-tabs" :style="'padding-top:'+paddingTop+';z-index:'+zIndex">
 		<view class="tabs-container" :style="'background:'+tabColor+';position:'+position+';top:'+top">
+			<slot></slot>
 			<view class="tabs-box">
 				<view class="tabs" @click="changeTabs(tabIndex)" :style="sub===tabIndex?'color:'+activeTextColor+';background:'+activeBgColor+'':'background:'+tabColor+';color:'+textColor" v-for="(tab, tabIndex) in list" :key="tabIndex">
 					<view>{{tab.title}}</view>
@@ -8,7 +9,6 @@
 			</view>
 			<view class="tabs-line" :style="'background:'+lineColor+';width:'+(1/list.length)*100+'%;left:'+(1/list.length)*100*sub+'%'"></view>
 		</view>
-		<slot></slot>
 	</view>
 </template>
 

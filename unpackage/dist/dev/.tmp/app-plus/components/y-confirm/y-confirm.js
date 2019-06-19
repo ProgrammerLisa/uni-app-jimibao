@@ -98,28 +98,53 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var _default =
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var uniIcon = function uniIcon() {return __webpack_require__.e(/*! import() | components/uni-icon/uni-icon */ "components/uni-icon/uni-icon").then(__webpack_require__.bind(null, /*! @/components/uni-icon/uni-icon.vue */ "../../../../../y/uni-app-jimibao/components/uni-icon/uni-icon.vue"));};var _default =
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 {
+  components: {
+    uniIcon: uniIcon },
+
   props: {
     list: Array,
     show: Boolean,
     title: String,
-    content: String },
+    tips: String,
+    sure: {
+      type: Boolean,
+      default: true },
+
+    cancel: {
+      type: Boolean,
+      default: true },
+
+    bottom: {
+      type: String,
+      default: '10px' },
+
+    hideAuto: {
+      type: Boolean,
+      default: true } },
+
 
   data: function data() {
     return {
@@ -143,6 +168,11 @@ var _default =
   methods: {
     sendConfirm: function sendConfirm() {
       this.$emit('confirm');
+    },
+    hideModalAuto: function hideModalAuto() {
+      if (this.hideAuto) {
+        this.showBefore = false;
+      }
     } } };exports.default = _default;
 
 /***/ }),

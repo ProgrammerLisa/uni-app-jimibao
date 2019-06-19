@@ -182,7 +182,7 @@
 			},
 			toForgetPassword () {
 				uni.navigateTo({
-					url: '/pages/login/register/register'
+					url: '/pages/login/forget-password/forget-password'
 				})
 			},
 			toRegister () {

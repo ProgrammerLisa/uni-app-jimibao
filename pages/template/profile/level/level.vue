@@ -4,11 +4,11 @@
 			<view class="level-flex">
 				<uni-icon color="#ffe0b2" type="navigate"></uni-icon>
 				<text class="level">我的会员等级</text>
-				<text class="count">Lv1</text>
+				<text class="count">{{myInfo.firmLevel.levelname}}</text>
 			</view>
 			<view class="level-flex">
 				<text>当前贡献值：</text>
-				<text class="contribution">0</text>
+				<text class="contribution">{{myInfo.contribution}}</text>
 			</view>
 		</view>
 		<view class="uni-list">
@@ -39,7 +39,8 @@
 		},
 		data () {
 			return {
-				list: []
+				list: [],
+				myInfo: {}
 			}
 		},
 		onLoad () {
@@ -51,11 +52,15 @@
 				if (res.success) {
 					this.list = res.data.map(element => {
 						return {
-							title: '会员等级 Lv' + element.levelid,
+							title: '会员等级 ' + element.levelname,
 							count: '贡献值≥' + element.levelstandard,
-							content: '交易手续费率 ' + element.sfee*100 + '%'
+							content: '交易手续费率 ' + parseInt(element.sfee*100) + '%'
 						}
 					})
+				}
+				const response = await api.home()
+				if (response.success) {
+					this.myInfo = response.data.TFirmPO
 				}
 			}
 		}

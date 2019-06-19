@@ -1,0 +1,1 @@
+<block wx:if="{{show}}"><view class="y-modal-container data-v-7311442e"><view data-event-opts="{{[['tap',[['e0',['$event']]]]]}}" class="{{['y-modal data-v-7311442e',showBefore?'fade-in':'fade-out']}}" bindtap="__e"></view><view class="{{['y-modal-content data-v-7311442e',showBefore?'slow-up':'slow-down']}}"><slot></slot></view></view></block>

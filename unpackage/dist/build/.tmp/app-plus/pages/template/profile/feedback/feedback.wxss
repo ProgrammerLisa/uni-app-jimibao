@@ -61,6 +61,6 @@
     height: 100rpx;
     -webkit-border-radius: 100%;
             border-radius: 100%;
-    border: 1px solid #ffe0b2;
+    border: 1px solid #F0AD4E;
 }
 

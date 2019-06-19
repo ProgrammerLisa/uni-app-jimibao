@@ -71,7 +71,7 @@
 }
 .y-modal-container .y-modal-item.data-v-3d796450 {
     background: #f7f7f7;
-    color: #333;
+    color: #e1e1e1;
     text-align: center;
     border-bottom: 1rpx solid #eee;
     padding: 20rpx;

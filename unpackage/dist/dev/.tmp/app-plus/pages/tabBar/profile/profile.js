@@ -235,7 +235,7 @@ var _index2 = _interopRequireDefault(__webpack_require__(/*! @/utils/api/chat/in
                   this.levelList.forEach(function (element) {
                     switch (element.type) {
                       case 'level':
-                        element.text = 'Lv' + _this2.userInfo.levelid;
+                        element.text = _this2.userInfo.firmLevel.levelname;
                         break;
                       case 'active':
                         element.text = _this2.userInfo.activevalue;

@@ -1,9 +1,9 @@
 <template>
 	<view class="y-content-hasNav">
 		<view class="box">
-			<view class="logo">
+			<!-- <view class="logo">
 				<image :src="logo"></image>
-			</view>
+			</view> -->
 			<view>
 				<form @submit="formSubmit">
 					<view class="register-item">
@@ -218,7 +218,6 @@
 		width: 100vw;
 		min-height: 100vh;
 		display: flex;
-		align-items: center;
 		background: $uni-login-bg-color;
 	}
 	.y-agree {

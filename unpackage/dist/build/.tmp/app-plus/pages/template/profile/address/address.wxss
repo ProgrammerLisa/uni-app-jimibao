@@ -30,29 +30,29 @@
 /* 页面content高度(有tabBar) */
 /* 页面box颜色 */
 /* 登录 */
-.uni-checkbox-input.data-v-6b1e13d6 {
+.uni-checkbox-input.data-v-aa45fd32 {
   -webkit-transition: .2s;
   -o-transition: .2s;
   transition: .2s;
   color: #fff !important;
 }
-.uni-checkbox-input.uni-checkbox-input-checked.data-v-6b1e13d6 {
+.uni-checkbox-input.uni-checkbox-input-checked.data-v-aa45fd32 {
   background: #E09529;
   color: #fff !important;
 }
-.uni-list.data-v-6b1e13d6 {
+.uni-list.data-v-aa45fd32 {
   padding-bottom: 200rpx;
-  background: #2c2e37;
+  background: #fff;
 }
-.default-null.data-v-6b1e13d6 {
+.default-null.data-v-aa45fd32 {
   text-align: center;
   padding-top: 30vh;
 }
-.default-null image.data-v-6b1e13d6 {
+.default-null image.data-v-aa45fd32 {
     width: 160rpx;
     height: 160rpx;
 }
-.button-box.data-v-6b1e13d6 {
+.button-box.data-v-aa45fd32 {
   position: fixed;
   bottom: 0;
   left: 0;
@@ -70,28 +70,27 @@
   -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
-  background: #21232c;
+  background: #f7f7f7;
 }
-.y-button.data-v-6b1e13d6 {
+.y-button.data-v-aa45fd32 {
   width: 90%;
 }
-.y-button .uni-icon.data-v-6b1e13d6 {
+.y-button .uni-icon.data-v-aa45fd32 {
     margin-right: 10rpx;
 }
-.uni-media-list.data-v-6b1e13d6 {
-  background: #2c2e37;
-  border-bottom: 1px solid #717278;
+.uni-media-list.data-v-aa45fd32 {
+  background: #fff;
 }
-.default-tag.data-v-6b1e13d6 {
+.default-tag.data-v-aa45fd32 {
   margin-right: 20rpx;
 }
-.uni-media-list-text-top.data-v-6b1e13d6 {
+.uni-media-list-text-top.data-v-aa45fd32 {
   overflow: hidden;
   -o-text-overflow: ellipsis;
      text-overflow: ellipsis;
   white-space: nowrap;
 }
-.uni-media-list-logo.data-v-6b1e13d6 {
+.uni-media-list-logo.data-v-aa45fd32 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;

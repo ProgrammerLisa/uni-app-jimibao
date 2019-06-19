@@ -42,13 +42,13 @@
 }
 .y-content.data-v-8909d6ca {
   padding: 0;
-  background: #2c2e37;
+  background: #fff;
   margin-top: 20rpx;
   padding: 0 20rpx;
 }
 .y-content input.data-v-8909d6ca {
-    background: #23242d;
-    border: solid 1rpx #555;
+    background: #fff;
+    border: solid 1rpx #E5E5E5;
     -webkit-border-radius: 10rpx;
             border-radius: 10rpx;
     margin: 0 20rpx;
@@ -71,7 +71,7 @@
       color: #f7f7f7;
 }
 .y-content .forget-box .forgetPwd.data-v-8909d6ca {
-      color: #ffe0b2;
+      color: #F0AD4E;
 }
 .y-content .y-button.data-v-8909d6ca {
     margin: 120rpx 20rpx 20rpx;

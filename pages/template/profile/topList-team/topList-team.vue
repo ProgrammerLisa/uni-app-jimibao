@@ -14,7 +14,7 @@
 		</view>
 		<view class="my-recommender">
 			<view>我的推荐人： ******</view>
-			<uni-icon type="chat" class="chat"></uni-icon>
+			<uni-icon type="chat" class="chat" @click="goChatRoom(superior)"></uni-icon>
 		</view>
 		<y-tabs :tabList="tabList" :active="active" @changeTabs="changeTabs" tabColor="#424242" activeBgColor="#333333" textColor="#c9c9c9" activeTextColor="#fff" lineColor="#7f7f7f">
 			
@@ -29,7 +29,7 @@
 								<text class="nickname">{{value.nickname?value.nickname:''}}</text>
 							</view>
 							<view class="right">
-								<uni-icon type="chat"></uni-icon>
+								<uni-icon type="chat" @click="goChatRoom(value.firmid)"></uni-icon>
 							</view>
 						</view>
 						<view class="y-card-body">
@@ -107,8 +107,11 @@
 				dataList: []
 			}
 		},
-		onLoad() {
+		onLoad () {
 			this.imageUrl = this.$imageUrl
+		},
+		onShow () {
+			this.getData()
 		},
 		onNavigationBarButtonTap (e) {
 			uni.navigateTo({
@@ -124,6 +127,10 @@
 			this.mescroll && this.mescroll.onPageScroll(e);
 		},
 		methods: {
+			async getData () {
+				const res = await api.home()
+				this.superior = res.data.TFirmPO.superior
+			},
 			async changeTabs(e) {
 				this.active = e
 			},
@@ -175,6 +182,17 @@
 						title: '谢谢老板 老板大气'
 					})
 				}
+			},
+			goChatRoom (e) {
+				uni.setStorage({
+					key: 'chat-id',
+					data: e,
+					success () {
+						uni.navigateTo({
+							url: '/pages/tabBar/chat/room'
+						})
+					}
+				})
 			},
 			// mescroll组件初始化的回调,可获取到mescroll对象
 			mescrollInit(mescroll) {

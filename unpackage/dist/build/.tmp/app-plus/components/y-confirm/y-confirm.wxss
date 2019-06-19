@@ -30,17 +30,17 @@
 /* 页面content高度(有tabBar) */
 /* 页面box颜色 */
 /* 登录 */
-.uni-checkbox-input.data-v-6ea73342 {
+.uni-checkbox-input.data-v-50b3ff26 {
   -webkit-transition: .2s;
   -o-transition: .2s;
   transition: .2s;
   color: #fff !important;
 }
-.uni-checkbox-input.uni-checkbox-input-checked.data-v-6ea73342 {
+.uni-checkbox-input.uni-checkbox-input-checked.data-v-50b3ff26 {
   background: #E09529;
   color: #fff !important;
 }
-.y-modal-container.data-v-6ea73342 {
+.y-modal-container.data-v-50b3ff26 {
   height: 100vh;
   width: 100%;
   overflow: hidden;
@@ -49,7 +49,7 @@
   left: 0;
   z-index: 10;
 }
-.y-modal-container .y-modal.data-v-6ea73342 {
+.y-modal-container .y-modal.data-v-50b3ff26 {
     height: 100%;
     width: 100%;
     background: rgba(0, 0, 0, 0.4);
@@ -57,7 +57,7 @@
     -o-transition: .2s;
     transition: .2s;
 }
-.y-modal-container .y-modal-content.data-v-6ea73342 {
+.y-modal-container .y-modal-content.data-v-50b3ff26 {
     position: fixed;
     bottom: 20rpx;
     left: 5%;
@@ -69,29 +69,33 @@
     -o-transition: .2s;
     transition: .2s;
 }
-.y-modal-container .fade-in.data-v-6ea73342 {
+.y-modal-container .fade-in.data-v-50b3ff26 {
     opacity: 1;
 }
-.y-modal-container .fade-out.data-v-6ea73342 {
+.y-modal-container .fade-out.data-v-50b3ff26 {
     opacity: 0;
 }
-.y-modal-container .slow-up.data-v-6ea73342 {
+.y-modal-container .slow-up.data-v-50b3ff26 {
     bottom: 20rpx;
 }
-.y-modal-container .slow-down.data-v-6ea73342 {
+.y-modal-container .slow-down.data-v-50b3ff26 {
     bottom: -100%;
 }
-.y-confirm.data-v-6ea73342 {
+.y-confirm.data-v-50b3ff26 {
   background: #fff;
 }
-.y-confirm .title.data-v-6ea73342 {
+.y-confirm .title.data-v-50b3ff26 {
     text-align: center;
     color: #333;
     font-size: 32rpx;
     padding: 20rpx;
-    border-bottom: 1px solid #eee;
 }
-.y-confirm .footer.data-v-6ea73342 {
+.y-confirm .tips.data-v-50b3ff26 {
+    font-size: 28rpx;
+    color: #999;
+    text-align: center;
+}
+.y-confirm .footer.data-v-50b3ff26 {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -101,7 +105,7 @@
         -ms-flex-align: center;
             align-items: center;
 }
-.y-confirm .footer .footer-button.data-v-6ea73342 {
+.y-confirm .footer .footer-button.data-v-50b3ff26 {
       -webkit-box-flex: 1;
       -webkit-flex: 1;
           -ms-flex: 1;
@@ -114,8 +118,12 @@
       color: #777;
       padding: 20rpx 0;
 }
-.y-confirm .footer .footer-sure.data-v-6ea73342 {
+.y-confirm .footer .footer-sure.data-v-50b3ff26 {
       color: #007aff;
       border-right: 1px solid #eee;
+}
+.y-close.data-v-50b3ff26 {
+  text-align: right;
+  padding: 0 20rpx;
 }
 

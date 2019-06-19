@@ -1,0 +1,2 @@
+setCssToHead([".",[1],"button.",[1],"data-v-72a4cc87 { text-align: center; }\n.",[1],"y-button.",[1],"data-v-72a4cc87 { width: 80%; }\n.",[1],"content.",[1],"data-v-72a4cc87 { margin: ",[0,30]," 10%; padding: ",[0,30],"; text-align: center; border: solid 2px #ccc; background: #fff; }\n",],undefined,{path:"./pages/template/home/scan-code/scan-code.wxss"})();
+document.dispatchEvent(new CustomEvent("generateFuncReady", { detail: { generateFunc: $gwx('./pages/template/home/scan-code/scan-code.wxml') } }));

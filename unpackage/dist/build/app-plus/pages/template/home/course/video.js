@@ -1,0 +1,2 @@
+setCssToHead(["@charset \x22UTF-8\x22;\n.",[1],"uni-checkbox-input.",[1],"data-v-5363fc11 { -webkit-transition: .2s; -o-transition: .2s; transition: .2s; color: #fff !important; }\n.",[1],"uni-checkbox-input.",[1],"uni-checkbox-input-checked.",[1],"data-v-5363fc11 { background: #E09529; color: #fff !important; }\n.",[1],"video.",[1],"data-v-5363fc11 { width: 100%; }\n",],undefined,{path:"./pages/template/home/course/video.wxss"})();
+document.dispatchEvent(new CustomEvent("generateFuncReady", { detail: { generateFunc: $gwx('./pages/template/home/course/video.wxml') } }));

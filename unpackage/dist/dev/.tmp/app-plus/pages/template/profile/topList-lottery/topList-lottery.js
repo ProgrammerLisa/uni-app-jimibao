@@ -126,20 +126,54 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/tabBar/index.js */ "../../../../../y/uni-app-jimibao/utils/api/tabBar/index.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var uniTag = function uniTag() {return __webpack_require__.e(/*! import() | components/uni-tag/uni-tag */ "components/uni-tag/uni-tag").then(__webpack_require__.bind(null, /*! @/components/uni-tag/uni-tag.vue */ "../../../../../y/uni-app-jimibao/components/uni-tag/uni-tag.vue"));};var yConfirm = function yConfirm() {return __webpack_require__.e(/*! import() | components/y-confirm/y-confirm */ "components/y-confirm/y-confirm").then(__webpack_require__.bind(null, /*! @/components/y-confirm/y-confirm.vue */ "../../../../../y/uni-app-jimibao/components/y-confirm/y-confirm.vue"));};var yModal = function yModal() {return __webpack_require__.e(/*! import() | components/uni-popup/uni-popup */ "components/uni-popup/uni-popup").then(__webpack_require__.bind(null, /*! @/components/uni-popup/uni-popup.vue */ "../../../../../y/uni-app-jimibao/components/uni-popup/uni-popup.vue"));};var _default =
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/tabBar/index.js */ "../../../../../y/uni-app-jimibao/utils/api/tabBar/index.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var yConfirm = function yConfirm() {return __webpack_require__.e(/*! import() | components/y-confirm/y-confirm */ "components/y-confirm/y-confirm").then(__webpack_require__.bind(null, /*! @/components/y-confirm/y-confirm.vue */ "../../../../../y/uni-app-jimibao/components/y-confirm/y-confirm.vue"));};var yInputConfirm = function yInputConfirm() {return __webpack_require__.e(/*! import() | components/y-confirm/y-input-confirm */ "components/y-confirm/y-input-confirm").then(__webpack_require__.bind(null, /*! @/components/y-confirm/y-input-confirm.vue */ "../../../../../y/uni-app-jimibao/components/y-confirm/y-input-confirm.vue"));};var yModal = function yModal() {return __webpack_require__.e(/*! import() | components/uni-popup/uni-popup */ "components/uni-popup/uni-popup").then(__webpack_require__.bind(null, /*! @/components/uni-popup/uni-popup.vue */ "../../../../../y/uni-app-jimibao/components/uni-popup/uni-popup.vue"));};var _default =
 
 
 
 {
   components: {
-    uniTag: uniTag,
     yConfirm: yConfirm,
-    yModal: yModal },
+    yModal: yModal,
+    yInputConfirm: yInputConfirm },
 
   data: function data() {
     return {
       sexModalShow: false,
-      num: 0,
+      sum: 0,
       chance: 0,
       allHide: false,
       subShow: null,
@@ -151,7 +185,13 @@ var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/tabBar/i
       exchangeBox: {},
       buyBoxShow: false,
       buyBox: {},
+      batchBoxShow: false,
+      batchLotteryBoxShow: false,
       lotteryOnceImage: '',
+      giftImage: '',
+      batchNeedCount: '??',
+      batchChooseIndex: '',
+      luckyPrize: [],
       list: [
       { img: 'https://gzjimibao.oss-cn-shenzhen.aliyuncs.com/prize/prize-qiche.png', index: 0, direction: 'right' },
       { img: 'https://gzjimibao.oss-cn-shenzhen.aliyuncs.com/prize/prize-shoubiao.png', index: 1 },
@@ -168,7 +208,15 @@ var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/tabBar/i
       { img: 'https://gzjimibao.oss-cn-shenzhen.aliyuncs.com/prize/prize-kouhong.png', index: 9 },
       { img: 'https://gzjimibao.oss-cn-shenzhen.aliyuncs.com/prize/prize-dianfengshan.png', index: 8 },
       { img: 'https://gzjimibao.oss-cn-shenzhen.aliyuncs.com/prize/prize-weibolu.png', index: 7 },
-      { img: 'https://gzjimibao.oss-cn-shenzhen.aliyuncs.com/prize/prize-dianfanbao.png', index: 6 }] };
+      { img: 'https://gzjimibao.oss-cn-shenzhen.aliyuncs.com/prize/prize-dianfanbao.png', index: 6 }],
+
+      box: [
+      { count: 5, discount: '99折' },
+      { count: 10, discount: '98折' },
+      { count: 20, discount: '96折' },
+      { count: 50, discount: '95折' },
+      { count: 100, discount: '9折' },
+      { count: 500, discount: '85折' }] };
 
 
   },
@@ -180,22 +228,23 @@ var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/tabBar/i
       _this2.allHide = true;
     }, 300);
   },
+  watch: {
+    batchBoxShow: function batchBoxShow(val) {
+      this.batchChooseIndex = '';
+      this.batchNeedCount = '??';
+    } },
+
   methods: {
     getData: function () {var _getData = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var res, response;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
                   _index.default.home());case 2:res = _context.sent;
                 if (res.success) {
-                  console.log(res.data.FirmFunds, " at pages\\template\\profile\\topList-lottery\\topList-lottery.vue:87");
                   this.sum = res.data.FirmFunds.lastbalance;
                 }_context.next = 6;return (
                   _index.default.lotteryChance());case 6:response = _context.sent;
                 if (response.success) {
-                  console.log(response.data, " at pages\\template\\profile\\topList-lottery\\topList-lottery.vue:92");
                   this.chance = response.data.availabletimes;
                 }case 8:case "end":return _context.stop();}}}, _callee, this);}));function getData() {return _getData.apply(this, arguments);}return getData;}(),
 
-    lotteryOnceTest: function lotteryOnceTest() {
-
-    },
     lotteryOnce: function () {var _lotteryOnce = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var _this, res;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:
                 _this = this;_context2.next = 3;return (
                   _index.default.lottery());case 3:res = _context2.sent;
@@ -207,13 +256,6 @@ var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/tabBar/i
                 } else {
                   if (res.message === '你的抽奖可用次数已不足1次') {
                     this.exchangeBoxShow = true;
-                    this.exchangeBox = {
-                      title: res.message + ' 是否兑换？',
-                      showCancel: true,
-                      contentType: ['image'],
-                      confirmText: '确定',
-                      cancelText: '取消' };
-
                   }
                 }case 5:case "end":return _context2.stop();}}}, _callee2, this);}));function lotteryOnce() {return _lotteryOnce.apply(this, arguments);}return lotteryOnce;}(),
 
@@ -223,18 +265,6 @@ var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/tabBar/i
           _this3.lotteryOnceImage = element.img;
         }
       });
-    },
-    buy: function buy() {
-      var _this = this;
-      this.buyBoxShow = true;
-      this.buyBox = {
-        title: '兑换',
-        contentType: ['input'],
-        showCancel: true,
-        inputType: 'number',
-        confirmText: '确定',
-        cancelText: '取消' };
-
     },
     buyAfter: function buyAfter() {
       this.getData();
@@ -258,24 +288,19 @@ var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/tabBar/i
         if (num > 1 && _this4.subShow === parseInt(_this4.lotteryInfo.prizeid) / 100 - 1) {
           _this4.lotterySub = false;
           clearInterval(timer);
+          _this4.list.forEach(function (element) {
+            if (parseInt(element.index) === parseInt(_this4.lotteryInfo.prizeid) / 100 - 1) {
+              _this4.giftImage = element.img;
+            }
+          });
           _this4.lotteryBoxShow = true;
-          _this4.lotteryBox = {
-            title: _this.lotteryInfo.prizename,
-            content: "<uni-view style=\"text-align: center;\"><uni-view style=\"margin-bottom:10px\">\u606D\u559C\u60A8\u83B7\u5F97\uFF1A</uni-view><image style=\"max-width: 100px;height:100px\" src=\"".concat(_this.lotteryOnceImage, "\"></image><uni-view>").concat(_this.lotteryInfo.prizecontent, "</uni-view></uni-view>"),
-            show: true,
-            showCancel: false,
-            contentType: ['image'],
-            inputType: 'text',
-            confirmText: '确定',
-            cancelText: '取消' };
-
         }
       }, 50);
     },
-    exchangeSuccess: function exchangeSuccess(e) {var _this5 = this;
+    exchangeSuccess: function exchangeSuccess() {var _this5 = this;
       this.exchangeBoxShow = false;
       setTimeout(function () {
-        _this5.buy();
+        _this5.buyBoxShow = true;
       }, 200);
     },
     lotterySuccess: function lotterySuccess(e) {
@@ -283,6 +308,7 @@ var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/tabBar/i
     },
     buySuccess: function buySuccess(e) {
       var _this = this;
+      console.log(e, " at pages\\template\\profile\\topList-lottery\\topList-lottery.vue:211");
       if (e) {
         var self = this;
         if (/^[0-9]+$/.test(e)) {
@@ -304,6 +330,52 @@ var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/tabBar/i
           icon: 'none' });
 
       }
+    },
+    batchLottery: function batchLottery() {
+      this.batchBoxShow = true;
+    },
+    batchChoose: function () {var _batchChoose = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3(index) {var res;return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:
+                this.batchChooseIndex = index;_context3.next = 3;return (
+                  _index.default.batchNeedCount({ number: index }));case 3:res = _context3.sent;
+                if (res.success) {
+                  this.batchNeedCount = res.data;
+                }case 5:case "end":return _context3.stop();}}}, _callee3, this);}));function batchChoose(_x) {return _batchChoose.apply(this, arguments);}return batchChoose;}(),
+
+    batchSubmit: function () {var _batchSubmit = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee4() {var res, data;return _regenerator.default.wrap(function _callee4$(_context4) {while (1) {switch (_context4.prev = _context4.next) {case 0:if (
+                this.batchChooseIndex) {_context4.next = 3;break;}
+                uni.showToast({
+                  title: '请选择批量次数',
+                  icon: 'none' });return _context4.abrupt("return",
+
+                false);case 3:_context4.next = 5;return (
+
+                  _index.default.batchLottery({ number: this.batchChooseIndex }));case 5:res = _context4.sent;
+                if (res.success) {
+                  data = [];
+                  res.data.forEach(function (item) {
+                    if (item.winNumber !== 0) {
+                      data.push(item);
+                    }
+                  });
+                  this.checkPrize(data);
+                }case 7:case "end":return _context4.stop();}}}, _callee4, this);}));function batchSubmit() {return _batchSubmit.apply(this, arguments);}return batchSubmit;}(),
+
+    checkPrize: function checkPrize(e) {var _this6 = this;
+      var data = this.list;
+      var prize = [];
+      data.forEach(function (item) {
+        e.forEach(function (element) {
+          var index = element.prizeid.toString().replace('00', '');
+          if (item.index === parseInt(index) - 1) {
+            prize.push(_objectSpread({}, element, { img: item.img }));
+          }
+        });
+      });
+      this.luckyPrize = prize;
+      this.batchBoxShow = false;
+      setTimeout(function () {
+        _this6.batchLotteryBoxShow = true;
+      }, 100);
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 
@@ -345,11 +417,27 @@ var render = function() {
     }
 
     _vm.e2 = function($event) {
-      _vm.exchangeBoxShow = false
+      _vm.lotteryBoxShow = false
     }
 
     _vm.e3 = function($event) {
+      _vm.exchangeBoxShow = false
+    }
+
+    _vm.e4 = function($event) {
       _vm.buyBoxShow = false
+    }
+
+    _vm.e5 = function($event) {
+      _vm.batchBoxShow = false
+    }
+
+    _vm.e6 = function($event) {
+      _vm.batchLotteryBoxShow = false
+    }
+
+    _vm.e7 = function($event) {
+      _vm.batchLotteryBoxShow = false
     }
   }
 }
