@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<y-tabs :tabList="tabList" :active="active" @changeTabs="changeTabs" tabColor="#424242" activeBgColor="#333333" textColor="#c9c9c9" activeTextColor="#fff" lineColor="#7f7f7f">
+		<y-tabs position="fixed" :tabList="tabList" :active="active" @changeTabs="changeTabs">
 			<view class="search-box">
 				<view class="search" @click="goSearch">
 					<uni-icon type="search" class="icon"></uni-icon>
@@ -13,20 +13,16 @@
 				<view v-if="active===index" class="y-list">
 					<view class="banner">
 						<view class="banner-item">
-							<view class="item-title">买单</view>
-							<view class="item-count">{{info.curBuyNum}}</view>
-						</view>
-						<view class="banner-item">
-							<view class="item-title">卖单</view>
-							<view class="item-count">{{info.curSellNum}}</view>
-						</view>
-						<view class="banner-item">
-							<view class="item-title">价格</view>
+							<view class="item-title">当前价格</view>
 							<view class="item-count">{{info.curPrice.price}}</view>
 						</view>
 						<view class="banner-item">
-							<view class="item-title">开盘价</view>
-							<view class="item-count">{{info.curPrice.price}}</view>
+							<view class="item-title">涨幅</view>
+							<view class="item-count">{{(info.curPrice.price/info.curPrice.price-1)*100}}%</view>
+						</view>
+						<view class="banner-item">
+							<view class="item-title">量比</view>
+							<view class="item-count">{{info.curSellNum===0?0:info.curBuyNum/info.curSellNum}}</view>
 						</view>
 					</view>
 					<uni-mescroll @down="downCallback" @up="upCallback" @init="mescrollInit">
@@ -302,7 +298,7 @@
 
 <style lang="scss" scoped>
 	.y-tabs-item {
-		padding-top: 30upx;
+		padding-top: 140upx;
 	}
 	.search-box {
 		padding: 20upx;

@@ -160,10 +160,36 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/tabBar/index.js */ "../../../../../y/uni-app-jimibao/utils/api/tabBar/index.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var yConfirm = function yConfirm() {return __webpack_require__.e(/*! import() | components/y-confirm/y-confirm */ "components/y-confirm/y-confirm").then(__webpack_require__.bind(null, /*! @/components/y-confirm/y-confirm.vue */ "../../../../../y/uni-app-jimibao/components/y-confirm/y-confirm.vue"));};var yInputConfirm = function yInputConfirm() {return __webpack_require__.e(/*! import() | components/y-confirm/y-input-confirm */ "components/y-confirm/y-input-confirm").then(__webpack_require__.bind(null, /*! @/components/y-confirm/y-input-confirm.vue */ "../../../../../y/uni-app-jimibao/components/y-confirm/y-input-confirm.vue"));};var yModal = function yModal() {return __webpack_require__.e(/*! import() | components/uni-popup/uni-popup */ "components/uni-popup/uni-popup").then(__webpack_require__.bind(null, /*! @/components/uni-popup/uni-popup.vue */ "../../../../../y/uni-app-jimibao/components/uni-popup/uni-popup.vue"));};var _default =
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/tabBar/index.js */ "../../../../../y/uni-app-jimibao/utils/api/tabBar/index.js"));
+
+
+
+var _lottery = _interopRequireDefault(__webpack_require__(/*! @/static/image/lottery1.png */ "../../../../../y/uni-app-jimibao/static/image/lottery1.png"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var yConfirm = function yConfirm() {return __webpack_require__.e(/*! import() | components/y-confirm/y-confirm */ "components/y-confirm/y-confirm").then(__webpack_require__.bind(null, /*! @/components/y-confirm/y-confirm.vue */ "../../../../../y/uni-app-jimibao/components/y-confirm/y-confirm.vue"));};var yInputConfirm = function yInputConfirm() {return __webpack_require__.e(/*! import() | components/y-confirm/y-input-confirm */ "components/y-confirm/y-input-confirm").then(__webpack_require__.bind(null, /*! @/components/y-confirm/y-input-confirm.vue */ "../../../../../y/uni-app-jimibao/components/y-confirm/y-input-confirm.vue"));};var yModal = function yModal() {return __webpack_require__.e(/*! import() | components/uni-popup/uni-popup */ "components/uni-popup/uni-popup").then(__webpack_require__.bind(null, /*! @/components/uni-popup/uni-popup.vue */ "../../../../../y/uni-app-jimibao/components/uni-popup/uni-popup.vue"));};var _default =
 {
   components: {
     yConfirm: yConfirm,
@@ -172,6 +198,7 @@ var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/tabBar/i
 
   data: function data() {
     return {
+      top1: _lottery.default,
       sexModalShow: false,
       sum: 0,
       chance: 0,
@@ -187,6 +214,7 @@ var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/tabBar/i
       buyBox: {},
       batchBoxShow: false,
       batchLotteryBoxShow: false,
+      lotteryRuleShow: false,
       lotteryOnceImage: '',
       giftImage: '',
       batchNeedCount: '??',
@@ -216,7 +244,38 @@ var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/tabBar/i
       { count: 20, discount: '96折' },
       { count: 50, discount: '95折' },
       { count: 100, discount: '9折' },
-      { count: 500, discount: '85折' }] };
+      { count: 500, discount: '85折' }],
+
+      detail: [
+      { title: '特等奖', name: '市价40万宝马X3汽车一台' },
+      { title: '一等奖', name: '市价1.5万浪琴名士手表一块' },
+      { title: '二等奖', name: '市价8千元苹果X手机一部' },
+      { title: '三等奖', name: '市价5999元海尔冰箱一台' },
+      { title: '四等奖', name: '市价4999元海尔洗衣机一台' },
+      { title: '五等奖', name: '市价3000元格力智能空调一台' },
+      { title: '六等奖', name: '市价500元苏泊尔电饭煲一个' },
+      { title: '七等奖', name: '市价399元美的微波炉1个' },
+      { title: '八等奖', name: '市价299元美的电风扇一台' },
+      { title: '九等奖', name: '市价199元MAC口红1个' },
+      { title: '十等奖', name: '市价99元苏泊尔榨汁机1个' },
+      { title: '十一等奖', name: '市价69元飞科吹风机1个' },
+      { title: '十二等奖', name: '奖励米粒10kg' },
+      { title: '十三等奖', name: '奖励米粒5kg' },
+      { title: '十四等奖', name: '奖励米粒1kg' },
+      { title: '幸运奖', name: '奖励米粒0.1kg' }],
+
+      rule: [
+      '活动开始时间：2019年5月13日，结束时间以集米宝官方通告公布为准。',
+      '参与活动对象：所有在集米宝app已实名的会员朋友。',
+      '活动注意事项：参与活动前，请详细阅读本活动规则，凡参与活动者，则被认为同意活动规则。',
+      '抽奖前，需用米粒兑换抽奖次数，1kg米粒可以兑换5次抽奖机会，兑换次数不受限制，且抽奖过程不产生手续费。',
+      '批量抽奖无需兑换，并有优惠和折扣。',
+      '中奖信息以抽奖页面的弹窗提示和系统消息为准，虚拟类奖励可在抽奖记录中查看，实物类奖励需在中奖后三个工作日内联系我司客服填写收货信息，且中奖者需自行承担运费及相关税费。',
+      '如未在三个工作日内联系我司客服填写收货信息，则被视为放弃奖励。',
+      '所有中奖奖品，不得要求折换成现金或者更换产品。',
+      '中奖奖品以收到的实物为准。',
+      '如需人工协助，请联系我司客服。',
+      '最终解释权归广州集米宝网络科技有限公司。'] };
 
 
   },
@@ -308,7 +367,7 @@ var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/tabBar/i
     },
     buySuccess: function buySuccess(e) {
       var _this = this;
-      console.log(e, " at pages\\template\\profile\\topList-lottery\\topList-lottery.vue:211");
+      console.log(e, " at pages\\template\\profile\\topList-lottery\\topList-lottery.vue:270");
       if (e) {
         var self = this;
         if (/^[0-9]+$/.test(e)) {
@@ -376,6 +435,11 @@ var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/tabBar/i
       setTimeout(function () {
         _this6.batchLotteryBoxShow = true;
       }, 100);
+    },
+    goRecord: function goRecord() {
+      uni.navigateTo({
+        url: './lottery-record' });
+
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 
@@ -409,11 +473,11 @@ var render = function() {
   var _c = _vm._self._c || _h
   if (!_vm._isMounted) {
     _vm.e0 = function($event) {
-      _vm.sexModalShow = false
+      _vm.lotteryRuleShow = true
     }
 
     _vm.e1 = function($event) {
-      _vm.lotteryBoxShow = false
+      _vm.sexModalShow = false
     }
 
     _vm.e2 = function($event) {
@@ -421,23 +485,35 @@ var render = function() {
     }
 
     _vm.e3 = function($event) {
-      _vm.exchangeBoxShow = false
+      _vm.lotteryBoxShow = false
     }
 
     _vm.e4 = function($event) {
-      _vm.buyBoxShow = false
+      _vm.exchangeBoxShow = false
     }
 
     _vm.e5 = function($event) {
-      _vm.batchBoxShow = false
+      _vm.buyBoxShow = false
     }
 
     _vm.e6 = function($event) {
-      _vm.batchLotteryBoxShow = false
+      _vm.batchBoxShow = false
     }
 
     _vm.e7 = function($event) {
       _vm.batchLotteryBoxShow = false
+    }
+
+    _vm.e8 = function($event) {
+      _vm.batchLotteryBoxShow = false
+    }
+
+    _vm.e9 = function($event) {
+      _vm.lotteryRuleShow = false
+    }
+
+    _vm.e10 = function($event) {
+      _vm.lotteryRuleShow = false
     }
   }
 }

@@ -27,6 +27,47 @@
 				<text class="title">{{i.title}}</text>
 			</view>
 		</view>
+		<view class="game">
+			<view class="animate">
+				<image :src="animateImage" mode="widthFix"></image>
+				<view class="uni-center collet">{{colletNumber}}</view>
+				<view class="button-box">
+					<button class="y-button" @click="collet">集米</button>
+				</view>
+			</view>
+			<view class="ugly">
+				<image :src="gameBg" mode="widthFix"></image>
+				<view class="ugly-content">
+					<view class="ugly-header">
+						<view class="ugly-header-content">
+							<image class="header-avatar" :src="selfInfo.headimage?imageUrl+selfInfo.headimage:avatar" mode="widthFix"></image>
+							<view class="header-flex">
+								<image class="header-flex-image" :src="shengdai" mode="widthFix"></image>
+								<image class="header-flex-image" :src="shengdai" mode="widthFix"></image>
+								<image class="header-flex-image" :src="shengdai" mode="widthFix"></image>
+							</view>
+						</view>
+					</view>
+					<view class="ugly-box">
+						<view class="ugly-box-item" v-for="(i, index) in ugly" :key="index">
+							<image :src="i.name | imageFilter" mode="widthFix" class="ugly-box-image"></image>
+						</view>
+					</view>
+					<view class="ugly-button">
+						<image :src="uglyType?duomi:choujia" mode="widthFix" @click="uglyTypeChange"></image>
+					</view>
+					<view>
+						<scroll-view :scroll-x="true" class="scroll-view_H">
+							<view class="ugly-person">
+								<view v-for="(i, index) in uglyList" :key="index" class="ugly-person-item scroll-view-item_H">
+									<image :src="i.headimage?imageUrl+i.headimage:avatar" mode="widthFix" @click="stole(i)" :style="i.using?'filter: grayscale(100%);':''"></image>
+								</view>
+							</view>
+						</scroll-view>
+					</view>
+				</view>
+			</view>
+		</view>
 	</view>
 </template>
 
@@ -40,13 +81,53 @@
 	import tool from '@/static/image/tool.png'
 	import course from '@/static/image/course.png'
 	import lottery from '@/static/image/lottery.png'
+	import animateImage from '@/static/image/game/animate.gif'
+	import gameBg from '@/static/image/game/bg.png'
+	import avatar from '@/static/image/avatar.png'
+	import shengdai from '@/static/image/game/shengdai.png'
+	import shidai from '@/static/image/game/shidai.png'
+	import xiandai from '@/static/image/game/xiandai.png'
+	import yuanwai from '@/static/image/game/yuanwai.png'
+	import caizhu from '@/static/image/game/caizhu.png'
+	import dizhu from '@/static/image/game/dizhu.png'
+	import dianhu from '@/static/image/game/dianhu.png'
+	import funong from '@/static/image/game/funong.png'
+	import zhongnong from '@/static/image/game/zhongnong.png'
+	import pinnong from '@/static/image/game/pinnong.png'
+	import choujia from '@/static/image/game/choujia.png'
+	import duomi from '@/static/image/game/duomi.png'
+	import tool1 from '@/static/image/game/tool1.png'
+	import tool2 from '@/static/image/game/tool2.png'
+	import tool3 from '@/static/image/game/tool3.png'
+	import tool4 from '@/static/image/game/tool4.png'
+	import tool5 from '@/static/image/game/tool5.png'
+	import tool6 from '@/static/image/game/tool6.png'
+	
 	export default {
 		components: {
 			uniSwiperDot,
 			uniIcon
 		},
+		filters: {
+			imageFilter (val) {
+				switch (val) {
+					case '小米袋':
+						return tool1
+					case '中米袋':
+						return tool2
+					case '大米袋':
+						return tool3
+					case '米缸':
+						return tool4
+					case '米仓':
+						return tool5
+				}
+			}
+		},
 		data() {
 			return {
+				animateImage, gameBg, avatar, shengdai, shidai, xiandai, yuanwai, caizhu, dizhu, dianhu,
+				funong, zhongnong, pinnong, choujia, duomi, tool1, tool2, tool3, tool4, tool5, tool6,
 				carousel: [],
 				current: 0,
 				mode: 'long',
@@ -64,7 +145,13 @@
 					{ title: '工具', path: '/pages/template/home/tool/tool', img: tool },
 					{ title: '商学院', path: '/pages/template/home/course/course', img: course },
 					{ title: '抽奖', path: '/pages/template/profile/topList-lottery/topList-lottery', img: lottery }
-				]
+				],
+				ugly: [tool1, tool2, tool3, tool4, tool5, tool6, tool1, tool2, tool3, tool4, tool5, tool6, tool1, tool2, tool3, tool4, tool5, tool6],
+				colletNumber: 0,
+				selfInfo: {},
+				imageUrl: '',
+				uglyType: true,
+				uglyList: []
 			}
 		},
 		onNavigationBarButtonTap(e) {
@@ -101,6 +188,9 @@
 				})
 			}
 		},
+		onLoad () {
+			this.imageUrl = this.$imageUrl
+		},
 		onShow() {
 			const _this = this
 			uni.getStorage({
@@ -117,6 +207,7 @@
 				}
 			})
 			this.getData()
+			this.getUgly()
 			
 			uni.onSocketMessage(function(res){
 				if (JSON.parse(res.data).type === 'CHAT') {
@@ -158,6 +249,36 @@
 				if (res.success) {
 					this.carousel = res.data.AppUrl
 					this.msg = res.data.NoticePO
+					this.colletNumber = res.data.activevalueNumber.number
+					this.selfInfo = res.data.TFirmPO
+				}
+				const response = await api.toolMine()
+				if (response.success) {
+					if (response.data.hasNextPage) {
+						this.getTool(response.data.total)
+					} else {
+						this.ugly = response.data.list
+					}
+				}
+			},
+			async getTool (e) {
+				const res = await api.toolMine({page: 1, size: e})
+				if (res.success) {
+					this.ugly = res.data.list
+				}
+			},
+			async getUgly () {
+				let url
+				if (this.uglyType) {
+					url = api.uglyPerson
+				} else {
+					url = api.thief
+				}
+				const res = await url()
+				if (res.success) {
+					this.uglyList = res.data.map(element => {
+						return {...element, using: false}
+					})
 				}
 			},
 			async noReadCount () {
@@ -180,6 +301,49 @@
 			change(e) {
 				this.current = e.detail.current
 			},
+			async collet () {
+				const res = await api.collet()
+				if (res.success) {
+					this.colletNumber = 0
+					uni.showToast({
+						title: '收集成功'
+					})
+				}
+			},
+			uglyTypeChange () {
+				this.uglyType = !this.uglyType
+				this.getUgly()
+			},
+			async stole (e) {
+				if (e.using) {
+					uni.showToast({
+						title: '今天已经偷过该用户',
+						icon: 'none'
+					})
+					return false
+				}
+				let url, query, title
+				if (this.uglyType) {
+					url = api.stoleActive
+					query = { masterid: e.firmid },
+					title = '夺米成功'
+				} else {
+					url = api.stolePassive
+					query = { thief: e.firmid },
+					title = '复仇成功'
+				}
+				const res = await url(query)
+				if (res.success) {
+					this.uglyList.forEach(element => {
+						if (element.firmid === res.data.master) {
+							element.using = true
+							uni.showToast({
+								title: title
+							})
+						}
+					})
+				}
+			},
 			goPath (path) {
 				uni.navigateTo({
 					url: path
@@ -190,6 +354,129 @@
 </script>
 
 <style scoped lang="scss">
+	@keyframes slidein {
+	  from {
+		top: 20upx;
+	  }
+	  50% {
+		  top: 50upx;
+	  }
+	  to {
+		top: 20upx;
+	  }
+	}
+	.y-content-db {
+		width: 100vw;
+		overflow-x: hidden;
+	}
+	.game {
+		width: 100vw;
+		overflow: hidden;
+		.animate {
+			position: relative;
+			image {
+				width: 100%;
+			}
+			.collet {
+				position: absolute;
+				left: 20upx;
+				top: 20upx;
+				width: 80upx;
+				height: 80upx;
+				border-radius: 100%;
+				background: $uni-router-color;
+				line-height: 80upx;
+				color: #fff;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				font-size: $uni-font-size-sm;
+				animation: slidein 1.5s infinite linear;
+			}
+			.button-box {
+				position: absolute;
+				top: 20upx;
+				right: 20upx;
+				.y-button {
+					background: $uni-router-color;
+					color: #fff;
+				}
+			}
+		}
+		.ugly {
+			position: relative;
+			image {
+				width: 100%;
+			}
+			.ugly-content {
+				overflow: hidden;
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				top: 0;
+				left: 0;
+			}
+			.ugly-header {
+				display: flex;
+				justify-content: flex-end;
+				margin-top: 160upx;
+			}
+			.ugly-header-content {
+				width: 200upx;
+				margin-right: 70upx;
+				.header-avatar {
+					width: 90%;
+					margin-left: 5%;
+					border-radius: 100%;
+				}
+			}
+			.header-flex {
+				display: flex;
+				justify-content: space-around;
+				.header-flex-image {
+					width: 30%;
+				}
+			}
+			.ugly-box {
+				display: flex;
+				flex-wrap: wrap;
+				padding: 0 100upx;
+				height: 330upx;
+				margin: 60upx 0;
+				overflow: scroll;
+				align-items: center;
+			}
+			.ugly-box-item {
+				width: 20%;
+				text-align: center;
+			}
+			.ugly-box-image {
+				width: 80%;
+			}
+			.ugly-button {
+				width: 200upx;
+			}
+			.ugly-person-item {
+				width: 80upx;
+				height: 80upx;
+				border-radius: 100%;
+				margin: 0 20upx;
+				overflow: hidden;
+				.ugly-person-using {
+					transition: .2s;
+				}
+			}
+			.scroll-view_H {
+				white-space: nowrap;
+				width: 84%;
+				margin-left: 8%;
+			}
+			.scroll-view-item_H {
+				display: inline-block;
+				text-align: center;
+			}
+		}
+	}
 	.logo {
 		height: 200upx;
 		width: 200upx;

@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "抽奖记录",
+  "scrollIndicator": "none",
+  "usingComponents": {
+    "uni-mescroll": "/components/mescroll-uni/mescroll-uni"
+  }
+}

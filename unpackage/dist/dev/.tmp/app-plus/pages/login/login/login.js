@@ -300,7 +300,7 @@ var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/login/in
     },
     toForgetPassword: function toForgetPassword() {
       uni.navigateTo({
-        url: '/pages/login/register/register' });
+        url: '/pages/login/forget-password/forget-password' });
 
     },
     toRegister: function toRegister() {

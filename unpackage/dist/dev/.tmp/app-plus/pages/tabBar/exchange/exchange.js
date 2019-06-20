@@ -179,14 +179,19 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
 var _index = _interopRequireDefault(__webpack_require__(/*! @/utils/api/tabBar/index.js */ "../../../../../y/uni-app-jimibao/utils/api/tabBar/index.js"));
 var _index2 = _interopRequireDefault(__webpack_require__(/*! @/utils/api/chat/index.js */ "../../../../../y/uni-app-jimibao/utils/api/chat/index.js"));
-var _avatar = _interopRequireDefault(__webpack_require__(/*! @/static/image/avatar.png */ "../../../../../y/uni-app-jimibao/static/image/avatar.png"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var yPayConfirm = function yPayConfirm() {return __webpack_require__.e(/*! import() | components/y-confirm/y-pay-confirm */ "components/y-confirm/y-pay-confirm").then(__webpack_require__.bind(null, /*! @/components/y-confirm/y-pay-confirm.vue */ "../../../../../y/uni-app-jimibao/components/y-confirm/y-pay-confirm.vue"));};var uniMescroll = function uniMescroll() {return Promise.all(/*! import() | components/mescroll-uni/mescroll-uni */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/mescroll-uni/mescroll-uni")]).then(__webpack_require__.bind(null, /*! @/components/mescroll-uni/mescroll-uni.vue */ "../../../../../y/uni-app-jimibao/components/mescroll-uni/mescroll-uni.vue"));};var yTabs = function yTabs() {return __webpack_require__.e(/*! import() | components/y-tabs/y-tabs */ "components/y-tabs/y-tabs").then(__webpack_require__.bind(null, /*! @/components/y-tabs/y-tabs.vue */ "../../../../../y/uni-app-jimibao/components/y-tabs/y-tabs.vue"));};var _default =
+var _avatar = _interopRequireDefault(__webpack_require__(/*! @/static/image/avatar.png */ "../../../../../y/uni-app-jimibao/static/image/avatar.png"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var yPayConfirm = function yPayConfirm() {return __webpack_require__.e(/*! import() | components/y-confirm/y-pay-confirm */ "components/y-confirm/y-pay-confirm").then(__webpack_require__.bind(null, /*! @/components/y-confirm/y-pay-confirm.vue */ "../../../../../y/uni-app-jimibao/components/y-confirm/y-pay-confirm.vue"));};var uniMescroll = function uniMescroll() {return Promise.all(/*! import() | components/mescroll-uni/mescroll-uni */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/mescroll-uni/mescroll-uni")]).then(__webpack_require__.bind(null, /*! @/components/mescroll-uni/mescroll-uni.vue */ "../../../../../y/uni-app-jimibao/components/mescroll-uni/mescroll-uni.vue"));};var uniIcon = function uniIcon() {return __webpack_require__.e(/*! import() | components/uni-icon/uni-icon */ "components/uni-icon/uni-icon").then(__webpack_require__.bind(null, /*! @/components/uni-icon/uni-icon.vue */ "../../../../../y/uni-app-jimibao/components/uni-icon/uni-icon.vue"));};var yTabs = function yTabs() {return __webpack_require__.e(/*! import() | components/y-tabs/y-tabs */ "components/y-tabs/y-tabs").then(__webpack_require__.bind(null, /*! @/components/y-tabs/y-tabs.vue */ "../../../../../y/uni-app-jimibao/components/y-tabs/y-tabs.vue"));};var _default =
 {
   components: {
     uniMescroll: uniMescroll,
     yTabs: yTabs,
-    yPayConfirm: yPayConfirm },
+    yPayConfirm: yPayConfirm,
+    uniIcon: uniIcon },
 
   data: function data() {
     return {
@@ -343,6 +348,11 @@ var _avatar = _interopRequireDefault(__webpack_require__(/*! @/static/image/avat
           element.exist = true;
         }
       });
+    },
+    goSearch: function goSearch() {
+      uni.navigateTo({
+        url: '/pages/template/exchange/search/search' });
+
     },
     // mescroll组件初始化的回调,可获取到mescroll对象
     mescrollInit: function mescrollInit(mescroll) {

@@ -412,7 +412,7 @@ var _avatar = _interopRequireDefault(__webpack_require__(/*! @/static/image/avat
     getRecord: function () {var _getRecord = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee4() {var _this, res, list;return _regenerator.default.wrap(function _callee4$(_context4) {while (1) {switch (_context4.prev = _context4.next) {case 0:
                 _this = this;_context4.next = 3;return (
                   _index.default.record({ page: this.page, size: this.pageSize, id: this.otherId }));case 3:res = _context4.sent;if (!
-                res.success) {_context4.next = 12;break;}
+                res.success) {_context4.next = 15;break;}
                 if (res.data.dfnkname) {
                   this.nickname = res.data.dfnkname;
                   uni.setNavigationBarTitle({
@@ -426,7 +426,7 @@ var _avatar = _interopRequireDefault(__webpack_require__(/*! @/static/image/avat
                 }
                 this.hasNextPage = res.data.hasNextPage;
                 list = res.data.list.reverse();if (!(
-                list.length > 0)) {_context4.next = 12;break;}
+                list.length > 0)) {_context4.next = 14;break;}
                 list = list.map(function (element) {
                   var role, contentBox, face, content;
                   contentBox = JSON.parse(element.content);
@@ -466,7 +466,9 @@ var _avatar = _interopRequireDefault(__webpack_require__(/*! @/static/image/avat
 
 
                 });return _context4.abrupt("return",
-                list);case 12:case "end":return _context4.stop();}}}, _callee4, this);}));function getRecord() {return _getRecord.apply(this, arguments);}return getRecord;}(),
+                list);case 14:
+
+                this.loadingShow = false;case 15:case "end":return _context4.stop();}}}, _callee4, this);}));function getRecord() {return _getRecord.apply(this, arguments);}return getRecord;}(),
 
 
 
@@ -501,7 +503,7 @@ var _avatar = _interopRequireDefault(__webpack_require__(/*! @/static/image/avat
 
         //非自己的消息震动
         if (msg.msg.userinfo.uid != this.myuid) {
-          console.log('振动', " at pages\\tabBar\\chat\\room.vue:404");
+          console.log('振动', " at pages\\tabBar\\chat\\room.vue:406");
           uni.vibrateLong();
         }
       }
@@ -639,8 +641,8 @@ var _avatar = _interopRequireDefault(__webpack_require__(/*! @/static/image/avat
             uni.getImageInfo({
               src: res.tempFilePaths[i],
               success: function success(image) {
-                console.log(image.width, " at pages\\tabBar\\chat\\room.vue:542");
-                console.log(image.height, " at pages\\tabBar\\chat\\room.vue:543");
+                console.log(image.width, " at pages\\tabBar\\chat\\room.vue:544");
+                console.log(image.height, " at pages\\tabBar\\chat\\room.vue:545");
                 var msg = { url: res.tempFilePaths[i], w: image.width, h: image.height };
                 _this5.sendMsg(msg, 'img');
               } });};for (var i = 0; i < res.tempFilePaths.length; i++) {_loop(i);
@@ -683,7 +685,7 @@ var _avatar = _interopRequireDefault(__webpack_require__(/*! @/static/image/avat
     //替换表情符号为图片
     replaceEmoji: function replaceEmoji(str) {var _this6 = this;
       var replacedStr = str.replace(/\[([^(\]|\[)]*)\]/g, function (item, index) {
-        console.log("item: " + item, " at pages\\tabBar\\chat\\room.vue:586");
+        console.log("item: " + item, " at pages\\tabBar\\chat\\room.vue:588");
         for (var i = 0; i < _this6.emojiList.length; i++) {
           var row = _this6.emojiList[i];
           for (var j = 0; j < row.length; j++) {
@@ -693,7 +695,7 @@ var _avatar = _interopRequireDefault(__webpack_require__(/*! @/static/image/avat
               //比如你上传服务器后，你的100.gif路径为https://www.xxx.com/emoji/100.gif 则替换onlinePath填写为https://www.xxx.com/emoji/
               var onlinePath = 'https://s2.ax1x.com/2019/04/12/';
               var imgstr = '<img src="' + onlinePath + _this6.onlineEmoji[EM.url] + '">';
-              console.log("imgstr: " + imgstr, " at pages\\tabBar\\chat\\room.vue:596");
+              console.log("imgstr: " + imgstr, " at pages\\tabBar\\chat\\room.vue:598");
               return imgstr;
             }
           }
@@ -707,9 +709,9 @@ var _avatar = _interopRequireDefault(__webpack_require__(/*! @/static/image/avat
       var _this = this;
       //实际应用中，此处应该提交长连接，模板仅做本地处理。
       var nowDate = new Date();
-      var lastid = this.msgList[this.msgList.length - 1].msg.id;
-      lastid++;
-      var msg = { type: 'user', msg: { id: lastid, time: nowDate.getHours() + ":" + nowDate.getMinutes(), type: type, userinfo: { uid: 0, username: "I", face: this.myAvatar }, content: content } };
+      // let lastid = this.msgList[this.msgList.length-1].msg.id
+      // lastid++
+      var msg = { type: 'user', msg: { id: nowDate.getTime(), time: nowDate.getHours() + ":" + nowDate.getMinutes(), type: type, userinfo: { uid: 0, username: "I", face: this.myAvatar }, content: content } };
 
       var myMsg = {
         content: {
@@ -846,7 +848,7 @@ var _avatar = _interopRequireDefault(__webpack_require__(/*! @/static/image/avat
     recordEnd: function recordEnd(e) {
       clearInterval(this.recordTimer);
       if (!this.willStop) {
-        console.log("e: " + JSON.stringify(e), " at pages\\tabBar\\chat\\room.vue:749");
+        console.log("e: " + JSON.stringify(e), " at pages\\tabBar\\chat\\room.vue:751");
         var msg = {
           length: 0,
           url: e.tempFilePath };
@@ -858,7 +860,7 @@ var _avatar = _interopRequireDefault(__webpack_require__(/*! @/static/image/avat
         msg.length = min + ':' + sec;
         this.sendMsg(msg, 'voice');
       } else {
-        console.log('取消发送录音', " at pages\\tabBar\\chat\\room.vue:761");
+        console.log('取消发送录音', " at pages\\tabBar\\chat\\room.vue:763");
       }
       this.willStop = false;
     },

@@ -63,11 +63,7 @@
     text-align: center;
 }
 .y-order .order-left .icon.data-v-f5af7be0 {
-      background: #fff;
-      padding: 20rpx;
-      border: solid 1px #7A7A81;
-      -webkit-border-radius: 100%;
-              border-radius: 100%;
+      font-size: 48rpx;
 }
 .y-order .order-right.data-v-f5af7be0 {
     -webkit-box-flex: 5;

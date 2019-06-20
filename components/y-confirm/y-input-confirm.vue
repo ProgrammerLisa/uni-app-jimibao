@@ -1,6 +1,6 @@
 <template>
-	<view class="y-modal-container" v-if="show" :style="'z-index:'+zIndex">
-		<view class="y-modal" @click="!notHide?showBefore=false:''" :class="showBefore?`fade-in`:`fade-out`"></view>
+	<view class="y-modal-container" v-if="show" :style="'z-index:'+zIndex" catchtouchmove="nomove">
+		<view class="y-modal" @click.stop="!notHide?showBefore=false:''" :class="showBefore?`fade-in`:`fade-out`"></view>
 		<view class="y-modal-content" :class="showBefore?`slow-up`:`slow-down`">
 			<view class="y-confirm">
 				<view class="title">{{title}}</view>

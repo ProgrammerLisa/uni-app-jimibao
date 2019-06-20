@@ -1,6 +1,6 @@
 <template>
-	<view class="y-modal-container" v-if="show">
-		<view class="y-modal" @click="showBefore=false" :class="showBefore?`fade-in`:`fade-out`"></view>
+	<view class="y-modal-container" v-if="show" catchtouchmove="nomove">
+		<view class="y-modal" @click.stop="showBefore=false" :class="showBefore?`fade-in`:`fade-out`"></view>
 		<view class="y-modal-content" :class="showBefore?`slow-up`:`slow-down`">
 			<slot></slot>
 		</view>

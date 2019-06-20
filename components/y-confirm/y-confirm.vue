@@ -1,5 +1,5 @@
 <template>
-	<view class="y-modal-container" v-if="show" :style="'z-index:'+zIndex">
+	<view class="y-modal-container" v-if="show" :style="'z-index:'+zIndex" catchtouchmove="nomove">
 		<view class="y-modal" @click="hideModalAuto" :style="showBefore?`fade-in`:`fade-out`"></view>
 		<view class="y-modal-content" :style="showBefore?`bottom:${bottom}`:`bottom:-100%`">
 			<view class="y-confirm">

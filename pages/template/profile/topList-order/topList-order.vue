@@ -207,10 +207,7 @@
 			flex: 1;
 			text-align: center;
 			.icon {
-				background: $uni-box-color;
-				padding: 20upx;
-				border: solid 1px #7A7A81;
-				border-radius: 100%;
+				font-size: 48upx;
 			}
 		}
 		.order-right {

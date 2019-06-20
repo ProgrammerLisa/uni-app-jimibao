@@ -167,5 +167,26 @@ export default {
 	// 抽奖记录
 	lotteryRecord (obj) {
 		return request.get('/prize/firmFirmPrizeInfo', obj)
+	},
+	// 集米
+	collet (obj) {
+		return request.post('/steal/collect', obj)
+	},
+	// 被偷人
+	uglyPerson (obj) {
+		return request.get('/steal/searchMasters', obj)
+	},
+	// 小偷
+	thief (obj) {
+		return request.get('/steal/loseArchives', obj)
+	},
+	// 主动偷
+	stoleActive (obj) {
+		return request.post('/steal/justSteal', obj)
+	},
+	// 被动偷
+	stolePassive (obj) {
+		return request.post('/steal/revenge', obj)
 	}
+	
 }

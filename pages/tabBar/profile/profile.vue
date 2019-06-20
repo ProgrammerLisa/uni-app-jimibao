@@ -20,18 +20,20 @@
 			</view>
 			<view class="wave-box">
 				<view class="wave-list-box">
-					<swiper autoplay="true" circular="true" interval="0">
+					<image :src="wave1[0]"></image>
+					<!-- <swiper autoplay="true" circular="true" interval="0">
 						<swiper-item v-for="(item, index) in wave1" :key="index">
-							<image :src="item"></image>
+							
 						</swiper-item>
-					</swiper>
+					</swiper> -->
 				</view>
 				<view class="wave-list-box">
-					<swiper autoplay="true" circular="true" interval="0">
+					<image :src="wave2[0]"></image>
+					<!-- <swiper autoplay="true" circular="true" interval="0">
 						<swiper-item v-for="(item, index) in wave2" :key="index">
 							<image :src="item"></image>
 						</swiper-item>
-					</swiper>
+					</swiper> -->
 				</view>
 			</view>
 			<view class="fill-box">

@@ -143,7 +143,11 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
     hideAuto: {
       type: Boolean,
-      default: true } },
+      default: true },
+
+    zIndex: {
+      type: [String, Number],
+      default: 10 } },
 
 
   data: function data() {

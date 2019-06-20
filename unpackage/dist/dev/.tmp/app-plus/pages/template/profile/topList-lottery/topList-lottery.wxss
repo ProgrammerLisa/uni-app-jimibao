@@ -41,7 +41,8 @@
   color: #fff !important;
 }
 .y-container.data-v-158c0946 {
-  padding: 20rpx 0;
+  padding: 20rpx 0 50rpx;
+  background: #fff;
 }
 .y-row.data-v-158c0946 {
   display: -webkit-box;
@@ -65,6 +66,8 @@
     font-size: 28rpx;
     -webkit-border-radius: 0 40rpx 40rpx 0;
             border-radius: 0 40rpx 40rpx 0;
+    border-left: none;
+    border-right: none;
 }
 .y-row .y-col-right.data-v-158c0946 {
     -webkit-border-radius: 40rpx 0 0 40rpx;
@@ -76,9 +79,78 @@
 }
 .y-row-end.data-v-158c0946 {
   -webkit-box-pack: end;
-  -webkit-justify-content: end;
+  -webkit-justify-content: flex-end;
       -ms-flex-pack: end;
-          justify-content: end;
+          justify-content: flex-end;
+  margin-top: 30rpx;
+}
+.rule-content.data-v-158c0946 {
+  height: 65vh;
+  overflow: scroll;
+}
+.rule-title.data-v-158c0946 {
+  -webkit-border-radius: 0 40rpx 40rpx 0;
+          border-radius: 0 40rpx 40rpx 0;
+  background: #fc5566;
+  color: #fff;
+  display: inline-block;
+  padding: 10rpx 30rpx;
+}
+.rule-detail.data-v-158c0946 {
+  padding: 30rpx;
+  text-indent: 50rpx;
+}
+.banner-container.data-v-158c0946 {
+  position: relative;
+}
+.banner-top.data-v-158c0946 {
+  width: 100%;
+}
+.banner-content.data-v-158c0946 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #fff;
+}
+.banner-content .banner-title.data-v-158c0946 {
+    font-size: 40rpx;
+    margin-top: -50rpx;
+}
+.banner-content .banner-count.data-v-158c0946 {
+    font-size: 48rpx;
+}
+.banner-tips.data-v-158c0946 {
+  position: absolute;
+  top: 30rpx;
+  left: 0;
+  width: 100%;
+}
+.banner-tips .no-tips.data-v-158c0946 {
+    color: #FFD800;
+}
+.y-tips-item.data-v-158c0946 {
+  text-align: center;
+  color: #fc5566;
+  font-size: 40rpx;
 }
 .lottery-box.data-v-158c0946 {
   outline: 10rpx solid #f7f7f7;
@@ -86,7 +158,7 @@
           border-radius: 50rpx;
   -webkit-box-shadow: 0 0 0 10px moccasin;
           box-shadow: 0 0 0 10px moccasin;
-  margin: 60rpx auto 30rpx;
+  margin: 30rpx auto 30rpx;
   padding: 10rpx 0;
   width: 90vw;
   height: 90vw;

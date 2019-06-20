@@ -2,6 +2,7 @@
   "pages": [
     "pages/login/login/login",
     "pages/login/register/register",
+    "pages/login/forget-password/forget-password",
     "pages/login/register/agreement",
     "pages/tabBar/home/home",
     "pages/tabBar/business/business",
@@ -17,6 +18,7 @@
     "pages/template/profile/setting/forget-password",
     "pages/template/profile/level/level",
     "pages/template/profile/topList-lottery/topList-lottery",
+    "pages/template/profile/topList-lottery/lottery-record",
     "pages/template/profile/topList-order/topList-order",
     "pages/template/profile/topList-team/topList-team",
     "pages/template/profile/topList-team-recruit/topList-team-recruit",
@@ -39,7 +41,8 @@
     "pages/template/home/course/web-view",
     "pages/template/business/detail/detail",
     "pages/template/business/order/order",
-    "pages/template/exchange/send/send"
+    "pages/template/exchange/send/send",
+    "pages/template/exchange/search/search"
   ],
   "subPackages": [],
   "window": {

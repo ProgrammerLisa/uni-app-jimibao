@@ -196,6 +196,7 @@ var render = function() {
 
   if (!_vm._isMounted) {
     _vm.e0 = function($event) {
+      $event.stopPropagation()
       !_vm.notHide ? (_vm.showBefore = false) : ""
     }
 
